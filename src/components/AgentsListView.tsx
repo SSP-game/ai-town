@@ -1,6 +1,7 @@
 import { Descriptions, characters } from '../../data/characters';
 import { Id } from '../../convex/_generated/dataModel';
 import { useServerGame } from '../hooks/serverGame';
+import { useEffect, useRef, useState } from 'react';
 
 export interface AgentsListViewProps {
   worldId: Id<'worlds'>;
@@ -44,15 +45,12 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
               >
                 {/* Character Avatar */}
                 <div className="flex justify-center mb-4">
-                  <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center">
+                  <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
                     {character?.textureUrl ? (
-                      <div
-                        className="w-16 h-16 bg-cover bg-center rounded-full border-2 border-gray-600"
-                        style={{
-                          backgroundImage: `url(${character.textureUrl})`,
-                          backgroundPosition: getCharacterSpritePosition(characterName || 'f1'),
-                        }}
-                      ></div>
+                      <CharacterAvatar
+                        character={character}
+                        characterName={characterName || 'f1'}
+                      />
                     ) : (
                       <div className="text-2xl text-gray-400">🤖</div>
                     )}
@@ -116,17 +114,81 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
   );
 }
 
-// Helper function to get sprite position for character avatar
-function getCharacterSpritePosition(character: string): string {
-  const spriteMap: { [key: string]: string } = {
-    f1: '0px 0px',
-    f2: '-32px 0px',
-    f3: '-64px 0px',
-    f4: '-96px 0px',
-    f5: '-128px 0px',
-    f6: '-160px 0px',
-    f7: '-192px 0px',
-    f8: '-224px 0px',
-  };
-  return spriteMap[character] || '0px 0px';
+// Character Avatar component using canvas to properly render sprites
+function CharacterAvatar({
+  character,
+  characterName,
+}: {
+  character: { textureUrl: string; spritesheetData?: any };
+  characterName: string;
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+
+    img.onload = () => {
+      // Clear canvas
+      ctx.clearRect(0, 0, 64, 64);
+
+      // Get the sprite frame data
+      const frameData = character.spritesheetData?.frames?.down;
+
+      if (frameData && frameData.frame) {
+        const { x, y, w, h } = frameData.frame;
+        // Draw the specific sprite frame from the spritesheet
+        // Source: x, y, width, height from spritesheet
+        // Destination: 0, 0, 64, 64 (scaled up)
+        ctx.imageSmoothingEnabled = false; // Keep pixels sharp
+        ctx.drawImage(img, x, y, w, h, 0, 0, 64, 64);
+      } else {
+        // Fallback: use simple position mapping
+        const characterPositions: { [key: string]: { x: number; y: number } } = {
+          f1: { x: 0, y: 0 }, // Lucky
+          f2: { x: 32, y: 0 },
+          f3: { x: 64, y: 0 }, // Alice
+          f4: { x: 96, y: 0 }, // Bob
+          f5: { x: 128, y: 0 },
+          f6: { x: 160, y: 0 }, // Stella
+          f7: { x: 192, y: 0 }, // Pete
+          f8: { x: 224, y: 0 },
+        };
+
+        const pos = characterPositions[characterName] || { x: 0, y: 0 };
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, pos.x, pos.y, 32, 32, 0, 0, 64, 64);
+      }
+
+      setImageLoaded(true);
+    };
+
+    img.onerror = () => {
+      console.error('Failed to load character image:', character.textureUrl);
+    };
+
+    img.src = character.textureUrl;
+
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, [character.textureUrl, character.spritesheetData, characterName]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={64}
+      height={64}
+      className={`w-16 h-16 ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity`}
+      style={{ imageRendering: 'pixelated' }}
+    />
+  );
 }
