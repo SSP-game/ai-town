@@ -89,7 +89,7 @@ export const PixiGame = (props: {
     const humanPlayer = props.game.world.players.get(humanPlayerId)!;
     viewportRef.current.animate({
       position: new PIXI.Point(humanPlayer.position.x * tileDim, humanPlayer.position.y * tileDim),
-      scale: 1.5,
+      scale: 0.8,
     });
   }, [humanPlayerId]);
 
