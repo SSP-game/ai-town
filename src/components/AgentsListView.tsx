@@ -2,6 +2,8 @@ import { Descriptions, characters } from '../../data/characters';
 import { Id } from '../../convex/_generated/dataModel';
 import { useServerGame } from '../hooks/serverGame';
 import { useEffect, useRef, useState } from 'react';
+import AgentChatModal from './AgentChatModal';
+import Button from './buttons/Button';
 
 export interface AgentsListViewProps {
   worldId: Id<'worlds'>;
@@ -10,12 +12,31 @@ export interface AgentsListViewProps {
 
 export default function AgentsListView({ worldId, onSelectAgent }: AgentsListViewProps) {
   const game = useServerGame(worldId);
+  const [chatModalOpen, setChatModalOpen] = useState(false);
+  const [selectedAgent, setSelectedAgent] = useState<{ id: string; name: string } | null>(null);
+  const [userId, setUserId] = useState<Id<"users"> | null>(null);
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(storedUserId as Id<"users">);
+    }
+  }, []);
 
   if (!game) {
     return <div className="p-8 text-center text-white">Loading agents...</div>;
   }
 
   const agents = [...game.world.agents.values()];
+
+  const handleChatWithAgent = (agentId: string, agentName: string) => {
+    if (!userId) {
+      // Show login modal if not logged in
+      return;
+    }
+    setSelectedAgent({ id: agentId, name: agentName });
+    setChatModalOpen(true);
+  };
 
   return (
     <div className="h-full game-background overflow-y-auto">
@@ -59,7 +80,7 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
 
                 {/* Character Name */}
                 <h3 className="text-xl font-bold text-white text-center mb-3">
-                  {staticDescription?.name || agentDescription?.name || `Agent ${agent.id}`}
+                  {staticDescription?.name || `Agent ${agent.id}`}
                 </h3>
 
                 {/* Character Status */}
@@ -75,11 +96,11 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                         ? staticDescription.identity.slice(0, 200) + '...'
                         : staticDescription.identity}
                     </p>
-                  ) : agentDescription?.description ? (
+                  ) : agentDescription?.identity ? (
                     <p className="line-clamp-4">
-                      {agentDescription.description.length > 200
-                        ? agentDescription.description.slice(0, 200) + '...'
-                        : agentDescription.description}
+                      {agentDescription.identity.length > 200
+                        ? agentDescription.identity.slice(0, 200) + '...'
+                        : agentDescription.identity}
                     </p>
                   ) : (
                     <p className="text-gray-500">No description available</p>
@@ -101,15 +122,44 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                 )}
 
                 {/* Character Info */}
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-gray-500 mb-4">
                   <div>Agent ID: {agent.id}</div>
                   <div>Character: {characterName || 'Unknown'}</div>
+                </div>
+
+                {/* Chat Button */}
+                <div className="mt-4">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleChatWithAgent(
+                        agent.id,
+                        staticDescription?.name || `Agent ${agent.id}`
+                      );
+                    }}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm font-bold disabled:opacity-50"
+                    disabled={!userId}
+                  >
+                    {userId ? 'Chat' : 'Login to Chat'}
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {/* Chat Modal */}
+      {selectedAgent && userId && (
+        <AgentChatModal
+          isOpen={chatModalOpen}
+          onClose={() => setChatModalOpen(false)}
+          agentId={selectedAgent.id}
+          agentName={selectedAgent.name}
+          userId={userId}
+          worldId={worldId}
+        />
+      )}
     </div>
   );
 }

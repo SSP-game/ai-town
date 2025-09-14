@@ -9,7 +9,7 @@ import helpImg from '../assets/help.svg';
 // import { UserButton } from '@clerk/clerk-react';
 // import { Authenticated, Unauthenticated } from 'convex/react';
 // import LoginButton from './components/buttons/LoginButton.tsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import MusicButton from './components/buttons/MusicButton.tsx';
 import Button from './components/buttons/Button.tsx';
@@ -18,15 +18,32 @@ import FreezeButton from './components/FreezeButton.tsx';
 import { MAX_HUMAN_PLAYERS } from '../convex/constants.ts';
 import PoweredByConvex from './components/PoweredByConvex.tsx';
 import ViewToggleButton, { ViewMode } from './components/buttons/ViewToggleButton.tsx';
+import CompanionButton from './components/buttons/CompanionButton.tsx';
+import CompanionModal from './components/CompanionModal.tsx';
 import { useQuery } from 'convex/react';
 import { api } from '../convex/_generated/api';
 
 export default function Home() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState<ViewMode>('game');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check login state on app start
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    const nickname = localStorage.getItem('nickname');
+    if (userId && nickname) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+  const [companionModalOpen, setCompanionModalOpen] = useState(false);
 
   const worldStatus = useQuery(api.world.defaultWorldStatus);
   const worldId = worldStatus?.worldId;
+
+  const handleCompanionClick = () => {
+    setCompanionModalOpen(true);
+  };
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-background">
       {/* <PoweredByConvex /> */}
@@ -70,6 +87,16 @@ export default function Home() {
           </p>
         </div>
       </ReactModal>
+
+      <CompanionModal
+        isOpen={companionModalOpen}
+        onClose={() => setCompanionModalOpen(false)}
+        onShowAgentsList={() => {
+          setCompanionModalOpen(false);
+          setCurrentView('agents');
+        }}
+      />
+
       {/*<div className="p-3 absolute top-0 right-0 z-10 text-2xl">
         <Authenticated>
           <UserButton afterSignOutUrl="/ai-town" />
@@ -87,8 +114,9 @@ export default function Home() {
         </div>
 
         {/* Footer buttons outside the frame */}
-        <div className="flex-shrink-0 w-full flex items-center justify-center gap-3 p-4 bg-gradient-to-t from-black/80 to-transparent">
+        <div className="flex-shrink-0 w-full flex items-center justify-center gap-2 p-3 bg-gradient-to-t from-black/80 to-transparent [&_.button]:scale-75">
           <ViewToggleButton currentView={currentView} onToggleView={setCurrentView} />
+          <CompanionButton onClick={handleCompanionClick} />
           <FreezeButton />
           <MusicButton />
           <Button href="https://github.com/a16z-infra/ai-town" imgUrl={starImg}>
@@ -99,10 +127,10 @@ export default function Home() {
             Help
           </Button>
           <a href="https://a16z.com">
-            <img className="w-8 h-8 pointer-events-auto" src={a16zImg} alt="a16z" />
+            <img className="w-6 h-6 pointer-events-auto" src={a16zImg} alt="a16z" />
           </a>
           <a href="https://convex.dev/c/ai-town">
-            <img className="w-20 h-8 pointer-events-auto" src={convexImg} alt="Convex" />
+            <img className="w-16 h-6 pointer-events-auto" src={convexImg} alt="Convex" />
           </a>
         </div>
         <ToastContainer position="bottom-right" autoClose={2000} closeOnClick theme="dark" />

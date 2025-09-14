@@ -6,7 +6,7 @@ import { api } from '../../../convex/_generated/api';
 // import { SignInButton } from '@clerk/clerk-react';
 import { ConvexError } from 'convex/values';
 import { Id } from '../../../convex/_generated/dataModel';
-import { useCallback } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { waitForInput } from '../../hooks/sendInput';
 import { useServerGame } from '../../hooks/serverGame';
 
@@ -22,12 +22,19 @@ export default function InteractButton() {
   const leave = useMutation(api.world.leaveWorld);
   const isPlaying = !!userPlayerId;
 
+  const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedCharacter = localStorage.getItem('selectedCharacter');
+    setSelectedCharacter(storedCharacter);
+  }, []);
+
   const convex = useConvex();
   const joinInput = useCallback(
-    async (worldId: Id<'worlds'>) => {
+    async (worldId: Id<'worlds'>, character?: string) => {
       let inputId;
       try {
-        inputId = await join({ worldId });
+        inputId = await join({ worldId, character });
       } catch (e: any) {
         if (e instanceof ConvexError) {
           toast.error(e.data);
@@ -41,7 +48,7 @@ export default function InteractButton() {
         toast.error(e.message);
       }
     },
-    [convex],
+    [convex, join],
   );
 
   const joinOrLeaveGame = () => {
@@ -56,8 +63,8 @@ export default function InteractButton() {
       console.log(`Leaving game for player ${userPlayerId}`);
       void leave({ worldId });
     } else {
-      console.log(`Joining game`);
-      void joinInput(worldId);
+      console.log(`Joining game with character: ${selectedCharacter || 'random'}`);
+      void joinInput(worldId, selectedCharacter || undefined);
     }
   };
   // if (!isAuthenticated || game === undefined) {
