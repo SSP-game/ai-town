@@ -10,9 +10,40 @@ export default function MusicButton() {
   const [isPlaying, setPlaying] = useState(false);
 
   useEffect(() => {
-    if (musicUrl) {
-      sound.add('background', musicUrl).loop = true;
+    if (!musicUrl) return;
+    // Avoid duplicates; never auto-play.
+    if (!sound.exists('background')) {
+      sound.add('background', {
+        url: musicUrl,
+        preload: true,
+        autoPlay: false,
+        loop: true,
+      });
+    } else {
+      // Update URL if it changed.
+      const s = sound.find('background');
+      if (s && (s as any)._options?.url !== musicUrl) {
+        try {
+          sound.remove('background');
+        } catch {}
+        sound.add('background', {
+          url: musicUrl,
+          preload: true,
+          autoPlay: false,
+          loop: true,
+        });
+      }
     }
+    // Ensure muted by default (don't start playing implicitly)
+    sound.stop('background');
+    setPlaying(false);
+
+    return () => {
+      // Stop on unmount to avoid lingering playback when navigating.
+      try {
+        sound.stop('background');
+      } catch {}
+    };
   }, [musicUrl]);
 
   const flipSwitch = async () => {
@@ -25,7 +56,12 @@ export default function MusicButton() {
   };
 
   const handleKeyPress = useCallback(
-    (event: { key: string }) => {
+    (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const tag = target?.tagName?.toLowerCase();
+      const inEditable =
+        target?.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select';
+      if (inEditable) return; // Don't toggle while typing in inputs
       if (event.key === 'm' || event.key === 'M') {
         void flipSwitch();
       }
