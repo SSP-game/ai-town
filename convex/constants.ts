@@ -54,6 +54,9 @@ export const NUM_MEMORIES_TO_SEARCH = 3;
 
 // Wait for at least two seconds before sending another message.
 export const MESSAGE_COOLDOWN = 2000;
+// Group chat: speak less frequently to avoid spammy threads.
+export const GROUP_MESSAGE_COOLDOWN = 5000;
+export const GROUP_SPEAK_PROBABILITY = 0.5;
 
 // Don't run a turn of the agent more than once a second.
 export const AGENT_WAKEUP_THRESHOLD = 1000;

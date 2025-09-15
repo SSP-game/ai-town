@@ -13,6 +13,8 @@ import {
   MAX_CONVERSATION_DURATION,
   MAX_CONVERSATION_MESSAGES,
   MESSAGE_COOLDOWN,
+  GROUP_MESSAGE_COOLDOWN,
+  GROUP_SPEAK_PROBABILITY,
   MIDPOINT_THRESHOLD,
   PLAYER_CONVERSATION_COOLDOWN,
 } from '../constants';
@@ -108,7 +110,7 @@ export class Agent {
       delete this.toRemember;
       return;
     }
-    if (conversation && member) {
+  if (conversation && member) {
       const [otherPlayerId, otherMember] = [...conversation.participants.entries()].find(
         ([id]) => id !== player.id,
       )!;
@@ -164,6 +166,32 @@ export class Agent {
         return;
       }
       if (member.status.kind === 'participating') {
+        // Group conversation handling: slow cadence and optional probability.
+        const isGroup = conversation.participants.size > 2;
+        if (isGroup) {
+          if (conversation.isTyping && conversation.isTyping.playerId !== player.id) {
+            return; // someone else typing
+          }
+          if (conversation.lastMessage) {
+            // If I was the last author, wait
+            if (conversation.lastMessage.author === player.id) return;
+            const cooldown = conversation.lastMessage.timestamp + GROUP_MESSAGE_COOLDOWN;
+            if (now < cooldown) return;
+          }
+          // Random chance to speak to avoid spam
+          if (Math.random() > GROUP_SPEAK_PROBABILITY) return;
+
+          const messageUuid = crypto.randomUUID();
+          conversation.setIsTyping(now, player, messageUuid);
+          this.startOperation(game, now, 'agentGenerateGroupMessage', {
+            worldId: game.worldId,
+            playerId: player.id,
+            agentId: this.id,
+            conversationId: conversation.id,
+            operationId: messageUuid,
+          } as any);
+          return;
+        }
         const started = member.status.started;
         if (conversation.isTyping && conversation.isTyping.playerId !== player.id) {
           // Wait for the other player to finish typing.
