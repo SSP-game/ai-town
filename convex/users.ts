@@ -284,10 +284,9 @@ export const updateUserProfile = mutation({
 
     // Check if nickname is being updated and if it's already taken
     if (updates.nickname && updates.nickname !== user.nickname) {
-      const nickname = updates.nickname;
       const existingNickname = await ctx.db
         .query('users')
-        .withIndex('nickname', (q) => q.eq('nickname', nickname))
+        .withIndex('nickname', (q) => q.eq('nickname', updates.nickname!))
         .first();
 
       if (existingNickname) {

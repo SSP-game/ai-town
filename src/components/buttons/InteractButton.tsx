@@ -15,15 +15,17 @@ export default function InteractButton() {
   const worldStatus = useQuery(api.world.defaultWorldStatus);
   const worldId = worldStatus?.worldId;
   const game = useServerGame(worldId);
-  const humanTokenIdentifier = useQuery(api.world.userStatus, worldId ? { worldId } : 'skip');
+  // Get user profile to access selected character
+  const userId = localStorage.getItem('userId');
+  const humanTokenIdentifier = useQuery(
+    api.world.userStatus,
+    worldId ? { worldId, userId: userId || undefined } : 'skip'
+  );
   const userPlayerId =
     game && [...game.world.players.values()].find((p) => p.human === humanTokenIdentifier)?.id;
   const join = useMutation(api.world.joinWorld);
   const leave = useMutation(api.world.leaveWorld);
   const isPlaying = !!userPlayerId;
-
-  // Get user profile to access selected character
-  const userId = localStorage.getItem('userId');
   const userProfile = useQuery(
     api.users.getFullUserProfile,
     userId ? { userId: userId as Id<'users'> } : 'skip'
@@ -35,7 +37,7 @@ export default function InteractButton() {
     async (worldId: Id<'worlds'>, character?: string) => {
       let inputId;
       try {
-        inputId = await join({ worldId, character });
+        inputId = await join({ worldId, character, userId: userId || undefined });
       } catch (e: any) {
         if (e instanceof ConvexError) {
           toast.error(e.data);
@@ -49,7 +51,7 @@ export default function InteractButton() {
         toast.error(e.message);
       }
     },
-    [convex, join],
+    [convex, join, userId],
   );
 
   const joinOrLeaveGame = () => {
@@ -62,7 +64,7 @@ export default function InteractButton() {
     }
     if (isPlaying) {
       console.log(`Leaving game for player ${userPlayerId}`);
-      void leave({ worldId });
+      void leave({ worldId, userId: userId || undefined });
     } else {
       console.log(`Joining game with character: ${selectedCharacter || 'random'}`);
       void joinInput(worldId, selectedCharacter || undefined);

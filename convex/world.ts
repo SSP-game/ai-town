@@ -1,5 +1,6 @@
 import { ConvexError, v } from 'convex/values';
 import { internalMutation, mutation, query } from './_generated/server';
+import { Id } from './_generated/dataModel';
 import { characters } from '../data/characters';
 import { insertInput } from './aiTown/insertInput';
 import {
@@ -97,6 +98,7 @@ export const restartDeadWorlds = internalMutation({
 export const userStatus = query({
   args: {
     worldId: v.id('worlds'),
+    userId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     // const identity = await ctx.auth.getUserIdentity();
@@ -104,7 +106,9 @@ export const userStatus = query({
     //   return null;
     // }
     // return identity.tokenIdentifier;
-    return DEFAULT_NAME;
+
+    // Use userId as unique identifier if provided, otherwise fall back to DEFAULT_NAME
+    return args.userId || DEFAULT_NAME;
   },
 });
 
@@ -112,6 +116,7 @@ export const joinWorld = mutation({
   args: {
     worldId: v.id('worlds'),
     character: v.optional(v.string()),
+    userId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     // const identity = await ctx.auth.getUserIdentity();
@@ -120,7 +125,22 @@ export const joinWorld = mutation({
     // }
     // const name =
     //   identity.givenName || identity.nickname || (identity.email && identity.email.split('@')[0]);
-    const name = DEFAULT_NAME;
+
+    // Use userId for unique identification, fall back to DEFAULT_NAME
+    const tokenIdentifier = args.userId || DEFAULT_NAME;
+
+    // Get user's nickname if available
+    let name = DEFAULT_NAME;
+    if (args.userId) {
+      try {
+        const user = await ctx.db.get(args.userId as Id<'users'>);
+        if (user && user.nickname) {
+          name = user.nickname;
+        }
+      } catch (e) {
+        // Fallback to DEFAULT_NAME if user lookup fails
+      }
+    }
 
     // if (!name) {
     //   throw new ConvexError(`Missing name on ${JSON.stringify(identity)}`);
@@ -140,9 +160,9 @@ export const joinWorld = mutation({
     return await insertInput(ctx, world._id, 'join', {
       name,
       character: selectedCharacter,
-      description: `${DEFAULT_NAME} is a human player`,
+      description: `${name} is a human player`,
       // description: `${identity.givenName} is a human player`,
-      tokenIdentifier: DEFAULT_NAME,
+      tokenIdentifier,
     });
   },
 });
@@ -150,6 +170,7 @@ export const joinWorld = mutation({
 export const leaveWorld = mutation({
   args: {
     worldId: v.id('worlds'),
+    userId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     // const identity = await ctx.auth.getUserIdentity();
@@ -157,12 +178,13 @@ export const leaveWorld = mutation({
     //   throw new Error(`Not logged in`);
     // }
     // const { tokenIdentifier } = identity;
+    const tokenIdentifier = args.userId || DEFAULT_NAME;
     const world = await ctx.db.get(args.worldId);
     if (!world) {
       throw new Error(`Invalid world ID: ${args.worldId}`);
     }
     // const existingPlayer = world.players.find((p) => p.human === tokenIdentifier);
-    const existingPlayer = world.players.find((p) => p.human === DEFAULT_NAME);
+    const existingPlayer = world.players.find((p) => p.human === tokenIdentifier);
     if (!existingPlayer) {
       return;
     }

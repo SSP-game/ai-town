@@ -28,7 +28,11 @@ export const PixiGame = (props: {
   const pixiApp = useApp();
   const viewportRef = useRef<Viewport | undefined>();
 
-  const humanTokenIdentifier = useQuery(api.world.userStatus, { worldId: props.worldId }) ?? null;
+  const userId = localStorage.getItem('userId');
+  const humanTokenIdentifier = useQuery(
+    api.world.userStatus,
+    props.worldId ? { worldId: props.worldId, userId: userId || undefined } : 'skip'
+  ) ?? null;
   const humanPlayerId = [...props.game.world.players.values()].find(
     (p) => p.human === humanTokenIdentifier,
   )?.id;
