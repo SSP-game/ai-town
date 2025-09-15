@@ -222,3 +222,40 @@ export const getUserChats = query({
     return chats;
   },
 });
+
+export const updateSelectedCompanion = mutation({
+  args: {
+    userId: v.id('users'),
+    companionId: v.string(),
+  },
+  handler: async (ctx, { userId, companionId }) => {
+    const user = await ctx.db.get(userId);
+    if (!user) {
+      throw new ConvexError('User not found');
+    }
+
+    await ctx.db.patch(userId, {
+      selectedCompanion: companionId,
+    });
+
+    return { success: true };
+  },
+});
+
+export const removeSelectedCompanion = mutation({
+  args: {
+    userId: v.id('users'),
+  },
+  handler: async (ctx, { userId }) => {
+    const user = await ctx.db.get(userId);
+    if (!user) {
+      throw new ConvexError('User not found');
+    }
+
+    await ctx.db.patch(userId, {
+      selectedCompanion: undefined,
+    });
+
+    return { success: true };
+  },
+});

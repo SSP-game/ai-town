@@ -20,6 +20,7 @@ import PoweredByConvex from './components/PoweredByConvex.tsx';
 import ViewToggleButton, { ViewMode } from './components/buttons/ViewToggleButton.tsx';
 import CompanionButton from './components/buttons/CompanionButton.tsx';
 import CompanionModal from './components/CompanionModal.tsx';
+import CompanionPageView from './components/CompanionPageView.tsx';
 import { useQuery } from 'convex/react';
 import { api } from '../convex/_generated/api';
 
@@ -42,7 +43,16 @@ export default function Home() {
   const worldId = worldStatus?.worldId;
 
   const handleCompanionClick = () => {
-    setCompanionModalOpen(true);
+    const userId = localStorage.getItem('userId');
+    const selectedCompanion = localStorage.getItem('selectedCompanion');
+
+    if (userId && selectedCompanion) {
+      // User has a companion, switch to companion view to chat
+      setCurrentView('companion');
+    } else {
+      // User needs to login or select companion
+      setCompanionModalOpen(true);
+    }
   };
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-background">
@@ -93,7 +103,7 @@ export default function Home() {
         onClose={() => setCompanionModalOpen(false)}
         onShowAgentsList={() => {
           setCompanionModalOpen(false);
-          setCurrentView('agents');
+          setCurrentView('companion');
         }}
       />
 
@@ -110,7 +120,13 @@ export default function Home() {
       <div className="w-full h-screen relative isolate overflow-hidden shadow-2xl flex flex-col justify-start">
         {/* Game/Agents content with frame */}
         <div className="flex-1 flex flex-col relative min-h-0">
-          {currentView === 'game' ? <Game /> : worldId && <AgentsListView worldId={worldId} />}
+          {currentView === 'game' ? (
+            <Game />
+          ) : currentView === 'agents' ? (
+            worldId && <AgentsListView worldId={worldId} />
+          ) : currentView === 'companion' ? (
+            worldId && <CompanionPageView worldId={worldId} />
+          ) : null}
         </div>
 
         {/* Footer buttons outside the frame */}

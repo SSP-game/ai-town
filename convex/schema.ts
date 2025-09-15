@@ -12,6 +12,7 @@ export default defineSchema({
     passwordHash: v.string(),
     nickname: v.string(),
     selectedCharacter: v.optional(v.string()), // f1, f2, f3, etc.
+    selectedCompanion: v.optional(v.string()), // Agent ID for companion
     createdAt: v.number(),
     lastLoginAt: v.optional(v.number()),
   })
