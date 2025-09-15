@@ -55,6 +55,8 @@ export default function PlayerDetails({
   const playerDescription = playerId && game.playerDescriptions.get(playerId);
 
   const startConversation = useSendInput(engineId, 'startConversation');
+  const startGroupConversation = useSendInput(engineId, 'startGroupConversation');
+  const inviteToConversation = useSendInput(engineId, 'inviteToConversation');
   const acceptInvite = useSendInput(engineId, 'acceptInvite');
   const rejectInvite = useSendInput(engineId, 'rejectInvite');
   const leaveConversation = useSendInput(engineId, 'leaveConversation');
@@ -103,6 +105,20 @@ export default function PlayerDetails({
     console.log(`Starting conversation`);
     await toastOnError(startConversation({ playerId: humanPlayer.id, invitee: playerId }));
   };
+  const onStartGroupConversationNearby = async () => {
+    if (!humanPlayer || !playerId) return;
+    const RADIUS = 3;
+    const center = humanPlayer.position;
+    const candidates = [...game.world.players.values()]
+      .filter((p) => p.id !== humanPlayer.id)
+      .filter((p) => !game.world.playerConversation(p))
+      .filter((p) => distance(p.position, center) <= RADIUS)
+      .map((p) => p.id);
+    // Ensure the currently selected target is included.
+    const invitees = Array.from(new Set([playerId, ...candidates]));
+    if (invitees.length === 0) return;
+    await toastOnError(startGroupConversation({ playerId: humanPlayer.id, invitees }));
+  };
   const onAcceptInvite = async () => {
     if (!humanPlayer || !humanConversation || !playerId) {
       return;
@@ -124,6 +140,25 @@ export default function PlayerDetails({
         conversationId: humanConversation.id,
       }),
     );
+  };
+  const onInviteNearbyToCurrent = async () => {
+    if (!humanPlayer || !humanConversation) return;
+    const RADIUS = 3;
+    const center = humanPlayer.position;
+    const currentIds = new Set([...humanConversation.participants.keys()]);
+    const invitees = [...game.world.players.values()]
+      .filter((p) => !currentIds.has(p.id))
+      .filter((p) => distance(p.position, center) <= RADIUS)
+      .map((p) => p.id);
+    for (const pid of invitees) {
+      await toastOnError(
+        inviteToConversation({
+          playerId: humanPlayer.id,
+          conversationId: humanConversation.id,
+          invitee: pid,
+        }),
+      );
+    }
   };
   const onLeaveConversation = async () => {
     if (!humanPlayer || !inConversationWithMe || !humanConversation) {
@@ -170,6 +205,19 @@ export default function PlayerDetails({
           </div>
         </a>
       )}
+      {canInvite && (
+        <a
+          className={
+            'mt-3 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto' +
+            pendingSuffix('startGroupConversation')
+          }
+          onClick={onStartGroupConversationNearby}
+        >
+          <div className="h-full bg-clay-700 text-center">
+            <span>Start group chat (nearby)</span>
+          </div>
+        </a>
+      )}
       {!isMe && !playerConversation && humanPlayer && !humanConversation && !isNearby && (
         <a className="mt-6 button text-white shadow-solid text-xl cursor-not-allowed pointer-events-none opacity-50">
           <div className="h-full bg-clay-700 text-center">
@@ -188,6 +236,17 @@ export default function PlayerDetails({
         <a className="mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto opacity-50">
           <div className="h-full bg-clay-700 text-center">
             <span>Walking over...</span>
+          </div>
+        </a>
+      )}
+      {/* Invite nearby into current chat (visible when I'm already in a conversation) */}
+      {humanConversation && (
+        <a
+          className="mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto"
+          onClick={onInviteNearbyToCurrent}
+        >
+          <div className="h-full bg-clay-700 text-center">
+            <span>Invite nearby to this chat</span>
           </div>
         </a>
       )}

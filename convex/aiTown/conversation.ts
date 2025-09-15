@@ -50,71 +50,78 @@ export class Conversation {
     if (this.isTyping && this.isTyping.since + TYPING_TIMEOUT < now) {
       delete this.isTyping;
     }
-    if (this.participants.size !== 2) {
-      console.warn(`Conversation ${this.id} has ${this.participants.size} participants`);
-      return;
+    // Group-aware tick: support 2+ participants.
+    const entries = [...this.participants.entries()];
+    const players = entries
+      .map(([pid]) => game.world.players.get(pid)!)
+      .filter(Boolean);
+    if (players.length < 2) return;
+
+    // Determine active participants (walking over or already participating).
+    const active = entries.filter(([, m]) => m.status.kind === 'walkingOver' || m.status.kind === 'participating');
+    if (active.length < 2) return;
+
+    // Compute centroid of current active players.
+    const centroid = active.reduce(
+      (acc, [pid]) => {
+        const p = game.world.players.get(pid)!;
+        acc.x += p.position.x;
+        acc.y += p.position.y;
+        return acc;
+      },
+      { x: 0, y: 0 },
+    );
+    centroid.x /= active.length;
+    centroid.y /= active.length;
+
+    // If all walkingOver are near the centroid, mark them participating and stop moving.
+    let allNear = true;
+    for (const [pid, member] of active) {
+      const p = game.world.players.get(pid)!;
+      const d = distance(p.position, centroid);
+      if (member.status.kind === 'walkingOver' && d >= CONVERSATION_DISTANCE) {
+        allNear = false;
+        break;
+      }
     }
-    const [playerId1, playerId2] = [...this.participants.keys()];
-    const member1 = this.participants.get(playerId1)!;
-    const member2 = this.participants.get(playerId2)!;
-
-    const player1 = game.world.players.get(playerId1)!;
-    const player2 = game.world.players.get(playerId2)!;
-
-    const playerDistance = distance(player1?.position, player2?.position);
-
-    // If the players are both in the "walkingOver" state and they're sufficiently close, transition both
-    // of them to "participating" and stop their paths.
-    if (member1.status.kind === 'walkingOver' && member2.status.kind === 'walkingOver') {
-      if (playerDistance < CONVERSATION_DISTANCE) {
-        console.log(`Starting conversation between ${player1.id} and ${player2.id}`);
-
-        // First, stop the two players from moving.
-        stopPlayer(player1);
-        stopPlayer(player2);
-
-        member1.status = { kind: 'participating', started: now };
-        member2.status = { kind: 'participating', started: now };
-
-        // Try to move the first player to grid point nearest the other player.
-        const neighbors = (p: Point) => [
-          { x: p.x + 1, y: p.y },
-          { x: p.x - 1, y: p.y },
-          { x: p.x, y: p.y + 1 },
-          { x: p.x, y: p.y - 1 },
-        ];
-        const floorPos1 = { x: Math.floor(player1.position.x), y: Math.floor(player1.position.y) };
-        const p1Candidates = neighbors(floorPos1).filter((p) => !blocked(game, now, p, player1.id));
-        p1Candidates.sort((a, b) => distance(a, player2.position) - distance(b, player2.position));
-        if (p1Candidates.length > 0) {
-          const p1Candidate = p1Candidates[0];
-
-          // Try to move the second player to the grid point nearest the first player's
-          // destination.
-          const p2Candidates = neighbors(p1Candidate).filter(
-            (p) => !blocked(game, now, p, player2.id),
-          );
-          p2Candidates.sort(
-            (a, b) => distance(a, player2.position) - distance(b, player2.position),
-          );
-          if (p2Candidates.length > 0) {
-            const p2Candidate = p2Candidates[0];
-            movePlayer(game, now, player1, p1Candidate, true);
-            movePlayer(game, now, player2, p2Candidate, true);
-          }
+    if (!allNear) {
+      // Move each walkingOver participant towards nearest grid point close to centroid.
+      const target = { x: Math.floor(centroid.x), y: Math.floor(centroid.y) };
+      for (const [pid, member] of active) {
+        if (member.status.kind !== 'walkingOver') continue;
+        const p = game.world.players.get(pid)!;
+        if (!p.pathfinding) {
+          // Find a nearby free neighbor to avoid collisions.
+          const neighbors = (q: Point) => [
+            { x: q.x + 1, y: q.y },
+            { x: q.x - 1, y: q.y },
+            { x: q.x, y: q.y + 1 },
+            { x: q.x, y: q.y - 1 },
+            q,
+          ];
+          const candidates = neighbors(target).filter((q) => !blocked(game, now, q, p.id));
+          candidates.sort((a, b) => distance(a, p.position) - distance(b, p.position));
+          if (candidates.length > 0) movePlayer(game, now, p, candidates[0], true);
+        }
+      }
+    } else {
+      // Everyone is close enough: mark all walkingOver -> participating and stop them.
+      for (const [pid, member] of active) {
+        const p = game.world.players.get(pid)!;
+        if (member.status.kind === 'walkingOver') {
+          stopPlayer(p);
+          member.status = { kind: 'participating', started: now };
         }
       }
     }
 
-    // Orient the two players towards each other if they're not moving.
-    if (member1.status.kind === 'participating' && member2.status.kind === 'participating') {
-      const v = normalize(vector(player1.position, player2.position));
-      if (!player1.pathfinding && v) {
-        player1.facing = v;
-      }
-      if (!player2.pathfinding && v) {
-        player2.facing.dx = -v.dx;
-        player2.facing.dy = -v.dy;
+    // Orient participating players towards centroid if they're not moving.
+    for (const [pid, member] of entries) {
+      if (member.status.kind !== 'participating') continue;
+      const p = game.world.players.get(pid)!;
+      const v = normalize(vector(p.position, centroid));
+      if (!p.pathfinding && v) {
+        p.facing = v;
       }
     }
   }
@@ -246,7 +253,7 @@ export const serializedConversation = {
 };
 export type SerializedConversation = ObjectType<typeof serializedConversation>;
 
-export const conversationInputs = {
+  export const conversationInputs = {
   // Start a conversation, inviting the specified player.
   // Conversations can only have two participants for now,
   // so we don't have a separate "invite" input.
@@ -346,6 +353,64 @@ export const conversationInputs = {
       }
       conversation.acceptInvite(game, player);
       return null;
+    },
+  }),
+
+  // Invite another player into an existing conversation.
+  inviteToConversation: inputHandler({
+    args: {
+      playerId, // inviter (must be participant)
+      conversationId,
+      invitee: playerId,
+    },
+    handler: (game: Game, now: number, args): null => {
+      const inviterId = parseGameId('players', args.playerId);
+      const conversationId = parseGameId('conversations', args.conversationId);
+      const convo = game.world.conversations.get(conversationId);
+      if (!convo) throw new Error(`Invalid conversation ID: ${conversationId}`);
+      if (!convo.participants.has(inviterId)) throw new Error(`Inviter not in conversation`);
+      const inviteeId = parseGameId('players', args.invitee);
+      if (!game.world.players.get(inviteeId)) throw new Error(`Invalid player ID: ${inviteeId}`);
+      if (convo.participants.has(inviteeId)) return null; // already in
+      convo.participants.set(inviteeId, new ConversationMembership({
+        playerId: inviteeId,
+        invited: now,
+        status: { kind: 'invited' },
+      }));
+      return null;
+    },
+  }),
+
+  // Start a group conversation with multiple invitees at once.
+  startGroupConversation: inputHandler({
+    args: {
+      playerId,
+      invitees: v.array(playerId),
+    },
+    handler: (game: Game, now: number, args): GameId<'conversations'> => {
+      const creatorId = parseGameId('players', args.playerId);
+      const creator = game.world.players.get(creatorId);
+      if (!creator) throw new Error(`Invalid player ID: ${creatorId}`);
+      const conversationId = game.allocId('conversations');
+      const participants: ConversationMembership[] = [] as any;
+      participants.push(new ConversationMembership({ playerId: creatorId, invited: now, status: { kind: 'walkingOver' } }));
+      for (const inv of args.invitees) {
+        const inviteeId = parseGameId('players', inv);
+        const invitee = game.world.players.get(inviteeId);
+        if (!invitee) continue;
+        participants.push(new ConversationMembership({ playerId: inviteeId, invited: now, status: { kind: 'invited' } }));
+      }
+      game.world.conversations.set(
+        conversationId,
+        new Conversation({
+          id: conversationId,
+          created: now,
+          creator: creatorId,
+          numMessages: 0,
+          participants,
+        }),
+      );
+      return conversationId;
     },
   }),
 
