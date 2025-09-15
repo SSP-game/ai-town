@@ -37,6 +37,7 @@ export default function Home() {
     lastName?: string;
   } | null>(null);
   const [companionModalOpen, setCompanionModalOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   // Check login state on app start
   useEffect(() => {
@@ -90,6 +91,7 @@ export default function Home() {
       lastName: userData.lastName,
     });
     setIsLoggedIn(true);
+    setLoginModalOpen(false);
   };
 
   const handleLogout = () => {
@@ -106,10 +108,7 @@ export default function Home() {
     setCurrentView('game');
   };
 
-  // Show auth page if not logged in
-  if (!isLoggedIn || !currentUser) {
-    return <AuthPage onLoginSuccess={handleLoginSuccess} />;
-  }
+  // Do not early-return to AuthPage; keep the app visible and provide a Login button instead.
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-background">
@@ -208,7 +207,13 @@ export default function Home() {
 
           {/* Right side - User management and branding */}
           <div className="flex items-center gap-2">
-            <UserManagement userId={currentUser.userId} onLogout={handleLogout} />
+            {isLoggedIn && currentUser ? (
+              <UserManagement userId={currentUser.userId} onLogout={handleLogout} />
+            ) : (
+              <Button imgUrl={helpImg} onClick={() => setLoginModalOpen(true)}>
+                Login
+              </Button>
+            )}
             <a href="https://a16z.com">
               <img className="w-6 h-6 pointer-events-auto" src={a16zImg} alt="a16z" />
             </a>
@@ -219,6 +224,16 @@ export default function Home() {
         </div>
         <ToastContainer position="bottom-right" autoClose={2000} closeOnClick theme="dark" />
       </div>
+      {/* Login modal (appears when not logged in) */}
+      <ReactModal
+        isOpen={loginModalOpen}
+        onRequestClose={() => setLoginModalOpen(false)}
+        style={modalStyles}
+        contentLabel="Login modal"
+        ariaHideApp={false}
+      >
+        <AuthPage onLoginSuccess={handleLoginSuccess} />
+      </ReactModal>
     </main>
   );
 }
