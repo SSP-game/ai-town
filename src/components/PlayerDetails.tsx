@@ -9,6 +9,8 @@ import { useSendInput } from '../hooks/sendInput';
 import { Player } from '../../convex/aiTown/player';
 import { GameId } from '../../convex/aiTown/ids';
 import { ServerGame } from '../hooks/serverGame';
+import { distance } from '../../convex/util/geometry.ts';
+import { CONVERSATION_DISTANCE } from '../../convex/constants.ts';
 
 export default function PlayerDetails({
   worldId,
@@ -25,7 +27,11 @@ export default function PlayerDetails({
   setSelectedElement: SelectElement;
   scrollViewRef: React.RefObject<HTMLDivElement>;
 }) {
-  const humanTokenIdentifier = useQuery(api.world.userStatus, { worldId });
+  const userId = typeof window !== 'undefined' ? localStorage.getItem('userId') : undefined;
+  const humanTokenIdentifier = useQuery(api.world.userStatus, {
+    worldId,
+    userId: userId || undefined,
+  });
 
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
@@ -64,7 +70,10 @@ export default function PlayerDetails({
     return null;
   }
   const isMe = humanPlayer && player.id === humanPlayer.id;
-  const canInvite = !isMe && !playerConversation && humanPlayer && !humanConversation;
+  const isNearby =
+    !!humanPlayer && !!player &&
+    distance(humanPlayer.position, player.position) <= CONVERSATION_DISTANCE * 2;
+  const canInvite = !isMe && !playerConversation && humanPlayer && !humanConversation && isNearby;
   const sameConversation =
     !isMe &&
     humanPlayer &&
@@ -158,6 +167,13 @@ export default function PlayerDetails({
         >
           <div className="h-full bg-clay-700 text-center">
             <span>Start conversation</span>
+          </div>
+        </a>
+      )}
+      {!isMe && !playerConversation && humanPlayer && !humanConversation && !isNearby && (
+        <a className="mt-6 button text-white shadow-solid text-xl cursor-not-allowed pointer-events-none opacity-50">
+          <div className="h-full bg-clay-700 text-center">
+            <span>Move closer to start conversation</span>
           </div>
         </a>
       )}
