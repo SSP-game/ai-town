@@ -10,3 +10,5 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+9:20:44 PM [vite] hmr update /src/components/CompanionChat.tsx, /src/index.css
+9:21:09 PM [vite] hmr update /src/components/AgentChatModal.tsx, /src/index.css

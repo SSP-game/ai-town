@@ -65,30 +65,21 @@ export default function AgentChatModal({
         sender: 'user',
         content: messageContent,
       });
-
-      // Simulate agent response (in a real implementation, this would trigger an agent response)
-      setTimeout(async () => {
-        const responses = [
-          "That's interesting! Tell me more about that.",
-          "I see what you mean. How does that make you feel?",
-          "Thanks for sharing that with me!",
-          "That sounds fascinating. What happened next?",
-          "I appreciate you talking with me about this.",
-        ];
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-
-        await addMessageMutation({
-          chatId,
-          sender: 'agent',
-          content: randomResponse,
-        });
-        setLoading(false);
-      }, 1000 + Math.random() * 2000); // Random delay between 1-3 seconds
+      // LLM reply will be appended by the server; keep loading until it arrives.
     } catch (error: any) {
       toast.error(error.message || 'Failed to send message');
       setLoading(false);
     }
   };
+
+  // Turn off loading once an agent reply arrives
+  useEffect(() => {
+    if (!chatHistory || chatHistory.length === 0) return;
+    const last = chatHistory[chatHistory.length - 1];
+    if (last.sender === 'agent') {
+      setLoading(false);
+    }
+  }, [chatHistory]);
 
   const formatTime = (timestamp: number) => {
     return new Date(timestamp).toLocaleTimeString([], {

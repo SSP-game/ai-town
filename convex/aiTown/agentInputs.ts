@@ -2,7 +2,7 @@ import { v } from 'convex/values';
 import { agentId, conversationId, parseGameId } from './ids';
 import { Player, activity } from './player';
 import { Conversation, conversationInputs } from './conversation';
-import { movePlayer } from './movement';
+import { movePlayer, stopPlayer } from './movement';
 import { inputHandler } from './inputHandler';
 import { point } from '../util/types';
 import { Descriptions } from '../../data/characters';
@@ -113,6 +113,27 @@ export const agentInputs = {
       if (args.leaveConversation) {
         conversation.leave(game, now, player);
       }
+      return null;
+    },
+  }),
+  // Set or extend a "remote chat" status on an agent's player, and stop movement.
+  setRemoteChat: inputHandler({
+    args: {
+      agentId,
+      until: v.number(),
+    },
+    handler: (game, now, args) => {
+      const agentId = parseGameId('agents', args.agentId);
+      const agent = game.world.agents.get(agentId);
+      if (!agent) throw new Error(`Couldn't find agent: ${agentId}`);
+      const player = game.world.players.get(agent.playerId);
+      if (!player) throw new Error(`Couldn't find player: ${agent.playerId}`);
+      stopPlayer(player);
+      player.activity = {
+        description: '远程聊天中',
+        emoji: '💬',
+        until: args.until,
+      };
       return null;
     },
   }),

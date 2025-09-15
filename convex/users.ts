@@ -1,5 +1,8 @@
 import { ConvexError, v } from 'convex/values';
-import { mutation, query } from './_generated/server';
+import { mutation, query, internalAction, internalMutation, internalQuery } from './_generated/server';
+import { internal, api } from './_generated/api';
+import { chatCompletion } from './util/llm';
+import type { LLMMessage } from './util/llm';
 
 // Simple hash function (in production, use bcrypt or similar)
 function simpleHash(password: string): string {
@@ -192,6 +195,22 @@ export const addChatMessage = mutation({
       lastMessageAt: Date.now(),
     });
 
+    // If user sent a message, schedule an LLM reply using the same provider/models as the game.
+    if (sender === 'user') {
+      // Set remote chat state in the world for this agent
+      await ctx.runMutation(api.aiTown.main.sendInput, {
+        worldId: chat.worldId,
+        name: 'setRemoteChat',
+        args: { agentId: chat.agentId as any, until: Date.now() + 2 * 60_000 },
+      });
+      await ctx.scheduler.runAfter(0, internal.users.generateCompanionReply, {
+        chatId,
+        worldId: chat.worldId,
+        agentId: chat.agentId,
+        userId: chat.userId,
+      });
+    }
+
     return newMessage;
   },
 });
@@ -208,6 +227,127 @@ export const getChatHistory = query({
       .first();
 
     return chat ? chat.messages : [];
+  },
+});
+
+// Internal: fetch prompt data for companion/agent chat
+export const getCompanionPromptData = internalQuery({
+  args: {
+    chatId: v.id('userAgentChats'),
+    worldId: v.id('worlds'),
+    agentId: v.string(),
+    userId: v.id('users'),
+  },
+  handler: async (ctx, { chatId, worldId, agentId, userId }) => {
+    const chat = await ctx.db.get(chatId);
+    if (!chat) throw new ConvexError('Chat not found');
+
+    const user = await ctx.db.get(userId);
+    const userName = user?.nickname || 'You';
+
+    // Agent identity & plan from agentDescriptions
+    const agentDesc = await ctx.db
+      .query('agentDescriptions')
+      .withIndex('worldId', (q) => q.eq('worldId', worldId).eq('agentId', agentId))
+      .first();
+
+    // Player name behind the agent (optional)
+    const world = await ctx.db.get(worldId);
+    let agentPlayerName: string | undefined;
+    if (world) {
+      const agent = world.agents.find((a) => a.id === agentId);
+      const playerId = agent?.playerId;
+      if (playerId) {
+        const playerDesc = await ctx.db
+          .query('playerDescriptions')
+          .withIndex('worldId', (q) => q.eq('worldId', worldId).eq('playerId', playerId))
+          .first();
+        agentPlayerName = playerDesc?.name;
+      }
+    }
+
+    return {
+      messages: chat.messages,
+      userName,
+      agentIdentity: agentDesc?.identity,
+      agentPlan: agentDesc?.plan,
+      agentName: agentPlayerName,
+    };
+  },
+});
+
+// Internal: append agent message to chat without triggering another reply
+export const appendAgentMessage = internalMutation({
+  args: {
+    chatId: v.id('userAgentChats'),
+    content: v.string(),
+  },
+  handler: async (ctx, { chatId, content }) => {
+    const chat = await ctx.db.get(chatId);
+    if (!chat) return;
+    const newMessage = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      sender: 'agent' as const,
+      content,
+      timestamp: Date.now(),
+    };
+    await ctx.db.patch(chatId, {
+      messages: [...chat.messages, newMessage],
+      lastMessageAt: Date.now(),
+    });
+  },
+});
+
+// Internal: generate LLM reply using the same LLM provider/models as game
+export const generateCompanionReply = internalAction({
+  args: {
+    chatId: v.id('userAgentChats'),
+    worldId: v.id('worlds'),
+    agentId: v.string(),
+    userId: v.id('users'),
+  },
+  handler: async (ctx, args) => {
+    const { messages, userName, agentIdentity, agentPlan, agentName } = await ctx.runQuery(
+      internal.users.getCompanionPromptData,
+      args,
+    );
+
+    const name = agentName ?? 'Companion';
+    const sys: string[] = [];
+    sys.push(`You are ${name}, chatting with ${userName}.`);
+    if (agentIdentity) sys.push(`About you: ${agentIdentity}`);
+    if (agentPlan) sys.push(`Your goals: ${agentPlan}`);
+    sys.push('Keep responses brief (<= 200 chars).');
+
+    const history: LLMMessage[] = messages.map((m) => ({
+      role: m.sender === 'user' ? 'user' : 'assistant',
+      content: m.sender === 'user' ? `${userName}: ${m.content}` : `${name}: ${m.content}`,
+    }));
+
+    const llmMessages: LLMMessage[] = [
+      { role: 'system', content: sys.join('\n') },
+      ...history,
+      { role: 'user', content: `${name}:` },
+    ];
+
+    const { content } = await chatCompletion({
+      messages: llmMessages,
+      max_tokens: 200,
+      stop: [`${userName} to ${name}:`, `${name} to ${userName}:`],
+    });
+
+    const reply = typeof content === 'string' ? content.trim() : `${name}`;
+    await ctx.runMutation(internal.users.appendAgentMessage, {
+      chatId: args.chatId,
+      content: reply,
+    });
+
+    // Extend remote chat state after reply
+    await ctx.runMutation(api.aiTown.main.sendInput, {
+      worldId: args.worldId,
+      name: 'setRemoteChat',
+      args: { agentId: args.agentId as any, until: Date.now() + 2 * 60_000 },
+    });
   },
 });
 

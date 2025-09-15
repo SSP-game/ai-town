@@ -54,6 +54,11 @@ export class Agent {
     if (!player) {
       throw new Error(`Invalid player ID ${this.playerId}`);
     }
+    // Pause all autonomous behavior while in remote chat activity.
+    if (player.activity && player.activity.description === '远程聊天中' && player.activity.until > now) {
+      // Keep facing/position unchanged; do not schedule operations.
+      return;
+    }
     if (this.inProgressOperation) {
       if (now < this.inProgressOperation.started + ACTION_TIMEOUT) {
         // Wait on the operation to finish.
