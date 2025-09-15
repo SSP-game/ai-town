@@ -1,11 +1,12 @@
 // That's right! No imports and no dependencies 🤯
 
-const OPENAI_EMBEDDING_DIMENSION = 1536;
-const TOGETHER_EMBEDDING_DIMENSION = 768;
-const OLLAMA_EMBEDDING_DIMENSION = 1024;
+// Use explicit `number` types to avoid literal narrowing that breaks switch/case comparisons.
+const OPENAI_EMBEDDING_DIMENSION: number = 1536;
+const TOGETHER_EMBEDDING_DIMENSION: number = 768;
+const OLLAMA_EMBEDDING_DIMENSION: number = 1024;
 
-export const EMBEDDING_DIMENSION: number = OLLAMA_EMBEDDING_DIMENSION;
-
+// export const EMBEDDING_DIMENSION: number = OLLAMA_EMBEDDING_DIMENSION;
+export const EMBEDDING_DIMENSION = OPENAI_EMBEDDING_DIMENSION;
 export function detectMismatchedLLMProvider() {
   switch (EMBEDDING_DIMENSION) {
     case OPENAI_EMBEDDING_DIMENSION:
