@@ -15,6 +15,7 @@ export const Character = ({
   emoji = '',
   isViewer = false,
   speed = 0.1,
+  playerName,
   onClick,
 }: {
   // Path to the texture packed image.
@@ -35,6 +36,8 @@ export const Character = ({
   isViewer?: boolean;
   // The speed of the animation. Can be tuned depending on the side and speed of the NPC.
   speed?: number;
+  // The name to display above the character.
+  playerName?: string;
   onClick: () => void;
 }) => {
   const [spriteSheet, setSpriteSheet] = useState<Spritesheet>();
@@ -85,6 +88,29 @@ export const Character = ({
 
   return (
     <Container x={x} y={y} interactive={true} pointerdown={onClick} cursor="pointer">
+      {/* Player name above character */}
+      {playerName && (
+        <Text
+          x={0}
+          y={-35}
+          scale={0.5}
+          text={playerName}
+          anchor={{ x: 0.5, y: 0.5 }}
+          style={new PIXI.TextStyle({
+            fontFamily: 'Arial, sans-serif',
+            fontSize: 24,
+            fontWeight: 'bold',
+            fill: ['#ffffff', '#ffff99'], // White to light yellow gradient
+            stroke: '#000000',
+            strokeThickness: 3,
+            dropShadow: true,
+            dropShadowColor: '#000000',
+            dropShadowBlur: 4,
+            dropShadowAngle: Math.PI / 6,
+            dropShadowDistance: 2,
+          })}
+        />
+      )}
       {isThinking && (
         // TODO: We'll eventually have separate assets for thinking and speech animations.
         <Text x={-20} y={-10} scale={{ x: -0.8, y: 0.8 }} text={'💭'} anchor={{ x: 0.5, y: 0.5 }} />

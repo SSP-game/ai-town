@@ -7,9 +7,25 @@ export type ViewMode = 'game' | 'agents' | 'companion';
 interface ViewToggleButtonProps {
   currentView: ViewMode;
   onToggleView: (view: ViewMode) => void;
+  onShowCompanionModal?: () => void;
 }
 
-export default function ViewToggleButton({ currentView, onToggleView }: ViewToggleButtonProps) {
+export default function ViewToggleButton({ currentView, onToggleView, onShowCompanionModal }: ViewToggleButtonProps) {
+  const handleCompanionClick = () => {
+    const userId = localStorage.getItem('userId');
+    const selectedCompanion = localStorage.getItem('selectedCompanion');
+
+    if (userId && selectedCompanion) {
+      // User has a companion, switch to companion view to chat
+      onToggleView('companion');
+    } else {
+      // User needs to login or select companion
+      if (onShowCompanionModal) {
+        onShowCompanionModal();
+      }
+    }
+  };
+
   return (
     <div className="flex gap-2">
       <Button
@@ -28,7 +44,7 @@ export default function ViewToggleButton({ currentView, onToggleView }: ViewTogg
       </Button>
       <Button
         imgUrl={agentsListImg}
-        onClick={() => onToggleView('companion')}
+        onClick={handleCompanionClick}
         className={currentView === 'companion' ? 'bg-blue-600' : ''}
       >
         Companion

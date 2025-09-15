@@ -13,11 +13,24 @@ export default defineSchema({
     nickname: v.string(),
     selectedCharacter: v.optional(v.string()), // f1, f2, f3, etc.
     selectedCompanion: v.optional(v.string()), // Agent ID for companion
+
+    // Personal information
+    firstName: v.optional(v.string()),
+    lastName: v.optional(v.string()),
+    dateOfBirth: v.optional(v.string()), // YYYY-MM-DD format
+    gender: v.optional(v.union(v.literal('male'), v.literal('female'), v.literal('other'), v.literal('prefer_not_to_say'))),
+    bio: v.optional(v.string()),
+    avatar: v.optional(v.string()), // URL or storage ID for avatar image
+
+    // Account management
+    isActive: v.boolean(),
     createdAt: v.number(),
     lastLoginAt: v.optional(v.number()),
+    updatedAt: v.number(),
   })
     .index('email', ['email'])
-    .index('nickname', ['nickname']),
+    .index('nickname', ['nickname'])
+    .index('isActive', ['isActive']),
 
   // Chat conversations between users and agents
   userAgentChats: defineTable({

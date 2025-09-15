@@ -35,14 +35,27 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
       if (storedUserId) {
         setUserId(storedUserId as Id<"users">);
         setCurrentCharacter(storedCharacter || undefined);
-        // Skip to character selection if already logged in
-        setModalState('character-selection');
+
+        // If user already has a selected character, skip character selection and go directly to agents list
+        if (storedCharacter) {
+          // Use setTimeout to ensure this runs after the modal is fully rendered
+          setTimeout(() => {
+            onClose();
+            if (onShowAgentsList) {
+              onShowAgentsList();
+            }
+          }, 0);
+          return;
+        } else {
+          // Only show character selection if user doesn't have a character yet
+          setModalState('character-selection');
+        }
       } else {
         // Reset to auth mode if not logged in
         setModalState('auth');
       }
     }
-  }, [isOpen]);
+  }, [isOpen, onClose, onShowAgentsList]);
 
   const registerMutation = useMutation(api.users.register);
   const loginMutation = useMutation(api.users.login);
@@ -68,6 +81,13 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
         if (result.selectedCharacter) {
           localStorage.setItem('selectedCharacter', result.selectedCharacter);
           setCurrentCharacter(result.selectedCharacter);
+          // If user already has a character, skip selection and go to agents list
+          setUserId(result.userId as Id<"users">);
+          handleClose();
+          if (onShowAgentsList) {
+            onShowAgentsList();
+          }
+          return; // Exit early to avoid setting character-selection state
         }
         setUserId(result.userId as Id<"users">);
         setModalState('character-selection');

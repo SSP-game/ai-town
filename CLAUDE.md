@@ -113,3 +113,4 @@ The project supports multiple LLM providers. Configure via environment variables
 - Local development uses file-based Convex for offline development
 - Background music generation requires Replicate API token (optional)
 - Docker setup available for self-hosted Convex backend
+- 请使用playwright打开网页并测试在你修改完代码之后

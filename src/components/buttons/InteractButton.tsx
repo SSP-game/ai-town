@@ -22,12 +22,13 @@ export default function InteractButton() {
   const leave = useMutation(api.world.leaveWorld);
   const isPlaying = !!userPlayerId;
 
-  const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
-
-  useEffect(() => {
-    const storedCharacter = localStorage.getItem('selectedCharacter');
-    setSelectedCharacter(storedCharacter);
-  }, []);
+  // Get user profile to access selected character
+  const userId = localStorage.getItem('userId');
+  const userProfile = useQuery(
+    api.users.getFullUserProfile,
+    userId ? { userId: userId as Id<'users'> } : 'skip'
+  );
+  const selectedCharacter = userProfile?.selectedCharacter;
 
   const convex = useConvex();
   const joinInput = useCallback(

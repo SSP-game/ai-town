@@ -29,11 +29,13 @@ export const Player = ({
   onClick: SelectElement;
   historicalTime?: number;
 }) => {
-  const playerCharacter = game.playerDescriptions.get(player.id)?.character;
+  const playerDescription = game.playerDescriptions.get(player.id);
+  const playerCharacter = playerDescription?.character;
   if (!playerCharacter) {
     throw new Error(`Player ${player.id} has no character`);
   }
   const character = characters.find((c) => c.name === playerCharacter);
+  const playerName = playerDescription?.name;
 
   const locationBuffer = game.world.historicalLocations?.get(player.id);
   const historicalLocation = useHistoricalValue<Location>(
@@ -82,6 +84,7 @@ export const Player = ({
         textureUrl={character.textureUrl}
         spritesheetData={character.spritesheetData}
         speed={character.speed}
+        playerName={playerName}
         onClick={() => {
           onClick({ kind: 'player', id: player.id });
         }}
