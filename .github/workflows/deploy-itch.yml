@@ -35,20 +35,17 @@ jobs:
 
       - name: Download and setup butler
         run: |
-          # Get the latest Butler version
-          BUTLER_VERSION=$(curl -sL https://broth.itch.ovh/butler/linux-amd64/LATEST)
-          echo "Butler version: $BUTLER_VERSION"
-
-          # Construct the download URL
-          BUTLER_URL="https://broth.itch.ovh/butler/linux-amd64/${BUTLER_VERSION}/archive/default"
-          echo "Download URL: $BUTLER_URL"
-
-          # Download butler
-          curl -L -o butler.zip "$BUTLER_URL"
+          # Download butler directly from itch.io stable channel
+          # Note: The broth URLs require specific formatting
+          curl -L -o butler.zip https://itchio.itch.io/butler/linux-amd64/download
 
           # Extract butler
           unzip -o butler.zip
+
+          # Make butler executable (unzip doesn't preserve permissions)
           chmod +x butler
+
+          # Verify installation
           ./butler -V
 
       - name: Publish to itch.io
