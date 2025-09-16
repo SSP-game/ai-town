@@ -1,0 +1,48 @@
+name: Deploy to itch.io
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      # Your Convex prod URL (set in repo Settings > Secrets and variables > Actions)
+      VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+      # Itch.io API key (set as BUTLER_API_KEY secret)
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      # Change to your itch.io target: <account or org>/<project>:<channel>
+      ITCH_TARGET: wybert/ai-companion-town:html5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (relative base for itch iframe)
+        run: npx vite build --base=./
+
+      - name: Download butler
+        run: |
+          BUTLER_ZIP=butler.zip
+          curl -L "https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default" -o "$BUTLER_ZIP"
+          unzip -o "$BUTLER_ZIP" -d $HOME/.local/bin
+          chmod +x $HOME/.local/bin/butler
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Push to itch.io
+        run: |
+          butler --version
+          VERSION="${GITHUB_REF_NAME:-${GITHUB_SHA::7}}"
+          butler push dist "$ITCH_TARGET" --userversion "$VERSION"
