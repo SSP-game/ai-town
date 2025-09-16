@@ -33,46 +33,31 @@ jobs:
       - name: Build (relative base for itch iframe)
         run: npx vite build --base=./
 
-      - name: Download and setup butler
+      - name: Setup butler from local file
         run: |
-          # Download butler with error handling and debugging
-          set -e  # Exit on any error
+          # Use the local butler zip file from itch directory
+          echo "Setting up butler from local itch/butler-linux-amd64.zip..."
 
-          echo "Attempting to download butler..."
-          echo "Testing butler download URL..."
+          # Check if the local butler file exists
+          if [ -f "itch/butler-linux-amd64.zip" ]; then
+            echo "Found local butler file ($(du -h itch/butler-linux-amd64.zip | cut -f1))"
 
-          # Test the URL first and show what we're getting
-          curl -v -L -o butler_test.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default || true
-          echo "Downloaded file info:"
-          ls -la butler_test.zip || true
-          file butler_test.zip || true
-          echo "First 100 characters of downloaded file:"
-          head -c 100 butler_test.zip || true
-          echo ""
+            # Extract butler from the zip file
+            unzip -o itch/butler-linux-amd64.zip
 
-          # If it's actually a zip file, proceed
-          if file butler_test.zip | grep -q "Zip archive data"; then
-            echo "Valid zip file detected, extracting..."
-            mv butler_test.zip butler.zip
-            unzip -o butler.zip
+            # Make butler executable
             chmod +x butler
-            echo "Butler installed successfully"
-          else
-            echo "Download failed, file is not a zip archive"
-            echo "Trying without LATEST redirect..."
-            # Try with explicit version
-            curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/15.24.0/archive/default || {
-              echo "Explicit version failed too. Using fallback approach..."
-              # Create a simple script that shows error and exits gracefully for now
-              echo '#!/bin/bash' > butler
-              echo 'echo "Butler download failed. Please check itch.io butler distribution."' >> butler
-              echo 'exit 1' >> butler
-              chmod +x butler
-            }
-          fi
 
-          echo "Testing butler installation:"
-          ./butler -V || echo "Butler verification failed"
+            # Verify installation
+            echo "Butler version:"
+            ./butler -V
+
+            echo "Butler setup completed successfully!"
+          else
+            echo "Error: Local butler file not found at itch/butler-linux-amd64.zip"
+            ls -la itch/ || echo "itch directory not found"
+            exit 1
+          fi
 
       - name: Publish to itch.io
         run: |
