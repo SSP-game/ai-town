@@ -53,10 +53,12 @@ export const INPUT_DELAY = 1000;
 export const NUM_MEMORIES_TO_SEARCH = 3;
 
 // Wait for at least two seconds before sending another message.
-export const MESSAGE_COOLDOWN = 2000;
+// Single chat: minimum interval between an agent's messages
+export const MESSAGE_COOLDOWN = 5000;
 // Group chat: speak less frequently to avoid spammy threads.
-export const GROUP_MESSAGE_COOLDOWN = 5000;
-export const GROUP_SPEAK_PROBABILITY = 0.5;
+// Group chat: speak less frequently to avoid spammy threads.
+export const GROUP_MESSAGE_COOLDOWN = 10000; // 10s between messages per agent
+export const GROUP_SPEAK_PROBABILITY = 0.3;  // 30% chance to speak when eligible
 
 // Don't run a turn of the agent more than once a second.
 export const AGENT_WAKEUP_THRESHOLD = 1000;
