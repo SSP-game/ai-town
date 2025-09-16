@@ -33,24 +33,12 @@ jobs:
       - name: Build (relative base for itch iframe)
         run: npx vite build --base=./
 
-      - name: Download and setup butler
-        run: |
-          # Download butler directly from itch.io stable channel
-          # Note: The broth URLs require specific formatting
-          curl -L -o butler.zip https://itchio.itch.io/butler/linux-amd64/download
-
-          # Extract butler
-          unzip -o butler.zip
-
-          # Make butler executable (unzip doesn't preserve permissions)
-          chmod +x butler
-
-          # Verify installation
-          ./butler -V
+      - name: Setup Butler
+        uses: jdno/setup-butler@v1
 
       - name: Publish to itch.io
         run: |
-          # Use butler to push to itch.io
-          ./butler push dist "${{ env.ITCH_TARGET }}" --userversion="${GITHUB_REF_NAME:-${GITHUB_SHA::7}}"
+          # Use butler to push to itch.io (butler is in PATH from setup-butler action)
+          butler push dist "${{ env.ITCH_TARGET }}" --userversion="${GITHUB_REF_NAME:-${GITHUB_SHA::7}}"
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
