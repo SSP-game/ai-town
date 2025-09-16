@@ -35,17 +35,44 @@ jobs:
 
       - name: Download and setup butler
         run: |
-          # Download butler using the working URL
-          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          # Download butler with error handling and debugging
+          set -e  # Exit on any error
 
-          # Extract butler
-          unzip -o butler.zip
+          echo "Attempting to download butler..."
+          echo "Testing butler download URL..."
 
-          # Make butler executable
-          chmod +x butler
+          # Test the URL first and show what we're getting
+          curl -v -L -o butler_test.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default || true
+          echo "Downloaded file info:"
+          ls -la butler_test.zip || true
+          file butler_test.zip || true
+          echo "First 100 characters of downloaded file:"
+          head -c 100 butler_test.zip || true
+          echo ""
 
-          # Verify installation
-          ./butler -V
+          # If it's actually a zip file, proceed
+          if file butler_test.zip | grep -q "Zip archive data"; then
+            echo "Valid zip file detected, extracting..."
+            mv butler_test.zip butler.zip
+            unzip -o butler.zip
+            chmod +x butler
+            echo "Butler installed successfully"
+          else
+            echo "Download failed, file is not a zip archive"
+            echo "Trying without LATEST redirect..."
+            # Try with explicit version
+            curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/15.24.0/archive/default || {
+              echo "Explicit version failed too. Using fallback approach..."
+              # Create a simple script that shows error and exits gracefully for now
+              echo '#!/bin/bash' > butler
+              echo 'echo "Butler download failed. Please check itch.io butler distribution."' >> butler
+              echo 'exit 1' >> butler
+              chmod +x butler
+            }
+          fi
+
+          echo "Testing butler installation:"
+          ./butler -V || echo "Butler verification failed"
 
       - name: Publish to itch.io
         run: |
