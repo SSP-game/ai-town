@@ -33,13 +33,27 @@ jobs:
       - name: Build (relative base for itch iframe)
         run: npx vite build --base=./
 
-      - name: Publish to itch.io (butler action)
-        uses: josephbmanley/butler-publish-itchio-action@master
-        with:
-          api_key: ${{ secrets.BUTLER_API_KEY }}
-          user: wybert
-          game: ai-companion-town
-          channel: html5
-          files: dist
-          # Optional: use tag/commit as userversion
-          user_version: ${{ github.ref_name }}
+      - name: Download and setup butler
+        run: |
+          # Get the latest Butler version
+          BUTLER_VERSION=$(curl -sL https://broth.itch.ovh/butler/linux-amd64/LATEST)
+          echo "Butler version: $BUTLER_VERSION"
+
+          # Construct the download URL
+          BUTLER_URL="https://broth.itch.ovh/butler/linux-amd64/${BUTLER_VERSION}/archive/default"
+          echo "Download URL: $BUTLER_URL"
+
+          # Download butler
+          curl -L -o butler.zip "$BUTLER_URL"
+
+          # Extract butler
+          unzip -o butler.zip
+          chmod +x butler
+          ./butler -V
+
+      - name: Publish to itch.io
+        run: |
+          # Use butler to push to itch.io
+          ./butler push dist "${{ env.ITCH_TARGET }}" --userversion="${GITHUB_REF_NAME:-${GITHUB_SHA::7}}"
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
