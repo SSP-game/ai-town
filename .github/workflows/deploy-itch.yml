@@ -32,6 +32,8 @@ jobs:
 
       - name: Build (relative base for itch iframe)
         run: npx vite build --base=./
+        env:
+          VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
 
       - name: Setup butler from local file
         run: |
