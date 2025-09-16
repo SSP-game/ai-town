@@ -35,9 +35,13 @@ jobs:
 
       - name: Download butler
         run: |
-          BUTLER_ZIP=butler.zip
-          curl -L "https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default" -o "$BUTLER_ZIP"
-          unzip -o "$BUTLER_ZIP" -d $HOME/.local/bin
+          set -euo pipefail
+          mkdir -p $HOME/.local/bin
+          VERSION=$(curl -s https://broth.itch.ovh/butler/linux-amd64/LATEST)
+          echo "Butler version: $VERSION"
+          URL="https://broth.itch.ovh/butler/linux-amd64/${VERSION}/archive/default"
+          curl -L "$URL" -o butler.zip
+          unzip -o butler.zip -d $HOME/.local/bin
           chmod +x $HOME/.local/bin/butler
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
