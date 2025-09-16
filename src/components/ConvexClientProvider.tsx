@@ -12,8 +12,11 @@ import { ConvexReactClient, ConvexProvider } from 'convex/react';
 function convexUrl(): string {
   const url = import.meta.env.VITE_CONVEX_URL as string;
   if (!url) {
-    throw new Error('Couldn’t find the Convex deployment URL.');
+    console.error('VITE_CONVEX_URL environment variable is not set!');
+    console.error('Available environment variables:', import.meta.env);
+    throw new Error("Couldn't find the Convex deployment URL. Please set VITE_CONVEX_URL environment variable.");
   }
+  console.log('Using Convex URL:', url);
   return url;
 }
 
