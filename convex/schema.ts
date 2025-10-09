@@ -150,10 +150,31 @@ export default defineSchema({
     userId: v.id('users'),
     agentId: v.string(),
     chatId: v.optional(v.id('userAgentChats')),
-    playerGameId: v.optional(v.string()),
+    playerGameId: v.optional(v.string()), // human player's game id
+    agentPlayerId: v.optional(v.string()),
     movementLockUntil: v.optional(v.number()),
     agentName: v.optional(v.string()),
     agentCharacter: v.optional(v.string()),
+    playerCharacter: v.optional(v.string()),
+    playerName: v.optional(v.string()),
+    playerPosition: v.optional(
+      v.object({
+        x: v.number(),
+        y: v.number(),
+      }),
+    ),
+    agentPosition: v.optional(
+      v.object({
+        x: v.number(),
+        y: v.number(),
+      }),
+    ),
+    focalPosition: v.optional(
+      v.object({
+        x: v.number(),
+        y: v.number(),
+      }),
+    ),
     assignedAt: v.number(),
   })
     .index('bySession', ['sessionId'])

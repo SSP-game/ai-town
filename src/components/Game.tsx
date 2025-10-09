@@ -17,9 +17,17 @@ export const SHOW_DEBUG_UI = !!import.meta.env.VITE_SHOW_DEBUG_UI;
 interface GameProps {
   movementLocked?: boolean;
   rightPanel?: ReactNode;
+  visiblePlayerIds?: string[];
+  focusPosition?: { x: number; y: number } | null;
+  syntheticPlayers?: Array<{
+    id: string;
+    character: string;
+    position: { x: number; y: number };
+    isAgent: boolean;
+  }>;
 }
 
-export default function Game({ movementLocked, rightPanel }: GameProps) {
+export default function Game({ movementLocked, rightPanel, visiblePlayerIds, focusPosition, syntheticPlayers }: GameProps) {
   const convex = useConvex();
   const [selectedElement, setSelectedElement] = useState<{
     kind: 'player';
@@ -65,6 +73,9 @@ https://github.com/michalochman/react-pixi-fiber/issues/145#issuecomment-5315492
                     historicalTime={historicalTime}
                     setSelectedElement={setSelectedElement}
                     movementLocked={movementLocked}
+                    visiblePlayerIds={visiblePlayerIds}
+                    focusPosition={focusPosition}
+                    syntheticPlayers={syntheticPlayers}
                   />
                 </ConvexProvider>
               </Stage>

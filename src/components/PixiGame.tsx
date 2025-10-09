@@ -14,6 +14,7 @@ import { DebugPath } from './DebugPath.tsx';
 import { PositionIndicator } from './PositionIndicator.tsx';
 import { SHOW_DEBUG_UI } from './Game.tsx';
 import { ServerGame } from '../hooks/serverGame.ts';
+import SyntheticAvatarSprite from './SyntheticAvatarSprite';
 
 export const PixiGame = (props: {
   worldId: Id<'worlds'>;
@@ -24,6 +25,14 @@ export const PixiGame = (props: {
   height: number;
   setSelectedElement: SelectElement;
   movementLocked?: boolean;
+  visiblePlayerIds?: string[];
+  focusPosition?: { x: number; y: number } | null;
+  syntheticPlayers?: Array<{
+    id: string;
+    character: string;
+    position: { x: number; y: number };
+    isAgent: boolean;
+  }>;
 }) => {
   // PIXI setup.
   const pixiApp = useApp();
@@ -37,6 +46,11 @@ export const PixiGame = (props: {
   const humanPlayerId = [...props.game.world.players.values()].find(
     (p) => p.human === humanTokenIdentifier,
   )?.id;
+  const visibleSet = props.visiblePlayerIds ? new Set(props.visiblePlayerIds) : null;
+  if (visibleSet && humanPlayerId) {
+    visibleSet.add(humanPlayerId);
+  }
+  const syntheticPlayers = props.syntheticPlayers ?? [];
 
   const moveTo = useSendInput(props.engineId, 'moveTo');
 
@@ -88,18 +102,39 @@ export const PixiGame = (props: {
     await toastOnError(moveTo({ playerId: humanPlayerId, destination: roundedTiles }));
   };
   const { width, height, tileDim } = props.game.worldMap;
-  const players = [...props.game.world.players.values()];
+  let players = [...props.game.world.players.values()];
+  if (visibleSet) {
+    players = players.filter((p) => visibleSet.has(p.id));
+  }
 
   // Zoom on the user’s avatar when it is created
   useEffect(() => {
-    if (!viewportRef.current || humanPlayerId === undefined) return;
+    const viewport = viewportRef.current;
+    if (!viewport) return;
 
-    const humanPlayer = props.game.world.players.get(humanPlayerId)!;
-    viewportRef.current.animate({
-      position: new PIXI.Point(humanPlayer.position.x * tileDim, humanPlayer.position.y * tileDim),
-      scale: 0.8,
-    });
-  }, [humanPlayerId]);
+    if (props.focusPosition) {
+      const target = new PIXI.Point(
+        (props.focusPosition.x + 0.5) * tileDim,
+        (props.focusPosition.y + 0.5) * tileDim,
+      );
+      viewport.animate({ position: target, scale: 1.5, time: 250 });
+      return;
+    }
+
+    if (humanPlayerId !== undefined) {
+      const humanPlayer = props.game.world.players.get(humanPlayerId);
+      if (humanPlayer) {
+        viewport.animate({
+          position: new PIXI.Point(
+            (humanPlayer.position.x + 0.5) * tileDim,
+            (humanPlayer.position.y + 0.5) * tileDim,
+          ),
+          scale: 0.8,
+          time: 250,
+        });
+      }
+    }
+  }, [props.focusPosition, humanPlayerId, tileDim]);
 
   return (
     <PixiViewport
@@ -131,6 +166,15 @@ export const PixiGame = (props: {
           isViewer={p.id === humanPlayerId}
           onClick={props.setSelectedElement}
           historicalTime={props.historicalTime}
+        />
+      ))}
+      {syntheticPlayers.map((synthetic) => (
+        <SyntheticAvatarSprite
+          key={`synthetic-${synthetic.id}`}
+          character={synthetic.character}
+          position={synthetic.position}
+          tileDim={tileDim}
+          faceLeft={synthetic.isAgent}
         />
       ))}
     </PixiViewport>

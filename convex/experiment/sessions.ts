@@ -50,7 +50,7 @@ export const startPairedChatSession = internalMutation({
 
     const world = await ctx.db.get(worldId);
     const worldAgents = world?.agents ?? [];
-    const worldPlayers = world?.players ?? [];
+    let worldPlayers = world?.players ?? [];
     if (worldAgents.length === 0) {
       throw new ConvexError('No AI agents available in the world for pairing');
     }
@@ -73,6 +73,12 @@ export const startPairedChatSession = internalMutation({
       chatId: Id<'userAgentChats'>;
       agentName?: string;
       agentCharacter?: string;
+      playerGameId?: string;
+      agentPlayerId?: string;
+      playerCharacter?: string;
+      playerPosition: { x: number; y: number };
+      agentPosition: { x: number; y: number };
+      focalPosition: { x: number; y: number };
     }> = [];
 
     for (const participant of participants) {
@@ -87,6 +93,35 @@ export const startPairedChatSession = internalMutation({
       const agentPlayer = worldPlayers.find((player) => player.id === agentDoc.playerId);
       const agentName = agentPlayerDescription?.name ?? agentPlayer?.human ?? agentId;
       const agentCharacter = agentPlayerDescription?.character;
+      const agentPlayerId = agentDoc.playerId;
+
+      const userDoc = await ctx.db.get(participant.userId);
+      const playerCharacter = userDoc?.selectedCharacter ?? 'f1';
+      const playerName = userDoc?.nickname ?? 'Participant';
+
+      let worldPlayer = worldPlayers.find((player) => player.human === participant.userId);
+      let playerGameId = worldPlayer?.id;
+      if (!playerGameId) {
+        await ctx.runMutation(api.world.joinWorld, {
+          worldId,
+          character: playerCharacter,
+          userId: participant.userId,
+        });
+        const refreshedWorld = await ctx.db.get(worldId);
+        worldPlayers = refreshedWorld?.players ?? worldPlayers;
+        worldPlayer = worldPlayers.find((player) => player.human === participant.userId);
+        playerGameId = worldPlayer?.id;
+      }
+
+      const pairOffset = results.length;
+      const baseX = 40 + pairOffset * 6;
+      const baseY = 40 + pairOffset * 6;
+      const arrangedPlayerPosition = { x: baseX, y: baseY };
+      const arrangedAgentPosition = { x: baseX + 2, y: baseY };
+      const focalPosition = {
+        x: arrangedPlayerPosition.x + (arrangedAgentPosition.x - arrangedPlayerPosition.x) / 2,
+        y: arrangedPlayerPosition.y,
+      };
 
       const chatId = await ctx.runMutation(api.users.createOrGetChat, {
         userId: participant.userId,
@@ -94,8 +129,26 @@ export const startPairedChatSession = internalMutation({
         worldId,
       });
 
-      const worldPlayer = worldPlayers.find((player) => player.human === participant.userId);
-      const playerGameId = worldPlayer?.id;
+      if (playerGameId) {
+        await ctx.runMutation(api.aiTown.main.sendInput, {
+          worldId,
+          name: 'moveTo',
+          args: {
+            playerId: playerGameId as any,
+            destination: arrangedPlayerPosition,
+          },
+        });
+      }
+      if (agentPlayerId) {
+        await ctx.runMutation(api.aiTown.main.sendInput, {
+          worldId,
+          name: 'moveTo',
+          args: {
+            playerId: agentPlayerId as any,
+            destination: arrangedAgentPosition,
+          },
+        });
+      }
       if (playerGameId) {
         await ctx.runMutation(api.aiTown.main.sendInput, {
           worldId,
@@ -106,15 +159,31 @@ export const startPairedChatSession = internalMutation({
           },
         });
       }
+      if (agentPlayerId) {
+        await ctx.runMutation(api.aiTown.main.sendInput, {
+          worldId,
+          name: 'setMovementLock',
+          args: {
+            playerId: agentPlayerId as any,
+            until: pairedChatEndsAt,
+          },
+        });
+      }
 
       if (existingAssignment) {
         await ctx.db.patch(existingAssignment._id, {
           agentId,
           chatId,
           playerGameId: playerGameId ?? existingAssignment.playerGameId,
+          agentPlayerId,
           movementLockUntil: pairedChatEndsAt,
           agentName,
           agentCharacter,
+          playerCharacter,
+          playerName,
+          playerPosition: arrangedPlayerPosition,
+          agentPosition: arrangedAgentPosition,
+          focalPosition,
           assignedAt: Date.now(),
         });
       } else {
@@ -124,14 +193,32 @@ export const startPairedChatSession = internalMutation({
           agentId,
           chatId,
           playerGameId: playerGameId ?? undefined,
+          agentPlayerId,
           movementLockUntil: pairedChatEndsAt,
           agentName,
           agentCharacter,
+          playerCharacter,
+          playerName,
+          playerPosition: arrangedPlayerPosition,
+          agentPosition: arrangedAgentPosition,
+          focalPosition,
           assignedAt: Date.now(),
         });
       }
 
-      results.push({ userId: participant.userId, agentId, chatId, agentName, agentCharacter });
+      results.push({
+        userId: participant.userId,
+        agentId,
+        chatId,
+        agentName,
+        agentCharacter,
+        playerGameId: playerGameId ?? undefined,
+        agentPlayerId,
+        playerCharacter,
+        playerPosition: arrangedPlayerPosition,
+        agentPosition: arrangedAgentPosition,
+        focalPosition,
+      });
     }
 
     return {
@@ -188,6 +275,16 @@ export const endPairedChatSession = internalMutation({
             name: 'setMovementLock',
             args: {
               playerId: assignment.playerGameId as any,
+              until: now,
+            },
+          });
+        }
+        if (assignment.agentPlayerId) {
+          await ctx.runMutation(api.aiTown.main.sendInput, {
+            worldId: lobby.worldId,
+            name: 'setMovementLock',
+            args: {
+              playerId: assignment.agentPlayerId as any,
               until: now,
             },
           });
@@ -306,6 +403,12 @@ export const userSessionState = query({
             movementLockUntil: assignment.movementLockUntil ?? null,
             agentName: assignment.agentName ?? null,
             agentCharacter: assignment.agentCharacter ?? null,
+            playerGameId: assignment.playerGameId ?? null,
+            agentPlayerId: assignment.agentPlayerId ?? null,
+            playerCharacter: assignment.playerCharacter ?? null,
+            playerPosition: assignment.playerPosition ?? null,
+            agentPosition: assignment.agentPosition ?? null,
+            focalPosition: assignment.focalPosition ?? null,
           }
         : null,
     };

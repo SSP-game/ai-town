@@ -14,6 +14,12 @@ interface SessionViewProps {
     movementLockUntil: number | null;
     agentName?: string | null;
     agentCharacter?: string | null;
+    playerGameId?: string | null;
+    agentPlayerId?: string | null;
+    playerCharacter?: string | null;
+    playerPosition?: { x: number; y: number } | null;
+    agentPosition?: { x: number; y: number } | null;
+    focalPosition?: { x: number; y: number } | null;
   } | null;
   pairedChatEndsAt?: number | null;
 }
@@ -49,6 +55,31 @@ export default function SessionView({
 
   const partnerName = assignment?.agentName ?? assignment?.agentId ?? 'Companion';
   const partnerCharacter = assignment?.agentCharacter ?? 'f1';
+  const stageOneVisibleIds =
+    phase === 'paired_chat'
+      ? [
+          assignment?.playerGameId ?? undefined,
+          assignment?.agentPlayerId ?? undefined,
+        ].filter((id): id is string => !!id)
+      : undefined;
+  const syntheticPlayers =
+    phase === 'paired_chat' && assignment
+      ? [
+          {
+            id: assignment.playerGameId ?? 'participant-synthetic',
+            character: assignment.playerCharacter ?? 'f1',
+            position: assignment.playerPosition ?? { x: 40, y: 40 },
+            isAgent: false,
+          },
+          {
+            id: assignment.agentPlayerId ?? 'agent-synthetic',
+            character: assignment.agentCharacter ?? partnerCharacter,
+            position: assignment.agentPosition ?? { x: 42, y: 40 },
+            isAgent: true,
+          },
+        ]
+      : undefined;
+  const focusPosition = phase === 'paired_chat' ? assignment?.focalPosition ?? null : null;
 
   const chatPanel = assignment ? (
     <div className="flex flex-col h-full">
@@ -90,7 +121,13 @@ export default function SessionView({
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 min-h-0">
-        <Game movementLocked={movementLocked} rightPanel={chatPanel} />
+        <Game
+          movementLocked={movementLocked}
+          rightPanel={chatPanel}
+          visiblePlayerIds={stageOneVisibleIds}
+          syntheticPlayers={syntheticPlayers}
+          focusPosition={focusPosition}
+        />
       </div>
     </div>
   );
