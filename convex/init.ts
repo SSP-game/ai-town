@@ -115,23 +115,42 @@ async function shouldCreateAgents(
 
 async function ensureDefaultExperimentSetup(ctx: MutationCtx) {
   const now = Date.now();
+  const defaults = {
+    slug: 'default' as const,
+    name: 'Default Experiment',
+    introduction:
+      'Welcome to the experiment. You will be paired with an AI companion for a brief conversation before exploring the town.',
+    minPlayers: 2,
+    pairedChatMinutes: 1,
+    questionnaireVersion: 'v1' as string | undefined,
+  };
   const existingConfig = await ctx.db
     .query('experimentConfigs')
-    .withIndex('slug', (q) => q.eq('slug', 'default'))
+    .withIndex('slug', (q) => q.eq('slug', defaults.slug))
     .first();
   let configId: Id<'experimentConfigs'>;
   if (existingConfig) {
+    const needsUpdate =
+      existingConfig.name !== defaults.name ||
+      existingConfig.introduction !== defaults.introduction ||
+      existingConfig.minPlayers !== defaults.minPlayers ||
+      existingConfig.pairedChatMinutes !== defaults.pairedChatMinutes ||
+      existingConfig.questionnaireVersion !== defaults.questionnaireVersion;
+    if (needsUpdate) {
+      await ctx.db.patch(existingConfig._id, {
+        name: defaults.name,
+        introduction: defaults.introduction,
+        minPlayers: defaults.minPlayers,
+        pairedChatMinutes: defaults.pairedChatMinutes,
+        questionnaireVersion: defaults.questionnaireVersion,
+        updatedAt: now,
+      });
+    }
     configId = existingConfig._id;
   } else {
     const isFirstConfig = (await ctx.db.query('experimentConfigs').collect()).length === 0;
     configId = await ctx.db.insert('experimentConfigs', {
-      slug: 'default',
-      name: 'Default Experiment',
-      introduction:
-        'Welcome to the experiment. You will be paired with an AI companion for a brief conversation before exploring the town.',
-      minPlayers: 2,
-      pairedChatMinutes: 1,
-      questionnaireVersion: 'v1',
+      ...defaults,
       isActive: true,
       createdAt: now,
       updatedAt: now,
@@ -141,6 +160,27 @@ async function ensureDefaultExperimentSetup(ctx: MutationCtx) {
       for (const other of others) {
         if (other._id !== configId && other.isActive) {
           await ctx.db.patch(other._id, { isActive: false, updatedAt: now });
+        }
+      }
+    }
+  }
+
+  const configDoc = await ctx.db.get(configId);
+  if (configDoc) {
+    const openLobbies = await ctx.db
+      .query('lobbies')
+      .withIndex('byConfig', (q) => q.eq('configId', configId))
+      .collect();
+    for (const lobby of openLobbies) {
+      if (lobby.status === 'waiting' || lobby.status === 'ready_check') {
+        if (
+          lobby.minPlayers !== configDoc.minPlayers ||
+          lobby.pairedChatMinutes !== configDoc.pairedChatMinutes
+        ) {
+          await ctx.db.patch(lobby._id, {
+            minPlayers: configDoc.minPlayers,
+            pairedChatMinutes: configDoc.pairedChatMinutes,
+          });
         }
       }
     }
