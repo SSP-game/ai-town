@@ -21,6 +21,10 @@ export default defineSchema({
     gender: v.optional(v.union(v.literal('male'), v.literal('female'), v.literal('other'), v.literal('prefer_not_to_say'))),
     bio: v.optional(v.string()),
     avatar: v.optional(v.string()), // URL or storage ID for avatar image
+    mbti: v.optional(v.string()),
+    profileCompletedAt: v.optional(v.number()),
+    experimentConsent: v.optional(v.boolean()),
+    experimentCohort: v.optional(v.string()),
 
     // Account management
     isActive: v.boolean(),
@@ -49,6 +53,109 @@ export default defineSchema({
     .index('userId', ['userId'])
     .index('userAgent', ['userId', 'agentId'])
     .index('lastMessage', ['lastMessageAt']),
+
+  experimentConfigs: defineTable({
+    slug: v.string(),
+    name: v.string(),
+    introduction: v.string(),
+    minPlayers: v.number(),
+    pairedChatMinutes: v.number(),
+    questionnaireVersion: v.optional(v.string()),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index('slug', ['slug'])
+    .index('isActive', ['isActive']),
+
+  questionnaires: defineTable({
+    configId: v.id('experimentConfigs'),
+    order: v.number(),
+    question: v.string(),
+    type: v.union(v.literal('single'), v.literal('multi'), v.literal('text')),
+    options: v.optional(
+      v.array(
+        v.object({
+          value: v.string(),
+          label: v.string(),
+        }),
+      ),
+    ),
+    metadata: v.optional(v.any()),
+    required: v.boolean(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index('configOrder', ['configId', 'order']),
+
+  questionnaireResponses: defineTable({
+    userId: v.id('users'),
+    configId: v.id('experimentConfigs'),
+    questionId: v.id('questionnaires'),
+    sessionId: v.optional(v.id('sessions')),
+    answer: v.any(),
+    submittedAt: v.number(),
+  })
+    .index('byUser', ['userId', 'configId'])
+    .index('byQuestion', ['questionId']),
+
+  lobbies: defineTable({
+    configId: v.id('experimentConfigs'),
+    status: v.union(
+      v.literal('waiting'),
+      v.literal('ready_check'),
+      v.literal('paired_chat'),
+      v.literal('free_roam'),
+      v.literal('completed'),
+    ),
+    minPlayers: v.number(),
+    pairedChatMinutes: v.number(),
+    worldId: v.optional(v.id('worlds')),
+    createdAt: v.number(),
+    startedAt: v.optional(v.number()),
+    pairedChatEndsAt: v.optional(v.number()),
+    completedAt: v.optional(v.number()),
+  })
+    .index('byStatus', ['status'])
+    .index('byConfig', ['configId']),
+
+  lobbyPlayers: defineTable({
+    lobbyId: v.id('lobbies'),
+    userId: v.id('users'),
+    ready: v.boolean(),
+    readyAt: v.optional(v.number()),
+    onboardingCompletedAt: v.number(),
+    questionnaireCompletedAt: v.number(),
+    status: v.union(
+      v.literal('waiting'),
+      v.literal('ready'),
+      v.literal('paired_chat'),
+      v.literal('free_roam'),
+      v.literal('completed'),
+    ),
+  })
+    .index('byLobby', ['lobbyId'])
+    .index('byUser', ['userId']),
+
+  sessions: defineTable({
+    lobbyId: v.id('lobbies'),
+    status: v.union(v.literal('paired_chat'), v.literal('free_roam'), v.literal('ended')),
+    pairedChatEndsAt: v.optional(v.number()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index('byLobby', ['lobbyId']),
+
+  sessionAgents: defineTable({
+    sessionId: v.id('sessions'),
+    userId: v.id('users'),
+    agentId: v.string(),
+    chatId: v.optional(v.id('userAgentChats')),
+    playerGameId: v.optional(v.string()),
+    movementLockUntil: v.optional(v.number()),
+    assignedAt: v.number(),
+  })
+    .index('bySession', ['sessionId'])
+    .index('byUser', ['userId']),
 
   music: defineTable({
     storageId: v.string(),

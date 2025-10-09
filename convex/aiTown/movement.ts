@@ -37,6 +37,10 @@ export function movePlayer(
   if (pointsEqual(position, destination)) {
     return;
   }
+  // Prevent movement when under a movement lock.
+  if (player.movementLockUntil && player.movementLockUntil > now) {
+    throw new Error(`Movement temporarily disabled until ${player.movementLockUntil}`);
+  }
   // Don't allow players in a conversation to move.
   const inConversation = [...game.world.conversations.values()].some(
     (c) => c.participants.get(player.id)?.status.kind === 'participating',

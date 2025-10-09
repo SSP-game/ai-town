@@ -1,8 +1,16 @@
 import { ConvexError, v } from 'convex/values';
-import { mutation, query, internalAction, internalMutation, internalQuery } from './_generated/server';
+import {
+  mutation,
+  query,
+  internalAction,
+  internalMutation,
+  internalQuery,
+  MutationCtx,
+} from './_generated/server';
 import { internal, api } from './_generated/api';
 import { chatCompletion } from './util/llm';
 import type { LLMMessage } from './util/llm';
+import { Id } from './_generated/dataModel';
 
 // Simple hash function (in production, use bcrypt or similar)
 function simpleHash(password: string): string {
@@ -16,11 +24,43 @@ function simpleHash(password: string): string {
   return Math.abs(hash).toString(16);
 }
 
+async function ensureNicknameAvailable(
+  ctx: MutationCtx,
+  nickname: string,
+  ignoreUserId?: Id<'users'>,
+) {
+  const existingNickname = await ctx.db
+    .query('users')
+    .withIndex('nickname', (q) => q.eq('nickname', nickname))
+    .first();
+  if (existingNickname && existingNickname._id !== ignoreUserId) {
+    throw new ConvexError('Nickname already taken');
+  }
+}
+
+async function generateUniqueNickname(ctx: MutationCtx, seed: string) {
+  const base = seed.replace(/[^a-zA-Z0-9]/g, '').slice(0, 16) || 'Participant';
+  let candidate = base;
+  let counter = 1;
+  while (counter < 100) {
+    const existing = await ctx.db
+      .query('users')
+      .withIndex('nickname', (q) => q.eq('nickname', candidate))
+      .first();
+    if (!existing) {
+      return candidate;
+    }
+    candidate = `${base}-${counter}`;
+    counter += 1;
+  }
+  throw new ConvexError('Unable to allocate nickname at this time. Please try again.');
+}
+
 export const register = mutation({
   args: {
     email: v.string(),
     password: v.string(),
-    nickname: v.string(),
+    nickname: v.optional(v.string()),
   },
   handler: async (ctx, { email, password, nickname }) => {
     // Check if email already exists
@@ -33,16 +73,6 @@ export const register = mutation({
       throw new ConvexError('Email already registered');
     }
 
-    // Check if nickname already exists
-    const existingNickname = await ctx.db
-      .query('users')
-      .withIndex('nickname', (q) => q.eq('nickname', nickname))
-      .first();
-
-    if (existingNickname) {
-      throw new ConvexError('Nickname already taken');
-    }
-
     // Validate inputs
     if (!email.includes('@')) {
       throw new ConvexError('Invalid email format');
@@ -52,8 +82,15 @@ export const register = mutation({
       throw new ConvexError('Password must be at least 6 characters');
     }
 
-    if (nickname.length < 2 || nickname.length > 20) {
-      throw new ConvexError('Nickname must be 2-20 characters');
+    let chosenNickname = nickname?.trim();
+    if (chosenNickname) {
+      if (chosenNickname.length < 2 || chosenNickname.length > 20) {
+        throw new ConvexError('Nickname must be 2-20 characters');
+      }
+      await ensureNicknameAvailable(ctx, chosenNickname);
+    } else {
+      const localPart = email.split('@')[0] ?? 'Participant';
+      chosenNickname = await generateUniqueNickname(ctx, localPart);
     }
 
     // Create user
@@ -62,13 +99,14 @@ export const register = mutation({
     const userId = await ctx.db.insert('users', {
       email,
       passwordHash,
-      nickname,
+      nickname: chosenNickname,
       isActive: true,
       createdAt: now,
       updatedAt: now,
+      experimentConsent: false,
     });
 
-    return { userId, nickname };
+    return { userId, nickname: chosenNickname };
   },
 });
 
@@ -102,6 +140,10 @@ export const login = mutation({
       nickname: user.nickname,
       email: user.email,
       selectedCharacter: user.selectedCharacter,
+      avatar: user.avatar,
+      mbti: user.mbti,
+      profileCompletedAt: user.profileCompletedAt,
+      experimentConsent: user.experimentConsent ?? false,
     };
   },
 });
@@ -116,6 +158,65 @@ export const updateSelectedCharacter = mutation({
       selectedCharacter: character,
     });
     return { success: true };
+  },
+});
+
+export const completeProfile = mutation({
+  args: {
+    userId: v.id('users'),
+    nickname: v.string(),
+    gender: v.optional(
+      v.union(
+        v.literal('male'),
+        v.literal('female'),
+        v.literal('other'),
+        v.literal('prefer_not_to_say'),
+      ),
+    ),
+    dateOfBirth: v.optional(v.string()),
+    mbti: v.optional(v.string()),
+    bio: v.optional(v.string()),
+    avatar: v.optional(v.string()),
+    experimentConsent: v.boolean(),
+  },
+  handler: async (ctx, args) => {
+    const { userId, nickname, gender, dateOfBirth, mbti, bio, avatar, experimentConsent } = args;
+    const user = await ctx.db.get(userId);
+    if (!user) {
+      throw new ConvexError('User not found');
+    }
+
+    const trimmedNickname = nickname.trim();
+    if (trimmedNickname.length < 2 || trimmedNickname.length > 20) {
+      throw new ConvexError('Nickname must be between 2 and 20 characters');
+    }
+
+    await ensureNicknameAvailable(ctx, trimmedNickname, userId);
+
+    const now = Date.now();
+    await ctx.db.patch(userId, {
+      nickname: trimmedNickname,
+      gender,
+      dateOfBirth,
+      mbti,
+      bio,
+      avatar,
+      experimentConsent,
+      profileCompletedAt: now,
+      updatedAt: now,
+    });
+
+    return {
+      userId,
+      nickname: trimmedNickname,
+      gender,
+      dateOfBirth,
+      mbti,
+      bio,
+      avatar,
+      experimentConsent,
+      profileCompletedAt: now,
+    };
   },
 });
 
@@ -134,6 +235,13 @@ export const getUserProfile = query({
       nickname: user.nickname,
       email: user.email,
       selectedCharacter: user.selectedCharacter,
+      avatar: user.avatar,
+      gender: user.gender,
+      dateOfBirth: user.dateOfBirth,
+      mbti: user.mbti,
+      bio: user.bio,
+      experimentConsent: user.experimentConsent ?? false,
+      profileCompletedAt: user.profileCompletedAt,
       createdAt: user.createdAt,
       lastLoginAt: user.lastLoginAt,
     };
@@ -319,7 +427,7 @@ export const generateCompanionReply = internalAction({
     if (agentPlan) sys.push(`Your goals: ${agentPlan}`);
     sys.push('Keep responses brief (<= 200 chars).');
 
-    const history: LLMMessage[] = messages.map((m) => ({
+    const history: LLMMessage[] = messages.map((m: { sender: 'user' | 'agent'; content: string }) => ({
       role: m.sender === 'user' ? 'user' : 'assistant',
       content: m.sender === 'user' ? `${userName}: ${m.content}` : `${name}: ${m.content}`,
     }));

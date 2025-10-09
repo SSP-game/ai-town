@@ -23,6 +23,7 @@ export const PixiGame = (props: {
   width: number;
   height: number;
   setSelectedElement: SelectElement;
+  movementLocked?: boolean;
 }) => {
   // PIXI setup.
   const pixiApp = useApp();
@@ -67,6 +68,9 @@ export const PixiGame = (props: {
     }
     const viewport = viewportRef.current;
     if (!viewport) {
+      return;
+    }
+    if (props.movementLocked) {
       return;
     }
     const gameSpacePx = viewport.toWorld(e.screenX, e.screenY);

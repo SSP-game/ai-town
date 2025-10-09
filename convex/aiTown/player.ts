@@ -47,6 +47,7 @@ export const serializedPlayer = {
   human: v.optional(v.string()),
   pathfinding: v.optional(pathfinding),
   activity: v.optional(activity),
+  movementLockUntil: v.optional(v.number()),
 
   // The last time they did something.
   lastInput: v.number(),
@@ -62,6 +63,7 @@ export class Player {
   human?: string;
   pathfinding?: Pathfinding;
   activity?: Activity;
+  movementLockUntil?: number;
 
   lastInput: number;
 
@@ -70,11 +72,22 @@ export class Player {
   speed: number;
 
   constructor(serialized: SerializedPlayer) {
-    const { id, human, pathfinding, activity, lastInput, position, facing, speed } = serialized;
+    const {
+      id,
+      human,
+      pathfinding,
+      activity,
+      movementLockUntil,
+      lastInput,
+      position,
+      facing,
+      speed,
+    } = serialized;
     this.id = parseGameId('players', id);
     this.human = human;
     this.pathfinding = pathfinding;
     this.activity = activity;
+    this.movementLockUntil = movementLockUntil ?? undefined;
     this.lastInput = lastInput;
     this.position = position;
     this.facing = facing;
@@ -82,6 +95,9 @@ export class Player {
   }
 
   tick(game: Game, now: number) {
+    if (this.movementLockUntil && this.movementLockUntil <= now) {
+      this.movementLockUntil = undefined;
+    }
     if (this.human && this.lastInput < now - HUMAN_IDLE_TOO_LONG) {
       this.leave(game, now);
     }
@@ -249,12 +265,14 @@ export class Player {
   }
 
   serialize(): SerializedPlayer {
-    const { id, human, pathfinding, activity, lastInput, position, facing, speed } = this;
+    const { id, human, pathfinding, activity, movementLockUntil, lastInput, position, facing, speed } =
+      this;
     return {
       id,
       human,
       pathfinding,
       activity,
+      movementLockUntil,
       lastInput,
       position,
       facing,
@@ -305,6 +323,27 @@ export const playerInputs = {
         stopPlayer(player);
       }
       return null;
+    },
+  }),
+  setMovementLock: inputHandler({
+    args: {
+      playerId,
+      until: v.optional(v.number()),
+    },
+    handler: (game, now, args) => {
+      const playerId = parseGameId('players', args.playerId);
+      const player = game.world.players.get(playerId);
+      if (!player) {
+        throw new Error(`Invalid player ID ${playerId}`);
+      }
+      const until = args.until ?? now;
+      if (until <= now) {
+        player.movementLockUntil = undefined;
+      } else {
+        player.movementLockUntil = until;
+        stopPlayer(player);
+      }
+      return { lockedUntil: player.movementLockUntil ?? null };
     },
   }),
 };

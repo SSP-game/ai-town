@@ -35,6 +35,7 @@ const init = mutation({
         });
       }
     }
+    await ensureDefaultExperimentSetup(ctx);
   },
 });
 export default init;
@@ -110,4 +111,93 @@ async function shouldCreateAgents(
     return false;
   }
   return true;
+}
+
+async function ensureDefaultExperimentSetup(ctx: MutationCtx) {
+  const now = Date.now();
+  const existingConfig = await ctx.db
+    .query('experimentConfigs')
+    .withIndex('slug', (q) => q.eq('slug', 'default'))
+    .first();
+  let configId: Id<'experimentConfigs'>;
+  if (existingConfig) {
+    configId = existingConfig._id;
+  } else {
+    const isFirstConfig = (await ctx.db.query('experimentConfigs').collect()).length === 0;
+    configId = await ctx.db.insert('experimentConfigs', {
+      slug: 'default',
+      name: 'Default Experiment',
+      introduction:
+        'Welcome to the experiment. You will be paired with an AI companion for a brief conversation before exploring the town.',
+      minPlayers: 2,
+      pairedChatMinutes: 1,
+      questionnaireVersion: 'v1',
+      isActive: true,
+      createdAt: now,
+      updatedAt: now,
+    });
+    if (!isFirstConfig) {
+      const others = await ctx.db.query('experimentConfigs').collect();
+      for (const other of others) {
+        if (other._id !== configId && other.isActive) {
+          await ctx.db.patch(other._id, { isActive: false, updatedAt: now });
+        }
+      }
+    }
+  }
+
+  const existingQuestions = await ctx.db
+    .query('questionnaires')
+    .withIndex('configOrder', (q) => q.eq('configId', configId))
+    .collect();
+  if (existingQuestions.length === 0) {
+    const questions = [
+      {
+        order: 0,
+        question: 'What is your primary motivation for participating today?',
+        type: 'text' as const,
+        required: true,
+      },
+      {
+        order: 1,
+        question: 'How social do you consider yourself?',
+        type: 'single' as const,
+        required: true,
+        options: [
+          { value: 'very_introverted', label: 'Very introverted' },
+          { value: 'somewhat_introverted', label: 'Somewhat introverted' },
+          { value: 'neutral', label: 'In-between' },
+          { value: 'somewhat_extroverted', label: 'Somewhat extroverted' },
+          { value: 'very_extroverted', label: 'Very extroverted' },
+        ],
+      },
+      {
+        order: 2,
+        question: 'Select any themes you are most interested in discussing.',
+        type: 'multi' as const,
+        required: false,
+        options: [
+          { value: 'work', label: 'Work & career' },
+          { value: 'relationships', label: 'Relationships' },
+          { value: 'wellbeing', label: 'Wellbeing' },
+          { value: 'hobbies', label: 'Hobbies & interests' },
+          { value: 'future', label: 'Future plans' },
+        ],
+      },
+    ];
+    for (const qn of questions) {
+      await ctx.db.insert('questionnaires', {
+        configId,
+        order: qn.order,
+        question: qn.question,
+        type: qn.type,
+        options: qn.options,
+        metadata: undefined,
+        required: qn.required,
+        isActive: true,
+        createdAt: now,
+        updatedAt: now,
+      });
+    }
+  }
 }

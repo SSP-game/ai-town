@@ -15,6 +15,12 @@ crons.interval(
 
 crons.interval('restart dead worlds', { seconds: 60 }, internal.world.restartDeadWorlds);
 
+crons.interval(
+  'release expired paired chat sessions',
+  { seconds: 30 },
+  internal.experiment.sessions.releaseExpiredSessions,
+);
+
 crons.daily('vacuum old entries', { hourUTC: 4, minuteUTC: 20 }, internal.crons.vacuumOldEntries);
 
 export default crons;

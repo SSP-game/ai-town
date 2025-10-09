@@ -8,6 +8,12 @@
 
 AI Town is a virtual town where AI characters live, chat and socialize.
 
+> **Experiment Branch**
+>
+> The `experiment` branch repurposes AI Town into a scripted psychology study workflow with gated
+> onboarding, lobby coordination, timed AI-participant chat sessions, and post-chat free roaming.
+> See `EXPERIMENT_MODE_PLAN.md` for the detailed plan and implementation notes.
+
 This project is a deployable starter kit for easily building and customizing your own version of AI
 town. Inspired by the research paper
 [_Generative Agents: Interactive Simulacra of Human Behavior_](https://arxiv.org/pdf/2304.03442.pdf).

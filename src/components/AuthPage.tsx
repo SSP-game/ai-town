@@ -10,8 +10,7 @@ interface AuthPageProps {
     email: string;
     selectedCharacter?: string;
     selectedCompanion?: string;
-    firstName?: string;
-    lastName?: string;
+    profileCompletedAt?: number | null;
   }) => void;
 }
 
@@ -20,7 +19,6 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    nickname: '',
     confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
@@ -30,9 +28,9 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -42,7 +40,6 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
 
     try {
       if (isLogin) {
-        // Login
         const result = await loginMutation({
           email: formData.email,
           password: formData.password,
@@ -51,21 +48,19 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
         toast.success(`Welcome back, ${result.nickname}!`);
         onLoginSuccess(result);
       } else {
-        // Register
         if (formData.password !== formData.confirmPassword) {
           toast.error('Passwords do not match');
+          setLoading(false);
           return;
         }
 
         const result = await registerMutation({
           email: formData.email,
           password: formData.password,
-          nickname: formData.nickname,
         });
 
-        toast.success(`Account created successfully! Welcome, ${result.nickname}!`);
+        toast.success('Account created successfully! Let’s set up your profile.');
 
-        // Auto-login after registration
         const loginResult = await loginMutation({
           email: formData.email,
           password: formData.password,
@@ -85,7 +80,6 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
     setFormData({
       email: '',
       password: '',
-      nickname: '',
       confirmPassword: '',
     });
   };
@@ -127,25 +121,6 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
                   placeholder="Enter your email"
                 />
               </div>
-
-              {!isLogin && (
-                <div>
-                  <label className="block text-brown-200 text-sm font-bold mb-2">
-                    Nickname
-                  </label>
-                  <input
-                    type="text"
-                    name="nickname"
-                    value={formData.nickname}
-                    onChange={handleInputChange}
-                    required={!isLogin}
-                    className="w-full px-3 py-2 border border-brown-600 rounded bg-brown-700 text-brown-100 placeholder-brown-400 focus:outline-none focus:border-brown-400"
-                    placeholder="Choose a nickname"
-                    minLength={2}
-                    maxLength={20}
-                  />
-                </div>
-              )}
 
               <div>
                 <label className="block text-brown-200 text-sm font-bold mb-2">
