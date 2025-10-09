@@ -32,6 +32,7 @@ export const startPairedChatSession = internalMutation({
     if (!lobby.worldId) {
       throw new ConvexError('Lobby is missing a world assignment');
     }
+    const worldId = lobby.worldId;
     const lobbyPlayers = await ctx.db
       .query('lobbyPlayers')
       .withIndex('byLobby', (q) => q.eq('lobbyId', lobby._id))
@@ -47,12 +48,17 @@ export const startPairedChatSession = internalMutation({
       .collect();
     const assignmentsByUser = new Map(assignments.map((assignment) => [assignment.userId, assignment]));
 
-    const world = await ctx.db.get(lobby.worldId);
+    const world = await ctx.db.get(worldId);
     const worldAgents = world?.agents ?? [];
     const worldPlayers = world?.players ?? [];
     if (worldAgents.length === 0) {
       throw new ConvexError('No AI agents available in the world for pairing');
     }
+    const playerDescriptions = await ctx.db
+      .query('playerDescriptions')
+      .withIndex('worldId', (q) => q.eq('worldId', worldId))
+      .collect();
+    const descriptionsByPlayerId = new Map(playerDescriptions.map((desc) => [desc.playerId, desc]));
 
     let agentIndex = 0;
     const pairedChatEndsAt = session.pairedChatEndsAt ?? Date.now() + lobby.pairedChatMinutes * 60_000;
@@ -61,7 +67,13 @@ export const startPairedChatSession = internalMutation({
       await ctx.db.patch(lobby._id, { pairedChatEndsAt });
     }
 
-    const results: Array<{ userId: Id<'users'>; agentId: string; chatId: Id<'userAgentChats'> }> = [];
+    const results: Array<{
+      userId: Id<'users'>;
+      agentId: string;
+      chatId: Id<'userAgentChats'>;
+      agentName?: string;
+      agentCharacter?: string;
+    }> = [];
 
     for (const participant of participants) {
       await ctx.db.patch(participant._id, {
@@ -71,18 +83,22 @@ export const startPairedChatSession = internalMutation({
       const agentDoc = worldAgents[agentIndex % worldAgents.length];
       agentIndex += 1;
       const agentId = agentDoc.id;
+      const agentPlayerDescription = descriptionsByPlayerId.get(agentDoc.playerId);
+      const agentPlayer = worldPlayers.find((player) => player.id === agentDoc.playerId);
+      const agentName = agentPlayerDescription?.name ?? agentPlayer?.human ?? agentId;
+      const agentCharacter = agentPlayerDescription?.character;
 
       const chatId = await ctx.runMutation(api.users.createOrGetChat, {
         userId: participant.userId,
         agentId,
-        worldId: lobby.worldId,
+        worldId,
       });
 
       const worldPlayer = worldPlayers.find((player) => player.human === participant.userId);
       const playerGameId = worldPlayer?.id;
       if (playerGameId) {
         await ctx.runMutation(api.aiTown.main.sendInput, {
-          worldId: lobby.worldId,
+          worldId,
           name: 'setMovementLock',
           args: {
             playerId: playerGameId as any,
@@ -97,6 +113,8 @@ export const startPairedChatSession = internalMutation({
           chatId,
           playerGameId: playerGameId ?? existingAssignment.playerGameId,
           movementLockUntil: pairedChatEndsAt,
+          agentName,
+          agentCharacter,
           assignedAt: Date.now(),
         });
       } else {
@@ -107,11 +125,13 @@ export const startPairedChatSession = internalMutation({
           chatId,
           playerGameId: playerGameId ?? undefined,
           movementLockUntil: pairedChatEndsAt,
+          agentName,
+          agentCharacter,
           assignedAt: Date.now(),
         });
       }
 
-      results.push({ userId: participant.userId, agentId, chatId });
+      results.push({ userId: participant.userId, agentId, chatId, agentName, agentCharacter });
     }
 
     return {
@@ -284,6 +304,8 @@ export const userSessionState = query({
             agentId: assignment.agentId,
             chatId: assignment.chatId ?? null,
             movementLockUntil: assignment.movementLockUntil ?? null,
+            agentName: assignment.agentName ?? null,
+            agentCharacter: assignment.agentCharacter ?? null,
           }
         : null,
     };

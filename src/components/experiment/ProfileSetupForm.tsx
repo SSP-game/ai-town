@@ -3,6 +3,7 @@ import { useMutation } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
 import { Id } from '../../../convex/_generated/dataModel';
 import { characters } from '../../../data/characters';
+import AvatarPreview from '../AvatarPreview';
 import { toast } from 'react-toastify';
 
 type GenderOption = 'male' | 'female' | 'other' | 'prefer_not_to_say';
@@ -142,19 +143,30 @@ export default function ProfileSetupForm({ userId, profile, onComplete }: Profil
               />
             </div>
             <div>
-              <label className="block text-brown-200 text-sm font-semibold mb-2">Avatar</label>
-              <select
-                name="avatar"
-                value={formState.avatar}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-brown-600 rounded bg-brown-700 text-brown-100 focus:outline-none focus:border-brown-400"
-              >
-                {characters.map((character) => (
-                  <option key={character.name} value={character.name}>
-                    {character.name.toUpperCase()}
-                  </option>
-                ))}
-              </select>
+              <label className="block text-brown-200 text-sm font-semibold mb-2">Choose your avatar</label>
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+                {characters.map((characterOption) => {
+                  const isSelected = formState.avatar === characterOption.name;
+                  return (
+                    <button
+                      key={characterOption.name}
+                      type="button"
+                      onClick={() =>
+                        setFormState((prev) => ({
+                          ...prev,
+                          avatar: characterOption.name,
+                        }))
+                      }
+                      className={`flex flex-col items-center gap-1 rounded-lg border-2 px-2 py-2 transition ${isSelected ? 'border-yellow-400 bg-yellow-200 text-brown-900' : 'border-brown-600 bg-brown-900/60 text-brown-200 hover:border-brown-400'}`}
+                    >
+                      <AvatarPreview character={characterOption.name} size={64} className="rounded" />
+                      <span className="text-xs font-semibold tracking-wide">
+                        {characterOption.name.toUpperCase()}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 

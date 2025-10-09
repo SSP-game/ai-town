@@ -152,6 +152,8 @@ export default defineSchema({
     chatId: v.optional(v.id('userAgentChats')),
     playerGameId: v.optional(v.string()),
     movementLockUntil: v.optional(v.number()),
+    agentName: v.optional(v.string()),
+    agentCharacter: v.optional(v.string()),
     assignedAt: v.number(),
   })
     .index('bySession', ['sessionId'])

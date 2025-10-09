@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Game from '../Game';
 import CompanionChat from '../CompanionChat';
 import { Id } from '../../../convex/_generated/dataModel';
+import AvatarPreview from '../AvatarPreview';
 
 interface SessionViewProps {
   userId: Id<'users'>;
@@ -11,6 +12,8 @@ interface SessionViewProps {
     agentId: string;
     chatId: Id<'userAgentChats'> | null;
     movementLockUntil: number | null;
+    agentName?: string | null;
+    agentCharacter?: string | null;
   } | null;
   pairedChatEndsAt?: number | null;
 }
@@ -44,8 +47,18 @@ export default function SessionView({
 
   const movementLocked = phase === 'paired_chat';
 
+  const partnerName = assignment?.agentName ?? assignment?.agentId ?? 'Companion';
+  const partnerCharacter = assignment?.agentCharacter ?? 'f1';
+
   const chatPanel = assignment ? (
     <div className="flex flex-col h-full">
+      <div className="flex items-center gap-3 rounded-lg border border-brown-700 bg-brown-900/50 px-3 py-3 mb-4">
+        <AvatarPreview character={partnerCharacter} size={56} className="rounded border border-brown-700 bg-brown-800" />
+        <div>
+          <p className="text-lg font-display text-brown-100">{partnerName}</p>
+          <p className="text-xs uppercase tracking-wide text-brown-300">AI Companion</p>
+        </div>
+      </div>
       {phase === 'paired_chat' && (
         <div className="mb-4 bg-brown-900/50 border border-brown-700 rounded p-3 text-center text-sm text-brown-200">
           <p className="uppercase tracking-wide text-brown-300 text-xs">Paired chat underway</p>
@@ -58,7 +71,7 @@ export default function SessionView({
       {assignment.chatId ? (
         <CompanionChat
           agentId={assignment.agentId}
-          agentName={assignment.agentId.toUpperCase()}
+          agentName={partnerName}
           userId={userId}
           worldId={worldId}
         />

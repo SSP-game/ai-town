@@ -15,7 +15,7 @@ interface AuthPageProps {
 }
 
 export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
