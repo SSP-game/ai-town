@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Roster Widget</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useRef } = React;
+        
+        // Mock data for testing
+        const mockGame = {
+            world: {
+                agents: new Map([
+                    ['agent1', { id: 'agent1', playerId: 'player1' }]
+                ]),
+                players: new Map([
+                    ['player1', { id: 'player1', human: false }],
+                    ['player2', { id: 'player2', human: true }]
+                ])
+            },
+            playerDescriptions: new Map([
+                ['player1', { name: 'AI Agent 1', character: 'f1' }],
+                ['player2', { name: 'Human Player', character: 'f2' }]
+            ])
+        };
+
+        const characters = [
+            { name: 'f1', textureUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==' },
+            { name: 'f2', textureUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==' }
+        ];
+
+        function RosterAvatar({ characterName }) {
+            const canvasRef = useRef(null);
+
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                const character = characterName
+                    ? characters.find((c) => c.name === characterName)
+                    : undefined;
+
+                if (!character) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    return;
+                }
+
+                ctx.fillStyle = '#4F46E5';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'white';
+                ctx.font = '20px Arial';
+                ctx.fillText(characterName || '?', 10, 30);
+            }, [characterName]);
+
+            return (
+                <canvas
+                    ref={canvasRef}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12"
+                    style={{ imageRendering: 'pixelated' }}
+                />
+            );
+        }
+
+        function MapRosterWidget({ game }) {
+            const [isCollapsed, setIsCollapsed] = useState(false);
+            
+            const entries = useMemo(() => {
+                const list = [];
+                const agentByPlayerId = new Map();
+
+                for (const agent of game.world.agents.values()) {
+                    agentByPlayerId.set(agent.playerId, agent);
+                }
+
+                for (const player of game.world.players.values()) {
+                    const agent = agentByPlayerId.get(player.id);
+                    const playerDescription = game.playerDescriptions.get(player.id);
+                    const characterName = playerDescription?.character;
+
+                    const name = playerDescription?.name || 
+                        (agent ? `Agent ${agent.id}` : `Player ${player.id.slice(-4)}`);
+
+                    const kind = agent ? 'agent' : player.human ? 'player' : 'other';
+
+                    list.push({
+                        key: agent ? `agent-${agent.id}` : `player-${player.id}`,
+                        name,
+                        characterName,
+                        kind,
+                    });
+                }
+
+                return list;
+            }, [game]);
+
+            if (entries.length === 0) {
+                return null;
+            }
+
+            return (
+                <div className="pointer-events-none absolute left-4 top-4 z-30">
+                    <div className="pointer-events-auto flex w-64 max-w-[18rem] flex-col gap-2 rounded-xl border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur">
+                        <div 
+                            className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-white/70 cursor-pointer hover:text-white/90 transition-colors"
+                            onClick={() => setIsCollapsed(!isCollapsed)}
+                        >
+                            <span>On the Map · {entries.length}</span>
+                            <span className="text-lg">{isCollapsed ? '▶' : '▼'}</span>
+                        </div>
+                        {!isCollapsed && (
+                            <div className="flex flex-wrap gap-2 animate-in slide-in-from-top-1 duration-200">
+                                {entries.map(({ key, name, characterName, kind }) => (
+                                    <div
+                                        key={key}
+                                        className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
+                                    >
+                                        <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30">
+                                            <RosterAvatar characterName={characterName} />
+                                        </div>
+                                        <div className="flex min-w-0 flex-col">
+                                            <span className="truncate text-sm font-semibold">{name}</span>
+                                            <span className="text-[10px] uppercase tracking-wider text-white/60">
+                                                {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div className="relative w-full h-screen bg-gradient-to-br from-blue-900 to-purple-900">
+                    <div className="absolute inset-0 flex items-center justify-center text-white text-2xl">
+                        Game World Background
+                    </div>
+                    <MapRosterWidget game={mockGame} />
+                    <div className="absolute bottom-4 left-4 text-white text-sm">
+                        Click the header "On the Map" to toggle collapse/expand
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

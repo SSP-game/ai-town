@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Descriptions, characters } from '../../data/characters';
 import type { GameId } from '../../convex/aiTown/ids';
 import type { ServerGame } from '../hooks/serverGame';
@@ -107,6 +107,7 @@ const typePriority: Record<CharacterKind, number> = {
 };
 
 export default function MapRosterWidget({ game }: { game: ServerGame }) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const entries: RosterEntry[] = useMemo(() => {
     const list: RosterEntry[] = [];
     const agentByPlayerId = new Map<GameId<'players'>, Agent>();
@@ -159,27 +160,33 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
   return (
     <div className="pointer-events-none absolute left-4 top-4 z-30">
       <div className="pointer-events-auto flex w-64 max-w-[18rem] flex-col gap-2 rounded-xl border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur">
-        <div className="text-xs font-semibold uppercase tracking-wide text-white/70">
-          On the Map · {entries.length}
+        <div 
+          className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-white/70 cursor-pointer hover:text-white/90 transition-colors"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          <span>On the Map · {entries.length}</span>
+          <span className="text-lg">{isCollapsed ? '▶' : '▼'}</span>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {entries.map(({ key, name, characterName, kind }) => (
-            <div
-              key={key}
-              className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
-            >
-              <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30">
-                <RosterAvatar characterName={characterName} />
+        {!isCollapsed && (
+          <div className="flex flex-wrap gap-2 animate-in slide-in-from-top-1 duration-200">
+            {entries.map(({ key, name, characterName, kind }) => (
+              <div
+                key={key}
+                className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
+              >
+                <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30">
+                  <RosterAvatar characterName={characterName} />
+                </div>
+                <div className="flex min-w-0 flex-col">
+                  <span className="truncate text-sm font-semibold">{name}</span>
+                  <span className="text-[10px] uppercase tracking-wider text-white/60">
+                    {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
+                  </span>
+                </div>
               </div>
-              <div className="flex min-w-0 flex-col">
-                <span className="truncate text-sm font-semibold">{name}</span>
-                <span className="text-[10px] uppercase tracking-wider text-white/60">
-                  {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
