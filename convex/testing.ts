@@ -9,7 +9,7 @@ import {
 } from './_generated/server';
 import { v } from 'convex/values';
 import schema from './schema';
-import { DELETE_BATCH_SIZE } from './constants';
+import { DELETE_BATCH_SIZE, AGENT_FENCE_BOUNDS } from './constants';
 import { kickEngine, startEngine, stopEngine } from './aiTown/main';
 import { insertInput } from './aiTown/insertInput';
 import { fetchEmbedding } from './util/llm';
@@ -198,5 +198,103 @@ export const testConvo = internalAction({
       'p:6' as GameId<'players'>,
     )) as any;
     return await a.readAll();
+  },
+});
+
+export const checkAgentPositions = query({
+  handler: async (ctx) => {
+    const { worldStatus } = await getDefaultWorld(ctx.db);
+    const world = await ctx.db.get(worldStatus.worldId);
+    if (!world) {
+      return { error: 'No world found' };
+    }
+
+    const result = {
+      fenceBounds: AGENT_FENCE_BOUNDS,
+      players: [] as any[],
+      agentsInFence: 0,
+      agentsOutOfFence: 0,
+      humansInFence: 0,
+      humansOutOfFence: 0,
+    };
+
+    for (const player of world.players) {
+      const x = Math.floor(player.position.x);
+      const y = Math.floor(player.position.y);
+      const inFence =
+        x >= AGENT_FENCE_BOUNDS.minX &&
+        x <= AGENT_FENCE_BOUNDS.maxX &&
+        y >= AGENT_FENCE_BOUNDS.minY &&
+        y <= AGENT_FENCE_BOUNDS.maxY;
+
+      const isAgent = !player.human;
+
+      result.players.push({
+        id: player.id,
+        isAgent,
+        position: { x: player.position.x, y: player.position.y },
+        rounded: { x, y },
+        inFence,
+        destination: player.pathfinding?.destination,
+      });
+
+      if (isAgent) {
+        if (inFence) result.agentsInFence++;
+        else result.agentsOutOfFence++;
+      } else {
+        if (inFence) result.humansInFence++;
+        else result.humansOutOfFence++;
+      }
+    }
+
+    return result;
+  },
+});
+
+export const debugFenceArea = query({
+  handler: async (ctx) => {
+    const { worldStatus } = await getDefaultWorld(ctx.db);
+    const map = await ctx.db
+      .query('maps')
+      .withIndex('worldId', (q) => q.eq('worldId', worldStatus.worldId))
+      .unique();
+    if (!map) {
+      return { error: 'No map found' };
+    }
+
+    const blocked = [];
+    const free = [];
+
+    // Check a sample of positions in the fence area
+    for (let x = AGENT_FENCE_BOUNDS.minX; x <= AGENT_FENCE_BOUNDS.maxX; x += 2) {
+      for (let y = AGENT_FENCE_BOUNDS.minY; y <= AGENT_FENCE_BOUNDS.maxY; y += 2) {
+        let isBlocked = false;
+        let reason = '';
+
+        // Check object tiles
+        for (const layer of map.objectTiles) {
+          if (layer[x] && layer[x][y] !== -1) {
+            isBlocked = true;
+            reason = 'object tile: ' + layer[x][y];
+            break;
+          }
+        }
+
+        if (isBlocked) {
+          blocked.push({ x, y, reason });
+        } else {
+          free.push({ x, y });
+        }
+      }
+    }
+
+    return {
+      fenceBounds: AGENT_FENCE_BOUNDS,
+      mapSize: { width: map.width, height: map.height },
+      blocked,
+      free,
+      blockedCount: blocked.length,
+      freeCount: free.length,
+    };
   },
 });

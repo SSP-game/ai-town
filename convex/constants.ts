@@ -81,3 +81,14 @@ export const ENGINE_ACTION_DURATION = 30000;
 export const MAX_PATHFINDS_PER_STEP = 16;
 
 export const DEFAULT_NAME = 'Me';
+
+// Electronic fence for agents - tent area in upper right corner
+export const AGENT_FENCE_BOUNDS = {
+  // Define the tent area where agents are allowed to move
+  // Map dimensions: 64x48 tiles (indices 0-63, 0-47)
+ minX: 32,
+  maxX: 56,
+  minY: 0,
+  maxY: 17,
+
+};

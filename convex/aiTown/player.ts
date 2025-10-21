@@ -8,6 +8,7 @@ import {
   HUMAN_IDLE_TOO_LONG,
   MAX_HUMAN_PLAYERS,
   MAX_PATHFINDS_PER_STEP,
+  AGENT_FENCE_BOUNDS,
 } from '../constants';
 import { pointsEqual, pathPosition } from '../util/geometry';
 import { Game } from './game';
@@ -172,6 +173,7 @@ export class Player {
     character: string,
     description: string,
     tokenIdentifier?: string,
+    isAgent?: boolean,
   ) {
     if (tokenIdentifier) {
       let numHumans = 0;
@@ -189,10 +191,12 @@ export class Player {
     }
     let position;
     for (let attempt = 0; attempt < 10; attempt++) {
+      // Both agents and humans spawn within the fence bounds
       const candidate = {
-        x: Math.floor(Math.random() * game.worldMap.width),
-        y: Math.floor(Math.random() * game.worldMap.height),
+        x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
+        y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
       };
+
       if (blocked(game, now, candidate)) {
         continue;
       }

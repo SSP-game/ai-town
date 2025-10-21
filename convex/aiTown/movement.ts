@@ -1,5 +1,5 @@
 import { movementSpeed } from '../../data/characters';
-import { COLLISION_THRESHOLD } from '../constants';
+import { COLLISION_THRESHOLD, AGENT_FENCE_BOUNDS } from '../constants';
 import { compressPath, distance, manhattanDistance, pointsEqual } from '../util/geometry';
 import { MinHeap } from '../util/minheap';
 import { Point, Vector } from '../util/types';
@@ -33,6 +33,10 @@ export function movePlayer(
     throw new Error(`Non-integral destination: ${JSON.stringify(destination)}`);
   }
   const { position } = player;
+
+  // Debug: log move request
+  console.log(`Move request: player ${player.id} from (${Math.floor(position.x)},${Math.floor(position.y)}) to (${destination.x},${destination.y}), human=${player.human}`);
+
   // Close enough to current position or destination => no-op.
   if (pointsEqual(position, destination)) {
     return;
@@ -165,10 +169,10 @@ export function blocked(game: Game, now: number, pos: Point, playerId?: GameId<'
   const otherPositions = [...game.world.players.values()]
     .filter((p) => p.id !== playerId)
     .map((p) => p.position);
-  return blockedWithPositions(pos, otherPositions, game.worldMap);
+  return blockedWithPositions(pos, otherPositions, game.worldMap, game, playerId);
 }
 
-export function blockedWithPositions(position: Point, otherPositions: Point[], map: WorldMap) {
+export function blockedWithPositions(position: Point, otherPositions: Point[], map: WorldMap, game?: Game, playerId?: GameId<'players'>) {
   if (isNaN(position.x) || isNaN(position.y)) {
     throw new Error(`NaN position in ${JSON.stringify(position)}`);
   }
@@ -185,5 +189,21 @@ export function blockedWithPositions(position: Point, otherPositions: Point[], m
       return 'player';
     }
   }
+  
+  // Electronic fence: check if any player is trying to leave the designated area
+  if (game && playerId) {
+    const player = game.world.players.get(playerId);
+    if (player) {
+      // Check if position is within fence bounds (applies to both agents and humans)
+      const x = Math.floor(position.x);
+      const y = Math.floor(position.y);
+
+      if (x < AGENT_FENCE_BOUNDS.minX || x > AGENT_FENCE_BOUNDS.maxX ||
+          y < AGENT_FENCE_BOUNDS.minY || y > AGENT_FENCE_BOUNDS.maxY) {
+        return 'fence violation';
+      }
+    }
+  }
+
   return null;
 }

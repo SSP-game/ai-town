@@ -12,6 +12,7 @@ import { useSendInput } from '../hooks/sendInput.ts';
 import { toastOnError } from '../toasts.ts';
 import { DebugPath } from './DebugPath.tsx';
 import { PositionIndicator } from './PositionIndicator.tsx';
+import { AgentFence } from './AgentFence.tsx';
 import { SHOW_DEBUG_UI } from './Game.tsx';
 import { ServerGame } from '../hooks/serverGame.ts';
 
@@ -52,21 +53,25 @@ export const PixiGame = (props: {
     t: number;
   } | null>(null);
   const onMapPointerUp = async (e: any) => {
+    console.log('[Click] Map clicked');
     if (dragStart.current) {
       const { screenX, screenY } = dragStart.current;
       dragStart.current = null;
       const [dx, dy] = [screenX - e.screenX, screenY - e.screenY];
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist > 10) {
-        console.log(`Skipping navigation on drag event (${dist}px)`);
+        console.log(`[Click] Skipping navigation on drag event (${dist}px)`);
         return;
       }
     }
+    console.log('[Click] humanPlayerId:', humanPlayerId);
     if (!humanPlayerId) {
+      console.log('[Click] No human player ID, skipping');
       return;
     }
     const viewport = viewportRef.current;
     if (!viewport) {
+      console.log('[Click] No viewport, skipping');
       return;
     }
     const gameSpacePx = viewport.toWorld(e.screenX, e.screenY);
@@ -80,7 +85,7 @@ export const PixiGame = (props: {
       x: Math.floor(gameSpaceTiles.x),
       y: Math.floor(gameSpaceTiles.y),
     };
-    console.log(`Moving to ${JSON.stringify(roundedTiles)}`);
+    console.log(`[Click] Moving to ${JSON.stringify(roundedTiles)}`);
     await toastOnError(moveTo({ playerId: humanPlayerId, destination: roundedTiles }));
   };
   const { width, height, tileDim } = props.game.worldMap;
@@ -111,6 +116,7 @@ export const PixiGame = (props: {
         onpointerup={onMapPointerUp}
         onpointerdown={onMapPointerDown}
       />
+      {SHOW_DEBUG_UI && <AgentFence tileDim={tileDim} mapWidth={width} mapHeight={height} />}
       {players.map(
         (p) =>
           // Only show the path for the human player in non-debug mode.

@@ -149,6 +149,8 @@ export const agentInputs = {
         description.name,
         description.character,
         description.identity,
+        undefined,
+        true, // isAgent = true
       );
       const agentId = game.allocId('agents');
       game.world.agents.set(

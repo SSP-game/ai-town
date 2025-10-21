@@ -11,7 +11,7 @@ import {
 import { buildGroupConversationPrompt } from '../agent/promptBuilder';
 import { assertNever } from '../util/assertNever';
 import { serializedAgent } from './agent';
-import { ACTIVITIES, ACTIVITY_COOLDOWN, CONVERSATION_COOLDOWN } from '../constants';
+import { ACTIVITIES, ACTIVITY_COOLDOWN, CONVERSATION_COOLDOWN, AGENT_FENCE_BOUNDS } from '../constants';
 import { api, internal } from '../_generated/api';
 import { sleep } from '../util/sleep';
 import { serializedPlayer } from './player';
@@ -234,9 +234,31 @@ export const agentDoSomething = internalAction({
 });
 
 function wanderDestination(worldMap: WorldMap) {
-  // Wander someonewhere at least one tile away from the edge.
+  // Generate wander destination within agent fence bounds
+  // Try multiple times to find a non-blocked position
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const candidate = {
+      x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
+      y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
+    };
+
+    // Check if this position is blocked by object tiles
+    let isBlocked = false;
+    for (const layer of worldMap.objectTiles) {
+      if (layer[candidate.x]?.[candidate.y] !== -1) {
+        isBlocked = true;
+        break;
+      }
+    }
+
+    if (!isBlocked) {
+      return candidate;
+    }
+  }
+
+  // Fallback: return a position even if blocked (pathfinding will handle it)
   return {
-    x: 1 + Math.floor(Math.random() * (worldMap.width - 2)),
-    y: 1 + Math.floor(Math.random() * (worldMap.height - 2)),
+    x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
+    y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
   };
 }

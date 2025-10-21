@@ -8,6 +8,7 @@ import {
   ENGINE_ACTION_DURATION,
   IDLE_WORLD_TIMEOUT,
   WORLD_HEARTBEAT_INTERVAL,
+  AGENT_FENCE_BOUNDS,
 } from './constants';
 import { playerId } from './aiTown/ids';
 import { kickEngine, startEngine, stopEngine } from './aiTown/main';
@@ -20,6 +21,15 @@ export const defaultWorldStatus = query({
       .filter((q) => q.eq(q.field('isDefault'), true))
       .first();
     return worldStatus;
+  },
+});
+
+export const getConstants = query({
+  args: {},
+  handler: async () => {
+    return {
+      AGENT_FENCE_BOUNDS,
+    };
   },
 });
 
