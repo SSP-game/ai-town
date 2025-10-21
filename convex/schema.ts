@@ -23,6 +23,7 @@ export default defineSchema({
     avatar: v.optional(v.string()), // URL or storage ID for avatar image
 
     // Account management
+    experimentConsent: v.optional(v.boolean()),
     isActive: v.boolean(),
     createdAt: v.number(),
     lastLoginAt: v.optional(v.number()),
