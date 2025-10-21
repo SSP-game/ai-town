@@ -2,7 +2,7 @@ import Button from './Button';
 import gameViewImg from '../../../assets/help.svg'; // 临时使用help图标，你可以替换为更合适的图标
 import agentsListImg from '../../../assets/star.svg'; // 临时使用star图标，你可以替换为更合适的图标
 
-export type ViewMode = 'game' | 'agents' | 'companion';
+export type ViewMode = 'game' | 'agents' | 'companion' | 'survey';
 
 interface ViewToggleButtonProps {
   currentView: ViewMode;
@@ -23,6 +23,18 @@ export default function ViewToggleButton({ currentView, onToggleView, onShowComp
       if (onShowCompanionModal) {
         onShowCompanionModal();
       }
+    }
+  };
+
+  const handleSurveyClick = () => {
+    const userId = localStorage.getItem('userId');
+
+    if (userId) {
+      // User is logged in, show survey
+      onToggleView('survey');
+    } else {
+      // User needs to login first
+      alert('Please login first to take the survey');
     }
   };
 
@@ -48,6 +60,13 @@ export default function ViewToggleButton({ currentView, onToggleView, onShowComp
         className={currentView === 'companion' ? 'bg-blue-600' : ''}
       >
         Companion
+      </Button>
+      <Button
+        imgUrl={gameViewImg}
+        onClick={handleSurveyClick}
+        className={currentView === 'survey' ? 'bg-green-600' : ''}
+      >
+        Survey
       </Button>
     </div>
   );

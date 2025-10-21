@@ -1,5 +1,6 @@
 import Game from './components/Game.tsx';
 import AgentsListView from './components/AgentsListView.tsx';
+import SurveyView from './components/SurveyView.tsx';
 
 import { ToastContainer } from 'react-toastify';
 import a16zImg from '../assets/a16z.png';
@@ -182,6 +183,10 @@ export default function Home() {
             worldId && <AgentsListView worldId={worldId} />
           ) : currentView === 'companion' ? (
             worldId && <CompanionPageView worldId={worldId} />
+          ) : currentView === 'survey' ? (
+            currentUser && (
+              <SurveyView userId={currentUser.userId} onComplete={() => setCurrentView('game')} />
+            )
           ) : null}
         </div>
 

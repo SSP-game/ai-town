@@ -1,0 +1,161 @@
+{
+  "title": "Psychological Well-being Survey",
+  "description": "This survey helps us understand your current mental and emotional state. Your responses are confidential and will be used for research purposes only.",
+  "sections": [
+    {
+      "id": "mood_emotions",
+      "title": "Mood & Emotions",
+      "color": "blue",
+      "questions": [
+        {
+          "id": "currentMood",
+          "type": "scale",
+          "label": "How would you describe your current mood?",
+          "description": "Rate your overall mood right now",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "Very Sad",
+          "highLabel": "Very Happy",
+          "defaultValue": 3
+        },
+        {
+          "id": "stressLevel",
+          "type": "scale",
+          "label": "How stressed do you feel?",
+          "description": "Rate your current stress level",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "No Stress",
+          "highLabel": "Extremely Stressed",
+          "defaultValue": 3
+        },
+        {
+          "id": "anxietyLevel",
+          "type": "scale",
+          "label": "How anxious do you feel?",
+          "description": "Rate your current anxiety level",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "No Anxiety",
+          "highLabel": "Extremely Anxious",
+          "defaultValue": 3
+        },
+        {
+          "id": "energyLevel",
+          "type": "scale",
+          "label": "How energetic do you feel?",
+          "description": "Rate your current energy level",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "Very Tired",
+          "highLabel": "Very Energetic",
+          "defaultValue": 3
+        }
+      ]
+    },
+    {
+      "id": "social_tendencies",
+      "title": "Social Tendencies",
+      "color": "green",
+      "questions": [
+        {
+          "id": "socialPreference",
+          "type": "choice",
+          "label": "How would you describe yourself socially?",
+          "description": "Choose the option that best describes you",
+          "required": true,
+          "options": [
+            { "value": "introvert", "label": "Introvert" },
+            { "value": "ambivert", "label": "Ambivert" },
+            { "value": "extrovert", "label": "Extrovert" }
+          ],
+          "defaultValue": "ambivert"
+        },
+        {
+          "id": "socialAnxiety",
+          "type": "scale",
+          "label": "How anxious do you feel in social situations?",
+          "description": "Rate your comfort level when interacting with others",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "Very Comfortable",
+          "highLabel": "Very Anxious",
+          "defaultValue": 3
+        }
+      ]
+    },
+    {
+      "id": "life_satisfaction",
+      "title": "Life Satisfaction",
+      "color": "purple",
+      "questions": [
+        {
+          "id": "lifeSatisfaction",
+          "type": "scale",
+          "label": "How satisfied are you with your life?",
+          "description": "Rate your overall life satisfaction",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "Very Dissatisfied",
+          "highLabel": "Very Satisfied",
+          "defaultValue": 3
+        },
+        {
+          "id": "sleepQuality",
+          "type": "scale",
+          "label": "How would you rate your sleep quality?",
+          "description": "Rate the quality of your sleep over the past week",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "lowLabel": "Very Poor",
+          "highLabel": "Very Good",
+          "defaultValue": 3
+        }
+      ]
+    },
+    {
+      "id": "reflections",
+      "title": "Reflections (Optional)",
+      "color": "yellow",
+      "questions": [
+        {
+          "id": "recentChallenges",
+          "type": "text",
+          "label": "What challenges have you faced recently?",
+          "description": "",
+          "required": false,
+          "multiline": true,
+          "rows": 3,
+          "placeholder": "Share any recent difficulties or obstacles..."
+        },
+        {
+          "id": "positiveExperiences",
+          "type": "text",
+          "label": "What positive experiences have you had recently?",
+          "description": "",
+          "required": false,
+          "multiline": true,
+          "rows": 3,
+          "placeholder": "Share any positive moments or achievements..."
+        },
+        {
+          "id": "futureGoals",
+          "type": "text",
+          "label": "What are your goals for the near future?",
+          "description": "",
+          "required": false,
+          "multiline": true,
+          "rows": 3,
+          "placeholder": "Share your aspirations and goals..."
+        }
+      ]
+    }
+  ]
+}

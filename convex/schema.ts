@@ -66,6 +66,35 @@ export default defineSchema({
     .index('conversationId', ['worldId', 'conversationId'])
     .index('messageUuid', ['conversationId', 'messageUuid']),
 
+  // Psychological surveys
+  surveys: defineTable({
+    userId: v.id('users'),
+    answers: v.object({
+      // Mood and emotions (1-5 scale)
+      currentMood: v.number(), // 1=Very sad, 5=Very happy
+      stressLevel: v.number(), // 1=No stress, 5=Extremely stressed
+      anxietyLevel: v.number(), // 1=No anxiety, 5=Extremely anxious
+      energyLevel: v.number(), // 1=Very tired, 5=Very energetic
+
+      // Social tendencies
+      socialPreference: v.string(), // "introvert", "extrovert", "ambivert"
+      socialAnxiety: v.number(), // 1=No anxiety, 5=Severe anxiety
+
+      // Life satisfaction
+      lifeSatisfaction: v.number(), // 1=Very dissatisfied, 5=Very satisfied
+      sleepQuality: v.number(), // 1=Very poor, 5=Very good
+
+      // Open-ended responses
+      recentChallenges: v.optional(v.string()),
+      positiveExperiences: v.optional(v.string()),
+      futureGoals: v.optional(v.string()),
+    }),
+    completedAt: v.number(),
+    createdAt: v.number(),
+  })
+    .index('userId', ['userId'])
+    .index('completedAt', ['completedAt']),
+
   ...agentTables,
   ...aiTownTables,
   ...engineTables,
