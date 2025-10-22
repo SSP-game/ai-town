@@ -19,6 +19,7 @@ export default defineSchema({
     lastName: v.optional(v.string()),
     dateOfBirth: v.optional(v.string()), // YYYY-MM-DD format
     gender: v.optional(v.union(v.literal('male'), v.literal('female'), v.literal('other'), v.literal('prefer_not_to_say'))),
+    mbti: v.optional(v.string()), // MBTI personality type (e.g., INTJ, ENFP, etc.)
     bio: v.optional(v.string()),
     avatar: v.optional(v.string()), // URL or storage ID for avatar image
 

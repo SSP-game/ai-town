@@ -2,7 +2,7 @@ import Button from './Button';
 import gameViewImg from '../../../assets/help.svg'; // 临时使用help图标，你可以替换为更合适的图标
 import agentsListImg from '../../../assets/star.svg'; // 临时使用star图标，你可以替换为更合适的图标
 
-export type ViewMode = 'game' | 'agents' | 'companion' | 'survey';
+export type ViewMode = 'game' | 'agents' | 'companion' | 'survey' | 'settings';
 
 interface ViewToggleButtonProps {
   currentView: ViewMode;

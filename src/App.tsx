@@ -1,6 +1,7 @@
 import Game from './components/Game.tsx';
 import AgentsListView from './components/AgentsListView.tsx';
 import SurveyView from './components/SurveyView.tsx';
+import UserSettingsView from './components/UserSettingsView.tsx';
 
 import { ToastContainer } from 'react-toastify';
 import a16zImg from '../assets/a16z.png';
@@ -187,6 +188,14 @@ export default function Home() {
             currentUser && (
               <SurveyView userId={currentUser.userId} onComplete={() => setCurrentView('game')} />
             )
+          ) : currentView === 'settings' ? (
+            currentUser && (
+              <UserSettingsView
+                userId={currentUser.userId}
+                onLogout={handleLogout}
+                onBack={() => setCurrentView('game')}
+              />
+            )
           ) : null}
         </div>
 
@@ -213,7 +222,10 @@ export default function Home() {
           {/* Right side - User management and branding */}
           <div className="flex items-center gap-2">
             {isLoggedIn && currentUser ? (
-              <UserManagement userId={currentUser.userId} onLogout={handleLogout} />
+              <UserManagement
+                userId={currentUser.userId}
+                onOpenSettings={() => setCurrentView('settings')}
+              />
             ) : (
               <Button imgUrl={helpImg} onClick={() => setLoginModalOpen(true)}>
                 Login

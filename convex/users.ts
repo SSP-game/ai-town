@@ -412,6 +412,7 @@ export const updateUserProfile = mutation({
       lastName: v.optional(v.string()),
       dateOfBirth: v.optional(v.string()),
       gender: v.optional(v.union(v.literal('male'), v.literal('female'), v.literal('other'), v.literal('prefer_not_to_say'))),
+      mbti: v.optional(v.string()),
       bio: v.optional(v.string()),
       nickname: v.optional(v.string()),
     }),
