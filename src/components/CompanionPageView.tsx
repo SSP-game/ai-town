@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useMutation } from 'convex/react';
+import { useMutation, useConvex, useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { Id } from '../../convex/_generated/dataModel';
 import { useServerGame } from '../hooks/serverGame';
@@ -8,6 +8,11 @@ import { Descriptions } from '../../data/characters';
 import CompanionChat from './CompanionChat';
 import closeImg from '../../assets/close.svg';
 import { toast } from 'react-toastify';
+import { Stage } from '@pixi/react';
+import { ConvexProvider } from 'convex/react';
+import { useElementSize } from 'usehooks-ts';
+import PixiGame from './PixiGame';
+import { useHistoricalTime } from '../hooks/useHistoricalTime';
 
 interface CompanionPageViewProps {
   worldId: Id<'worlds'>;
@@ -85,14 +90,53 @@ function CharacterAvatar({
   );
 }
 
+type TabType = 'profile' | 'map';
+
 export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   const game = useServerGame(worldId);
+  const convex = useConvex();
   const [userId, setUserId] = useState<Id<'users'> | null>(null);
   const [selectedCompanion, setSelectedCompanion] = useState<string | null>(null);
   const [showChat, setShowChat] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabType>('profile');
+  const [mapWrapperRef, { width, height }] = useElementSize();
 
   const updateCompanionMutation = useMutation(api.users.updateSelectedCompanion);
   const removeCompanionMutation = useMutation(api.users.removeSelectedCompanion);
+
+  const worldStatus = useQuery(api.world.defaultWorldStatus);
+  const engineId = worldStatus?.engineId;
+  const worldState = useQuery(api.world.worldState, worldId ? { worldId } : 'skip');
+  const { historicalTime } = useHistoricalTime(worldState?.engine);
+
+  // Get human player token identifier
+  const humanTokenIdentifier = useQuery(
+    api.world.userStatus,
+    worldId && userId ? { worldId, userId } : 'skip'
+  ) ?? null;
+
+  // Calculate filter player IDs for map view
+  const filterPlayerIds = (() => {
+    if (!selectedCompanion || !game) return [];
+
+    const ids = [];
+
+    // Get companion's player ID
+    const companionAgent = game.world.agents.get(selectedCompanion);
+    if (companionAgent?.playerId) {
+      ids.push(companionAgent.playerId);
+    }
+
+    // Get human player ID
+    const humanPlayerId = [...game.world.players.values()].find(
+      (p) => p.human === humanTokenIdentifier
+    )?.id;
+    if (humanPlayerId) {
+      ids.push(humanPlayerId);
+    }
+
+    return ids;
+  })();
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
@@ -171,12 +215,40 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
     };
   }
 
+  // Tab switching UI
+  const tabButtons = (
+    <div className="flex gap-2 mb-6">
+      <button
+        onClick={() => setActiveTab('profile')}
+        className={`flex-1 py-3 px-4 rounded-lg font-bold transition-colors ${
+          activeTab === 'profile'
+            ? 'bg-blue-600 text-white'
+            : 'bg-brown-700 text-brown-300 hover:bg-brown-600'
+        }`}
+      >
+        👤 Profile
+      </button>
+      <button
+        onClick={() => setActiveTab('map')}
+        className={`flex-1 py-3 px-4 rounded-lg font-bold transition-colors ${
+          activeTab === 'map'
+            ? 'bg-blue-600 text-white'
+            : 'bg-brown-700 text-brown-300 hover:bg-brown-600'
+        }`}
+      >
+        🗺️ Map
+      </button>
+    </div>
+  );
+
   // Companion selection content for left panel
   const companionSelectionContent = (
     <div className="h-full overflow-y-auto p-6">
       <h1 className="text-4xl font-bold text-brown-100 mb-8 text-center">My Companion</h1>
 
-      {selectedCompanion && companionInfo ? (
+      {selectedCompanion && tabButtons}
+
+      {selectedCompanion && companionInfo && activeTab === 'profile' ? (
         // Show selected companion in card form
         <div className="mb-8">
           <div className="bg-brown-700 rounded-lg p-8 border-4 border-brown-500 shadow-xl">
@@ -264,8 +336,32 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
             </div>
           </div>
         </div>
-      ) : (
-        // Show companion selection in card grid
+      ) : selectedCompanion && companionInfo && activeTab === 'map' ? (
+        // Show map view with companion and user only
+        !engineId ? (
+          <div className="text-center text-brown-300 py-8">Loading map...</div>
+        ) : (
+          <div ref={mapWrapperRef} className="w-full h-full relative">
+            <Stage width={width} height={height} options={{ backgroundColor: 0x7ab5ff }}>
+              <ConvexProvider client={convex}>
+                <PixiGame
+                  game={game}
+                  worldId={worldId}
+                  engineId={engineId}
+                  width={width}
+                  height={height}
+                  historicalTime={historicalTime}
+                  setSelectedElement={() => {}}
+                  filterPlayerIds={filterPlayerIds}
+                />
+              </ConvexProvider>
+            </Stage>
+          </div>
+        )
+      ) : null}
+
+      {!selectedCompanion && (
+        // Show companion selection when no companion is selected
         <div className="mb-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-brown-100 mb-2">Select Your Companion</h2>

@@ -24,6 +24,7 @@ export const PixiGame = (props: {
   width: number;
   height: number;
   setSelectedElement: SelectElement;
+  filterPlayerIds?: string[];
 }) => {
   // PIXI setup.
   const pixiApp = useApp();
@@ -89,7 +90,12 @@ export const PixiGame = (props: {
     await toastOnError(moveTo({ playerId: humanPlayerId, destination: roundedTiles }));
   };
   const { width, height, tileDim } = props.game.worldMap;
-  const players = [...props.game.world.players.values()];
+  let players = [...props.game.world.players.values()];
+
+  // Filter players if filterPlayerIds is provided
+  if (props.filterPlayerIds && props.filterPlayerIds.length > 0) {
+    players = players.filter(p => props.filterPlayerIds!.includes(p.id));
+  }
 
   // Zoom on the user’s avatar when it is created
   useEffect(() => {
