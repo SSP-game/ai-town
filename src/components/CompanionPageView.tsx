@@ -92,7 +92,7 @@ function CharacterAvatar({
   );
 }
 
-type TabType = 'profile' | 'map';
+type TabType = 'default' | 'map';
 
 export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   const game = useServerGame(worldId);
@@ -100,8 +100,9 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   const [userId, setUserId] = useState<Id<'users'> | null>(null);
   const [selectedCompanion, setSelectedCompanion] = useState<string | null>(null);
   const [showChat, setShowChat] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabType>('profile');
+  const [activeTab, setActiveTab] = useState<TabType>('map');
   const [isUserTyping, setIsUserTyping] = useState(false);
+  const [isCompanionTyping, setIsCompanionTyping] = useState(false);
   const [mapWrapperRef, { width, height }] = useElementSize();
 
   const updateCompanionMutation = useMutation(api.users.updateSelectedCompanion);
@@ -227,6 +228,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
       setSelectedCompanion(agentId);
       localStorage.setItem('selectedCompanion', agentId);
       setShowChat(true);
+      setActiveTab('default'); // Reset to default tab to show chat immediately
       toast.success(`${agentName} is now your companion!`);
     } catch (error: any) {
       toast.error(error.message || 'Failed to select companion');
@@ -267,128 +269,13 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
     };
   }
 
-  // Tab switching UI
-  const tabButtons = (
-    <div className="flex gap-2 mb-6">
-      <button
-        onClick={() => setActiveTab('profile')}
-        className={`flex-1 py-3 px-4 rounded-lg font-bold transition-colors ${
-          activeTab === 'profile'
-            ? 'bg-blue-600 text-white'
-            : 'bg-brown-700 text-brown-300 hover:bg-brown-600'
-        }`}
-      >
-        👤 Profile
-      </button>
-      <button
-        onClick={() => setActiveTab('map')}
-        className={`flex-1 py-3 px-4 rounded-lg font-bold transition-colors ${
-          activeTab === 'map'
-            ? 'bg-blue-600 text-white'
-            : 'bg-brown-700 text-brown-300 hover:bg-brown-600'
-        }`}
-      >
-        🗺️ Map
-      </button>
-    </div>
-  );
-
+  
   // Companion selection content for left panel
   const companionSelectionContent = (
     <div className="h-full overflow-y-auto p-6">
       <h1 className="text-4xl font-bold text-brown-100 mb-8 text-center">My Companion</h1>
 
-      {selectedCompanion && tabButtons}
-
-      {selectedCompanion && companionInfo && activeTab === 'profile' ? (
-        // Show selected companion in card form
-        <div className="mb-8">
-          <div className="bg-brown-700 rounded-lg p-8 border-4 border-brown-500 shadow-xl">
-            {/* Character Avatar */}
-            <div className="flex justify-center mb-6">
-              <div className="w-32 h-32 bg-brown-600 rounded-full flex items-center justify-center overflow-hidden border-4 border-brown-500 shadow-lg">
-                {companionInfo.character?.textureUrl ? (
-                  <CharacterAvatar
-                    character={companionInfo.character}
-                    characterName={companionInfo.characterName || 'f1'}
-                  />
-                ) : (
-                  <div className="text-4xl text-brown-300">🤖</div>
-                )}
-              </div>
-            </div>
-
-            {/* Character Name */}
-            <h2 className="text-3xl font-bold text-brown-100 text-center mb-2">
-              {companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
-            </h2>
-
-            {/* Companion Badge */}
-            <div className="flex justify-center mb-6">
-              <span className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">
-                ✓ Your Companion
-              </span>
-            </div>
-
-            {/* Character Status */}
-            <div className="text-sm text-center mb-6">
-              <span
-                className={`${
-                  companionInfo.agent.inProgressOperation
-                    ? 'text-yellow-300'
-                    : companionInfo.player?.activity
-                      ? 'text-orange-300'
-                      : 'text-green-400'
-                }`}
-              >
-                {companionInfo.agent.inProgressOperation
-                  ? 'Thinking...'
-                  : companionInfo.player?.activity
-                    ? 'Busy'
-                    : 'Active'}
-              </span>
-            </div>
-
-            {/* Character Description */}
-            <div className="bg-brown-600 rounded-lg p-4 mb-6">
-              <p className="text-brown-100 text-sm leading-relaxed">
-                {companionInfo.staticDescription?.identity || 'No description available'}
-              </p>
-            </div>
-
-            {/* Character Plan */}
-            {companionInfo.staticDescription?.plan && (
-              <div className="mb-6 text-sm text-blue-300 italic bg-brown-600 rounded-lg p-3">
-                <strong>Goal:</strong> {companionInfo.staticDescription.plan}
-              </div>
-            )}
-
-            {/* Current Activity */}
-            {companionInfo.player?.activity && (
-              <div className="mb-6 text-sm text-yellow-300 bg-brown-600 rounded-lg p-3">
-                <strong>Activity:</strong> {companionInfo.player.activity.description}{' '}
-                {companionInfo.player.activity.emoji}
-              </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className="flex flex-col gap-3">
-              <button
-                onClick={() => setShowChat(true)}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg text-lg font-bold transition-colors shadow-lg"
-              >
-                💬 Chat with {companionInfo.staticDescription?.name || 'Companion'}
-              </button>
-              <button
-                onClick={handleRemoveCompanion}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-lg text-lg font-bold transition-colors shadow-lg"
-              >
-                ✕ Remove Companion
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : selectedCompanion && companionInfo && activeTab === 'map' ? (
+      {selectedCompanion && companionInfo && activeTab === 'map' ? (
         // Show face-to-face avatar chat view
         <CompanionAvatarChat
           companionName={companionInfo.staticDescription?.name || 'Companion'}
@@ -396,7 +283,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
           userName={localStorage.getItem('userNickname') || 'You'}
           userCharacter={localStorage.getItem('selectedCharacter') || 'f1'}
           isUserTyping={isUserTyping}
-          isCompanionTyping={companionInfo.agent.inProgressOperation !== undefined}
+          isCompanionTyping={isCompanionTyping}
         />
       ) : null}
 
@@ -519,13 +406,60 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
       {/* Right column area - Chat */}
       <div className="flex flex-col overflow-y-auto shrink-0 px-4 py-6 sm:px-6 lg:w-96 xl:pr-6 border-t-8 sm:border-t-0 sm:border-l-8 border-brown-900 bg-brown-800 text-brown-100">
         {showChat && selectedCompanion && companionInfo ? (
-          <CompanionChat
-            agentId={selectedCompanion}
-            agentName={companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
-            userId={userId}
-            worldId={worldId}
-            onTypingChange={setIsUserTyping}
-          />
+          <>
+            {/* Agent Description Header */}
+            <div className="mb-6 bg-brown-700 rounded-lg p-4 border-2 border-brown-600">
+              {/* Agent Name and Status */}
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-xl font-bold text-brown-100">
+                  {companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
+                </h2>
+                <div className="flex items-center gap-2">
+                  <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    ✓ Your Companion
+                  </span>
+                  <button
+                    onClick={handleRemoveCompanion}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-bold transition-colors"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+              {/* Agent Description */}
+              <div className="bg-brown-800 rounded-lg p-3 mb-3">
+                <p className="text-brown-200 text-sm leading-relaxed">
+                  {companionInfo.staticDescription?.identity || 'No description available'}
+                </p>
+              </div>
+
+              {/* Agent Goal */}
+              {companionInfo.staticDescription?.plan && (
+                <div className="text-sm text-blue-300 italic bg-brown-800 rounded-lg p-2">
+                  <strong>Goal:</strong> {companionInfo.staticDescription.plan}
+                </div>
+              )}
+
+              {/* Current Activity */}
+              {companionInfo.player?.activity && (
+                <div className="mt-2 text-sm text-yellow-300 bg-brown-800 rounded-lg p-2">
+                  <strong>Activity:</strong> {companionInfo.player.activity.description}{' '}
+                  {companionInfo.player.activity.emoji}
+                </div>
+              )}
+            </div>
+
+            {/* Chat Component */}
+            <CompanionChat
+              agentId={selectedCompanion}
+              agentName={companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
+              userId={userId}
+              worldId={worldId}
+              onTypingChange={setIsUserTyping}
+              onCompanionTypingChange={setIsCompanionTyping}
+            />
+          </>
         ) : (
           <div className="h-full text-xl flex text-center items-center p-4">
             {selectedCompanion ?

@@ -10,6 +10,7 @@ interface CompanionChatProps {
   userId: Id<'users'>;
   worldId: Id<'worlds'>;
   onTypingChange?: (isTyping: boolean) => void;
+  onCompanionTypingChange?: (isTyping: boolean) => void;
 }
 
 interface Message {
@@ -19,11 +20,12 @@ interface Message {
   timestamp: number;
 }
 
-export default function CompanionChat({ agentId, agentName, userId, worldId, onTypingChange }: CompanionChatProps) {
+export default function CompanionChat({ agentId, agentName, userId, worldId, onTypingChange, onCompanionTypingChange }: CompanionChatProps) {
   const [message, setMessage] = useState('');
   const [chatId, setChatId] = useState<Id<'userAgentChats'> | null>(null);
   const [loading, setLoading] = useState(false);
   const scrollViewRef = useRef<HTMLDivElement>(null);
+  const prevMessageRef = useRef('');
 
   const createOrGetChatMutation = useMutation(api.users.createOrGetChat);
   const addMessageMutation = useMutation(api.users.addChatMessage);
@@ -43,6 +45,24 @@ export default function CompanionChat({ agentId, agentName, userId, worldId, onT
       scrollViewRef.current.scrollTop = scrollViewRef.current.scrollHeight;
     }
   }, [chatHistory]);
+
+  // Track user typing state
+  useEffect(() => {
+    const isCurrentlyTyping = message.trim().length > 0;
+    const wasTyping = prevMessageRef.current.trim().length > 0;
+
+    // Notify parent component when typing state changes
+    if (isCurrentlyTyping !== wasTyping) {
+      onTypingChange?.(isCurrentlyTyping);
+    }
+
+    prevMessageRef.current = message;
+  }, [message, onTypingChange]);
+
+  // Notify parent component when companion typing state changes
+  useEffect(() => {
+    onCompanionTypingChange?.(loading);
+  }, [loading, onCompanionTypingChange]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();

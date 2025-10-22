@@ -111,7 +111,7 @@ export default function CompanionAvatarChat({
 
             {/* Typing indicator */}
             {isUserTyping && (
-              <div className="absolute right-2 -top-2 text-3xl">
+              <div className="absolute -top-8 left-1/2 transform translate-x-8 text-3xl">
                 💬
               </div>
             )}
@@ -137,8 +137,10 @@ export default function CompanionAvatarChat({
 
             {/* Typing indicator */}
             {isCompanionTyping && (
-              <div className="absolute left-2 -top-2 text-3xl">
-                💬
+              <div className="absolute -top-8 left-1/2 transform -translate-x-12 text-3xl">
+                <div className="relative" style={{ transform: 'scaleX(-1)' }}>
+                  💬
+                </div>
               </div>
             )}
           </div>
