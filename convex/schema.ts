@@ -18,7 +18,14 @@ export default defineSchema({
     firstName: v.optional(v.string()),
     lastName: v.optional(v.string()),
     dateOfBirth: v.optional(v.string()), // YYYY-MM-DD format
-    gender: v.optional(v.union(v.literal('male'), v.literal('female'), v.literal('other'), v.literal('prefer_not_to_say'))),
+    gender: v.optional(
+      v.union(
+        v.literal('male'),
+        v.literal('female'),
+        v.literal('other'),
+        v.literal('prefer_not_to_say'),
+      ),
+    ),
     mbti: v.optional(v.string()), // MBTI personality type (e.g., INTJ, ENFP, etc.)
     bio: v.optional(v.string()),
     avatar: v.optional(v.string()), // URL or storage ID for avatar image
@@ -39,12 +46,14 @@ export default defineSchema({
     userId: v.id('users'),
     agentId: v.string(), // Agent ID from the game
     worldId: v.id('worlds'),
-    messages: v.array(v.object({
-      id: v.string(),
-      sender: v.union(v.literal('user'), v.literal('agent')),
-      content: v.string(),
-      timestamp: v.number(),
-    })),
+    messages: v.array(
+      v.object({
+        id: v.string(),
+        sender: v.union(v.literal('user'), v.literal('agent')),
+        content: v.string(),
+        timestamp: v.number(),
+      }),
+    ),
     lastMessageAt: v.number(),
     createdAt: v.number(),
   })

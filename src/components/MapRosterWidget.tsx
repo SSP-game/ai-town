@@ -191,47 +191,22 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
         </div>
         {!isCollapsed && (
           <div className="flex flex-wrap gap-2 animate-in slide-in-from-top-1 duration-200">
-            {entries.map(({ key, name, characterName, kind }) => {
-              // Check if this agent is the user's companion
-              const isCompanion =
-                kind === 'agent' && userProfile?.selectedCompanion === key.replace('agent-', '');
-
-              return (
-                <div
-                  key={key}
-                  className={`flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border px-2 py-1 ${
-                    isCompanion
-                      ? 'border-blue-400/40 bg-blue-400/10'
-                      : 'border-white/10 bg-white/10'
-                  }`}
-                >
-                  <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30 relative">
-                    <RosterAvatar characterName={characterName} />
-                    {isCompanion && (
-                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full flex items-center justify-center">
-                        <span className="text-xs text-white">★</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex min-w-0 flex-col">
-                    <span
-                      className={`truncate text-sm font-semibold ${isCompanion ? 'text-blue-300' : ''}`}
-                    >
-                      {name}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-wider text-white/60">
-                      {kind === 'agent'
-                        ? isCompanion
-                          ? 'Companion'
-                          : 'Agent'
-                        : kind === 'player'
-                          ? 'Player'
-                          : 'Resident'}
-                    </span>
-                  </div>
+            {entries.map(({ key, name, characterName, kind }) => (
+              <div
+                key={key}
+                className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
+              >
+                <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30">
+                  <RosterAvatar characterName={characterName} />
                 </div>
-              );
-            })}
+                <div className="flex min-w-0 flex-col">
+                  <span className="truncate text-sm font-semibold">{name}</span>
+                  <span className="text-[10px] uppercase tracking-wider text-white/60">
+                    {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>

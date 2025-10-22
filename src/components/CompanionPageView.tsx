@@ -87,7 +87,7 @@ function CharacterAvatar({
 
 export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   const game = useServerGame(worldId);
-  const [userId, setUserId] = useState<Id<"users"> | null>(null);
+  const [userId, setUserId] = useState<Id<'users'> | null>(null);
   const [selectedCompanion, setSelectedCompanion] = useState<string | null>(null);
   const [showChat, setShowChat] = useState(false);
 
@@ -98,7 +98,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
     const storedUserId = localStorage.getItem('userId');
     const storedCompanion = localStorage.getItem('selectedCompanion');
     if (storedUserId) {
-      setUserId(storedUserId as Id<"users">);
+      setUserId(storedUserId as Id<'users'>);
       setSelectedCompanion(storedCompanion);
       // Default to showing chat if user has a companion
       setShowChat(!!storedCompanion);
@@ -115,7 +115,9 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Companion</h1>
           <p className="text-lg mb-6">You need to login first to select a companion</p>
-          <p className="text-sm text-brown-300">Click the Companion button in the footer to login</p>
+          <p className="text-sm text-brown-300">
+            Click the Companion button in the footer to login
+          </p>
         </div>
       </div>
     );
@@ -148,7 +150,9 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   };
 
   // Find the selected companion agent
-  const companionAgentData = selectedCompanion ? agents.find(a => a.id === selectedCompanion) : null;
+  const companionAgentData = selectedCompanion
+    ? agents.find((a) => a.id === selectedCompanion)
+    : null;
   let companionInfo = null;
 
   if (companionAgentData) {
@@ -163,7 +167,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
       player,
       character,
       staticDescription,
-      characterName
+      characterName,
     };
   }
 
@@ -204,13 +208,15 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
 
             {/* Character Status */}
             <div className="text-sm text-center mb-6">
-              <span className={`${
-                companionInfo.agent.inProgressOperation
-                  ? 'text-yellow-300'
-                  : companionInfo.player?.activity
-                    ? 'text-orange-300'
-                    : 'text-green-400'
-              }`}>
+              <span
+                className={`${
+                  companionInfo.agent.inProgressOperation
+                    ? 'text-yellow-300'
+                    : companionInfo.player?.activity
+                      ? 'text-orange-300'
+                      : 'text-green-400'
+                }`}
+              >
                 {companionInfo.agent.inProgressOperation
                   ? 'Thinking...'
                   : companionInfo.player?.activity
@@ -236,7 +242,8 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
             {/* Current Activity */}
             {companionInfo.player?.activity && (
               <div className="mb-6 text-sm text-yellow-300 bg-brown-600 rounded-lg p-3">
-                <strong>Activity:</strong> {companionInfo.player.activity.description} {companionInfo.player.activity.emoji}
+                <strong>Activity:</strong> {companionInfo.player.activity.description}{' '}
+                {companionInfo.player.activity.emoji}
               </div>
             )}
 
@@ -262,7 +269,9 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
         <div className="mb-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-brown-100 mb-2">Select Your Companion</h2>
-            <p className="text-brown-300">Choose an agent to be your personal companion. You can chat with them anytime!</p>
+            <p className="text-brown-300">
+              Choose an agent to be your personal companion. You can chat with them anytime!
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -281,10 +290,9 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
                 <div
                   key={agent.id}
                   className="bg-brown-700 rounded-lg p-6 border-4 border-brown-600 hover:border-brown-500 transition-all cursor-pointer shadow-lg hover:shadow-xl"
-                  onClick={() => handleSelectCompanion(
-                    agent.id,
-                    staticDescription?.name || `Agent ${agent.id}`
-                  )}
+                  onClick={() =>
+                    handleSelectCompanion(agent.id, staticDescription?.name || `Agent ${agent.id}`)
+                  }
                 >
                   {/* Character Avatar */}
                   <div className="flex justify-center mb-4">
@@ -307,7 +315,11 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
 
                   {/* Character Status */}
                   <div className="text-sm text-green-400 text-center mb-4">
-                    {agent.inProgressOperation ? 'Thinking...' : player.activity ? 'Busy' : 'Active'}
+                    {agent.inProgressOperation
+                      ? 'Thinking...'
+                      : player.activity
+                        ? 'Busy'
+                        : 'Active'}
                   </div>
 
                   {/* Character Description */}
@@ -333,7 +345,8 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
                   {/* Current Activity */}
                   {player.activity && (
                     <div className="mb-4 text-xs text-yellow-300">
-                      <strong>Activity:</strong> {player.activity.description} {player.activity.emoji}
+                      <strong>Activity:</strong> {player.activity.description}{' '}
+                      {player.activity.emoji}
                     </div>
                   )}
 
@@ -345,7 +358,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
                         e.stopPropagation();
                         handleSelectCompanion(
                           agent.id,
-                          staticDescription?.name || `Agent ${agent.id}`
+                          staticDescription?.name || `Agent ${agent.id}`,
                         );
                       }}
                     >
@@ -365,9 +378,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   return (
     <div className="mx-auto w-full max-w grid grid-rows-[240px_1fr] lg:grid-rows-[1fr] lg:grid-cols-[1fr_auto] lg:grow max-w-none h-full game-frame">
       {/* Left area - Companion selection */}
-      <div className="relative overflow-hidden bg-brown-900">
-        {companionSelectionContent}
-      </div>
+      <div className="relative overflow-hidden bg-brown-900">{companionSelectionContent}</div>
 
       {/* Right column area - Chat */}
       <div className="flex flex-col overflow-y-auto shrink-0 px-4 py-6 sm:px-6 lg:w-96 xl:pr-6 border-t-8 sm:border-t-0 sm:border-l-8 border-brown-900 bg-brown-800 text-brown-100">

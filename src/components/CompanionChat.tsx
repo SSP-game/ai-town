@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 interface CompanionChatProps {
   agentId: string;
   agentName: string;
-  userId: Id<"users">;
-  worldId: Id<"worlds">;
+  userId: Id<'users'>;
+  worldId: Id<'worlds'>;
 }
 
 interface Message {
@@ -18,21 +18,17 @@ interface Message {
   timestamp: number;
 }
 
-export default function CompanionChat({
-  agentId,
-  agentName,
-  userId,
-  worldId
-}: CompanionChatProps) {
+export default function CompanionChat({ agentId, agentName, userId, worldId }: CompanionChatProps) {
   const [message, setMessage] = useState('');
-  const [chatId, setChatId] = useState<Id<"userAgentChats"> | null>(null);
+  const [chatId, setChatId] = useState<Id<'userAgentChats'> | null>(null);
   const [loading, setLoading] = useState(false);
   const scrollViewRef = useRef<HTMLDivElement>(null);
 
   const createOrGetChatMutation = useMutation(api.users.createOrGetChat);
   const addMessageMutation = useMutation(api.users.addChatMessage);
-  const chatHistory = useQuery(api.users.getChatHistory,
-    userId && agentId ? { userId, agentId } : 'skip'
+  const chatHistory = useQuery(
+    api.users.getChatHistory,
+    userId && agentId ? { userId, agentId } : 'skip',
   );
 
   useEffect(() => {
@@ -109,9 +105,7 @@ export default function CompanionChat({
                       <span className="uppercase flex-grow">
                         {msg.sender === 'user' ? 'You' : agentName}
                       </span>
-                      <time dateTime={msg.timestamp.toString()}>
-                        {formatTime(msg.timestamp)}
-                      </time>
+                      <time dateTime={msg.timestamp.toString()}>{formatTime(msg.timestamp)}</time>
                     </div>
                     <div className={`bubble ${msg.sender === 'user' ? 'bubble-mine' : ''}`}>
                       <p className="bg-white -mx-3 -my-1">{msg.content}</p>
@@ -122,9 +116,7 @@ export default function CompanionChat({
                   <div className="leading-tight mb-6">
                     <div className="flex gap-4">
                       <span className="uppercase flex-grow">{agentName}</span>
-                      <time dateTime={Date.now().toString()}>
-                        {formatTime(Date.now())}
-                      </time>
+                      <time dateTime={Date.now().toString()}>{formatTime(Date.now())}</time>
                     </div>
                     <div className="bubble">
                       <p className="bg-white -mx-3 -my-1">
@@ -158,7 +150,7 @@ export default function CompanionChat({
                     style={{
                       outline: 'none',
                       border: 'none',
-                      boxShadow: 'none'
+                      boxShadow: 'none',
                     }}
                   />
                 </div>
