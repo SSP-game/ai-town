@@ -135,31 +135,37 @@ export default function CompanionChat({
                 )}
               </div>
             )}
+
+            {/* Message Input as bubble - always visible */}
+            <form onSubmit={handleSendMessage}>
+              <div className="leading-tight mb-6">
+                <div className="flex gap-4">
+                  <span className="uppercase flex-grow">You</span>
+                </div>
+                <div className="bubble bubble-mine">
+                  <input
+                    type="text"
+                    name="companion-chat-message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Type here..."
+                    className="bg-white -mx-3 -my-1 w-full p-0 m-0"
+                    disabled={loading || !chatId}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck="false"
+                    style={{
+                      outline: 'none',
+                      border: 'none',
+                      boxShadow: 'none'
+                    }}
+                  />
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-
-      {/* Message Input */}
-      <div className="shrink-0 mt-4">
-        <form onSubmit={handleSendMessage} className="flex gap-2">
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={`Message ${agentName}...`}
-            className="flex-1 p-3 text-black rounded border-2 border-brown-600 focus:border-brown-400"
-            disabled={loading || !chatId}
-          />
-          <button
-            type="submit"
-            className="button text-white shadow-solid text-xl cursor-pointer pointer-events-auto"
-            disabled={!message.trim() || loading || !chatId}
-          >
-            <div className="h-full bg-clay-700 px-4 py-2">
-              <span>Send</span>
-            </div>
-          </button>
-        </form>
       </div>
     </div>
   );

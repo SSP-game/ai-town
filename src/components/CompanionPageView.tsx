@@ -173,61 +173,99 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
       <h1 className="text-4xl font-bold text-brown-100 mb-8 text-center">My Companion</h1>
 
       {selectedCompanion && companionInfo ? (
-        // Show selected companion
+        // Show selected companion in card form
         <div className="mb-8">
-          <div className="box mb-6">
-            <h2 className="bg-brown-700 p-4 font-display text-2xl tracking-wider shadow-solid text-center">
+          <div className="bg-brown-700 rounded-lg p-8 border-4 border-brown-500 shadow-xl">
+            {/* Character Avatar */}
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 bg-brown-600 rounded-full flex items-center justify-center overflow-hidden border-4 border-brown-500 shadow-lg">
+                {companionInfo.character?.textureUrl ? (
+                  <CharacterAvatar
+                    character={companionInfo.character}
+                    characterName={companionInfo.characterName || 'f1'}
+                  />
+                ) : (
+                  <div className="text-4xl text-brown-300">🤖</div>
+                )}
+              </div>
+            </div>
+
+            {/* Character Name */}
+            <h2 className="text-3xl font-bold text-brown-100 text-center mb-2">
               {companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
             </h2>
-          </div>
 
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-24 h-24 bg-brown-700 rounded-full flex items-center justify-center overflow-hidden">
-              {companionInfo.character?.textureUrl ? (
-                <CharacterAvatar
-                  character={companionInfo.character}
-                  characterName={companionInfo.characterName || 'f1'}
-                />
-              ) : (
-                <div className="text-3xl text-brown-300">🤖</div>
-              )}
+            {/* Companion Badge */}
+            <div className="flex justify-center mb-6">
+              <span className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                ✓ Your Companion
+              </span>
             </div>
-          </div>
 
-          <div className="desc mb-6">
-            <p className="leading-tight -m-4 bg-brown-700 text-base">
-              {companionInfo.staticDescription?.identity || 'No description available'}
-            </p>
-          </div>
+            {/* Character Status */}
+            <div className="text-sm text-center mb-6">
+              <span className={`${
+                companionInfo.agent.inProgressOperation
+                  ? 'text-yellow-300'
+                  : companionInfo.player?.activity
+                    ? 'text-orange-300'
+                    : 'text-green-400'
+              }`}>
+                {companionInfo.agent.inProgressOperation
+                  ? 'Thinking...'
+                  : companionInfo.player?.activity
+                    ? 'Busy'
+                    : 'Active'}
+              </span>
+            </div>
 
-          <div className="flex flex-col gap-4">
-            <a
-              className="button text-white shadow-solid text-xl cursor-pointer pointer-events-auto"
-              onClick={() => setShowChat(true)}
-            >
-              <div className="h-full bg-clay-700 text-center">
-                <span>Chat with {companionInfo.staticDescription?.name || 'Companion'}</span>
+            {/* Character Description */}
+            <div className="bg-brown-600 rounded-lg p-4 mb-6">
+              <p className="text-brown-100 text-sm leading-relaxed">
+                {companionInfo.staticDescription?.identity || 'No description available'}
+              </p>
+            </div>
+
+            {/* Character Plan */}
+            {companionInfo.staticDescription?.plan && (
+              <div className="mb-6 text-sm text-blue-300 italic bg-brown-600 rounded-lg p-3">
+                <strong>Goal:</strong> {companionInfo.staticDescription.plan}
               </div>
-            </a>
-            <a
-              className="button text-white shadow-solid text-xl cursor-pointer pointer-events-auto"
-              onClick={handleRemoveCompanion}
-            >
-              <div className="h-full bg-red-700 text-center">
-                <span>Remove Companion</span>
+            )}
+
+            {/* Current Activity */}
+            {companionInfo.player?.activity && (
+              <div className="mb-6 text-sm text-yellow-300 bg-brown-600 rounded-lg p-3">
+                <strong>Activity:</strong> {companionInfo.player.activity.description} {companionInfo.player.activity.emoji}
               </div>
-            </a>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => setShowChat(true)}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg text-lg font-bold transition-colors shadow-lg"
+              >
+                💬 Chat with {companionInfo.staticDescription?.name || 'Companion'}
+              </button>
+              <button
+                onClick={handleRemoveCompanion}
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-lg text-lg font-bold transition-colors shadow-lg"
+              >
+                ✕ Remove Companion
+              </button>
+            </div>
           </div>
         </div>
       ) : (
-        // Show companion selection
+        // Show companion selection in card grid
         <div className="mb-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-brown-100 mb-2">Select Your Companion</h2>
             <p className="text-brown-300">Choose an agent to be your personal companion. You can chat with them anytime!</p>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {agents.map((agent) => {
               const player = game.world.players.get(agent.playerId);
               const playerDescription = game.playerDescriptions.get(agent.playerId);
@@ -242,37 +280,77 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
               return (
                 <div
                   key={agent.id}
-                  className="box cursor-pointer hover:bg-brown-700 transition-colors"
+                  className="bg-brown-700 rounded-lg p-6 border-4 border-brown-600 hover:border-brown-500 transition-all cursor-pointer shadow-lg hover:shadow-xl"
                   onClick={() => handleSelectCompanion(
                     agent.id,
                     staticDescription?.name || `Agent ${agent.id}`
                   )}
                 >
-                  <div className="bg-brown-700 p-4">
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 bg-brown-600 rounded-full flex items-center justify-center overflow-hidden">
-                        {character?.textureUrl ? (
-                          <CharacterAvatar
-                            character={character}
-                            characterName={characterName || 'f1'}
-                          />
-                        ) : (
-                          <div className="text-lg text-brown-300">🤖</div>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-bold text-brown-100">
-                        {staticDescription?.name || `Agent ${agent.id}`}
-                      </h3>
-                    </div>
-                    <p className="text-brown-200 text-sm">
-                      {staticDescription?.identity ? (
-                        staticDescription.identity.length > 100
-                          ? staticDescription.identity.slice(0, 100) + '...'
-                          : staticDescription.identity
+                  {/* Character Avatar */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-20 h-20 bg-brown-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-brown-500">
+                      {character?.textureUrl ? (
+                        <CharacterAvatar
+                          character={character}
+                          characterName={characterName || 'f1'}
+                        />
                       ) : (
-                        'No description available'
+                        <div className="text-2xl text-brown-300">🤖</div>
                       )}
-                    </p>
+                    </div>
+                  </div>
+
+                  {/* Character Name */}
+                  <h3 className="text-xl font-bold text-brown-100 text-center mb-3">
+                    {staticDescription?.name || `Agent ${agent.id}`}
+                  </h3>
+
+                  {/* Character Status */}
+                  <div className="text-sm text-green-400 text-center mb-4">
+                    {agent.inProgressOperation ? 'Thinking...' : player.activity ? 'Busy' : 'Active'}
+                  </div>
+
+                  {/* Character Description */}
+                  <div className="text-brown-200 text-sm leading-relaxed mb-4">
+                    {staticDescription?.identity ? (
+                      <p className="line-clamp-4">
+                        {staticDescription.identity.length > 150
+                          ? staticDescription.identity.slice(0, 150) + '...'
+                          : staticDescription.identity}
+                      </p>
+                    ) : (
+                      <p className="text-brown-400">No description available</p>
+                    )}
+                  </div>
+
+                  {/* Character Plan */}
+                  {staticDescription?.plan && (
+                    <div className="mb-4 text-xs text-blue-300 italic">
+                      <strong>Goal:</strong> {staticDescription.plan}
+                    </div>
+                  )}
+
+                  {/* Current Activity */}
+                  {player.activity && (
+                    <div className="mb-4 text-xs text-yellow-300">
+                      <strong>Activity:</strong> {player.activity.description} {player.activity.emoji}
+                    </div>
+                  )}
+
+                  {/* Select Button */}
+                  <div className="mt-4">
+                    <button
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm font-bold transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSelectCompanion(
+                          agent.id,
+                          staticDescription?.name || `Agent ${agent.id}`
+                        );
+                      }}
+                    >
+                      Select as Companion
+                    </button>
                   </div>
                 </div>
               );

@@ -183,3 +183,24 @@ p[contenteditable='true']:empty::before {
 .shape-top-left-corner {
   clip-path: polygon(0 0, 100% 0, 0 100%);
 }
+
+/* Remove autofill background color and icons */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Hide browser autofill icons and buttons */
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-textfield-decoration-container {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
