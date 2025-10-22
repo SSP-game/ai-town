@@ -9,6 +9,7 @@ interface CompanionChatProps {
   agentName: string;
   userId: Id<'users'>;
   worldId: Id<'worlds'>;
+  onTypingChange?: (isTyping: boolean) => void;
 }
 
 interface Message {
@@ -18,7 +19,7 @@ interface Message {
   timestamp: number;
 }
 
-export default function CompanionChat({ agentId, agentName, userId, worldId }: CompanionChatProps) {
+export default function CompanionChat({ agentId, agentName, userId, worldId, onTypingChange }: CompanionChatProps) {
   const [message, setMessage] = useState('');
   const [chatId, setChatId] = useState<Id<'userAgentChats'> | null>(null);
   const [loading, setLoading] = useState(false);

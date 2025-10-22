@@ -6,6 +6,7 @@ import { useServerGame } from '../hooks/serverGame';
 import { characters } from '../../data/characters';
 import { Descriptions } from '../../data/characters';
 import CompanionChat from './CompanionChat';
+import CompanionAvatarChat from './CompanionAvatarChat';
 import closeImg from '../../assets/close.svg';
 import { toast } from 'react-toastify';
 import { Stage } from '@pixi/react';
@@ -13,6 +14,7 @@ import { ConvexProvider } from 'convex/react';
 import { useElementSize } from 'usehooks-ts';
 import PixiGame from './PixiGame';
 import { useHistoricalTime } from '../hooks/useHistoricalTime';
+import { COMPANION_SEPARATE_WORLD } from '../../convex/constants';
 
 interface CompanionPageViewProps {
   worldId: Id<'worlds'>;
@@ -99,15 +101,32 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   const [selectedCompanion, setSelectedCompanion] = useState<string | null>(null);
   const [showChat, setShowChat] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('profile');
+  const [isUserTyping, setIsUserTyping] = useState(false);
   const [mapWrapperRef, { width, height }] = useElementSize();
 
   const updateCompanionMutation = useMutation(api.users.updateSelectedCompanion);
   const removeCompanionMutation = useMutation(api.users.removeSelectedCompanion);
+  const getOrCreateCompanionWorldMutation = useMutation(api.companionWorld.getOrCreateCompanionWorld);
+
+  // Check if companion separate world feature is enabled
+  const isCompanionSeparateWorldEnabled = useQuery(api.companionWorld.isCompanionSeparateWorldEnabled);
 
   const worldStatus = useQuery(api.world.defaultWorldStatus);
-  const engineId = worldStatus?.engineId;
+  const defaultEngineId = worldStatus?.engineId;
   const worldState = useQuery(api.world.worldState, worldId ? { worldId } : 'skip');
   const { historicalTime } = useHistoricalTime(worldState?.engine);
+
+  // State for companion world (only used when COMPANION_SEPARATE_WORLD is true)
+  const [companionWorldId, setCompanionWorldId] = useState<Id<'worlds'> | null>(null);
+  const [companionEngineId, setCompanionEngineId] = useState<Id<'engines'> | null>(null);
+
+  // Use companion world if enabled and available, otherwise use default world
+  const activeWorldId = isCompanionSeparateWorldEnabled && companionWorldId ? companionWorldId : worldId;
+  const activeEngineId = isCompanionSeparateWorldEnabled && companionEngineId ? companionEngineId : defaultEngineId;
+
+  // Get game state for the active world (companion world or main world)
+  const companionGame = useServerGame(activeWorldId);
+  const activeGame = isCompanionSeparateWorldEnabled && companionGame ? companionGame : game;
 
   // Get human player token identifier
   const humanTokenIdentifier = useQuery(
@@ -116,7 +135,18 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   ) ?? null;
 
   // Calculate filter player IDs for map view
+  // This controls which players are visible on the companion map
+  // See COMPANION_SEPARATE_WORLD in convex/constants.ts for world configuration
   const filterPlayerIds = (() => {
+    // When COMPANION_SEPARATE_WORLD is true:
+    // No filtering needed - the companion world only contains companion and user
+    if (isCompanionSeparateWorldEnabled) {
+      return undefined;
+    }
+
+    // When COMPANION_SEPARATE_WORLD is false (default):
+    // Filter the main world to show only companion and user
+    // This creates a "private view" while chat remains in the shared world
     if (!selectedCompanion || !game) return [];
 
     const ids = [];
@@ -149,7 +179,29 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
     }
   }, []);
 
-  if (!game) {
+  // Get or create companion world when companion is selected and separate world mode is enabled
+  useEffect(() => {
+    if (isCompanionSeparateWorldEnabled && userId && selectedCompanion) {
+      getOrCreateCompanionWorldMutation({
+        userId,
+        companionAgentId: selectedCompanion,
+      }).then((result) => {
+        if (result) {
+          setCompanionWorldId(result.worldId);
+          setCompanionEngineId(result.engineId);
+        }
+      }).catch((error) => {
+        console.error('Failed to create companion world:', error);
+        toast.error('Failed to create companion world');
+      });
+    } else if (!isCompanionSeparateWorldEnabled) {
+      // Clear companion world state when separate world is disabled
+      setCompanionWorldId(null);
+      setCompanionEngineId(null);
+    }
+  }, [isCompanionSeparateWorldEnabled, userId, selectedCompanion, getOrCreateCompanionWorldMutation]);
+
+  if (!game || !activeGame) {
     return <div className="p-8 text-center text-white">Loading...</div>;
   }
 
@@ -337,27 +389,15 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
           </div>
         </div>
       ) : selectedCompanion && companionInfo && activeTab === 'map' ? (
-        // Show map view with companion and user only
-        !engineId ? (
-          <div className="text-center text-brown-300 py-8">Loading map...</div>
-        ) : (
-          <div ref={mapWrapperRef} className="w-full h-full relative">
-            <Stage width={width} height={height} options={{ backgroundColor: 0x7ab5ff }}>
-              <ConvexProvider client={convex}>
-                <PixiGame
-                  game={game}
-                  worldId={worldId}
-                  engineId={engineId}
-                  width={width}
-                  height={height}
-                  historicalTime={historicalTime}
-                  setSelectedElement={() => {}}
-                  filterPlayerIds={filterPlayerIds}
-                />
-              </ConvexProvider>
-            </Stage>
-          </div>
-        )
+        // Show face-to-face avatar chat view
+        <CompanionAvatarChat
+          companionName={companionInfo.staticDescription?.name || 'Companion'}
+          companionCharacter={companionInfo.characterName || 'f1'}
+          userName={localStorage.getItem('userNickname') || 'You'}
+          userCharacter={localStorage.getItem('selectedCharacter') || 'f1'}
+          isUserTyping={isUserTyping}
+          isCompanionTyping={companionInfo.agent.inProgressOperation !== undefined}
+        />
       ) : null}
 
       {!selectedCompanion && (
@@ -484,6 +524,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
             agentName={companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
             userId={userId}
             worldId={worldId}
+            onTypingChange={setIsUserTyping}
           />
         ) : (
           <div className="h-full text-xl flex text-center items-center p-4">

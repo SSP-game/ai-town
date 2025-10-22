@@ -66,6 +66,19 @@ export default defineSchema({
     type: v.union(v.literal('background'), v.literal('player')),
   }),
 
+  // Companion-specific worlds (when COMPANION_SEPARATE_WORLD is enabled)
+  companionWorldStatus: defineTable({
+    worldId: v.id('worlds'),
+    engineId: v.id('engines'),
+    userId: v.id('users'),
+    companionAgentId: v.string(), // Agent ID from main world
+    status: v.union(v.literal('running'), v.literal('inactive'), v.literal('stoppedByDeveloper')),
+    lastViewed: v.number(),
+  })
+    .index('by_user_companion', ['userId', 'companionAgentId'])
+    .index('worldId', ['worldId'])
+    .index('lastViewed', ['lastViewed']),
+
   messages: defineTable({
     conversationId,
     messageUuid: v.string(),

@@ -82,6 +82,25 @@ export const MAX_PATHFINDS_PER_STEP = 16;
 
 export const DEFAULT_NAME = 'Me';
 
+// Companion World Configuration
+// Controls whether the Companion view uses a separate world instance
+//
+// Options:
+// - false (DEFAULT): Shared world mode
+//   * Companion map shows a filtered view of the main game world
+//   * Only companion and user are visible on the map
+//   * Chat interactions occur in the shared world and are visible in Game view
+//   * Other players in Game view can see when user's companion is chatting
+//
+// - true: Separate world mode (FUTURE IMPLEMENTATION)
+//   * Would create an isolated world instance for companion interaction
+//   * User and companion meet in a private world
+//   * Chat would be completely separate from the main game world
+//   * Requires additional backend logic to create/manage separate world instances
+//
+// To change: Simply set this to true or false
+export const COMPANION_SEPARATE_WORLD = true;
+
 // Electronic fence for agents - tent area in upper right corner
 export const AGENT_FENCE_BOUNDS = {
   // Define the tent area where agents are allowed to move
