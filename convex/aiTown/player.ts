@@ -1,6 +1,7 @@
 import { Infer, ObjectType, v } from 'convex/values';
 import { Point, Vector, path, point, vector } from '../util/types';
 import { GameId, parseGameId } from './ids';
+import { Id } from '../_generated/dataModel';
 import { playerId } from './ids';
 import {
   PATHFINDING_TIMEOUT,
@@ -173,6 +174,7 @@ export class Player {
     character: string,
     description: string,
     tokenIdentifier?: string,
+    userId?: Id<'users'>,
     isAgent?: boolean,
   ) {
     if (tokenIdentifier) {
@@ -193,8 +195,12 @@ export class Player {
     for (let attempt = 0; attempt < 10; attempt++) {
       // Both agents and humans spawn within the fence bounds
       const candidate = {
-        x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
-        y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
+        x:
+          Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) +
+          AGENT_FENCE_BOUNDS.minX,
+        y:
+          Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) +
+          AGENT_FENCE_BOUNDS.minY,
       };
 
       if (blocked(game, now, candidate)) {
@@ -235,6 +241,7 @@ export class Player {
         character,
         description,
         name,
+        userId,
       }),
     );
     game.descriptionsModified = true;
@@ -274,9 +281,18 @@ export const playerInputs = {
       character: v.string(),
       description: v.string(),
       tokenIdentifier: v.optional(v.string()),
+      userId: v.optional(v.id('users')),
     },
     handler: (game, now, args) => {
-      Player.join(game, now, args.name, args.character, args.description, args.tokenIdentifier);
+      Player.join(
+        game,
+        now,
+        args.name,
+        args.character,
+        args.description,
+        args.tokenIdentifier,
+        args.userId,
+      );
       return null;
     },
   }),

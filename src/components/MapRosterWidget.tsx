@@ -3,6 +3,8 @@ import { Descriptions, characters } from '../../data/characters';
 import type { GameId } from '../../convex/aiTown/ids';
 import type { ServerGame } from '../hooks/serverGame';
 import type { Agent } from '../../convex/aiTown/agent';
+import { useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 type CharacterKind = 'agent' | 'player' | 'other';
 
@@ -37,9 +39,7 @@ function RosterAvatar({ characterName }: { characterName?: string }) {
       return;
     }
 
-    const character = characterName
-      ? characters.find((c) => c.name === characterName)
-      : undefined;
+    const character = characterName ? characters.find((c) => c.name === characterName) : undefined;
 
     if (!character) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -108,6 +108,15 @@ const typePriority: Record<CharacterKind, number> = {
 
 export default function MapRosterWidget({ game }: { game: ServerGame }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Get current user ID from localStorage
+  const currentUserId = localStorage.getItem('userId');
+
+  // Get user profile information
+  const userProfile = useQuery(
+    api.users.getFullUserProfile,
+    currentUserId ? { userId: currentUserId as any } : 'skip',
+  );
   const entries: RosterEntry[] = useMemo(() => {
     const list: RosterEntry[] = [];
     const agentByPlayerId = new Map<GameId<'players'>, Agent>();
@@ -122,17 +131,30 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
       const characterName = playerDescription?.character;
       const staticDescription = characterName
         ? Descriptions.find(
-            (d): d is CharacterProfile =>
-              isCharacterProfile(d) && d.character === characterName,
+            (d): d is CharacterProfile => isCharacterProfile(d) && d.character === characterName,
           )
         : undefined;
 
-      const name =
-        staticDescription?.name ??
-        playerDescription?.name ??
-        (agent ? `Agent ${agent.id}` : `Player ${player.id.slice(-4)}`);
-
+      let name: string;
       const kind: CharacterKind = agent ? 'agent' : player.human ? 'player' : 'other';
+
+      // For human players, try to show user nickname instead of character name
+      if (player.human && playerDescription?.userId) {
+        const playerUserId = playerDescription.userId as string;
+        // If this is the current user, show their nickname
+        if (playerUserId === currentUserId && userProfile?.nickname) {
+          name = userProfile.nickname;
+        } else {
+          // For other players, try to get their profile or fall back to character name
+          name =
+            staticDescription?.name ?? playerDescription?.name ?? `Player ${player.id.slice(-4)}`;
+        }
+      } else {
+        name =
+          staticDescription?.name ??
+          playerDescription?.name ??
+          (agent ? `Agent ${agent.id}` : `Player ${player.id.slice(-4)}`);
+      }
 
       list.push({
         key: agent ? `agent-${agent.id}` : `player-${player.id}`,
@@ -160,7 +182,7 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
   return (
     <div className="pointer-events-none absolute left-4 top-4 z-30">
       <div className="pointer-events-auto flex w-64 max-w-[18rem] flex-col gap-2 rounded-xl border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur">
-        <div 
+        <div
           className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-white/70 cursor-pointer hover:text-white/90 transition-colors"
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
@@ -169,22 +191,47 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
         </div>
         {!isCollapsed && (
           <div className="flex flex-wrap gap-2 animate-in slide-in-from-top-1 duration-200">
-            {entries.map(({ key, name, characterName, kind }) => (
-              <div
-                key={key}
-                className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
-              >
-                <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30">
-                  <RosterAvatar characterName={characterName} />
+            {entries.map(({ key, name, characterName, kind }) => {
+              // Check if this agent is the user's companion
+              const isCompanion =
+                kind === 'agent' && userProfile?.selectedCompanion === key.replace('agent-', '');
+
+              return (
+                <div
+                  key={key}
+                  className={`flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border px-2 py-1 ${
+                    isCompanion
+                      ? 'border-blue-400/40 bg-blue-400/10'
+                      : 'border-white/10 bg-white/10'
+                  }`}
+                >
+                  <div className="h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-black/30 relative">
+                    <RosterAvatar characterName={characterName} />
+                    {isCompanion && (
+                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full flex items-center justify-center">
+                        <span className="text-xs text-white">★</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex min-w-0 flex-col">
+                    <span
+                      className={`truncate text-sm font-semibold ${isCompanion ? 'text-blue-300' : ''}`}
+                    >
+                      {name}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-wider text-white/60">
+                      {kind === 'agent'
+                        ? isCompanion
+                          ? 'Companion'
+                          : 'Agent'
+                        : kind === 'player'
+                          ? 'Player'
+                          : 'Resident'}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex min-w-0 flex-col">
-                  <span className="truncate text-sm font-semibold">{name}</span>
-                  <span className="text-[10px] uppercase tracking-wider text-white/60">
-                    {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

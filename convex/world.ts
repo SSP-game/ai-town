@@ -162,7 +162,7 @@ export const joinWorld = mutation({
 
     // Use provided character or fall back to random selection
     let selectedCharacter = args.character;
-    if (!selectedCharacter || !characters.find(c => c.name === selectedCharacter)) {
+    if (!selectedCharacter || !characters.find((c) => c.name === selectedCharacter)) {
       selectedCharacter = characters[Math.floor(Math.random() * characters.length)].name;
     }
 
@@ -173,6 +173,7 @@ export const joinWorld = mutation({
       description: `${name} is a human player`,
       // description: `${identity.givenName} is a human player`,
       tokenIdentifier,
+      userId: args.userId as any,
     });
   },
 });
