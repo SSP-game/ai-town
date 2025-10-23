@@ -37,11 +37,15 @@ export default PixiComponent('Viewport', {
       .wheel()
       .decelerate()
       .clamp({ direction: 'all', underflow: 'center' })
-      .setZoom(-10)
+      .setZoom(1.2) //default view zoom level
       .clampZoom({
-        minScale: (0.5 * props.screenWidth) / (props.worldWidth / 2),
-        maxScale: 3.0,
+        minScale: (1.0 * props.screenWidth) / (props.worldWidth / 2), // how far can it zoom out
+        maxScale: 1.2, // how far can it zoom in
       });
+
+    // Set default center position - must be called AFTER the chain above
+    viewport.moveCenter(0.7 * props.worldWidth, 0.19 * props.worldHeight);
+
     return viewport;
   },
   applyProps(viewport, oldProps: any, newProps: any) {
