@@ -107,7 +107,7 @@ const typePriority: Record<CharacterKind, number> = {
 };
 
 export default function MapRosterWidget({ game }: { game: ServerGame }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Get current user ID from localStorage
   const currentUserId = localStorage.getItem('userId');
@@ -186,7 +186,7 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
           className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-white/70 cursor-pointer hover:text-white/90 transition-colors"
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
-          <span>On the Map · {entries.length}</span>
+          <span>Characters on the Map · {entries.length}</span>
           <span className="text-lg">{isCollapsed ? '▶' : '▼'}</span>
         </div>
         {!isCollapsed && (
