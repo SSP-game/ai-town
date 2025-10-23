@@ -16,6 +16,16 @@ export const submitSurvey = mutation({
       recentChallenges: v.optional(v.string()),
       positiveExperiences: v.optional(v.string()),
       futureGoals: v.optional(v.string()),
+      // New question types
+      spendingHabits: v.optional(v.string()),
+      hobbies: v.optional(v.array(v.string())),
+      exerciseRegularly: v.optional(v.boolean()),
+      dailyActivities: v.optional(v.object({
+        work: v.number(),
+        socializing: v.number(),
+        relaxing: v.number(),
+        learning: v.number(),
+      })),
     }),
   },
   handler: async (ctx, args) => {

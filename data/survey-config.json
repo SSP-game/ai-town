@@ -69,9 +69,21 @@
           "description": "Choose the option that best describes you",
           "required": true,
           "options": [
-            { "value": "introvert", "label": "Introvert" },
-            { "value": "ambivert", "label": "Ambivert" },
-            { "value": "extrovert", "label": "Extrovert" }
+            {
+              "value": "introvert",
+              "label": "Introvert",
+              "description": "Prefer solitude, feel drained by social interaction, need alone time to recharge"
+            },
+            {
+              "value": "ambivert",
+              "label": "Ambivert",
+              "description": "Balanced between introvert and extrovert, comfortable in both social and solitary situations"
+            },
+            {
+              "value": "extrovert",
+              "label": "Extrovert",
+              "description": "Energized by social interaction, enjoy being around people, prefer group activities"
+            }
           ],
           "defaultValue": "ambivert"
         },
@@ -154,6 +166,91 @@
           "multiline": true,
           "rows": 3,
           "placeholder": "Share your aspirations and goals..."
+        }
+      ]
+    },
+    {
+      "id": "additional_questions",
+      "title": "Additional Questions (Examples)",
+      "color": "pink",
+      "questions": [
+        {
+          "id": "spendingHabits",
+          "type": "choice",
+          "label": "Do you have a spending plan/budget?",
+          "description": "Select the option that best describes your spending habits",
+          "required": false,
+          "options": [
+            {
+              "value": "daily",
+              "label": "Daily tracking, strict budget",
+              "description": "I record every expense and follow a detailed daily budget plan"
+            },
+            {
+              "value": "weekly",
+              "label": "Weekly tracking, moderate budget",
+              "description": "I check my spending weekly and follow a general budget framework"
+            },
+            {
+              "value": "occasional",
+              "label": "Occasional tracking, flexible budget",
+              "description": "I occasionally review my expenses but don't have a fixed plan"
+            },
+            {
+              "value": "none",
+              "label": "No tracking, spend freely",
+              "description": "I don't keep track of expenses and spend based on what I feel like"
+            }
+          ],
+          "defaultValue": "occasional"
+        },
+        {
+          "id": "hobbies",
+          "type": "multi-choice",
+          "label": "What hobbies do you enjoy?",
+          "description": "Select all that apply",
+          "required": false,
+          "options": [
+            { "value": "reading", "label": "Reading" },
+            { "value": "sports", "label": "Sports & Exercise" },
+            { "value": "music", "label": "Music" },
+            { "value": "gaming", "label": "Gaming" },
+            { "value": "art", "label": "Art & Crafts" },
+            { "value": "cooking", "label": "Cooking" }
+          ],
+          "minSelections": 1,
+          "maxSelections": 4,
+          "defaultValue": []
+        },
+        {
+          "id": "exerciseRegularly",
+          "type": "boolean",
+          "label": "Do you exercise regularly?",
+          "description": "Consider 'regularly' as at least 3 times per week",
+          "required": true,
+          "trueLabel": "Yes",
+          "falseLabel": "No",
+          "defaultValue": false
+        },
+        {
+          "id": "dailyActivities",
+          "type": "matrix",
+          "label": "How much do you enjoy these daily activities?",
+          "description": "Rate each activity from 1 (dislike) to 5 (love)",
+          "required": true,
+          "subQuestions": [
+            { "id": "work", "label": "Work/Study" },
+            { "id": "socializing", "label": "Socializing" },
+            { "id": "relaxing", "label": "Relaxing" },
+            { "id": "learning", "label": "Learning new things" }
+          ],
+          "scaleOptions": [
+            { "value": 1, "label": "1" },
+            { "value": 2, "label": "2" },
+            { "value": 3, "label": "3" },
+            { "value": 4, "label": "4" },
+            { "value": 5, "label": "5" }
+          ]
         }
       ]
     }

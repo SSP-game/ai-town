@@ -10,7 +10,7 @@ interface SurveyViewProps {
   onComplete: () => void;
 }
 
-type QuestionType = 'scale' | 'choice' | 'text';
+type QuestionType = 'scale' | 'choice' | 'text' | 'multi-choice' | 'boolean' | 'matrix';
 
 interface Question {
   id: string;
@@ -23,9 +23,18 @@ interface Question {
   max?: number;
   lowLabel?: string;
   highLabel?: string;
-  defaultValue?: number | string;
+  defaultValue?: number | string | string[] | boolean | Record<string, number>;
   // Choice specific
-  options?: { value: string; label: string }[];
+  options?: { value: string; label: string; description?: string }[];
+  // Multi-choice specific (uses options)
+  minSelections?: number;
+  maxSelections?: number;
+  // Boolean specific
+  trueLabel?: string;
+  falseLabel?: string;
+  // Matrix specific
+  subQuestions?: { id: string; label: string }[];
+  scaleOptions?: { value: number; label: string }[];
   // Text specific
   multiline?: boolean;
   rows?: number;
@@ -69,6 +78,16 @@ export default function SurveyView({ userId, onComplete }: SurveyViewProps) {
           answers[question.id] = 3;
         } else if (question.type === 'text') {
           answers[question.id] = '';
+        } else if (question.type === 'multi-choice') {
+          answers[question.id] = [];
+        } else if (question.type === 'boolean') {
+          answers[question.id] = false;
+        } else if (question.type === 'matrix') {
+          const matrixAnswers: Record<string, number> = {};
+          question.subQuestions?.forEach((sq) => {
+            matrixAnswers[sq.id] = 3;
+          });
+          answers[question.id] = matrixAnswers;
         }
       });
     });
@@ -113,16 +132,16 @@ export default function SurveyView({ userId, onComplete }: SurveyViewProps) {
   };
 
   const ScaleQuestion = ({ question }: { question: Question }) => (
-    <div className="mb-6">
-      <label className="block text-lg font-semibold mb-2">
+    <div>
+      <label className="block text-lg font-semibold mb-2 text-brown-100">
         {question.label}
-        {question.required && <span className="text-red-400 ml-1">*</span>}
+        {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
       </label>
       {question.description && (
-        <p className="text-sm text-gray-300 mb-3">{question.description}</p>
+        <p className="text-sm text-brown-300 mb-3">{question.description}</p>
       )}
       <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-400 w-24 text-right">{question.lowLabel}</span>
+        <span className="text-xs text-brown-400 w-24 text-right">{question.lowLabel}</span>
         <div className="flex gap-2 flex-1">
           {Array.from(
             { length: (question.max || 5) - (question.min || 1) + 1 },
@@ -134,65 +153,209 @@ export default function SurveyView({ userId, onComplete }: SurveyViewProps) {
               onClick={() => setAnswers({ ...answers, [question.id]: num })}
               className={`flex-1 py-2 px-4 rounded transition-all ${
                 answers[question.id] === num
-                  ? 'bg-blue-600 text-white scale-110'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  ? 'bg-clay-700 text-white border-2 border-clay-600'
+                  : 'bg-brown-700 text-brown-200 hover:bg-brown-600 border-2 border-brown-600'
               }`}
             >
               {num}
             </button>
           ))}
         </div>
-        <span className="text-xs text-gray-400 w-24">{question.highLabel}</span>
+        <span className="text-xs text-brown-400 w-24">{question.highLabel}</span>
       </div>
     </div>
   );
 
-  const ChoiceQuestion = ({ question }: { question: Question }) => (
-    <div className="mb-6">
-      <label className="block text-lg font-semibold mb-2">
-        {question.label}
-        {question.required && <span className="text-red-400 ml-1">*</span>}
-      </label>
-      {question.description && (
-        <p className="text-sm text-gray-300 mb-3">{question.description}</p>
-      )}
-      <div className={`grid grid-cols-${question.options?.length || 3} gap-3`}>
-        {question.options?.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => setAnswers({ ...answers, [question.id]: option.value })}
-            className={`py-3 px-4 rounded transition-all capitalize ${
-              answers[question.id] === option.value
-                ? 'bg-green-600 text-white scale-105'
-                : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-            }`}
-          >
-            {option.label}
-          </button>
-        ))}
+  const ChoiceQuestion = ({ question }: { question: Question }) => {
+    // Check if any option has a description to determine layout
+    const hasDescriptions = question.options?.some(opt => opt.description);
+
+    return (
+      <div>
+        <label className="block text-lg font-semibold mb-2 text-brown-100">
+          {question.label}
+          {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
+        </label>
+        {question.description && (
+          <p className="text-sm text-brown-300 mb-3">{question.description}</p>
+        )}
+        <div className="space-y-2">
+          {question.options?.map((option) => (
+            <label key={option.value} className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="radio"
+                name={question.id}
+                value={option.value}
+                checked={answers[question.id] === option.value}
+                onChange={() => setAnswers({ ...answers, [question.id]: option.value })}
+                className="mt-1"
+              />
+              <div className="flex-1">
+                <span className="text-brown-100">{option.label}</span>
+                {option.description && (
+                  <div className="text-sm text-brown-400 mt-1">{option.description}</div>
+                )}
+              </div>
+            </label>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const TextQuestion = ({ question }: { question: Question }) => (
-    <div className="mb-4">
-      <label className="block text-lg font-semibold mb-2">
+    <div>
+      <label className="block text-lg font-semibold mb-2 text-brown-100">
         {question.label}
-        {question.required && <span className="text-red-400 ml-1">*</span>}
+        {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
       </label>
       {question.description && (
-        <p className="text-sm text-gray-300 mb-2">{question.description}</p>
+        <p className="text-sm text-brown-300 mb-2">{question.description}</p>
       )}
       <textarea
         value={answers[question.id] || ''}
         onChange={(e) => setAnswers({ ...answers, [question.id]: e.target.value })}
-        className="w-full bg-gray-700 text-white p-3 rounded border border-gray-600 focus:border-blue-500 focus:outline-none"
-        rows={question.rows || 3}
-        placeholder={question.placeholder}
+        className="w-full px-3 py-2 border border-brown-600 rounded bg-brown-700 text-brown-100 focus:outline-none focus:border-brown-400"
+        rows={question.rows || 4}
+        placeholder={question.placeholder || 'Write your response here'}
       />
     </div>
   );
+
+  const MultiChoiceQuestion = ({ question }: { question: Question }) => {
+    const selectedValues = (answers[question.id] || []) as string[];
+
+    const toggleOption = (value: string) => {
+      const newValues = selectedValues.includes(value)
+        ? selectedValues.filter(v => v !== value)
+        : [...selectedValues, value];
+      setAnswers({ ...answers, [question.id]: newValues });
+    };
+
+    return (
+      <div>
+        <label className="block text-lg font-semibold mb-2 text-brown-100">
+          {question.label}
+          {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
+        </label>
+        {question.description && (
+          <p className="text-sm text-brown-300 mb-3">{question.description}</p>
+        )}
+        <div className="space-y-2">
+          {question.options?.map((option) => (
+            <label key={option.value} className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                value={option.value}
+                checked={selectedValues.includes(option.value)}
+                onChange={() => toggleOption(option.value)}
+                className="mt-1"
+              />
+              <span className="text-brown-100">{option.label}</span>
+            </label>
+          ))}
+        </div>
+        {(question.minSelections || question.maxSelections) && (
+          <p className="text-xs text-brown-400 mt-2">
+            {question.minSelections && question.maxSelections
+              ? `Select ${question.minSelections}-${question.maxSelections} options`
+              : question.minSelections
+              ? `Select at least ${question.minSelections} option(s)`
+              : `Select up to ${question.maxSelections} option(s)`}
+          </p>
+        )}
+      </div>
+    );
+  };
+
+  const BooleanQuestion = ({ question }: { question: Question }) => (
+    <div>
+      <label className="block text-lg font-semibold mb-2 text-brown-100">
+        {question.label}
+        {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
+      </label>
+      {question.description && (
+        <p className="text-sm text-brown-300 mb-3">{question.description}</p>
+      )}
+      <div className="flex gap-4">
+        <button
+          type="button"
+          onClick={() => setAnswers({ ...answers, [question.id]: true })}
+          className={`flex-1 py-3 px-6 rounded transition-all font-semibold border-2 ${
+            answers[question.id] === true
+              ? 'bg-clay-700 text-white border-clay-600'
+              : 'bg-brown-700 text-brown-200 hover:bg-brown-600 border-brown-600'
+          }`}
+        >
+          {question.trueLabel || 'Yes'}
+        </button>
+        <button
+          type="button"
+          onClick={() => setAnswers({ ...answers, [question.id]: false })}
+          className={`flex-1 py-3 px-6 rounded transition-all font-semibold border-2 ${
+            answers[question.id] === false
+              ? 'bg-clay-700 text-white border-clay-600'
+              : 'bg-brown-700 text-brown-200 hover:bg-brown-600 border-brown-600'
+          }`}
+        >
+          {question.falseLabel || 'No'}
+        </button>
+      </div>
+    </div>
+  );
+
+  const MatrixQuestion = ({ question }: { question: Question }) => {
+    const matrixAnswers = (answers[question.id] || {}) as Record<string, number>;
+
+    return (
+      <div>
+        <label className="block text-lg font-semibold mb-2 text-brown-100">
+          {question.label}
+          {question.required && <span className="text-brown-300 text-sm ml-2">(required)</span>}
+        </label>
+        {question.description && (
+          <p className="text-sm text-brown-300 mb-3">{question.description}</p>
+        )}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                <th className="text-left p-2 border-b-2 border-brown-600 text-brown-100"></th>
+                {question.scaleOptions?.map((opt) => (
+                  <th key={opt.value} className="text-center p-2 border-b-2 border-brown-600 text-sm text-brown-200">
+                    {opt.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {question.subQuestions?.map((subQ) => (
+                <tr key={subQ.id} className="border-b border-brown-700">
+                  <td className="p-2 text-sm text-brown-100">{subQ.label}</td>
+                  {question.scaleOptions?.map((opt) => (
+                    <td key={opt.value} className="text-center p-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newMatrixAnswers = { ...matrixAnswers, [subQ.id]: opt.value };
+                          setAnswers({ ...answers, [question.id]: newMatrixAnswers });
+                        }}
+                        className={`w-8 h-8 rounded-full transition-all border-2 ${
+                          matrixAnswers[subQ.id] === opt.value
+                            ? 'bg-clay-700 border-clay-600'
+                            : 'bg-brown-700 hover:bg-brown-600 border-brown-600'
+                        }`}
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
 
   const renderQuestion = (question: Question) => {
     switch (question.type) {
@@ -202,51 +365,56 @@ export default function SurveyView({ userId, onComplete }: SurveyViewProps) {
         return <ChoiceQuestion key={question.id} question={question} />;
       case 'text':
         return <TextQuestion key={question.id} question={question} />;
+      case 'multi-choice':
+        return <MultiChoiceQuestion key={question.id} question={question} />;
+      case 'boolean':
+        return <BooleanQuestion key={question.id} question={question} />;
+      case 'matrix':
+        return <MatrixQuestion key={question.id} question={question} />;
       default:
         return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-8 overflow-y-auto">
+    <div className="min-h-screen bg-brown-900 text-brown-100 p-8 overflow-y-auto">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-2 text-center">{config.title}</h1>
-        <p className="text-center text-gray-300 mb-8">{config.description}</p>
+        <div className="box bg-brown-800 mb-8">
+          <div className="bg-brown-700 p-4">
+            <h1 className="text-3xl font-display text-brown-100 text-center">{config.title}</h1>
+          </div>
+          <div className="p-4">
+            <p className="text-center text-brown-200">{config.description}</p>
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {config.sections.map((section) => (
-            <div key={section.id} className="bg-gray-800 rounded-lg p-6 border-2 border-gray-700">
-              <h2 className={`text-2xl font-bold mb-4 ${colorMap[section.color] || 'text-white'}`}>
-                {section.title}
-              </h2>
-              {section.questions.map((question) => renderQuestion(question))}
+            <div key={section.id} className="box bg-brown-800">
+              <div className="bg-brown-700 p-3">
+                <h2 className="text-2xl font-display text-brown-100">
+                  {section.title}
+                </h2>
+              </div>
+              <div className="p-4 space-y-6">
+                {section.questions.map((question) => renderQuestion(question))}
+              </div>
             </div>
           ))}
 
           {/* Submit Button */}
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`flex-1 py-4 px-6 rounded-lg font-bold text-lg transition-all ${
-                isSubmitting
-                  ? 'bg-gray-600 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-700 active:scale-95'
-              }`}
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit Survey'}
-            </button>
-            <button
-              type="button"
-              onClick={onComplete}
-              className="px-6 py-4 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-all"
-            >
-              Cancel
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full button text-white shadow-solid text-lg cursor-pointer"
+          >
+            <div className="h-full bg-clay-700 text-center py-3">
+              <span>{isSubmitting ? 'Submitting...' : 'Submit Survey'}</span>
+            </div>
+          </button>
         </form>
 
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p className="text-center text-sm text-brown-400 mt-6">
           Thank you for taking the time to complete this survey. Your mental well-being matters.
         </p>
       </div>

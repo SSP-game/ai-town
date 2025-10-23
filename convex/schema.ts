@@ -111,6 +111,17 @@ export default defineSchema({
       recentChallenges: v.optional(v.string()),
       positiveExperiences: v.optional(v.string()),
       futureGoals: v.optional(v.string()),
+
+      // Additional questions (examples - multi-choice, boolean, matrix)
+      spendingHabits: v.optional(v.string()), // Choice with descriptions
+      hobbies: v.optional(v.array(v.string())), // Multi-choice
+      exerciseRegularly: v.optional(v.boolean()), // Boolean/toggle
+      dailyActivities: v.optional(v.object({
+        work: v.number(),
+        socializing: v.number(),
+        relaxing: v.number(),
+        learning: v.number(),
+      })), // Matrix question
     }),
     completedAt: v.number(),
     createdAt: v.number(),
