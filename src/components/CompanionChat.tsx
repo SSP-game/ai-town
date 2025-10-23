@@ -7,10 +7,12 @@ import { toast } from 'react-toastify';
 interface CompanionChatProps {
   agentId: string;
   agentName: string;
+  agentDescription?: string;
   userId: Id<'users'>;
   worldId: Id<'worlds'>;
   onTypingChange?: (isTyping: boolean) => void;
   onCompanionTypingChange?: (isTyping: boolean) => void;
+  onRemove?: () => void;
 }
 
 interface Message {
@@ -20,10 +22,11 @@ interface Message {
   timestamp: number;
 }
 
-export default function CompanionChat({ agentId, agentName, userId, worldId, onTypingChange, onCompanionTypingChange }: CompanionChatProps) {
+export default function CompanionChat({ agentId, agentName, agentDescription, userId, worldId, onTypingChange, onCompanionTypingChange, onRemove }: CompanionChatProps) {
   const [message, setMessage] = useState('');
   const [chatId, setChatId] = useState<Id<'userAgentChats'> | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showRemoveButton, setShowRemoveButton] = useState(false);
   const scrollViewRef = useRef<HTMLDivElement>(null);
   const prevMessageRef = useRef('');
 
@@ -103,9 +106,22 @@ export default function CompanionChat({ agentId, agentName, userId, worldId, onT
       {/* Chat Header */}
       <div className="shrink-0">
         <div className="box w-full">
-          <h2 className="bg-brown-700 p-2 font-display text-2xl sm:text-4xl tracking-wider shadow-solid text-center">
+          <h2
+            className="bg-brown-700 p-2 font-display text-2xl sm:text-4xl tracking-wider shadow-solid text-center cursor-pointer hover:bg-brown-600 transition-colors"
+            onClick={() => setShowRemoveButton(!showRemoveButton)}
+          >
             {agentName}
           </h2>
+          {showRemoveButton && onRemove && (
+            <div className="bg-brown-800 p-2 text-center border-t-2 border-brown-900">
+              <button
+                onClick={onRemove}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-bold transition-colors"
+              >
+                Remove Companion
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

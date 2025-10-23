@@ -273,18 +273,25 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   // Companion selection content for left panel
   const companionSelectionContent = (
     <div className="h-full overflow-y-auto p-6">
-      <h1 className="text-4xl font-bold text-brown-100 mb-8 text-center">My Companion</h1>
-
       {selectedCompanion && companionInfo && activeTab === 'map' ? (
-        // Show face-to-face avatar chat view
-        <CompanionAvatarChat
-          companionName={companionInfo.staticDescription?.name || 'Companion'}
-          companionCharacter={companionInfo.characterName || 'f1'}
-          userName={localStorage.getItem('userNickname') || 'You'}
-          userCharacter={localStorage.getItem('selectedCharacter') || 'f1'}
-          isUserTyping={isUserTyping}
-          isCompanionTyping={isCompanionTyping}
-        />
+        <>
+          {/* Companion Description */}
+          <div className="desc mb-2">
+            <p className="leading-tight -m-4 bg-brown-700 text-base sm:text-sm">
+              {companionInfo.staticDescription?.identity || 'No description available'}
+            </p>
+          </div>
+
+          {/* Face-to-face avatar chat view */}
+          <CompanionAvatarChat
+            companionName={companionInfo.staticDescription?.name || 'Companion'}
+            companionCharacter={companionInfo.characterName || 'f1'}
+            userName={localStorage.getItem('userNickname') || 'You'}
+            userCharacter={localStorage.getItem('selectedCharacter') || 'f1'}
+            isUserTyping={isUserTyping}
+            isCompanionTyping={isCompanionTyping}
+          />
+        </>
       ) : null}
 
       {!selectedCompanion && (
@@ -406,60 +413,16 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
       {/* Right column area - Chat */}
       <div className="flex flex-col overflow-y-auto shrink-0 px-4 py-6 sm:px-6 lg:w-96 xl:pr-6 border-t-8 sm:border-t-0 sm:border-l-8 border-brown-900 bg-brown-800 text-brown-100">
         {showChat && selectedCompanion && companionInfo ? (
-          <>
-            {/* Agent Description Header */}
-            <div className="mb-6 bg-brown-700 rounded-lg p-4 border-2 border-brown-600">
-              {/* Agent Name and Status */}
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-xl font-bold text-brown-100">
-                  {companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
-                </h2>
-                <div className="flex items-center gap-2">
-                  <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                    ✓ Your Companion
-                  </span>
-                  <button
-                    onClick={handleRemoveCompanion}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-bold transition-colors"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-
-              {/* Agent Description */}
-              <div className="bg-brown-800 rounded-lg p-3 mb-3">
-                <p className="text-brown-200 text-sm leading-relaxed">
-                  {companionInfo.staticDescription?.identity || 'No description available'}
-                </p>
-              </div>
-
-              {/* Agent Goal */}
-              {companionInfo.staticDescription?.plan && (
-                <div className="text-sm text-blue-300 italic bg-brown-800 rounded-lg p-2">
-                  <strong>Goal:</strong> {companionInfo.staticDescription.plan}
-                </div>
-              )}
-
-              {/* Current Activity */}
-              {companionInfo.player?.activity && (
-                <div className="mt-2 text-sm text-yellow-300 bg-brown-800 rounded-lg p-2">
-                  <strong>Activity:</strong> {companionInfo.player.activity.description}{' '}
-                  {companionInfo.player.activity.emoji}
-                </div>
-              )}
-            </div>
-
-            {/* Chat Component */}
-            <CompanionChat
-              agentId={selectedCompanion}
-              agentName={companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
-              userId={userId}
-              worldId={worldId}
-              onTypingChange={setIsUserTyping}
-              onCompanionTypingChange={setIsCompanionTyping}
-            />
-          </>
+          <CompanionChat
+            agentId={selectedCompanion}
+            agentName={companionInfo.staticDescription?.name || `Agent ${companionInfo.agent.id}`}
+            agentDescription={companionInfo.staticDescription?.identity}
+            userId={userId}
+            worldId={worldId}
+            onTypingChange={setIsUserTyping}
+            onCompanionTypingChange={setIsCompanionTyping}
+            onRemove={handleRemoveCompanion}
+          />
         ) : (
           <div className="h-full text-xl flex text-center items-center p-4">
             {selectedCompanion ?
