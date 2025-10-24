@@ -192,10 +192,7 @@ export default function Home() {
             currentUser && (
               <LobbyView
                 userId={currentUser.userId}
-                onMatchFound={(worldId) => {
-                  // When match is found, switch to game view
-                  setCurrentView('game');
-                }}
+                // Note: No longer need onMatchFound callback since players stay in Lobby
               />
             )
           ) : currentView === 'agents' ? (
@@ -245,7 +242,11 @@ export default function Home() {
                 onOpenSettings={() => setCurrentView('settings')}
               />
             ) : (
-              <Button imgUrl={helpImg} onClick={() => setLoginModalOpen(true)}>
+              <Button
+                imgUrl={helpImg}
+                onClick={() => setLoginModalOpen(true)}
+                className="bg-blue-600 hover:bg-blue-700 scale-100 font-bold"
+              >
                 Login
               </Button>
             )}
