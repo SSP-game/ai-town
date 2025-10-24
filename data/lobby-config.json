@@ -1,0 +1,20 @@
+{
+  "matchmaking": {
+    "totalSlots": 5,
+    "humanPlayersRequired": 2,
+    "includeCompanions": true,
+    "additionalAgents": 1,
+    "matchTimeout": 60000,
+    "description": "Match configuration: 2 human players + their companions + 1 additional agent = 5 total"
+  },
+  "lobby": {
+    "name": "AI Town Lobby",
+    "description": "Find other players and start a new game session",
+    "maxWaitTime": 120000
+  },
+  "world": {
+    "createNewWorldPerMatch": true,
+    "worldDuration": 3600000,
+    "description": "Each match creates an isolated world that lasts 1 hour"
+  }
+}

@@ -15,7 +15,7 @@ import MapRosterWidget from './MapRosterWidget.tsx';
 
 export const SHOW_DEBUG_UI = !!import.meta.env.VITE_SHOW_DEBUG_UI;
 
-export default function Game() {
+export default function Game({ matchWorldId }: { matchWorldId?: string }) {
   const convex = useConvex();
   const [selectedElement, setSelectedElement] = useState<{
     kind: 'player';
@@ -24,8 +24,12 @@ export default function Game() {
   const [gameWrapperRef, { width, height }] = useElementSize();
 
   const worldStatus = useQuery(api.world.defaultWorldStatus);
-  const worldId = worldStatus?.worldId;
-  const engineId = worldStatus?.engineId;
+  const defaultWorldId = worldStatus?.worldId;
+  const defaultEngineId = worldStatus?.engineId;
+
+  // Use match world if provided, otherwise use default world
+  const worldId = matchWorldId || defaultWorldId;
+  const engineId = defaultEngineId; // For now, use default engine (can be enhanced later)
 
   const game = useServerGame(worldId);
 
@@ -46,7 +50,7 @@ export default function Game() {
       <div className="mx-auto w-full max-w grid grid-rows-[240px_1fr] lg:grid-rows-[1fr] lg:grid-cols-[1fr_auto] lg:grow max-w-none h-full game-frame">
         {/* Game area */}
         <div className="relative overflow-hidden bg-brown-900" ref={gameWrapperRef}>
-          <MapRosterWidget game={game} />
+          <MapRosterWidget game={game} worldId={worldId} />
           <div className="absolute inset-0">
             <div className="container">
               <Stage width={width} height={height} options={{ backgroundColor: 0x7ab5ff }}>

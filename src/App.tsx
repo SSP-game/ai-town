@@ -2,6 +2,7 @@ import Game from './components/Game.tsx';
 import AgentsListView from './components/AgentsListView.tsx';
 import SurveyView from './components/SurveyView.tsx';
 import UserSettingsView from './components/UserSettingsView.tsx';
+import LobbyView from './components/LobbyView.tsx';
 
 import { ToastContainer } from 'react-toastify';
 import a16zImg from '../assets/a16z.png';
@@ -61,6 +62,13 @@ export default function Home() {
 
   const worldStatus = useQuery(api.world.defaultWorldStatus);
   const worldId = worldStatus?.worldId;
+
+  // Check if current user has an active match
+  const lobbyStatus = useQuery(
+    api.lobby.getUserLobbyStatus,
+    currentUser?.userId ? { userId: currentUser.userId } : 'skip'
+  );
+  const matchWorldId = lobbyStatus?.lobby?.status === 'active' ? lobbyStatus.lobby.worldId : undefined;
 
   const handleLoginSuccess = (userData: {
     userId: string;
@@ -179,7 +187,17 @@ export default function Home() {
         {/* Game/Agents content with frame */}
         <div className="flex-1 flex flex-col relative min-h-0">
           {currentView === 'game' ? (
-            <Game />
+            <Game matchWorldId={matchWorldId} />
+          ) : currentView === 'lobby' ? (
+            currentUser && (
+              <LobbyView
+                userId={currentUser.userId}
+                onMatchFound={(worldId) => {
+                  // When match is found, switch to game view
+                  setCurrentView('game');
+                }}
+              />
+            )
           ) : currentView === 'agents' ? (
             worldId && <AgentsListView worldId={worldId} />
           ) : currentView === 'companion' ? (

@@ -129,6 +129,36 @@ export default defineSchema({
     .index('userId', ['userId'])
     .index('completedAt', ['completedAt']),
 
+  // Lobby system for player matchmaking
+  lobbies: defineTable({
+    status: v.union(v.literal('waiting'), v.literal('matched'), v.literal('active'), v.literal('cancelled')),
+    totalSlots: v.number(),
+    humanSlotsRequired: v.number(),
+    includeCompanions: v.boolean(),
+    additionalAgents: v.number(),
+    createdAt: v.number(),
+    matchedAt: v.optional(v.number()),
+    completedAt: v.optional(v.number()),
+    startedAt: v.optional(v.number()),
+    engineId: v.optional(v.id('engines')),
+    worldId: v.optional(v.id('worlds')),
+  })
+    .index('status', ['status'])
+    .index('createdAt', ['createdAt']),
+
+  lobbyPlayers: defineTable({
+    lobbyId: v.id('lobbies'),
+    userId: v.id('users'),
+    character: v.string(), // f1, f2, etc.
+    companionId: v.optional(v.string()),
+    status: v.union(v.literal('waiting'), v.literal('matched'), v.literal('playing'), v.literal('left')),
+    joinedAt: v.number(),
+    readyAt: v.optional(v.number()),
+  })
+    .index('lobbyId', ['lobbyId'])
+    .index('userId', ['userId'])
+    .index('userStatus', ['userId', 'status']),
+
   ...agentTables,
   ...aiTownTables,
   ...engineTables,

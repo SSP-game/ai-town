@@ -5,6 +5,7 @@ import type { ServerGame } from '../hooks/serverGame';
 import type { Agent } from '../../convex/aiTown/agent';
 import { useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 
 type CharacterKind = 'agent' | 'player' | 'other';
 
@@ -106,7 +107,7 @@ const typePriority: Record<CharacterKind, number> = {
   other: 2,
 };
 
-export default function MapRosterWidget({ game }: { game: ServerGame }) {
+export default function MapRosterWidget({ game, worldId }: { game: ServerGame; worldId?: Id<'worlds'> }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Get current user ID from localStorage
@@ -182,6 +183,16 @@ export default function MapRosterWidget({ game }: { game: ServerGame }) {
   return (
     <div className="pointer-events-none absolute left-4 top-4 z-30">
       <div className="pointer-events-auto flex w-64 max-w-[18rem] flex-col gap-2 rounded-xl border border-white/10 bg-black/60 p-3 text-white shadow-lg backdrop-blur">
+        {/* Room ID Display */}
+        {worldId && (
+          <div className="border-b border-white/10 pb-2 mb-1">
+            <div className="text-[10px] uppercase tracking-wider text-white/50 mb-1">Room ID</div>
+            <div className="text-xs font-mono text-green-400 break-all">
+              {worldId.slice(-12)}
+            </div>
+          </div>
+        )}
+
         <div
           className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-white/70 cursor-pointer hover:text-white/90 transition-colors"
           onClick={() => setIsCollapsed(!isCollapsed)}
