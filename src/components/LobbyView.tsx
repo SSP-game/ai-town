@@ -10,26 +10,31 @@ interface LobbyViewProps {
 }
 
 export default function LobbyView({ userId }: LobbyViewProps) {
-  const [selectedCharacter, setSelectedCharacter] = useState<string>('f1');
-
   const onlineCount = useQuery(api.lobby.getOnlineUsersCount);
   const lobbyStatus = useQuery(api.lobby.getUserLobbyStatus, { userId });
+  const userProfile = useQuery(api.users.getFullUserProfile, { userId });
   const joinMatchmaking = useMutation(api.lobby.joinMatchmaking);
   const leaveMatchmaking = useMutation(api.lobby.leaveMatchmaking);
 
-  // Auto-leave on component unmount
+  // Countdown timer state
+  const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
+  const [showExpiredMessage, setShowExpiredMessage] = useState(false);
+
+  // Auto-leave on component unmount (only when still waiting, not when matched/playing)
   useEffect(() => {
     return () => {
-      if (lobbyStatus && lobbyStatus.currentPlayer.status === 'waiting') {
+      // Only auto-leave if we're in waiting status (not matched, playing, or active)
+      if (lobbyStatus && lobbyStatus.currentPlayer.status === 'waiting' && lobbyStatus.lobby.status === 'waiting') {
         leaveMatchmaking({ userId }).catch(console.error);
       }
     };
-  }, [lobbyStatus, userId, leaveMatchmaking]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty deps - only run on unmount
 
-  // Auto-leave on browser close
+  // Auto-leave on browser close (only when waiting, not when matched/active)
   useEffect(() => {
     const handleBeforeUnload = () => {
-      if (lobbyStatus && lobbyStatus.currentPlayer.status === 'waiting') {
+      if (lobbyStatus && lobbyStatus.currentPlayer.status === 'waiting' && lobbyStatus.lobby.status === 'waiting') {
         leaveMatchmaking({ userId }).catch(console.error);
       }
     };
@@ -38,22 +43,74 @@ export default function LobbyView({ userId }: LobbyViewProps) {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [lobbyStatus, userId, leaveMatchmaking]);
 
-  // Check if match found and world created
-  // NOTE: No longer automatically switch to Game view
-  // Players should stay in Lobby and see the game world here
+  // Debug: Log lobby status changes
   useEffect(() => {
-    if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
-      // Match found! Player stays in Lobby view
-      // Game world will be displayed within Lobby component
-      console.log('Match found! World ID:', lobbyStatus.lobby.worldId);
+    if (lobbyStatus) {
+      console.log('[LobbyView] Status update:', {
+        lobbyStatus: lobbyStatus.lobby.status,
+        playerStatus: lobbyStatus.currentPlayer.status,
+        worldId: lobbyStatus.lobby.worldId,
+        expiresAt: lobbyStatus.lobby.expiresAt,
+      });
+
+      if (lobbyStatus.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
+        console.log('✅ Match found! World ID:', lobbyStatus.lobby.worldId);
+      } else if (lobbyStatus.lobby.status === 'matched') {
+        console.log('🎮 Match found! Waiting for world creation...');
+      }
     }
   }, [lobbyStatus]);
 
+  // Update countdown timer every second
+  useEffect(() => {
+    if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.expiresAt) {
+      const updateTimer = () => {
+        const now = Date.now();
+        const remaining = Math.max(0, lobbyStatus.lobby.expiresAt! - now);
+        setTimeRemaining(remaining);
+
+        // Show expired message when time runs out
+        if (remaining === 0) {
+          setShowExpiredMessage(true);
+        }
+      };
+
+      // Update immediately
+      updateTimer();
+
+      // Update every second
+      const interval = setInterval(updateTimer, 1000);
+      return () => clearInterval(interval);
+    } else {
+      setTimeRemaining(null);
+    }
+  }, [lobbyStatus]);
+
+  // Handle world expiration - clean up and return to lobby
+  useEffect(() => {
+    if (lobbyStatus?.lobby.status === 'expired' || (timeRemaining !== null && timeRemaining === 0)) {
+      // Show expiration message
+      setShowExpiredMessage(true);
+
+      // After 3 seconds, clean up the player's lobby record
+      const cleanupTimer = setTimeout(() => {
+        // Delete the player's lobby record to return to lobby view
+        leaveMatchmaking({ userId }).catch(console.error);
+        setShowExpiredMessage(false);
+        toast.info('Match ended! Returning to lobby...');
+      }, 3000);
+
+      return () => clearTimeout(cleanupTimer);
+    }
+  }, [lobbyStatus?.lobby.status, timeRemaining, userId, leaveMatchmaking]);
+
   const handleJoinMatchmaking = async () => {
     try {
+      // Use user's profile avatar as character
+      const character = userProfile?.avatar || 'f1';
       await joinMatchmaking({
         userId,
-        character: selectedCharacter,
+        character,
       });
       toast.success('Joined matchmaking queue!');
     } catch (error) {
@@ -70,6 +127,15 @@ export default function LobbyView({ userId }: LobbyViewProps) {
     }
   };
 
+  // Format time remaining as MM:SS
+  const formatTimeRemaining = (ms: number | null): string => {
+    if (ms === null) return '--:--';
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
   // If match is found and active, show full game world instead of lobby
   if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
     return (
@@ -84,6 +150,19 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                   Room: {lobbyStatus.lobby.worldId.slice(-12)}
                 </span>
               </div>
+              <div className={`border rounded px-4 py-2 ${
+                timeRemaining !== null && timeRemaining <= 10000
+                  ? 'bg-red-900/30 border-red-600 animate-pulse'
+                  : 'bg-blue-900/30 border-blue-600'
+              }`}>
+                <span className={`font-mono ${
+                  timeRemaining !== null && timeRemaining <= 10000
+                    ? 'text-red-300'
+                    : 'text-blue-300'
+                }`}>
+                  ⏱️ {formatTimeRemaining(timeRemaining)}
+                </span>
+              </div>
             </div>
             <div className="text-sm text-gray-400">
               {lobbyStatus.allPlayers.length} Players in Match
@@ -94,6 +173,25 @@ export default function LobbyView({ userId }: LobbyViewProps) {
         {/* Full Game World */}
         <div className="flex-1 relative">
           <Game matchWorldId={lobbyStatus.lobby.worldId} />
+
+          {/* Expiration Overlay */}
+          {showExpiredMessage && (
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+              <div className="bg-gray-800 border-4 border-red-600 rounded-2xl p-8 max-w-md text-center shadow-2xl">
+                <div className="text-6xl mb-4">⏰</div>
+                <h2 className="text-3xl font-bold text-white mb-3">Time's Up!</h2>
+                <p className="text-lg text-gray-300 mb-4">
+                  The match world has expired.
+                </p>
+                <p className="text-sm text-gray-400">
+                  Returning to lobby in a moment...
+                </p>
+                <div className="mt-6">
+                  <div className="animate-pulse bg-red-600 h-2 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -151,33 +249,29 @@ export default function LobbyView({ userId }: LobbyViewProps) {
               <div className="bg-gray-800/80 backdrop-blur rounded-xl p-8 border-2 border-gray-700 shadow-xl">
                 <h2 className="text-3xl font-bold text-white mb-6 text-center">🎯 Join Matchmaking</h2>
 
-                {/* Character Selection */}
+                {/* User Profile Display */}
                 <div className="mb-6">
-                  <label className="text-lg font-semibold text-gray-300 mb-3 block">Select Your Character</label>
-                  <div className="grid grid-cols-4 gap-3">
-                    {['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8'].map((char) => (
-                      <button
-                        key={char}
-                        onClick={() => setSelectedCharacter(char)}
-                        className={`p-4 rounded-lg border-2 transition-all ${
-                          selectedCharacter === char
-                            ? 'bg-blue-600 border-blue-400 text-white'
-                            : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
-                        }`}
-                      >
-                        <div className="text-2xl mb-1">
-                          {char === 'f1' && '👩'}
-                          {char === 'f2' && '👩‍🦰'}
-                          {char === 'f3' && '👩‍🦱'}
-                          {char === 'f4' && '👨'}
-                          {char === 'f5' && '👨‍🦱'}
-                          {char === 'f6' && '👨‍🦰'}
-                          {char === 'f7' && '🧑'}
-                          {char === 'f8' && '🧑‍🦱'}
-                        </div>
-                        <div className="text-xs font-semibold">{char.toUpperCase()}</div>
-                      </button>
-                    ))}
+                  <label className="text-lg font-semibold text-gray-300 mb-3 block">Your Profile</label>
+                  <div className="bg-gray-700/60 rounded-lg p-4 flex items-center gap-4">
+                    <div className="text-4xl">
+                      {userProfile?.avatar === 'f1' && '👩'}
+                      {userProfile?.avatar === 'f2' && '👩‍🦰'}
+                      {userProfile?.avatar === 'f3' && '👩‍🦱'}
+                      {userProfile?.avatar === 'f4' && '👨'}
+                      {userProfile?.avatar === 'f5' && '👨‍🦱'}
+                      {userProfile?.avatar === 'f6' && '👨‍🦰'}
+                      {userProfile?.avatar === 'f7' && '🧑'}
+                      {userProfile?.avatar === 'f8' && '🧑‍🦱'}
+                      {!userProfile?.avatar && '👤'}
+                    </div>
+                    <div>
+                      <div className="text-lg font-semibold text-white">
+                        {userProfile?.nickname || 'Unknown Player'}
+                      </div>
+                      <div className="text-sm text-gray-400">
+                        Avatar: {userProfile?.avatar || 'f1'}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -279,9 +373,10 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                 )}
               </div>
             )}
+          </div>
 
-            {/* How It Works - Info Panel */}
-            <div className="lg:col-span-1">
+          {/* How It Works - Info Panel */}
+          <div className="lg:col-span-1">
               <div className="bg-gray-800/80 backdrop-blur rounded-xl p-6 border-2 border-gray-700 shadow-xl">
                 <h3 className="text-xl font-bold text-white mb-4">📖 How It Works</h3>
                 <ul className="text-sm text-gray-300 space-y-3">
@@ -322,7 +417,6 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

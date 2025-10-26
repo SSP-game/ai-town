@@ -14,7 +14,7 @@
   },
   "world": {
     "createNewWorldPerMatch": true,
-    "worldDuration": 3600000,
-    "description": "Each match creates an isolated world that lasts 1 hour"
+    "worldDuration": 60000,
+    "description": "Each match creates an isolated world that lasts 1 minute"
   }
 }

@@ -295,9 +295,20 @@ export const createMatchWorld = internalMutation({
     // Note: The actual player/agent creation will be handled by the game UI
     // when players join. We just need to mark the lobby as active.
 
+    const worldDuration = lobbyConfig.world.worldDuration;
+    const startedAt = Date.now();
+    const expiresAt = startedAt + worldDuration;
+
     await ctx.db.patch(args.lobbyId, {
       status: 'active',
       worldId: worldId,
+      startedAt,
+      expiresAt,
+    });
+
+    // Schedule expiration check
+    await ctx.scheduler.runAfter(worldDuration, internalApi.lobby.checkWorldExpiration, {
+      lobbyId: args.lobbyId,
     });
 
     // Update player statuses to 'playing'
@@ -309,8 +320,59 @@ export const createMatchWorld = internalMutation({
   },
 });
 
+// Internal function to check and handle world expiration
+export const checkWorldExpiration = internalMutation({
+  args: {
+    lobbyId: v.id('lobbies'),
+  },
+  handler: async (ctx, args) => {
+    const lobby = await ctx.db.get(args.lobbyId);
+    if (!lobby || lobby.status !== 'active') {
+      return;
+    }
+
+    // Check if world has expired
+    const now = Date.now();
+    if (lobby.expiresAt && now >= lobby.expiresAt) {
+      // Update lobby status to expired
+      await ctx.db.patch(args.lobbyId, {
+        status: 'expired',
+        completedAt: now,
+      });
+
+      // Update all players to 'left' status so they can rejoin matchmaking
+      const players = await ctx.db
+        .query('lobbyPlayers')
+        .withIndex('lobbyId', (q) => q.eq('lobbyId', args.lobbyId))
+        .collect();
+
+      for (const player of players) {
+        await ctx.db.patch(player._id, {
+          status: 'left',
+        });
+      }
+
+      // Stop the world's engine if it exists
+      const worldId = lobby.worldId;
+      if (worldId) {
+        const worldStatus = await ctx.db
+          .query('worldStatus')
+          .withIndex('worldId', (q) => q.eq('worldId', worldId))
+          .first();
+
+        if (worldStatus) {
+          await ctx.db.patch(worldStatus._id, {
+            status: 'inactive',
+          });
+        }
+      }
+    }
+  },
+});
+
 // Export internal API for scheduler
 export const internal = {
   checkMatchmaking,
   createMatchWorld,
+  checkWorldExpiration,
 };

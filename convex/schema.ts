@@ -131,7 +131,7 @@ export default defineSchema({
 
   // Lobby system for player matchmaking
   lobbies: defineTable({
-    status: v.union(v.literal('waiting'), v.literal('matched'), v.literal('active'), v.literal('cancelled')),
+    status: v.union(v.literal('waiting'), v.literal('matched'), v.literal('active'), v.literal('cancelled'), v.literal('expired')),
     totalSlots: v.number(),
     humanSlotsRequired: v.number(),
     includeCompanions: v.boolean(),
@@ -140,11 +140,13 @@ export default defineSchema({
     matchedAt: v.optional(v.number()),
     completedAt: v.optional(v.number()),
     startedAt: v.optional(v.number()),
+    expiresAt: v.optional(v.number()),
     engineId: v.optional(v.id('engines')),
     worldId: v.optional(v.id('worlds')),
   })
     .index('status', ['status'])
-    .index('createdAt', ['createdAt']),
+    .index('createdAt', ['createdAt'])
+    .index('expiresAt', ['expiresAt']),
 
   lobbyPlayers: defineTable({
     lobbyId: v.id('lobbies'),
