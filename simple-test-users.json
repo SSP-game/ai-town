@@ -1,0 +1,32 @@
+{
+  "user_a": {
+    "email": "alice@test.com",
+    "password": "test123",
+    "nickname": "Alice",
+    "description": "用户A - 第一个测试用户"
+  },
+  "user_b": {
+    "email": "bob@test.com",
+    "password": "test123",
+    "nickname": "Bob",
+    "description": "用户B - 第二个测试用户"
+  },
+  "user_c": {
+    "email": "charlie@test.com",
+    "password": "test123",
+    "nickname": "Charlie",
+    "description": "用户C - 第三个测试用户"
+  },
+  "user_d": {
+    "email": "diana@test.com",
+    "password": "test123",
+    "nickname": "Diana",
+    "description": "用户D - 第四个测试用户"
+  },
+  "user_e": {
+    "email": "eve@test.com",
+    "password": "test123",
+    "nickname": "Eve",
+    "description": "用户E - 第五个测试用户"
+  }
+}

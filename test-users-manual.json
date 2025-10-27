@@ -1,0 +1,50 @@
+{
+  "test1": {
+    "email": "test1@aitown.test",
+    "password": "password123",
+    "nickname": "TestPlayer1",
+    "firstName": "Test",
+    "lastName": "Player One",
+    "description": "主要测试用户1 - 用于5角色匹配测试"
+  },
+  "test2": {
+    "email": "test2@aitown.test",
+    "password": "password123",
+    "nickname": "TestPlayer2",
+    "firstName": "Test",
+    "lastName": "Player Two",
+    "description": "主要测试用户2 - 用于5角色匹配测试"
+  },
+  "demo1": {
+    "email": "demo1@aitown.test",
+    "password": "password123",
+    "nickname": "DemoOne",
+    "firstName": "Demo",
+    "lastName": "User One",
+    "description": "演示用户1 - 用于功能展示"
+  },
+  "demo2": {
+    "email": "demo2@aitown.test",
+    "password": "password123",
+    "nickname": "DemoTwo",
+    "firstName": "Demo",
+    "lastName": "User Two",
+    "description": "演示用户2 - 用于功能展示"
+  },
+  "player1": {
+    "email": "player1@aitown.test",
+    "password": "password123",
+    "nickname": "PlayerOne",
+    "firstName": "Player",
+    "lastName": "One",
+    "description": "基础测试用户1"
+  },
+  "player2": {
+    "email": "player2@aitown.test",
+    "password": "password123",
+    "nickname": "PlayerTwo",
+    "firstName": "Player",
+    "lastName": "Two",
+    "description": "基础测试用户2"
+  }
+}

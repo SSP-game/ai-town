@@ -273,7 +273,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   // Companion selection content for left panel
   const companionSelectionContent = (
     <div className="h-full overflow-y-auto p-6">
-      {selectedCompanion && companionInfo && activeTab === 'map' ? (
+      {selectedCompanion && companionInfo ? (
         <>
           {/* Companion Description */}
           <div className="desc mb-2">
@@ -408,7 +408,11 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
   return (
     <div className="mx-auto w-full max-w grid grid-rows-[240px_1fr] lg:grid-rows-[1fr] lg:grid-cols-[1fr_auto] lg:grow max-w-none h-full game-frame">
       {/* Left area - Companion selection */}
-      <div className="relative overflow-hidden bg-brown-900">{companionSelectionContent}</div>
+      <div className="relative overflow-hidden bg-brown-900 flex flex-col min-h-0">
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          {companionSelectionContent}
+        </div>
+      </div>
 
       {/* Right column area - Chat */}
       <div className="flex flex-col overflow-y-auto shrink-0 px-4 py-6 sm:px-6 lg:w-96 xl:pr-6 border-t-8 sm:border-t-0 sm:border-l-8 border-brown-900 bg-brown-800 text-brown-100">

@@ -29,7 +29,7 @@ export default function Game({ matchWorldId }: { matchWorldId?: string }) {
 
   // Use match world if provided, otherwise use default world
   const worldId = matchWorldId || defaultWorldId;
-  const engineId = defaultEngineId; // For now, use default engine (can be enhanced later)
+  const engineId = matchWorldId ? undefined : defaultEngineId; // Match worlds have their own engines
 
   const game = useServerGame(worldId);
 
@@ -41,8 +41,25 @@ export default function Game({ matchWorldId }: { matchWorldId?: string }) {
 
   const scrollViewRef = useRef<HTMLDivElement>(null);
 
-  if (!worldId || !engineId || !game) {
-    return null;
+  if (!worldId || !game) {
+    return (
+      <div className="flex items-center justify-center h-full bg-brown-900 text-brown-100">
+        <div className="text-center p-8">
+          <h2 className="text-2xl font-bold mb-4">No Active Game World</h2>
+          <p className="mb-4">
+            {!worldId
+              ? "There is no game world available. Join a match or create a new game to start playing."
+              : "Game is still loading..."}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
   }
   return (
     <>

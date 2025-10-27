@@ -42,23 +42,69 @@ export default function Home() {
   const [companionModalOpen, setCompanionModalOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
-  // Check login state on app start
+  // Check login state and URL hash on app start
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
-    const nickname = localStorage.getItem('userNickname');
-    const email = localStorage.getItem('userEmail');
+    const initializeApp = () => {
+      // Check URL hash for routing
+      const hash = window.location.hash.slice(1); // Remove #
+      if (['agents', 'companion', 'survey', 'lobby', 'settings', 'game'].includes(hash)) {
+        setCurrentView(hash as ViewMode);
+      }
 
-    if (userId && nickname && email) {
-      setIsLoggedIn(true);
-      setCurrentUser({
-        userId: userId as Id<"users">,
-        nickname,
-        email,
-        selectedCharacter: localStorage.getItem('selectedCharacter') || undefined,
-        selectedCompanion: localStorage.getItem('selectedCompanion') || undefined,
-      });
-    }
+      // Initialize user from storage
+      try {
+        const userId = localStorage.getItem('userId');
+        const nickname = localStorage.getItem('userNickname');
+        const email = localStorage.getItem('userEmail');
+
+        if (userId && nickname && email) {
+          setIsLoggedIn(true);
+          setCurrentUser({
+            userId: userId as Id<"users">,
+            nickname,
+            email,
+            selectedCharacter: localStorage.getItem('selectedCharacter') || undefined,
+            selectedCompanion: localStorage.getItem('selectedCompanion') || undefined,
+          });
+        }
+      } catch (error) {
+        console.error('Error initializing user from storage:', error);
+        // Clear corrupted storage
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userNickname');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('selectedCharacter');
+        localStorage.removeItem('selectedCompanion');
+      }
+    };
+
+    initializeApp();
   }, []);
+
+  // Handle URL hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      if (['agents', 'companion', 'survey', 'lobby', 'settings', 'game'].includes(hash)) {
+        setCurrentView(hash as ViewMode);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Update URL hash when view changes
+  useEffect(() => {
+    if (currentView !== 'game') {
+      window.location.hash = currentView;
+    } else {
+      // Remove hash when going back to game view
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    }
+  }, [currentView]);
 
   const worldStatus = useQuery(api.world.defaultWorldStatus);
   const worldId = worldStatus?.worldId;
@@ -189,11 +235,33 @@ export default function Home() {
           {currentView === 'game' ? (
             <Game matchWorldId={matchWorldId} />
           ) : currentView === 'lobby' ? (
-            currentUser && (
+            currentUser ? (
               <LobbyView
                 userId={currentUser.userId}
                 // Note: No longer need onMatchFound callback since players stay in Lobby
               />
+            ) : (
+              // Fallback for lobby view
+              (() => {
+                const userId = localStorage.getItem('userId') as Id<"users">;
+                return userId ? (
+                  <LobbyView userId={userId} />
+                ) : (
+                  <div className="min-h-screen bg-brown-900 text-brown-100 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-xl mb-4">Please login to access the lobby.</p>
+                      <button
+                        onClick={() => setLoginModalOpen(true)}
+                        className="button text-white shadow-solid text-lg cursor-pointer"
+                      >
+                        <div className="h-full bg-clay-700 text-center py-3 px-6">
+                          <span>Login</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()
             )
           ) : currentView === 'agents' ? (
             worldId && <AgentsListView worldId={worldId} />
@@ -204,12 +272,38 @@ export default function Home() {
               <SurveyView userId={currentUser.userId} onComplete={() => setCurrentView('game')} />
             )
           ) : currentView === 'settings' ? (
-            currentUser && (
+            currentUser ? (
               <UserSettingsView
                 userId={currentUser.userId}
                 onLogout={handleLogout}
                 onBack={() => setCurrentView('game')}
               />
+            ) : (
+              // Fallback: Try to get userId from localStorage if currentUser is temporarily null
+              (() => {
+                const userId = localStorage.getItem('userId') as Id<"users">;
+                return userId ? (
+                  <UserSettingsView
+                    userId={userId}
+                    onLogout={handleLogout}
+                    onBack={() => setCurrentView('game')}
+                  />
+                ) : (
+                  <div className="min-h-screen bg-brown-900 text-brown-100 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-xl mb-4">User session lost. Please login again.</p>
+                      <button
+                        onClick={() => setLoginModalOpen(true)}
+                        className="button text-white shadow-solid text-lg cursor-pointer"
+                      >
+                        <div className="h-full bg-clay-700 text-center py-3 px-6">
+                          <span>Login</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()
             )
           ) : null}
         </div>
@@ -268,7 +362,7 @@ export default function Home() {
         contentLabel="Login modal"
         ariaHideApp={false}
       >
-        <AuthPage onLoginSuccess={handleLoginSuccess} />
+        <AuthPage onLoginSuccess={handleLoginSuccess} onClose={() => setLoginModalOpen(false)} />
       </ReactModal>
     </main>
   );

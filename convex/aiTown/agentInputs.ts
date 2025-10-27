@@ -140,6 +140,7 @@ export const agentInputs = {
   createAgent: inputHandler({
     args: {
       descriptionIndex: v.number(),
+      companionOfUserId: v.optional(v.id('users')),
     },
     handler: (game, now, args) => {
       const description = Descriptions[args.descriptionIndex];
@@ -171,6 +172,7 @@ export const agentInputs = {
           agentId: agentId,
           identity: description.identity,
           plan: description.plan,
+          companionOfUserId: args.companionOfUserId,
         }),
       );
       return { agentId };

@@ -38,6 +38,7 @@ import type * as aiTown_worldMap from "../aiTown/worldMap.js";
 import type * as companionWorld from "../companionWorld.js";
 import type * as constants from "../constants.js";
 import type * as crons from "../crons.js";
+import type * as debugQuery from "../debugQuery.js";
 import type * as engine_abstractGame from "../engine/abstractGame.js";
 import type * as engine_historicalObject from "../engine/historicalObject.js";
 import type * as http from "../http.js";
@@ -96,6 +97,7 @@ declare const fullApi: ApiFromModules<{
   companionWorld: typeof companionWorld;
   constants: typeof constants;
   crons: typeof crons;
+  debugQuery: typeof debugQuery;
   "engine/abstractGame": typeof engine_abstractGame;
   "engine/historicalObject": typeof engine_historicalObject;
   http: typeof http;

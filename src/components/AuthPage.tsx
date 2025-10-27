@@ -13,9 +13,10 @@ interface AuthPageProps {
     firstName?: string;
     lastName?: string;
   }) => void;
+  onClose?: () => void;
 }
 
-export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
+export default function AuthPage({ onLoginSuccess, onClose }: AuthPageProps) {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     email: '',
@@ -104,7 +105,16 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
         </div>
 
         {/* Auth Form */}
-        <div className="box bg-brown-800">
+        <div className="box bg-brown-800 relative">
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-brown-400 hover:text-brown-100 text-2xl leading-none z-10"
+              title="Close"
+            >
+              ×
+            </button>
+          )}
           <div className="bg-brown-700 p-4">
             <h2 className="text-3xl font-display text-brown-100 text-center tracking-wider">
               {isLogin ? 'Login' : 'Sign Up'}

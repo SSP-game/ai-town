@@ -19,6 +19,7 @@ export default function LobbyView({ userId }: LobbyViewProps) {
   // Countdown timer state
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [showExpiredMessage, setShowExpiredMessage] = useState(false);
+  const [isJoining, setIsJoining] = useState(false);
 
   // Auto-leave on component unmount (only when still waiting, not when matched/playing)
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function LobbyView({ userId }: LobbyViewProps) {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [lobbyStatus, userId, leaveMatchmaking]);
 
-  // Debug: Log lobby status changes
+  // Debug: Log lobby status changes and reset joining state
   useEffect(() => {
     if (lobbyStatus) {
       console.log('[LobbyView] Status update:', {
@@ -53,13 +54,19 @@ export default function LobbyView({ userId }: LobbyViewProps) {
         expiresAt: lobbyStatus.lobby.expiresAt,
       });
 
+      // Reset isJoining when successfully joined
+      if (isJoining) {
+        setIsJoining(false);
+        console.log('[LobbyView] Reset isJoining state');
+      }
+
       if (lobbyStatus.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
         console.log('✅ Match found! World ID:', lobbyStatus.lobby.worldId);
       } else if (lobbyStatus.lobby.status === 'matched') {
         console.log('🎮 Match found! Waiting for world creation...');
       }
     }
-  }, [lobbyStatus]);
+  }, [lobbyStatus, isJoining]);
 
   // Update countdown timer every second
   useEffect(() => {
@@ -105,17 +112,34 @@ export default function LobbyView({ userId }: LobbyViewProps) {
   }, [lobbyStatus?.lobby.status, timeRemaining, userId, leaveMatchmaking]);
 
   const handleJoinMatchmaking = async () => {
+    // Prevent double-clicking
+    if (isJoining || lobbyStatus) {
+      console.log('[LobbyView] Already joining or in lobby, ignoring click');
+      return;
+    }
+
+    // Wait for userProfile to load
+    if (!userProfile) {
+      toast.error('Loading profile... Please try again.');
+      return;
+    }
+
+    setIsJoining(true);
     try {
       // Use user's profile avatar as character
-      const character = userProfile?.avatar || 'f1';
+      const character = userProfile.avatar || 'f1';
+      console.log('[LobbyView] Joining matchmaking with character:', character);
       await joinMatchmaking({
         userId,
         character,
       });
       toast.success('Joined matchmaking queue!');
     } catch (error) {
+      console.error('[LobbyView] Failed to join matchmaking:', error);
       toast.error(error instanceof Error ? error.message : 'Failed to join matchmaking');
+      setIsJoining(false); // Reset on error
     }
+    // Note: Don't reset isJoining on success, let lobbyStatus update handle it
   };
 
   const handleLeaveMatchmaking = async () => {
@@ -136,8 +160,19 @@ export default function LobbyView({ userId }: LobbyViewProps) {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  // Debug: Log exact values right before conditional render
+  console.log('[LobbyView RENDER] Checking conditional:', {
+    hasLobbyStatus: !!lobbyStatus,
+    lobbyStatusValue: lobbyStatus?.lobby.status,
+    isActive: lobbyStatus?.lobby.status === 'active',
+    worldId: lobbyStatus?.lobby.worldId,
+    hasWorldId: !!lobbyStatus?.lobby.worldId,
+    fullCondition: lobbyStatus?.lobby.status === 'active' && !!lobbyStatus.lobby.worldId,
+  });
+
   // If match is found and active, show full game world instead of lobby
   if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
+    console.log('[LobbyView RENDER] ✅ Rendering game world!');
     return (
       <div className="flex flex-col h-full bg-gray-900">
         {/* Game Header with Room Info */}
@@ -277,9 +312,14 @@ export default function LobbyView({ userId }: LobbyViewProps) {
 
                 <button
                   onClick={handleJoinMatchmaking}
-                  className="w-full py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 rounded-xl text-2xl font-bold text-white transition-all transform hover:scale-105 shadow-lg"
+                  disabled={isJoining || !userProfile}
+                  className={`w-full py-4 rounded-xl text-2xl font-bold text-white transition-all shadow-lg ${
+                    isJoining || !userProfile
+                      ? 'bg-gray-600 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 transform hover:scale-105'
+                  }`}
                 >
-                  🚀 Join Matchmaking Queue
+                  {isJoining ? '⏳ Joining...' : !userProfile ? '⏳ Loading...' : '🚀 Join Matchmaking Queue'}
                 </button>
               </div>
             ) : (

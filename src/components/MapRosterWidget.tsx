@@ -14,6 +14,7 @@ type RosterEntry = {
   name: string;
   characterName?: string;
   kind: CharacterKind;
+  companionOfUser?: string; // User nickname this companion belongs to
 };
 
 type CharacterProfile = {
@@ -118,6 +119,17 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
     api.users.getFullUserProfile,
     currentUserId ? { userId: currentUserId as any } : 'skip',
   );
+
+  // Get all user profiles to show real nicknames for all human players
+  const allPlayerDescriptions = [...game.playerDescriptions.values()];
+  const userIds = allPlayerDescriptions
+    .map(pd => pd.userId)
+    .filter((uid): uid is Id<'users'> => uid !== undefined);
+
+  const userProfiles = useQuery(
+    api.users.listByIds,
+    userIds.length > 0 ? { userIds } : 'skip',
+  ) || {};
   const entries: RosterEntry[] = useMemo(() => {
     const list: RosterEntry[] = [];
     const agentByPlayerId = new Map<GameId<'players'>, Agent>();
@@ -129,6 +141,7 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
     for (const player of game.world.players.values()) {
       const agent = agentByPlayerId.get(player.id);
       const playerDescription = game.playerDescriptions.get(player.id);
+      const agentDescription = agent ? game.agentDescriptions.get(agent.id) : undefined;
       const characterName = playerDescription?.character;
       const staticDescription = characterName
         ? Descriptions.find(
@@ -137,13 +150,27 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
         : undefined;
 
       let name: string;
+      let companionOfUser: string | undefined;
       const kind: CharacterKind = agent ? 'agent' : player.human ? 'player' : 'other';
+
+      // Check if this agent is a companion of a user
+      if (agent && agentDescription?.companionOfUserId) {
+        const companionUserId = agentDescription.companionOfUserId;
+        const companionUserProfile = userProfiles[companionUserId];
+        if (companionUserProfile?.nickname) {
+          companionOfUser = companionUserProfile.nickname;
+        }
+      }
 
       // For human players, try to show user nickname instead of character name
       if (player.human && playerDescription?.userId) {
         const playerUserId = playerDescription.userId as string;
-        // If this is the current user, show their nickname
-        if (playerUserId === currentUserId && userProfile?.nickname) {
+        const playerUserProfile = userProfiles[playerUserId];
+
+        // Show the user's real nickname if available
+        if (playerUserProfile?.nickname) {
+          name = playerUserProfile.nickname;
+        } else if (playerUserId === currentUserId && userProfile?.nickname) {
           name = userProfile.nickname;
         } else {
           // For other players, try to get their profile or fall back to character name
@@ -162,6 +189,7 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
         name,
         characterName,
         kind,
+        companionOfUser,
       });
     }
 
@@ -174,7 +202,7 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
     });
 
     return list;
-  }, [game]);
+  }, [game, userProfiles, userProfile, currentUserId]);
 
   if (entries.length === 0) {
     return null;
@@ -202,7 +230,7 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
         </div>
         {!isCollapsed && (
           <div className="flex flex-wrap gap-2 animate-in slide-in-from-top-1 duration-200">
-            {entries.map(({ key, name, characterName, kind }) => (
+            {entries.map(({ key, name, characterName, kind, companionOfUser }) => (
               <div
                 key={key}
                 className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2 py-1"
@@ -214,6 +242,7 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
                   <span className="truncate text-sm font-semibold">{name}</span>
                   <span className="text-[10px] uppercase tracking-wider text-white/60">
                     {kind === 'agent' ? 'Agent' : kind === 'player' ? 'Player' : 'Resident'}
+                    {companionOfUser && ` · ${companionOfUser}'s`}
                   </span>
                 </div>
               </div>

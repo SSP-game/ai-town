@@ -6,6 +6,7 @@ import lobbyConfig from '../data/lobby-config.json';
 import { createEngine } from './aiTown/main';
 import { ENGINE_ACTION_DURATION } from './constants';
 import * as map from '../data/gentle.js';
+import { insertInput } from './aiTown/insertInput';
 
 // Get online users count (5-minute window for better accuracy)
 export const getOnlineUsersCount = query({
@@ -291,9 +292,39 @@ export const createMatchWorld = internalMutation({
       maxDuration: ENGINE_ACTION_DURATION,
     });
 
-    // Add human players to the world
-    // Note: The actual player/agent creation will be handled by the game UI
-    // when players join. We just need to mark the lobby as active.
+    // Add human players and their companions
+    let agentCount = 0;
+    for (const player of players) {
+      const user = await ctx.db.get(player.userId);
+      if (!user) continue;
+
+      // Join the player to the world (creates human player character)
+      const playerName = user?.nickname || 'Player';
+      await insertInput(ctx, worldId, 'join', {
+        name: playerName,
+        character: player.character,
+        description: `${playerName} is a human player`,
+        tokenIdentifier: player.userId, // Use userId as unique identifier
+        userId: player.userId,
+      });
+
+      // Add player's companion if configured
+      if (lobby.includeCompanions && player.companionId) {
+        await insertInput(ctx, worldId, 'createAgent', {
+          descriptionIndex: agentCount % 13, // 13 characters available (0-12)
+          companionOfUserId: player.userId,
+        });
+        agentCount++;
+      }
+    }
+
+    // Add additional AI agents if configured
+    for (let i = 0; i < lobby.additionalAgents; i++) {
+      await insertInput(ctx, worldId, 'createAgent', {
+        descriptionIndex: agentCount % 13,
+      });
+      agentCount++;
+    }
 
     const worldDuration = lobbyConfig.world.worldDuration;
     const startedAt = Date.now();

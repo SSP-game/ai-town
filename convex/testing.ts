@@ -251,6 +251,93 @@ export const checkAgentPositions = query({
   },
 });
 
+export const debugMatchmaking = query({
+  handler: async (ctx) => {
+    const result = {
+      lobbies: [] as any[],
+      users: [] as any[],
+      worlds: [] as any[]
+    };
+
+    // Get all lobbies
+    const lobbies = await ctx.db.query('lobbies').collect();
+    for (const lobby of lobbies) {
+      const lobbyData = {
+        id: lobby._id,
+        status: lobby.status,
+        totalSlots: lobby.totalSlots,
+        humanSlotsRequired: lobby.humanSlotsRequired,
+        includeCompanions: lobby.includeCompanions,
+        additionalAgents: lobby.additionalAgents,
+        worldId: lobby.worldId,
+        players: [] as any[]
+      };
+
+      // Get players in this lobby
+      const lobbyPlayers = await ctx.db
+        .query('lobbyPlayers')
+        .withIndex('lobbyId', (q) => q.eq('lobbyId', lobby._id))
+        .collect();
+
+      for (const player of lobbyPlayers) {
+        const user = await ctx.db.get(player.userId);
+        lobbyData.players.push({
+          playerId: player._id,
+          userId: player.userId,
+          nickname: user?.nickname || 'Unknown',
+          character: player.character,
+          companionId: player.companionId,
+          status: player.status,
+          joinedAt: new Date(player.joinedAt).toLocaleString()
+        });
+      }
+
+      result.lobbies.push(lobbyData);
+
+      // If lobby has a world, check world state
+      if (lobby.worldId) {
+        const worldStatus = await ctx.db
+          .query('worldStatus')
+          .withIndex('worldId', (q) => q.eq('worldId', lobby.worldId!))
+          .first();
+
+        if (worldStatus) {
+          const world = await ctx.db.get(lobby.worldId);
+          if (world) {
+            const worldData = {
+              worldId: lobby.worldId,
+              status: worldStatus.status,
+              players: world.players.length,
+              agents: world.agents.length,
+              conversations: world.conversations.length,
+              playerDetails: [] as any[]
+            };
+
+            // Get player descriptions
+            const allPlayerDescs = await ctx.db.query('playerDescriptions').collect();
+            for (const player of world.players) {
+              const playerDesc = allPlayerDescs.find(pd => pd.playerId === player.id);
+              if (playerDesc) {
+                worldData.playerDetails.push({
+                  playerId: player.id,
+                  name: playerDesc.name,
+                  character: playerDesc.character,
+                  description: playerDesc.description,
+                  userId: playerDesc.userId
+                });
+              }
+            }
+
+            result.worlds.push(worldData);
+          }
+        }
+      }
+    }
+
+    return result;
+  },
+});
+
 export const debugFenceArea = query({
   handler: async (ctx) => {
     const { worldStatus } = await getDefaultWorld(ctx.db);

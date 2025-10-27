@@ -415,6 +415,7 @@ export const updateUserProfile = mutation({
       mbti: v.optional(v.string()),
       bio: v.optional(v.string()),
       nickname: v.optional(v.string()),
+      experimentConsent: v.optional(v.boolean()),
     }),
   },
   handler: async (ctx, { userId, updates }) => {
@@ -580,5 +581,58 @@ export const loginWithValidation = mutation({
       firstName: user.firstName,
       lastName: user.lastName,
     };
+  },
+});
+
+// List all users (for testing purposes)
+export const listAll = query({
+  args: {},
+  handler: async (ctx) => {
+    const users = await ctx.db.query('users').collect();
+
+    return users.map(user => ({
+      userId: user._id,
+      email: user.email,
+      nickname: user.nickname,
+      selectedCharacter: user.selectedCharacter,
+      selectedCompanion: user.selectedCompanion,
+      isActive: user.isActive,
+      createdAt: user.createdAt,
+      lastLoginAt: user.lastLoginAt,
+      updatedAt: user.updatedAt,
+    }));
+  },
+});
+
+// Batch get user profiles by IDs
+export const listByIds = query({
+  args: {
+    userIds: v.array(v.id('users')),
+  },
+  handler: async (ctx, { userIds }) => {
+    const users = await Promise.all(
+      userIds.map(async (userId) => {
+        const user = await ctx.db.get(userId);
+        if (!user || !user.isActive) {
+          return null;
+        }
+        return {
+          userId: user._id,
+          nickname: user.nickname,
+          selectedCharacter: user.selectedCharacter,
+          selectedCompanion: user.selectedCompanion,
+        };
+      }),
+    );
+
+    // Create a mapping of userId to user profile
+    const userMap: Record<string, any> = {};
+    users.forEach((user) => {
+      if (user) {
+        userMap[user.userId] = user;
+      }
+    });
+
+    return userMap;
   },
 });

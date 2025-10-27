@@ -5,7 +5,7 @@
     "includeCompanions": true,
     "additionalAgents": 1,
     "matchTimeout": 60000,
-    "description": "Match configuration: 2 human players + their companions + 1 additional agent = 5 total"
+    "description": "Match configuration: 2 human players + 2 companions + 1 additional agent = 5 total"
   },
   "lobby": {
     "name": "AI Town Lobby",
