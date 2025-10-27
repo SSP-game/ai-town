@@ -29,7 +29,10 @@ export default function Game({ matchWorldId }: { matchWorldId?: string }) {
 
   // Use match world if provided, otherwise use default world
   const worldId = matchWorldId || defaultWorldId;
-  const engineId = matchWorldId ? undefined : defaultEngineId; // Match worlds have their own engines
+
+  // Get engine ID for the current world (works for both default and match worlds)
+  const worldStateStatus = useQuery(api.world.worldState, worldId ? { worldId } : 'skip');
+  const engineId = worldStateStatus?.engine?._id;
 
   const game = useServerGame(worldId);
 

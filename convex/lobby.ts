@@ -285,7 +285,7 @@ export const createMatchWorld = internalMutation({
       animatedSprites: map.animatedsprites,
     });
 
-    // Start the engine
+    // Start the engine immediately
     await ctx.scheduler.runAfter(0, internalApi.aiTown.main.runStep, {
       worldId,
       generationNumber: engine.generationNumber,
