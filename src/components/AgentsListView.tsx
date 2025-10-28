@@ -2,7 +2,7 @@ import { Descriptions, characters } from '../../data/characters';
 import { Id } from '../../convex/_generated/dataModel';
 import { useServerGame } from '../hooks/serverGame';
 import { useEffect, useRef, useState } from 'react';
-import AgentChatModal from './AgentChatModal';
+import CompanionChat from './CompanionChat';
 import Button from './buttons/Button';
 
 export interface AgentsListViewProps {
@@ -12,8 +12,7 @@ export interface AgentsListViewProps {
 
 export default function AgentsListView({ worldId, onSelectAgent }: AgentsListViewProps) {
   const game = useServerGame(worldId);
-  const [chatModalOpen, setChatModalOpen] = useState(false);
-  const [selectedAgent, setSelectedAgent] = useState<{ id: string; name: string } | null>(null);
+  const [selectedAgent, setSelectedAgent] = useState<{ id: string; name: string; description?: string } | null>(null);
   const [userId, setUserId] = useState<Id<"users"> | null>(null);
 
   useEffect(() => {
@@ -29,21 +28,28 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
 
   const agents = [...game.world.agents.values()];
 
-  const handleChatWithAgent = (agentId: string, agentName: string) => {
+  const handleChatWithAgent = (agentId: string, agentName: string, agentDescription?: string) => {
     if (!userId) {
       // Show login modal if not logged in
       return;
     }
-    setSelectedAgent({ id: agentId, name: agentName });
-    setChatModalOpen(true);
+
+    // Toggle: if clicking same agent, deselect; otherwise select new agent
+    if (selectedAgent?.id === agentId) {
+      setSelectedAgent(null);
+    } else {
+      setSelectedAgent({ id: agentId, name: agentName, description: agentDescription });
+    }
   };
 
   return (
-    <div className="h-full game-background overflow-y-auto">
-      <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">AI Town Residents</h1>
+    <div className="h-full game-background overflow-hidden flex">
+      {/* Left side - Agents List */}
+      <div className={`${selectedAgent ? 'w-1/2' : 'w-full'} overflow-y-auto transition-all duration-300`}>
+        <div className="max-w-6xl mx-auto p-6">
+          <h1 className="text-4xl font-bold text-white mb-8 text-center">AI Town Residents</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {agents.map((agent) => {
             const player = game.world.players.get(agent.playerId);
             const playerDescription = game.playerDescriptions.get(agent.playerId);
@@ -134,31 +140,42 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                       e.stopPropagation();
                       handleChatWithAgent(
                         agent.id,
-                        staticDescription?.name || `Agent ${agent.id}`
+                        staticDescription?.name || `Agent ${agent.id}`,
+                        staticDescription?.identity || agentDescription?.identity
                       );
                     }}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm font-bold disabled:opacity-50"
+                    className={`w-full ${selectedAgent?.id === agent.id ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white py-2 px-4 rounded text-sm font-bold disabled:opacity-50`}
                     disabled={!userId}
                   >
-                    {userId ? 'Chat' : 'Login to Chat'}
+                    {userId ? (selectedAgent?.id === agent.id ? 'Close Chat' : 'Chat') : 'Login to Chat'}
                   </button>
                 </div>
               </div>
             );
           })}
         </div>
+        </div>
       </div>
 
-      {/* Chat Modal */}
+      {/* Right side - Chat Panel */}
       {selectedAgent && userId && (
-        <AgentChatModal
-          isOpen={chatModalOpen}
-          onClose={() => setChatModalOpen(false)}
-          agentId={selectedAgent.id}
-          agentName={selectedAgent.name}
-          userId={userId}
-          worldId={worldId}
-        />
+        <div className="w-1/2 bg-brown-800 border-l-8 border-brown-900 overflow-hidden flex flex-col">
+          <div className="p-4">
+            <button
+              onClick={() => setSelectedAgent(null)}
+              className="bg-brown-700 hover:bg-brown-600 text-white px-4 py-2 rounded text-sm font-bold mb-4"
+            >
+              ← Back to Agents
+            </button>
+          </div>
+          <CompanionChat
+            agentId={selectedAgent.id}
+            agentName={selectedAgent.name}
+            agentDescription={selectedAgent.description}
+            userId={userId}
+            worldId={worldId}
+          />
+        </div>
       )}
     </div>
   );

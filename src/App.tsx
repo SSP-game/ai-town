@@ -177,8 +177,16 @@ export default function Home() {
         contentLabel="Help modal"
         ariaHideApp={false}
       >
-        <div className="font-body">
-          <h1 className="text-center text-6xl font-bold font-display game-title">Help</h1>
+        <div className="font-body relative">
+          <button
+            onClick={() => setHelpModalOpen(false)}
+            className="absolute -top-2 -right-2 text-4xl leading-none hover:text-red-400 transition-colors bg-transparent border-none cursor-pointer p-2 z-10"
+            aria-label="Close"
+            type="button"
+          >
+            ×
+          </button>
+          <h1 className="text-center text-6xl font-bold font-display game-title pr-8">Help</h1>
           <p>
             Welcome to AI town. AI town supports both anonymous <i>spectators</i> and logged in{' '}
             <i>interactivity</i>.
@@ -229,9 +237,9 @@ export default function Home() {
         </Unauthenticated>
       </div> */}
 
-      <div className="w-full h-screen relative isolate overflow-hidden shadow-2xl flex flex-col justify-start">
+      <div className="w-full h-screen relative isolate shadow-2xl flex flex-col justify-start overflow-hidden">
         {/* Game/Agents content with frame */}
-        <div className="flex-1 flex flex-col relative min-h-0">
+        <div className="flex-1 flex flex-col relative min-h-0 overflow-auto">
           {currentView === 'game' ? (
             <Game matchWorldId={matchWorldId} />
           ) : currentView === 'lobby' ? (
@@ -319,9 +327,6 @@ export default function Home() {
             />
             <FreezeButton />
             <MusicButton />
-            <Button href="https://github.com/a16z-infra/ai-town" imgUrl={starImg}>
-              Star
-            </Button>
             <InteractButton />
             <Button imgUrl={helpImg} onClick={() => setHelpModalOpen(true)}>
               Help
@@ -380,12 +385,16 @@ const modalStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '50%',
+    maxWidth: '90%',
+    maxHeight: '90vh',
+    width: 'auto',
+    overflow: 'auto',
 
     border: '10px solid rgb(23, 20, 33)',
     borderRadius: '0',
     background: 'rgb(35, 38, 58)',
     color: 'white',
     fontFamily: '"Upheaval Pro", "sans-serif"',
+    padding: '20px',
   },
 };

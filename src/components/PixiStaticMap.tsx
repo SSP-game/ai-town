@@ -27,6 +27,12 @@ export const PixiStaticMap = PixiComponent('StaticMap', {
     const map = props.map;
     const numxtiles = Math.floor(map.tileSetDimX / map.tileDim);
     const numytiles = Math.floor(map.tileSetDimY / map.tileDim);
+    // Clear any existing texture cache to prevent conflicts
+    const textureKey = `map-tileset-${map.tileSetUrl}`;
+    if (PIXI.utils.TextureCache[textureKey]) {
+      PIXI.utils.TextureCache[textureKey].destroy(true);
+    }
+
     const bt = PIXI.BaseTexture.from(map.tileSetUrl, {
       scaleMode: PIXI.SCALE_MODES.NEAREST,
     });
@@ -109,7 +115,7 @@ export const PixiStaticMap = PixiComponent('StaticMap', {
     container.y = 0;
 
     // Set the hit area manually to ensure `pointerdown` events are delivered to this container.
-    container.interactive = true;
+    container.eventMode = 'static'; // Replaces deprecated `interactive = true`
     container.hitArea = new PIXI.Rectangle(
       0,
       0,

@@ -73,7 +73,15 @@ export default function Game({ matchWorldId }: { matchWorldId?: string }) {
           <MapRosterWidget game={game} worldId={worldId} />
           <div className="absolute inset-0">
             <div className="container">
-              <Stage width={width} height={height} options={{ backgroundColor: 0x7ab5ff }}>
+              <Stage
+                width={width}
+                height={height}
+                options={{
+                  backgroundColor: 0x7ab5ff,
+                  antialias: false,
+                  resolution: window.devicePixelRatio || 1,
+                  autoDensity: true,
+                }}>
                 {/* Re-propagate context because contexts are not shared between renderers.
 https://github.com/michalochman/react-pixi-fiber/issues/145#issuecomment-531549215 */}
                 <ConvexProvider client={convex}>
