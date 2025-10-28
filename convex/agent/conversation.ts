@@ -55,7 +55,7 @@ export async function startConversationMessage(
   const lastPrompt = `${player.name} to ${otherPlayer.name}:`;
   prompt.push(lastPrompt);
 
-  const { content } = await chatCompletion({
+  const config: any = {
     messages: [
       {
         role: 'system',
@@ -64,7 +64,20 @@ export async function startConversationMessage(
     ],
     max_tokens: 300,
     stop: stopWords(otherPlayer.name, player.name),
-  });
+  };
+
+  // GLM API requires both system and user roles
+  // Add a user message if the provider is GLM (bigmodel.cn)
+  const { getLLMConfig } = await import('../util/llm');
+  const llmConfig = getLLMConfig();
+  if (llmConfig.provider === 'custom' && llmConfig.url.includes('bigmodel.cn')) {
+    config.messages.push({
+      role: 'user',
+      content: lastPrompt,
+    });
+  }
+
+  const { content } = await chatCompletion(config);
   return trimContentPrefx(content, lastPrompt);
 }
 

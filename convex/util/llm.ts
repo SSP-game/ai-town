@@ -144,12 +144,20 @@ export async function chatCompletion(
   const stopWords = body.stop ? (typeof body.stop === 'string' ? [body.stop] : body.stop) : [];
   if (config.stopWords) stopWords.push(...config.stopWords);
   console.log(body);
+
+  // Determine the correct endpoint based on provider
+  let chatEndpoint = '/v1/chat/completions'; // Default OpenAI format
+  if (config.provider === 'custom' && config.url.includes('bigmodel.cn')) {
+    // GLM (智谱) uses a different endpoint
+    chatEndpoint = '/api/paas/v4/chat/completions';
+  }
+
   const {
     result: content,
     retries,
     ms,
   } = await retryWithBackoff(async () => {
-    const result = await fetch(config.url + '/v1/chat/completions', {
+    const result = await fetch(config.url + chatEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

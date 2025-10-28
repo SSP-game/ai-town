@@ -1,0 +1,12 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "mcp": {
+    "playwright": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/Users/kang/github/ai-twon-exp-3/node_modules/@playwright/mcp/cli.js"],
+      "timeout": 120,
+      "disabled": false
+    }
+  }
+}

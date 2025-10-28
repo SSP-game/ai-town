@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.2.14",
+    "@playwright/mcp": "^0.0.44",
     "@types/css-font-loading-module": "^0.0.8",
     "@types/jest": "^29.5.4",
     "@types/react-modal": "^3.16.0",
