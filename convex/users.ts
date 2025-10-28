@@ -330,13 +330,23 @@ export const generateCompanionReply = internalAction({
       { role: 'user', content: `${name}:` },
     ];
 
-    const { content } = await chatCompletion({
-      messages: llmMessages,
-      max_tokens: 200,
-      stop: [`${userName} to ${name}:`, `${name} to ${userName}:`],
-    });
+    let reply: string | null = null;
+    try {
+      const { content } = await chatCompletion({
+        messages: llmMessages,
+        max_tokens: 200,
+        stop: [`${userName} to ${name}:`, `${name} to ${userName}:`],
+      });
+      reply = typeof content === 'string' ? content.trim() : `${name}`;
+    } catch (error) {
+      console.error('Failed to generate companion reply', error);
+      reply = null;
+    }
 
-    const reply = typeof content === 'string' ? content.trim() : `${name}`;
+    if (!reply) {
+      reply = `Sorry ${userName}, I had trouble replying just now.`;
+    }
+
     await ctx.runMutation(internal.users.appendAgentMessage, {
       chatId: args.chatId,
       content: reply,

@@ -28,6 +28,8 @@ export const wipeAllTables = internalMutation({
       }
       await ctx.scheduler.runAfter(0, internal.testing.deletePage, { tableName, cursor: null });
     }
+    // Also clear embeddings cache to fix dimension mismatch issues
+    await ctx.scheduler.runAfter(0, internal.testing.deletePage, { tableName: 'embeddingsCache', cursor: null });
   },
 });
 

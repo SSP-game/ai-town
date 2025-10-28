@@ -4,8 +4,9 @@
 const OPENAI_EMBEDDING_DIMENSION: number = 1536;
 const TOGETHER_EMBEDDING_DIMENSION: number = 768;
 const OLLAMA_EMBEDDING_DIMENSION: number = 1024;
+const GLM_EMBEDDING_DIMENSION: number = 2048;
 
-export const EMBEDDING_DIMENSION: number = OLLAMA_EMBEDDING_DIMENSION;
+export const EMBEDDING_DIMENSION: number = GLM_EMBEDDING_DIMENSION;
 // export const EMBEDDING_DIMENSION = OPENAI_EMBEDDING_DIMENSION;
 export function detectMismatchedLLMProvider() {
   switch (EMBEDDING_DIMENSION) {
@@ -213,12 +214,20 @@ export async function fetchEmbeddingBatch(texts: string[]) {
       ),
     };
   }
+
+  // Determine the correct endpoint based on provider
+  let embeddingEndpoint = '/v1/embeddings'; // Default OpenAI format
+  if (config.provider === 'custom' && config.url.includes('bigmodel.cn')) {
+    // GLM (智谱) uses a different endpoint
+    embeddingEndpoint = '/api/paas/v4/embeddings';
+  }
+
   const {
     result: json,
     retries,
     ms,
   } = await retryWithBackoff(async () => {
-    const result = await fetch(config.url + '/v1/embeddings', {
+    const result = await fetch(config.url + embeddingEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

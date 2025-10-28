@@ -161,16 +161,27 @@ export async function searchMemories(
   searchEmbedding: number[],
   n: number = 3,
 ) {
-  const candidates = await ctx.vectorSearch('memoryEmbeddings', 'embedding', {
-    vector: searchEmbedding,
-    filter: (q) => q.eq('playerId', playerId),
-    limit: n * MEMORY_OVERFETCH,
-  });
-  const rankedMemories = await ctx.runMutation(selfInternal.rankAndTouchMemories, {
-    candidates,
-    n,
-  });
-  return rankedMemories.map(({ memory }) => memory);
+  try {
+    const candidates = await ctx.vectorSearch('memoryEmbeddings', 'embedding', {
+      vector: searchEmbedding,
+      filter: (q) => q.eq('playerId', playerId),
+      limit: n * MEMORY_OVERFETCH,
+    });
+    const rankedMemories = await ctx.runMutation(selfInternal.rankAndTouchMemories, {
+      candidates,
+      n,
+    });
+    return rankedMemories.map(({ memory }) => memory);
+  } catch (error) {
+    // Handle embedding dimension mismatch gracefully
+    if (error instanceof Error && error.message.includes('Expected a vector with dimensions')) {
+      console.warn(`Embedding dimension mismatch for player ${playerId}: ${error.message}`);
+      // Return empty memories when dimension mismatch occurs
+      return [];
+    }
+    // Re-throw other errors
+    throw error;
+  }
 }
 
 function makeRange(values: number[]) {
