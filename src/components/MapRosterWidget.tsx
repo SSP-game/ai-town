@@ -108,7 +108,19 @@ const typePriority: Record<CharacterKind, number> = {
   other: 2,
 };
 
-export default function MapRosterWidget({ game, worldId }: { game: ServerGame; worldId?: Id<'worlds'> }) {
+export default function MapRosterWidget({
+  game,
+  worldId,
+  timeRemaining,
+  formatTimeRemaining,
+  showExpiredMessage
+}: {
+  game: ServerGame;
+  worldId?: Id<'worlds'>;
+  timeRemaining?: number | null;
+  formatTimeRemaining?: (ms: number | null) => string;
+  showExpiredMessage?: boolean;
+}) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Get current user ID from localStorage
@@ -218,6 +230,23 @@ export default function MapRosterWidget({ game, worldId }: { game: ServerGame; w
             <div className="text-xs font-mono text-green-400 break-all">
               {worldId.slice(-12)}
             </div>
+            {/* Time Remaining Display */}
+            {formatTimeRemaining && (
+              <div className="mt-2">
+                <div className="text-[10px] uppercase tracking-wider text-white/50 mb-1">
+                  {showExpiredMessage ? 'EXPIRED' : 'TIME REMAINING'}
+                </div>
+                <div className={`text-xs font-mono break-all ${
+                  timeRemaining !== null && timeRemaining <= 10000 && !showExpiredMessage
+                    ? 'text-red-400 animate-pulse'
+                    : showExpiredMessage
+                    ? 'text-red-500'
+                    : 'text-blue-400'
+                }`}>
+                  {showExpiredMessage ? '00:00' : formatTimeRemaining(timeRemaining || null)}
+                </div>
+              </div>
+            )}
           </div>
         )}
 

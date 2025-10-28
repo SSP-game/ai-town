@@ -15,7 +15,17 @@ import MapRosterWidget from './MapRosterWidget.tsx';
 
 export const SHOW_DEBUG_UI = !!import.meta.env.VITE_SHOW_DEBUG_UI;
 
-export default function Game({ matchWorldId }: { matchWorldId?: string }) {
+export default function Game({
+  matchWorldId,
+  timeRemaining,
+  formatTimeRemaining,
+  showExpiredMessage
+}: {
+  matchWorldId?: string;
+  timeRemaining?: number | null;
+  formatTimeRemaining?: (ms: number | null) => string;
+  showExpiredMessage?: boolean;
+}) {
   const convex = useConvex();
   const [selectedElement, setSelectedElement] = useState<{
     kind: 'player';
@@ -70,7 +80,13 @@ export default function Game({ matchWorldId }: { matchWorldId?: string }) {
       <div className="mx-auto w-full max-w grid grid-rows-[240px_1fr] lg:grid-rows-[1fr] lg:grid-cols-[1fr_auto] lg:grow max-w-none h-full game-frame">
         {/* Game area */}
         <div className="relative overflow-hidden bg-brown-900" ref={gameWrapperRef}>
-          <MapRosterWidget game={game} worldId={worldId} />
+          <MapRosterWidget
+            game={game}
+            worldId={worldId}
+            timeRemaining={timeRemaining}
+            formatTimeRemaining={formatTimeRemaining}
+            showExpiredMessage={showExpiredMessage}
+          />
           <div className="absolute inset-0">
             <div className="container">
               <Stage

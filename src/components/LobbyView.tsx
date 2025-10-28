@@ -174,60 +174,14 @@ export default function LobbyView({ userId }: LobbyViewProps) {
   if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
     console.log('[LobbyView RENDER] ✅ Rendering game world!');
     return (
-      <div className="flex flex-col h-full bg-gray-900">
-        {/* Game Header with Room Info */}
-        <div className="flex-shrink-0 bg-gray-800 border-b border-gray-700 p-4">
-          <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <h2 className="text-2xl font-bold text-white">🎮 Match World</h2>
-              <div className="bg-green-900/30 border border-green-600 rounded px-4 py-2">
-                <span className="text-green-300 font-mono">
-                  Room: {lobbyStatus.lobby.worldId.slice(-12)}
-                </span>
-              </div>
-              <div className={`border rounded px-4 py-2 ${
-                timeRemaining !== null && timeRemaining <= 10000
-                  ? 'bg-red-900/30 border-red-600 animate-pulse'
-                  : 'bg-blue-900/30 border-blue-600'
-              }`}>
-                <span className={`font-mono ${
-                  timeRemaining !== null && timeRemaining <= 10000
-                    ? 'text-red-300'
-                    : 'text-blue-300'
-                }`}>
-                  ⏱️ {formatTimeRemaining(timeRemaining)}
-                </span>
-              </div>
-            </div>
-            <div className="text-sm text-gray-400">
-              {lobbyStatus.allPlayers.length} Players in Match
-            </div>
-          </div>
-        </div>
-
+      <div className="flex flex-col h-full game-background overflow-y-auto">
         {/* Full Game World */}
-        <div className="flex-1 relative">
-          <Game matchWorldId={lobbyStatus.lobby.worldId} />
-
-          {/* Expiration Overlay */}
-          {showExpiredMessage && (
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-              <div className="bg-gray-800 border-4 border-red-600 rounded-2xl p-8 max-w-md text-center shadow-2xl">
-                <div className="text-6xl mb-4">⏰</div>
-                <h2 className="text-3xl font-bold text-white mb-3">Time's Up!</h2>
-                <p className="text-lg text-gray-300 mb-4">
-                  The match world has expired.
-                </p>
-                <p className="text-sm text-gray-400">
-                  Returning to lobby in a moment...
-                </p>
-                <div className="mt-6">
-                  <div className="animate-pulse bg-red-600 h-2 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <Game
+          matchWorldId={lobbyStatus.lobby.worldId}
+          timeRemaining={timeRemaining}
+          formatTimeRemaining={formatTimeRemaining}
+          showExpiredMessage={showExpiredMessage}
+        />
       </div>
     );
   }
