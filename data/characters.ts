@@ -6,6 +6,14 @@ import { data as f5SpritesheetData } from './spritesheets/f5';
 import { data as f6SpritesheetData } from './spritesheets/f6';
 import { data as f7SpritesheetData } from './spritesheets/f7';
 import { data as f8SpritesheetData } from './spritesheets/f8';
+import { data as cab1SpritesheetData } from './spritesheets/cab1';
+import { data as cab2SpritesheetData } from './spritesheets/cab2';
+import { data as cab3SpritesheetData } from './spritesheets/cab3';
+import { data as cab4SpritesheetData } from './spritesheets/cab4';
+import { data as cab5SpritesheetData } from './spritesheets/cab5';
+import { data as cab6SpritesheetData } from './spritesheets/cab6';
+import { data as cab7SpritesheetData } from './spritesheets/cab7';
+import { data as cab8SpritesheetData } from './spritesheets/cab8';
 
 export const Descriptions = [
   {
@@ -113,6 +121,54 @@ export const characters = [
     name: 'f8',
     textureUrl: './assets/32x32folk.png',
     spritesheetData: f8SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab1',
+    textureUrl: './assets/cabbit-characters/cab1.png',
+    spritesheetData: cab1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab2',
+    textureUrl: './assets/cabbit-characters/cab2.png',
+    spritesheetData: cab2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab3',
+    textureUrl: './assets/cabbit-characters/cab3.png',
+    spritesheetData: cab3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab4',
+    textureUrl: './assets/cabbit-characters/cab4.png',
+    spritesheetData: cab4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab5',
+    textureUrl: './assets/cabbit-characters/cab5.png',
+    spritesheetData: cab5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab6',
+    textureUrl: './assets/cabbit-characters/cab6.png',
+    spritesheetData: cab6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab7',
+    textureUrl: './assets/cabbit-characters/cab7.png',
+    spritesheetData: cab7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'cab8',
+    textureUrl: './assets/cabbit-characters/cab8.png',
+    spritesheetData: cab8SpritesheetData,
     speed: 0.2,
   },
 ];

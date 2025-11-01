@@ -141,7 +141,7 @@ export default function CharacterSelectionModal({
           Select Your Avatar
         </h1>
 
-        <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4 mb-6 max-h-[500px] overflow-y-auto px-2">
           {characters.map((character) => (
             <CharacterAvatar
               key={character.name}

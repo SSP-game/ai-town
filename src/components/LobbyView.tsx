@@ -126,8 +126,8 @@ export default function LobbyView({ userId }: LobbyViewProps) {
 
     setIsJoining(true);
     try {
-      // Use user's profile avatar as character
-      const character = userProfile.avatar || 'f1';
+      // Use user's selected character
+      const character = userProfile.selectedCharacter || 'f1';
       console.log('[LobbyView] Joining matchmaking with character:', character);
       await joinMatchmaking({
         userId,
@@ -243,22 +243,14 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                   <label className="text-lg font-semibold text-gray-300 mb-3 block">Your Profile</label>
                   <div className="bg-gray-700/60 rounded-lg p-4 flex items-center gap-4">
                     <div className="text-4xl">
-                      {userProfile?.avatar === 'f1' && '👩'}
-                      {userProfile?.avatar === 'f2' && '👩‍🦰'}
-                      {userProfile?.avatar === 'f3' && '👩‍🦱'}
-                      {userProfile?.avatar === 'f4' && '👨'}
-                      {userProfile?.avatar === 'f5' && '👨‍🦱'}
-                      {userProfile?.avatar === 'f6' && '👨‍🦰'}
-                      {userProfile?.avatar === 'f7' && '🧑'}
-                      {userProfile?.avatar === 'f8' && '🧑‍🦱'}
-                      {!userProfile?.avatar && '👤'}
+                      👤
                     </div>
                     <div>
                       <div className="text-lg font-semibold text-white">
                         {userProfile?.nickname || 'Unknown Player'}
                       </div>
                       <div className="text-sm text-gray-400">
-                        Avatar: {userProfile?.avatar || 'f1'}
+                        Character: {userProfile?.selectedCharacter || 'f1'}
                       </div>
                     </div>
                   </div>
