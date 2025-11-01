@@ -1,0 +1,2630 @@
+{
+  "metadata": {
+    "generated": "2025-11-01T11:07:03.014Z",
+    "basePath": "/assets/cabbit-0.5",
+    "sizes": {
+      "24x32": {
+        "people": 148,
+        "characters": 34,
+        "total": 182
+      },
+      "48x64_scale2x": {
+        "people": 148,
+        "characters": 32,
+        "total": 180
+      }
+    }
+  },
+  "characters": {
+    "aristocrate-f-001-brown-blonde": {
+      "name": "aristocrate-f-001-brown-blonde",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-brown-blonde.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-brown-blonde.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-brown-blonde.png"
+      ]
+    },
+    "aristocrate-f-001-brown-brunette": {
+      "name": "aristocrate-f-001-brown-brunette",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-brown-brunette.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-brown-brunette.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-brown.png"
+      ]
+    },
+    "aristocrate-f-001-light-old": {
+      "name": "aristocrate-f-001-light-old",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-light-old.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-light-old.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-light.png"
+      ]
+    },
+    "aristocrate-f-001-light": {
+      "name": "aristocrate-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-light.png"
+      ]
+    },
+    "aristocrate-f-002-brown": {
+      "name": "aristocrate-f-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-002-brown.png"
+      ]
+    },
+    "aristocrate-f-002-light": {
+      "name": "aristocrate-f-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-002-light.png"
+      ]
+    },
+    "aristocrate-f-003-black": {
+      "name": "aristocrate-f-003-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-black.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-003-brown": {
+      "name": "aristocrate-f-003-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-brown.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-003-light": {
+      "name": "aristocrate-f-003-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-003-light.png"
+      ]
+    },
+    "aristocrate-m-001-brown": {
+      "name": "aristocrate-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-001-brown.png"
+      ]
+    },
+    "aristocrate-m-001-light": {
+      "name": "aristocrate-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-001-light.png"
+      ]
+    },
+    "aristocrate-m-002-black": {
+      "name": "aristocrate-m-002-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-black.png"
+      ]
+    },
+    "aristocrate-m-002-brown": {
+      "name": "aristocrate-m-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-brown.png"
+      ]
+    },
+    "aristocrate-m-002-light": {
+      "name": "aristocrate-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-light.png"
+      ]
+    },
+    "bard-001-brown": {
+      "name": "bard-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/bard-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/bard-001-brown.png"
+      },
+      "facesets": []
+    },
+    "bard-001-light": {
+      "name": "bard-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/bard-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/bard-001-light.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-black": {
+      "name": "cleric-f-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-black.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-brown": {
+      "name": "cleric-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-brown.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-light": {
+      "name": "cleric-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-light.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-black": {
+      "name": "cleric-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-black.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-brown": {
+      "name": "cleric-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-light": {
+      "name": "cleric-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "clown-m-001-brown": {
+      "name": "clown-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/clown-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/clown-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "clown-m-001-light": {
+      "name": "clown-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/clown-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/clown-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "cultist-001-blue": {
+      "name": "cultist-001-blue",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-001-blue.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-001-blue.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-001-blue.png"
+      ]
+    },
+    "cultist-001-red": {
+      "name": "cultist-001-red",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-001-red.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-001-red.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-001-red.png"
+      ]
+    },
+    "cultist-002-blue": {
+      "name": "cultist-002-blue",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-002-blue.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-002-blue.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-002-blue.png"
+      ]
+    },
+    "dancer-f-001-brown": {
+      "name": "dancer-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/dancer-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/dancer-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/dancer-f-001-brown.png"
+      ]
+    },
+    "dancer-f-001-light": {
+      "name": "dancer-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/dancer-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/dancer-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/dancer-f-001-light.png"
+      ]
+    },
+    "fighter-f-001-black": {
+      "name": "fighter-f-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-black.png"
+      ]
+    },
+    "fighter-f-001-brown": {
+      "name": "fighter-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-brown.png"
+      ]
+    },
+    "fighter-f-001-light": {
+      "name": "fighter-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-light.png"
+      ]
+    },
+    "fighter-f-002-black": {
+      "name": "fighter-f-002-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-black.png"
+      ]
+    },
+    "fighter-f-002-brown": {
+      "name": "fighter-f-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-brown.png"
+      ]
+    },
+    "fighter-f-002-light": {
+      "name": "fighter-f-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-light.png"
+      ]
+    },
+    "fighter-m-001-black": {
+      "name": "fighter-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-black.png"
+      ]
+    },
+    "fighter-m-001-brown": {
+      "name": "fighter-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-brown.png"
+      ]
+    },
+    "fighter-m-001-light": {
+      "name": "fighter-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-light.png"
+      ]
+    },
+    "fighter-m-002-black": {
+      "name": "fighter-m-002-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-black.png"
+      ]
+    },
+    "fighter-m-002-brown": {
+      "name": "fighter-m-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-brown.png"
+      ]
+    },
+    "fighter-m-002-light": {
+      "name": "fighter-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-light.png"
+      ]
+    },
+    "ghost_maiden-001": {
+      "name": "ghost_maiden-001",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ghost_maiden-001.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ghost_maiden-001.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ghost_maiden-001.png"
+      ]
+    },
+    "ghost_maiden-002": {
+      "name": "ghost_maiden-002",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ghost_maiden-002.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ghost_maiden-002.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ghost_maiden-002.png"
+      ]
+    },
+    "king-001-light": {
+      "name": "king-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/king-001-light.png"
+      ]
+    },
+    "king-002-brown": {
+      "name": "king-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-002-brown.png"
+      },
+      "facesets": []
+    },
+    "king-002-light": {
+      "name": "king-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-002-light.png"
+      },
+      "facesets": []
+    },
+    "mage-f-001-black": {
+      "name": "mage-f-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-black.png"
+      ]
+    },
+    "mage-f-001-brown": {
+      "name": "mage-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-brown.png"
+      ]
+    },
+    "mage-f-001-light": {
+      "name": "mage-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-light.png"
+      ]
+    },
+    "mage-m-001-black": {
+      "name": "mage-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-black.png"
+      ]
+    },
+    "mage-m-001-brown": {
+      "name": "mage-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-brown.png"
+      ]
+    },
+    "mage-m-001-light": {
+      "name": "mage-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-light.png"
+      ]
+    },
+    "masked-m-001-light": {
+      "name": "masked-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/masked-m-001-light.png"
+      ]
+    },
+    "masked-m-002-brown": {
+      "name": "masked-m-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-002-brown.png"
+      },
+      "facesets": []
+    },
+    "masked-m-002-light": {
+      "name": "masked-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-002-light.png"
+      },
+      "facesets": []
+    },
+    "pirate-f-001-brown": {
+      "name": "pirate-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/pirate-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/pirate-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/pirate-f-001-brown.png"
+      ]
+    },
+    "pirate-f-001-light": {
+      "name": "pirate-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/pirate-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/pirate-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/pirate-f-001-light.png"
+      ]
+    },
+    "prince-001-light": {
+      "name": "prince-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/prince-001-light.png"
+      ]
+    },
+    "prince-002-brown": {
+      "name": "prince-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-002-brown.png"
+      },
+      "facesets": []
+    },
+    "prince-002-light": {
+      "name": "prince-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-002-light.png"
+      },
+      "facesets": []
+    },
+    "princess-001-light": {
+      "name": "princess-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/princess-001-light.png"
+      ]
+    },
+    "princess-002-brown": {
+      "name": "princess-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-002-brown.png"
+      },
+      "facesets": []
+    },
+    "princess-002-light": {
+      "name": "princess-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-002-light.png"
+      },
+      "facesets": []
+    },
+    "queen-001-light": {
+      "name": "queen-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/queen-001-light.png"
+      ]
+    },
+    "queen-002-brown": {
+      "name": "queen-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-002-brown.png"
+      },
+      "facesets": []
+    },
+    "queen-002-light": {
+      "name": "queen-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-002-light.png"
+      },
+      "facesets": []
+    },
+    "ranger-f-001-black": {
+      "name": "ranger-f-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-black.png"
+      ]
+    },
+    "ranger-f-001-brown": {
+      "name": "ranger-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-brown.png"
+      ]
+    },
+    "ranger-f-001-light": {
+      "name": "ranger-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-light.png"
+      ]
+    },
+    "ranger-m-001-black": {
+      "name": "ranger-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-black.png"
+      ]
+    },
+    "ranger-m-001-brown": {
+      "name": "ranger-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-brown.png"
+      ]
+    },
+    "ranger-m-001-light": {
+      "name": "ranger-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-light.png"
+      ]
+    },
+    "snow-m-001-brown": {
+      "name": "snow-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/snow-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/snow-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/snow-m-001-brown.png"
+      ]
+    },
+    "snow-m-001-light": {
+      "name": "snow-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/snow-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/snow-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/snow-m-001-light.png"
+      ]
+    },
+    "townfolk-adult-f-001-alt-brown": {
+      "name": "townfolk-adult-f-001-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-001-alt-light": {
+      "name": "townfolk-adult-f-001-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-001-light": {
+      "name": "townfolk-adult-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-light.png"
+      ]
+    },
+    "townfolk-adult-f-002-alt-brown": {
+      "name": "townfolk-adult-f-002-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-002-alt-light": {
+      "name": "townfolk-adult-f-002-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-002-light": {
+      "name": "townfolk-adult-f-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-light.png"
+      ]
+    },
+    "townfolk-adult-f-003-alt-brown": {
+      "name": "townfolk-adult-f-003-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-003-alt-light": {
+      "name": "townfolk-adult-f-003-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-003-light": {
+      "name": "townfolk-adult-f-003-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-light.png"
+      ]
+    },
+    "townfolk-adult-f-004-alt-brown": {
+      "name": "townfolk-adult-f-004-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-004-alt-light": {
+      "name": "townfolk-adult-f-004-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-004-light": {
+      "name": "townfolk-adult-f-004-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-light.png"
+      ]
+    },
+    "townfolk-adult-f-005-alt-brown": {
+      "name": "townfolk-adult-f-005-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-005-alt-light": {
+      "name": "townfolk-adult-f-005-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-005-light": {
+      "name": "townfolk-adult-f-005-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-light.png"
+      ]
+    },
+    "townfolk-adult-f-006-alt-brown": {
+      "name": "townfolk-adult-f-006-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-006-alt-light": {
+      "name": "townfolk-adult-f-006-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-006-black": {
+      "name": "townfolk-adult-f-006-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-black.png"
+      ]
+    },
+    "townfolk-adult-f-006-light": {
+      "name": "townfolk-adult-f-006-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-light.png"
+      ]
+    },
+    "townfolk-adult-m-001-brown": {
+      "name": "townfolk-adult-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "townfolk-adult-m-001-light": {
+      "name": "townfolk-adult-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-001-light.png"
+      ]
+    },
+    "townfolk-adult-m-002-brown": {
+      "name": "townfolk-adult-m-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-002-brown.png"
+      },
+      "facesets": []
+    },
+    "townfolk-adult-m-002-light": {
+      "name": "townfolk-adult-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-002-light.png"
+      ]
+    },
+    "townfolk-adult-m-003-alt-brown": {
+      "name": "townfolk-adult-m-003-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-003-alt-light": {
+      "name": "townfolk-adult-m-003-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-003-light": {
+      "name": "townfolk-adult-m-003-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-light.png"
+      ]
+    },
+    "townfolk-adult-m-004-alt-brown": {
+      "name": "townfolk-adult-m-004-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-004-alt-light": {
+      "name": "townfolk-adult-m-004-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-004-light": {
+      "name": "townfolk-adult-m-004-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-light.png"
+      ]
+    },
+    "townfolk-adult-m-005-alt-brown": {
+      "name": "townfolk-adult-m-005-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-005-brown": {
+      "name": "townfolk-adult-m-005-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-brown.png"
+      ]
+    },
+    "townfolk-adult-m-005-light": {
+      "name": "townfolk-adult-m-005-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-light.png"
+      ]
+    },
+    "townfolk-adult-m-006-alt-brown": {
+      "name": "townfolk-adult-m-006-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-006-alt-light": {
+      "name": "townfolk-adult-m-006-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-006-light": {
+      "name": "townfolk-adult-m-006-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-light.png"
+      ]
+    },
+    "townfolk-adult-m-007-alt-brown": {
+      "name": "townfolk-adult-m-007-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-007-alt-light": {
+      "name": "townfolk-adult-m-007-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-007-black": {
+      "name": "townfolk-adult-m-007-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-black.png"
+      ]
+    },
+    "townfolk-adult-m-007-light": {
+      "name": "townfolk-adult-m-007-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-light.png"
+      ]
+    },
+    "townfolk-adult-m-008-alt-brown": {
+      "name": "townfolk-adult-m-008-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-008-alt-light": {
+      "name": "townfolk-adult-m-008-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-008-light": {
+      "name": "townfolk-adult-m-008-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-light.png"
+      ]
+    },
+    "townfolk-adult-m-009-brown": {
+      "name": "townfolk-adult-m-009-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-009-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-009-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-009-brown.png"
+      ]
+    },
+    "townfolk-adult-m-009-light": {
+      "name": "townfolk-adult-m-009-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-009-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-009-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-009-light.png"
+      ]
+    },
+    "townfolk-bearded_man-001-black": {
+      "name": "townfolk-bearded_man-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-001-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-001-light": {
+      "name": "townfolk-bearded_man-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-001-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-002-black": {
+      "name": "townfolk-bearded_man-002-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-002-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-002-light": {
+      "name": "townfolk-bearded_man-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-002-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-child-f-001-brown": {
+      "name": "townfolk-child-f-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-001-brown.png"
+      ]
+    },
+    "townfolk-child-f-001-light": {
+      "name": "townfolk-child-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-001-light.png"
+      ]
+    },
+    "townfolk-child-f-002-alt-brown": {
+      "name": "townfolk-child-f-002-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-alt-brown.png"
+      ]
+    },
+    "townfolk-child-f-002-alt-light": {
+      "name": "townfolk-child-f-002-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-alt-light.png"
+      ]
+    },
+    "townfolk-child-f-002-light": {
+      "name": "townfolk-child-f-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-light.png"
+      ]
+    },
+    "townfolk-child-f-003-black": {
+      "name": "townfolk-child-f-003-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-003-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-003-black.png"
+      ]
+    },
+    "townfolk-child-m-001-alt-brown": {
+      "name": "townfolk-child-m-001-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-alt-brown.png"
+      ]
+    },
+    "townfolk-child-m-001-alt-light": {
+      "name": "townfolk-child-m-001-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-alt-light.png"
+      ]
+    },
+    "townfolk-child-m-001-black": {
+      "name": "townfolk-child-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-black.png"
+      ]
+    },
+    "townfolk-child-m-001-light": {
+      "name": "townfolk-child-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-light.png"
+      ]
+    },
+    "townfolk-child-m-002-alt-brown": {
+      "name": "townfolk-child-m-002-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-alt-brown.png"
+      ]
+    },
+    "townfolk-child-m-002-alt-light": {
+      "name": "townfolk-child-m-002-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-alt-light.png"
+      ]
+    },
+    "townfolk-child-m-002-light-recolor": {
+      "name": "townfolk-child-m-002-light-recolor",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-light-recolor.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-light-recolor.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-light.png"
+      ]
+    },
+    "townfolk-child-m-002-light": {
+      "name": "townfolk-child-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-light.png"
+      ]
+    },
+    "townfolk-child-m-003-light": {
+      "name": "townfolk-child-m-003-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-003-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-elder-f-001-alt-brown": {
+      "name": "townfolk-elder-f-001-alt-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-alt-brown.png"
+      ]
+    },
+    "townfolk-elder-f-001-alt-light": {
+      "name": "townfolk-elder-f-001-alt-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-alt-light.png"
+      ]
+    },
+    "townfolk-elder-f-001-black": {
+      "name": "townfolk-elder-f-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-black.png"
+      ]
+    },
+    "townfolk-elder-f-001-light": {
+      "name": "townfolk-elder-f-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-light.png"
+      ]
+    },
+    "townfolk-elder-m-001-brown": {
+      "name": "townfolk-elder-m-001-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-001-brown.png"
+      ]
+    },
+    "townfolk-elder-m-001-light": {
+      "name": "townfolk-elder-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-001-light.png"
+      ]
+    },
+    "townfolk-elder-m-002-brown": {
+      "name": "townfolk-elder-m-002-brown",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-002-brown.png"
+      ]
+    },
+    "townfolk-elder-m-002-light": {
+      "name": "townfolk-elder-m-002-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-002-light.png"
+      ]
+    },
+    "townfolk-elder-m-003-black": {
+      "name": "townfolk-elder-m-003-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-003-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-003-black.png"
+      ]
+    },
+    "townfolk-mayor-m-001-black": {
+      "name": "townfolk-mayor-m-001-black",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-mayor-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-mayor-m-001-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-mayor-m-001-light": {
+      "name": "townfolk-mayor-m-001-light",
+      "category": "people",
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-mayor-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-mayor-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-brown": {
+      "name": "Amanda-001-brown",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-brown.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-brown.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-brown.png"
+      ]
+    },
+    "Amanda-001-light-v1": {
+      "name": "Amanda-001-light-v1",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-light-v1.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-light": {
+      "name": "Amanda-001-light",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-light.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-light.png"
+      ]
+    },
+    "Angela-mage-001": {
+      "name": "Angela-mage-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Angela-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Angela-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Angela-mage-001-angry.png",
+        "faceset/character/PNG/original/Angela-mage-001-blush.png",
+        "faceset/character/PNG/original/Angela-mage-001-dislike.png",
+        "faceset/character/PNG/original/Angela-mage-001-happy.png",
+        "faceset/character/PNG/original/Angela-mage-001-like.png",
+        "faceset/character/PNG/original/Angela-mage-001-neutral.png",
+        "faceset/character/PNG/original/Angela-mage-001-smirk.png",
+        "faceset/character/PNG/original/Angela-mage-001-surprised.png"
+      ]
+    },
+    "Claris-cleric-001": {
+      "name": "Claris-cleric-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Claris-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Claris-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Evan-cleric-001": {
+      "name": "Evan-cleric-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Evan-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Evan-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Helena-fighter-001": {
+      "name": "Helena-fighter-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Helena-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Helena-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Helena-fighter-001-angry.png",
+        "faceset/character/PNG/original/Helena-fighter-001-blush.png",
+        "faceset/character/PNG/original/Helena-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Helena-fighter-001-happy.png",
+        "faceset/character/PNG/original/Helena-fighter-001-like.png",
+        "faceset/character/PNG/original/Helena-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Helena-fighter-001-surprised.png"
+      ]
+    },
+    "Linda-witch-001": {
+      "name": "Linda-witch-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Linda-witch-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Linda-witch-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Linda-witch-001.png"
+      ]
+    },
+    "Lyuba-000": {
+      "name": "Lyuba-000",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-000.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-000.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-000.png"
+      ]
+    },
+    "Lyuba-001": {
+      "name": "Lyuba-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-001-like.png",
+        "faceset/character/PNG/original/Lyuba-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-001-surprised.png"
+      ]
+    },
+    "Lyuba-all": {
+      "name": "Lyuba-all",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-all.png"
+      },
+      "facesets": []
+    },
+    "Lyuba-cleric-001": {
+      "name": "Lyuba-cleric-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-cleric-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-cleric-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-like.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-neutral.png"
+      ]
+    },
+    "Lyuba-fighter-001": {
+      "name": "Lyuba-fighter-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-fighter-001.png"
+      },
+      "facesets": []
+    },
+    "Lyuba-mage-001": {
+      "name": "Lyuba-mage-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-mage-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-like.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-surprised.png"
+      ]
+    },
+    "Lyuba-ranger-001": {
+      "name": "Lyuba-ranger-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-ranger-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-like.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-surprised.png"
+      ]
+    },
+    "Molly-soldier-001": {
+      "name": "Molly-soldier-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Molly-soldier-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Molly-soldier-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Molly-soldier-001-angry.png",
+        "faceset/character/PNG/original/Molly-soldier-001-blush.png",
+        "faceset/character/PNG/original/Molly-soldier-001-dislike.png",
+        "faceset/character/PNG/original/Molly-soldier-001-happy.png",
+        "faceset/character/PNG/original/Molly-soldier-001-like.png",
+        "faceset/character/PNG/original/Molly-soldier-001-neutral.png",
+        "faceset/character/PNG/original/Molly-soldier-001-smirk.png",
+        "faceset/character/PNG/original/Molly-soldier-001-surprised.png"
+      ]
+    },
+    "Molly-soldier-002": {
+      "name": "Molly-soldier-002",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Molly-soldier-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Molly-soldier-002.png"
+      },
+      "facesets": []
+    },
+    "Nathan-mage-001": {
+      "name": "Nathan-mage-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Nathan-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Nathan-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Nathan-mage-001-angry.png",
+        "faceset/character/PNG/original/Nathan-mage-001-blush.png",
+        "faceset/character/PNG/original/Nathan-mage-001-dislike.png",
+        "faceset/character/PNG/original/Nathan-mage-001-happy.png",
+        "faceset/character/PNG/original/Nathan-mage-001-like.png",
+        "faceset/character/PNG/original/Nathan-mage-001-neutral.png",
+        "faceset/character/PNG/original/Nathan-mage-001-smirk.png",
+        "faceset/character/PNG/original/Nathan-mage-001-surprised.png"
+      ]
+    },
+    "Roland-soldier-001": {
+      "name": "Roland-soldier-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Roland-soldier-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Roland-soldier-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Roland-soldier-001-angry.png",
+        "faceset/character/PNG/original/Roland-soldier-001-blush.png",
+        "faceset/character/PNG/original/Roland-soldier-001-dislike.png",
+        "faceset/character/PNG/original/Roland-soldier-001-happy.png",
+        "faceset/character/PNG/original/Roland-soldier-001-like.png",
+        "faceset/character/PNG/original/Roland-soldier-001-neutral.png",
+        "faceset/character/PNG/original/Roland-soldier-001-smirk.png",
+        "faceset/character/PNG/original/Roland-soldier-001-surprised.png"
+      ]
+    },
+    "Roland-soldier-002": {
+      "name": "Roland-soldier-002",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Roland-soldier-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Roland-soldier-002.png"
+      },
+      "facesets": []
+    },
+    "Ruby-ranger-001": {
+      "name": "Ruby-ranger-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Ruby-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Ruby-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Ruby-ranger-001-angry.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-blush.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-happy.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-like.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-smirk.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-surprised.png"
+      ]
+    },
+    "Santa-001-black": {
+      "name": "Santa-001-black",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-001-black.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-001-black.png"
+      },
+      "facesets": []
+    },
+    "Santa-001-light": {
+      "name": "Santa-001-light",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-001-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-001-light.png"
+      },
+      "facesets": []
+    },
+    "Santa-002-black": {
+      "name": "Santa-002-black",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-002-black.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-002-black.png"
+      },
+      "facesets": []
+    },
+    "Santa-002-light": {
+      "name": "Santa-002-light",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-002-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-002-light.png"
+      },
+      "facesets": []
+    },
+    "Vasily-fighter-001": {
+      "name": "Vasily-fighter-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Vasily-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Vasily-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Vasily-fighter-001-angry.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-blush.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-happy.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-like.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-smirk.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-surprised.png"
+      ]
+    },
+    "Yan-001": {
+      "name": "Yan-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-001-angry.png",
+        "faceset/character/PNG/original/Yan-001-blush.png",
+        "faceset/character/PNG/original/Yan-001-dislike.png",
+        "faceset/character/PNG/original/Yan-001-happy.png",
+        "faceset/character/PNG/original/Yan-001-like.png",
+        "faceset/character/PNG/original/Yan-001-neutral.png",
+        "faceset/character/PNG/original/Yan-001-smirk.png",
+        "faceset/character/PNG/original/Yan-001-surprised.png"
+      ]
+    },
+    "Yan-all": {
+      "name": "Yan-all",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-all.png"
+      },
+      "facesets": []
+    },
+    "Yan-cleric-001": {
+      "name": "Yan-cleric-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Yan-fighter-001": {
+      "name": "Yan-fighter-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-fighter-001-angry.png",
+        "faceset/character/PNG/original/Yan-fighter-001-blush.png",
+        "faceset/character/PNG/original/Yan-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Yan-fighter-001-happy.png",
+        "faceset/character/PNG/original/Yan-fighter-001-like.png",
+        "faceset/character/PNG/original/Yan-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Yan-fighter-001-smirk.png",
+        "faceset/character/PNG/original/Yan-fighter-001-surprised.png"
+      ]
+    },
+    "Yan-mage-001": {
+      "name": "Yan-mage-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-mage-001-angry.png",
+        "faceset/character/PNG/original/Yan-mage-001-blush.png",
+        "faceset/character/PNG/original/Yan-mage-001-dislike.png",
+        "faceset/character/PNG/original/Yan-mage-001-happy.png",
+        "faceset/character/PNG/original/Yan-mage-001-like.png",
+        "faceset/character/PNG/original/Yan-mage-001-neutral.png",
+        "faceset/character/PNG/original/Yan-mage-001-smirk.png",
+        "faceset/character/PNG/original/Yan-mage-001-surprised.png"
+      ]
+    },
+    "Yan-ranger-001": {
+      "name": "Yan-ranger-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-ranger-001-angry.png",
+        "faceset/character/PNG/original/Yan-ranger-001-blush.png",
+        "faceset/character/PNG/original/Yan-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Yan-ranger-001-happy.png",
+        "faceset/character/PNG/original/Yan-ranger-001-like.png",
+        "faceset/character/PNG/original/Yan-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Yan-ranger-001-smirk.png",
+        "faceset/character/PNG/original/Yan-ranger-001-surprised.png"
+      ]
+    },
+    "Zmiter-alchemist-001": {
+      "name": "Zmiter-alchemist-001",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Zmiter-alchemist-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Zmiter-alchemist-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Zmiter-alchemist-001-angry.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-blush.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-dislike.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-happy.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-like.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-neutral.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-smirk.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-surprised.png"
+      ]
+    },
+    "Zmiter-alchemist-002": {
+      "name": "Zmiter-alchemist-002",
+      "category": "character",
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Zmiter-alchemist-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Zmiter-alchemist-002.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-alt-light": {
+      "name": "Amanda-001-alt-light",
+      "category": "character",
+      "sprites": {
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-alt-light.png"
+      ]
+    }
+  },
+  "index": {
+    "allCharacterIds": [
+      "Amanda-001-alt-light",
+      "Amanda-001-brown",
+      "Amanda-001-light",
+      "Amanda-001-light-v1",
+      "Angela-mage-001",
+      "Claris-cleric-001",
+      "Evan-cleric-001",
+      "Helena-fighter-001",
+      "Linda-witch-001",
+      "Lyuba-000",
+      "Lyuba-001",
+      "Lyuba-all",
+      "Lyuba-cleric-001",
+      "Lyuba-fighter-001",
+      "Lyuba-mage-001",
+      "Lyuba-ranger-001",
+      "Molly-soldier-001",
+      "Molly-soldier-002",
+      "Nathan-mage-001",
+      "Roland-soldier-001",
+      "Roland-soldier-002",
+      "Ruby-ranger-001",
+      "Santa-001-black",
+      "Santa-001-light",
+      "Santa-002-black",
+      "Santa-002-light",
+      "Vasily-fighter-001",
+      "Yan-001",
+      "Yan-all",
+      "Yan-cleric-001",
+      "Yan-fighter-001",
+      "Yan-mage-001",
+      "Yan-ranger-001",
+      "Zmiter-alchemist-001",
+      "Zmiter-alchemist-002",
+      "aristocrate-f-001-brown-blonde",
+      "aristocrate-f-001-brown-brunette",
+      "aristocrate-f-001-light",
+      "aristocrate-f-001-light-old",
+      "aristocrate-f-002-brown",
+      "aristocrate-f-002-light",
+      "aristocrate-f-003-black",
+      "aristocrate-f-003-brown",
+      "aristocrate-f-003-light",
+      "aristocrate-m-001-brown",
+      "aristocrate-m-001-light",
+      "aristocrate-m-002-black",
+      "aristocrate-m-002-brown",
+      "aristocrate-m-002-light",
+      "bard-001-brown",
+      "bard-001-light",
+      "cleric-f-001-black",
+      "cleric-f-001-brown",
+      "cleric-f-001-light",
+      "cleric-m-001-black",
+      "cleric-m-001-brown",
+      "cleric-m-001-light",
+      "clown-m-001-brown",
+      "clown-m-001-light",
+      "cultist-001-blue",
+      "cultist-001-red",
+      "cultist-002-blue",
+      "dancer-f-001-brown",
+      "dancer-f-001-light",
+      "fighter-f-001-black",
+      "fighter-f-001-brown",
+      "fighter-f-001-light",
+      "fighter-f-002-black",
+      "fighter-f-002-brown",
+      "fighter-f-002-light",
+      "fighter-m-001-black",
+      "fighter-m-001-brown",
+      "fighter-m-001-light",
+      "fighter-m-002-black",
+      "fighter-m-002-brown",
+      "fighter-m-002-light",
+      "ghost_maiden-001",
+      "ghost_maiden-002",
+      "king-001-light",
+      "king-002-brown",
+      "king-002-light",
+      "mage-f-001-black",
+      "mage-f-001-brown",
+      "mage-f-001-light",
+      "mage-m-001-black",
+      "mage-m-001-brown",
+      "mage-m-001-light",
+      "masked-m-001-light",
+      "masked-m-002-brown",
+      "masked-m-002-light",
+      "pirate-f-001-brown",
+      "pirate-f-001-light",
+      "prince-001-light",
+      "prince-002-brown",
+      "prince-002-light",
+      "princess-001-light",
+      "princess-002-brown",
+      "princess-002-light",
+      "queen-001-light",
+      "queen-002-brown",
+      "queen-002-light",
+      "ranger-f-001-black",
+      "ranger-f-001-brown",
+      "ranger-f-001-light",
+      "ranger-m-001-black",
+      "ranger-m-001-brown",
+      "ranger-m-001-light",
+      "snow-m-001-brown",
+      "snow-m-001-light",
+      "townfolk-adult-f-001-alt-brown",
+      "townfolk-adult-f-001-alt-light",
+      "townfolk-adult-f-001-light",
+      "townfolk-adult-f-002-alt-brown",
+      "townfolk-adult-f-002-alt-light",
+      "townfolk-adult-f-002-light",
+      "townfolk-adult-f-003-alt-brown",
+      "townfolk-adult-f-003-alt-light",
+      "townfolk-adult-f-003-light",
+      "townfolk-adult-f-004-alt-brown",
+      "townfolk-adult-f-004-alt-light",
+      "townfolk-adult-f-004-light",
+      "townfolk-adult-f-005-alt-brown",
+      "townfolk-adult-f-005-alt-light",
+      "townfolk-adult-f-005-light",
+      "townfolk-adult-f-006-alt-brown",
+      "townfolk-adult-f-006-alt-light",
+      "townfolk-adult-f-006-black",
+      "townfolk-adult-f-006-light",
+      "townfolk-adult-m-001-brown",
+      "townfolk-adult-m-001-light",
+      "townfolk-adult-m-002-brown",
+      "townfolk-adult-m-002-light",
+      "townfolk-adult-m-003-alt-brown",
+      "townfolk-adult-m-003-alt-light",
+      "townfolk-adult-m-003-light",
+      "townfolk-adult-m-004-alt-brown",
+      "townfolk-adult-m-004-alt-light",
+      "townfolk-adult-m-004-light",
+      "townfolk-adult-m-005-alt-brown",
+      "townfolk-adult-m-005-brown",
+      "townfolk-adult-m-005-light",
+      "townfolk-adult-m-006-alt-brown",
+      "townfolk-adult-m-006-alt-light",
+      "townfolk-adult-m-006-light",
+      "townfolk-adult-m-007-alt-brown",
+      "townfolk-adult-m-007-alt-light",
+      "townfolk-adult-m-007-black",
+      "townfolk-adult-m-007-light",
+      "townfolk-adult-m-008-alt-brown",
+      "townfolk-adult-m-008-alt-light",
+      "townfolk-adult-m-008-light",
+      "townfolk-adult-m-009-brown",
+      "townfolk-adult-m-009-light",
+      "townfolk-bearded_man-001-black",
+      "townfolk-bearded_man-001-light",
+      "townfolk-bearded_man-002-black",
+      "townfolk-bearded_man-002-light",
+      "townfolk-child-f-001-brown",
+      "townfolk-child-f-001-light",
+      "townfolk-child-f-002-alt-brown",
+      "townfolk-child-f-002-alt-light",
+      "townfolk-child-f-002-light",
+      "townfolk-child-f-003-black",
+      "townfolk-child-m-001-alt-brown",
+      "townfolk-child-m-001-alt-light",
+      "townfolk-child-m-001-black",
+      "townfolk-child-m-001-light",
+      "townfolk-child-m-002-alt-brown",
+      "townfolk-child-m-002-alt-light",
+      "townfolk-child-m-002-light",
+      "townfolk-child-m-002-light-recolor",
+      "townfolk-child-m-003-light",
+      "townfolk-elder-f-001-alt-brown",
+      "townfolk-elder-f-001-alt-light",
+      "townfolk-elder-f-001-black",
+      "townfolk-elder-f-001-light",
+      "townfolk-elder-m-001-brown",
+      "townfolk-elder-m-001-light",
+      "townfolk-elder-m-002-brown",
+      "townfolk-elder-m-002-light",
+      "townfolk-elder-m-003-black",
+      "townfolk-mayor-m-001-black",
+      "townfolk-mayor-m-001-light"
+    ],
+    "bySize": {
+      "24x32": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002"
+      ],
+      "48x64_scale2x": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002",
+        "Amanda-001-alt-light"
+      ]
+    },
+    "recommendedSize": "24x32",
+    "sizeComparison": {
+      "24x32": {
+        "recommendation": "Best for AI Town - closest to 32x32, minimal conversion needed",
+        "pros": [
+          "Closest to 32x32",
+          "Lightweight",
+          "Good performance",
+          "Most characters"
+        ],
+        "cons": [
+          "Slightly narrower (24 vs 32 width)"
+        ],
+        "conversionDifficulty": "Easy"
+      },
+      "48x64_scale2x": {
+        "recommendation": "High resolution - needs 50% scaling",
+        "pros": [
+          "High detail",
+          "Best visual quality"
+        ],
+        "cons": [
+          "Needs scaling",
+          "Larger files",
+          "Performance impact",
+          "Style mismatch with 32x32"
+        ],
+        "conversionDifficulty": "Hard"
+      }
+    }
+  }
+}

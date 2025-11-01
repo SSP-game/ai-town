@@ -1,0 +1,6112 @@
+{
+  "metadata": {
+    "generated": "2025-11-01T11:20:21.798Z",
+    "basePath": "/assets/cabbit-0.5",
+    "totalCharacters": 183,
+    "availableSizes": [
+      "24x32",
+      "48x64_scale2x"
+    ],
+    "recommendedSize": "24x32",
+    "namingConvention": {
+      "pattern": "type-[ageGroup]-gender-variant-skinTone-[hairColor|style|color]",
+      "examples": [
+        "aristocrate-f-001-brown-blonde = aristocrat, female, variant 001, brown skin, blonde hair",
+        "townfolk-adult-f-003-alt-light = townfolk, adult, female, variant 003, alternative style, light skin",
+        "fighter-m-002-black = fighter, male, variant 002, black skin"
+      ],
+      "attributes": {
+        "type": "Character class or role (aristocrate, fighter, mage, townfolk, etc.)",
+        "ageGroup": "Age category (adult, child, young, old) - optional",
+        "gender": "Gender (f=female, m=male)",
+        "variant": "Variant number (001, 002, 003, etc.)",
+        "skinTone": "Skin color (black, brown, light, dark, pale)",
+        "hairColor": "Hair color (blonde, brunette, redhead, white, gray) - optional",
+        "style": "Style variant (alt=alternative) - optional",
+        "color": "Outfit/robe color (blue, red, green, etc.) - optional"
+      }
+    }
+  },
+  "characters": {
+    "aristocrate-f-001-brown-blonde": {
+      "id": "aristocrate-f-001-brown-blonde",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-001-brown-blonde",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": "blonde",
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-brown-blonde.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-brown-blonde.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-brown-blonde.png"
+      ]
+    },
+    "aristocrate-f-001-brown-brunette": {
+      "id": "aristocrate-f-001-brown-brunette",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-001-brown-brunette",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": "brunette",
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-brown-brunette.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-brown-brunette.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-001-light-old": {
+      "id": "aristocrate-f-001-light-old",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-001-light-old",
+        "type": "aristocrate",
+        "ageGroup": "old",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-light-old.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-light-old.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-001-light": {
+      "id": "aristocrate-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-001-light",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-001-light.png"
+      ]
+    },
+    "aristocrate-f-002-brown": {
+      "id": "aristocrate-f-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-002-brown",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-002-brown.png"
+      ]
+    },
+    "aristocrate-f-002-light": {
+      "id": "aristocrate-f-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-002-light",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-002-light.png"
+      ]
+    },
+    "aristocrate-f-003-black": {
+      "id": "aristocrate-f-003-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-003-black",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-black.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-003-brown": {
+      "id": "aristocrate-f-003-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-003-brown",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-brown.png"
+      },
+      "facesets": []
+    },
+    "aristocrate-f-003-light": {
+      "id": "aristocrate-f-003-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-f-003-light",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-f-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-f-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-f-003-light.png"
+      ]
+    },
+    "aristocrate-m-001-brown": {
+      "id": "aristocrate-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-m-001-brown",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-001-brown.png"
+      ]
+    },
+    "aristocrate-m-001-light": {
+      "id": "aristocrate-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-m-001-light",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-001-light.png"
+      ]
+    },
+    "aristocrate-m-002-black": {
+      "id": "aristocrate-m-002-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-m-002-black",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-black.png"
+      ]
+    },
+    "aristocrate-m-002-brown": {
+      "id": "aristocrate-m-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-m-002-brown",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-brown.png"
+      ]
+    },
+    "aristocrate-m-002-light": {
+      "id": "aristocrate-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "aristocrate-m-002-light",
+        "type": "aristocrate",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/aristocrate-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/aristocrate-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/aristocrate-m-002-light.png"
+      ]
+    },
+    "bard-001-brown": {
+      "id": "bard-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "bard-001-brown",
+        "type": "bard",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/bard-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/bard-001-brown.png"
+      },
+      "facesets": []
+    },
+    "bard-001-light": {
+      "id": "bard-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "bard-001-light",
+        "type": "bard",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/bard-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/bard-001-light.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-black": {
+      "id": "cleric-f-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-f-001-black",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-black.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-brown": {
+      "id": "cleric-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-f-001-brown",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-brown.png"
+      },
+      "facesets": []
+    },
+    "cleric-f-001-light": {
+      "id": "cleric-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-f-001-light",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-f-001-light.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-black": {
+      "id": "cleric-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-m-001-black",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-black.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-brown": {
+      "id": "cleric-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-m-001-brown",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "cleric-m-001-light": {
+      "id": "cleric-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "cleric-m-001-light",
+        "type": "cleric",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cleric-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cleric-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "clown-m-001-brown": {
+      "id": "clown-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "clown-m-001-brown",
+        "type": "clown",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/clown-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/clown-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "clown-m-001-light": {
+      "id": "clown-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "clown-m-001-light",
+        "type": "clown",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/clown-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/clown-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "cultist-001-blue": {
+      "id": "cultist-001-blue",
+      "category": "people",
+      "attributes": {
+        "fullName": "cultist-001-blue",
+        "type": "cultist",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": "blue",
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-001-blue.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-001-blue.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-001-blue.png"
+      ]
+    },
+    "cultist-001-red": {
+      "id": "cultist-001-red",
+      "category": "people",
+      "attributes": {
+        "fullName": "cultist-001-red",
+        "type": "cultist",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": "red",
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-001-red.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-001-red.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-001-red.png"
+      ]
+    },
+    "cultist-002-blue": {
+      "id": "cultist-002-blue",
+      "category": "people",
+      "attributes": {
+        "fullName": "cultist-002-blue",
+        "type": "cultist",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": "blue",
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/cultist-002-blue.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/cultist-002-blue.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/cultist-002-blue.png"
+      ]
+    },
+    "dancer-f-001-brown": {
+      "id": "dancer-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "dancer-f-001-brown",
+        "type": "dancer",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/dancer-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/dancer-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/dancer-f-001-brown.png"
+      ]
+    },
+    "dancer-f-001-light": {
+      "id": "dancer-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "dancer-f-001-light",
+        "type": "dancer",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/dancer-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/dancer-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/dancer-f-001-light.png"
+      ]
+    },
+    "fighter-f-001-black": {
+      "id": "fighter-f-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-001-black",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-black.png"
+      ]
+    },
+    "fighter-f-001-brown": {
+      "id": "fighter-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-001-brown",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-brown.png"
+      ]
+    },
+    "fighter-f-001-light": {
+      "id": "fighter-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-001-light",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-001-light.png"
+      ]
+    },
+    "fighter-f-002-black": {
+      "id": "fighter-f-002-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-002-black",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-black.png"
+      ]
+    },
+    "fighter-f-002-brown": {
+      "id": "fighter-f-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-002-brown",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-brown.png"
+      ]
+    },
+    "fighter-f-002-light": {
+      "id": "fighter-f-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-f-002-light",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-f-002-light.png"
+      ]
+    },
+    "fighter-m-001-black": {
+      "id": "fighter-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-001-black",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-black.png"
+      ]
+    },
+    "fighter-m-001-brown": {
+      "id": "fighter-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-001-brown",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-brown.png"
+      ]
+    },
+    "fighter-m-001-light": {
+      "id": "fighter-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-001-light",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-001-light.png"
+      ]
+    },
+    "fighter-m-002-black": {
+      "id": "fighter-m-002-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-002-black",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-black.png"
+      ]
+    },
+    "fighter-m-002-brown": {
+      "id": "fighter-m-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-002-brown",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-brown.png"
+      ]
+    },
+    "fighter-m-002-light": {
+      "id": "fighter-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "fighter-m-002-light",
+        "type": "fighter",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/fighter-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/fighter-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/fighter-m-002-light.png"
+      ]
+    },
+    "ghost_maiden-001": {
+      "id": "ghost_maiden-001",
+      "category": "people",
+      "attributes": {
+        "fullName": "ghost_maiden-001",
+        "type": "ghost_maiden",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ghost_maiden-001.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ghost_maiden-001.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ghost_maiden-001.png"
+      ]
+    },
+    "ghost_maiden-002": {
+      "id": "ghost_maiden-002",
+      "category": "people",
+      "attributes": {
+        "fullName": "ghost_maiden-002",
+        "type": "ghost_maiden",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ghost_maiden-002.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ghost_maiden-002.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ghost_maiden-002.png"
+      ]
+    },
+    "king-001-light": {
+      "id": "king-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "king-001-light",
+        "type": "king",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/king-001-light.png"
+      ]
+    },
+    "king-002-brown": {
+      "id": "king-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "king-002-brown",
+        "type": "king",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-002-brown.png"
+      },
+      "facesets": []
+    },
+    "king-002-light": {
+      "id": "king-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "king-002-light",
+        "type": "king",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/king-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/king-002-light.png"
+      },
+      "facesets": []
+    },
+    "mage-f-001-black": {
+      "id": "mage-f-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-f-001-black",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-black.png"
+      ]
+    },
+    "mage-f-001-brown": {
+      "id": "mage-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-f-001-brown",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-brown.png"
+      ]
+    },
+    "mage-f-001-light": {
+      "id": "mage-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-f-001-light",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-f-001-light.png"
+      ]
+    },
+    "mage-m-001-black": {
+      "id": "mage-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-m-001-black",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-black.png"
+      ]
+    },
+    "mage-m-001-brown": {
+      "id": "mage-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-m-001-brown",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-brown.png"
+      ]
+    },
+    "mage-m-001-light": {
+      "id": "mage-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "mage-m-001-light",
+        "type": "mage",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/mage-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/mage-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/mage-m-001-light.png"
+      ]
+    },
+    "masked-m-001-light": {
+      "id": "masked-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "masked-m-001-light",
+        "type": "masked",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/masked-m-001-light.png"
+      ]
+    },
+    "masked-m-002-brown": {
+      "id": "masked-m-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "masked-m-002-brown",
+        "type": "masked",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-002-brown.png"
+      },
+      "facesets": []
+    },
+    "masked-m-002-light": {
+      "id": "masked-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "masked-m-002-light",
+        "type": "masked",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/masked-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/masked-m-002-light.png"
+      },
+      "facesets": []
+    },
+    "pirate-f-001-brown": {
+      "id": "pirate-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "pirate-f-001-brown",
+        "type": "pirate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/pirate-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/pirate-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/pirate-f-001-brown.png"
+      ]
+    },
+    "pirate-f-001-light": {
+      "id": "pirate-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "pirate-f-001-light",
+        "type": "pirate",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/pirate-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/pirate-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/pirate-f-001-light.png"
+      ]
+    },
+    "prince-001-light": {
+      "id": "prince-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "prince-001-light",
+        "type": "prince",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/prince-001-light.png"
+      ]
+    },
+    "prince-002-brown": {
+      "id": "prince-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "prince-002-brown",
+        "type": "prince",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-002-brown.png"
+      },
+      "facesets": []
+    },
+    "prince-002-light": {
+      "id": "prince-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "prince-002-light",
+        "type": "prince",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/prince-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/prince-002-light.png"
+      },
+      "facesets": []
+    },
+    "princess-001-light": {
+      "id": "princess-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "princess-001-light",
+        "type": "princess",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/princess-001-light.png"
+      ]
+    },
+    "princess-002-brown": {
+      "id": "princess-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "princess-002-brown",
+        "type": "princess",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-002-brown.png"
+      },
+      "facesets": []
+    },
+    "princess-002-light": {
+      "id": "princess-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "princess-002-light",
+        "type": "princess",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/princess-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/princess-002-light.png"
+      },
+      "facesets": []
+    },
+    "queen-001-light": {
+      "id": "queen-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "queen-001-light",
+        "type": "queen",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/queen-001-light.png"
+      ]
+    },
+    "queen-002-brown": {
+      "id": "queen-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "queen-002-brown",
+        "type": "queen",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-002-brown.png"
+      },
+      "facesets": []
+    },
+    "queen-002-light": {
+      "id": "queen-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "queen-002-light",
+        "type": "queen",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/queen-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/queen-002-light.png"
+      },
+      "facesets": []
+    },
+    "ranger-f-001-black": {
+      "id": "ranger-f-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-f-001-black",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-black.png"
+      ]
+    },
+    "ranger-f-001-brown": {
+      "id": "ranger-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-f-001-brown",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-brown.png"
+      ]
+    },
+    "ranger-f-001-light": {
+      "id": "ranger-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-f-001-light",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-f-001-light.png"
+      ]
+    },
+    "ranger-m-001-black": {
+      "id": "ranger-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-m-001-black",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-black.png"
+      ]
+    },
+    "ranger-m-001-brown": {
+      "id": "ranger-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-m-001-brown",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-brown.png"
+      ]
+    },
+    "ranger-m-001-light": {
+      "id": "ranger-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "ranger-m-001-light",
+        "type": "ranger",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/ranger-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/ranger-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/ranger-m-001-light.png"
+      ]
+    },
+    "snow-m-001-brown": {
+      "id": "snow-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "snow-m-001-brown",
+        "type": "snow",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/snow-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/snow-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/snow-m-001-brown.png"
+      ]
+    },
+    "snow-m-001-light": {
+      "id": "snow-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "snow-m-001-light",
+        "type": "snow",
+        "ageGroup": null,
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/snow-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/snow-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/snow-m-001-light.png"
+      ]
+    },
+    "townfolk-adult-f-001-alt-brown": {
+      "id": "townfolk-adult-f-001-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-001-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-001-alt-light": {
+      "id": "townfolk-adult-f-001-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-001-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-001-light": {
+      "id": "townfolk-adult-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-001-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-001-light.png"
+      ]
+    },
+    "townfolk-adult-f-002-alt-brown": {
+      "id": "townfolk-adult-f-002-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-002-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-002-alt-light": {
+      "id": "townfolk-adult-f-002-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-002-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-002-light": {
+      "id": "townfolk-adult-f-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-002-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-002-light.png"
+      ]
+    },
+    "townfolk-adult-f-003-alt-brown": {
+      "id": "townfolk-adult-f-003-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-003-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-003-alt-light": {
+      "id": "townfolk-adult-f-003-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-003-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-003-light": {
+      "id": "townfolk-adult-f-003-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-003-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-003-light.png"
+      ]
+    },
+    "townfolk-adult-f-004-alt-brown": {
+      "id": "townfolk-adult-f-004-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-004-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "004",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-004-alt-light": {
+      "id": "townfolk-adult-f-004-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-004-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "004",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-004-light": {
+      "id": "townfolk-adult-f-004-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-004-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "004",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-004-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-004-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-004-light.png"
+      ]
+    },
+    "townfolk-adult-f-005-alt-brown": {
+      "id": "townfolk-adult-f-005-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-005-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "005",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-005-alt-light": {
+      "id": "townfolk-adult-f-005-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-005-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "005",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-005-light": {
+      "id": "townfolk-adult-f-005-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-005-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "005",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-005-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-005-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-005-light.png"
+      ]
+    },
+    "townfolk-adult-f-006-alt-brown": {
+      "id": "townfolk-adult-f-006-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-006-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "006",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-f-006-alt-light": {
+      "id": "townfolk-adult-f-006-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-006-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "006",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-alt-light.png"
+      ]
+    },
+    "townfolk-adult-f-006-black": {
+      "id": "townfolk-adult-f-006-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-006-black",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "006",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-black.png"
+      ]
+    },
+    "townfolk-adult-f-006-light": {
+      "id": "townfolk-adult-f-006-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-f-006-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "female",
+        "variant": "006",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-f-006-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-f-006-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-f-006-light.png"
+      ]
+    },
+    "townfolk-adult-m-001-brown": {
+      "id": "townfolk-adult-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-001-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-001-brown.png"
+      },
+      "facesets": []
+    },
+    "townfolk-adult-m-001-light": {
+      "id": "townfolk-adult-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-001-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-001-light.png"
+      ]
+    },
+    "townfolk-adult-m-002-brown": {
+      "id": "townfolk-adult-m-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-002-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-002-brown.png"
+      },
+      "facesets": []
+    },
+    "townfolk-adult-m-002-light": {
+      "id": "townfolk-adult-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-002-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-002-light.png"
+      ]
+    },
+    "townfolk-adult-m-003-alt-brown": {
+      "id": "townfolk-adult-m-003-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-003-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "003",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-003-alt-light": {
+      "id": "townfolk-adult-m-003-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-003-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-003-light": {
+      "id": "townfolk-adult-m-003-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-003-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-003-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-003-light.png"
+      ]
+    },
+    "townfolk-adult-m-004-alt-brown": {
+      "id": "townfolk-adult-m-004-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-004-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "004",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-004-alt-light": {
+      "id": "townfolk-adult-m-004-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-004-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "004",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-004-light": {
+      "id": "townfolk-adult-m-004-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-004-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "004",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-004-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-004-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-004-light.png"
+      ]
+    },
+    "townfolk-adult-m-005-alt-brown": {
+      "id": "townfolk-adult-m-005-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-005-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "005",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-005-brown": {
+      "id": "townfolk-adult-m-005-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-005-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "005",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-brown.png"
+      ]
+    },
+    "townfolk-adult-m-005-light": {
+      "id": "townfolk-adult-m-005-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-005-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "005",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-005-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-005-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-005-light.png"
+      ]
+    },
+    "townfolk-adult-m-006-alt-brown": {
+      "id": "townfolk-adult-m-006-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-006-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "006",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-006-alt-light": {
+      "id": "townfolk-adult-m-006-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-006-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "006",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-006-light": {
+      "id": "townfolk-adult-m-006-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-006-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "006",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-006-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-006-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-006-light.png"
+      ]
+    },
+    "townfolk-adult-m-007-alt-brown": {
+      "id": "townfolk-adult-m-007-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-007-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "007",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-007-alt-light": {
+      "id": "townfolk-adult-m-007-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-007-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "007",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-007-black": {
+      "id": "townfolk-adult-m-007-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-007-black",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "007",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-black.png"
+      ]
+    },
+    "townfolk-adult-m-007-light": {
+      "id": "townfolk-adult-m-007-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-007-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "007",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-007-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-007-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-007-light.png"
+      ]
+    },
+    "townfolk-adult-m-008-alt-brown": {
+      "id": "townfolk-adult-m-008-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-008-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "008",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-alt-brown.png"
+      ]
+    },
+    "townfolk-adult-m-008-alt-light": {
+      "id": "townfolk-adult-m-008-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-008-alt-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "008",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-alt-light.png"
+      ]
+    },
+    "townfolk-adult-m-008-light": {
+      "id": "townfolk-adult-m-008-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-008-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "008",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-008-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-008-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-008-light.png"
+      ]
+    },
+    "townfolk-adult-m-009-brown": {
+      "id": "townfolk-adult-m-009-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-009-brown",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "009",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-009-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-009-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-009-brown.png"
+      ]
+    },
+    "townfolk-adult-m-009-light": {
+      "id": "townfolk-adult-m-009-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-adult-m-009-light",
+        "type": "townfolk",
+        "ageGroup": "adult",
+        "gender": "male",
+        "variant": "009",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-adult-m-009-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-adult-m-009-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-adult-m-009-light.png"
+      ]
+    },
+    "townfolk-bearded_man-001-black": {
+      "id": "townfolk-bearded_man-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-bearded_man-001-black",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "bearded_man",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-001-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-001-light": {
+      "id": "townfolk-bearded_man-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-bearded_man-001-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "bearded_man",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-001-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-002-black": {
+      "id": "townfolk-bearded_man-002-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-bearded_man-002-black",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "bearded_man",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-002-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-002-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-bearded_man-002-light": {
+      "id": "townfolk-bearded_man-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-bearded_man-002-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "bearded_man",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-bearded_man-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-bearded_man-002-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-child-f-001-brown": {
+      "id": "townfolk-child-f-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-001-brown",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-001-brown.png"
+      ]
+    },
+    "townfolk-child-f-001-light": {
+      "id": "townfolk-child-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-001-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-001-light.png"
+      ]
+    },
+    "townfolk-child-f-002-alt-brown": {
+      "id": "townfolk-child-f-002-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-002-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-alt-brown.png"
+      ]
+    },
+    "townfolk-child-f-002-alt-light": {
+      "id": "townfolk-child-f-002-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-002-alt-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-alt-light.png"
+      ]
+    },
+    "townfolk-child-f-002-light": {
+      "id": "townfolk-child-f-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-002-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-002-light.png"
+      ]
+    },
+    "townfolk-child-f-003-black": {
+      "id": "townfolk-child-f-003-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-f-003-black",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "female",
+        "variant": "003",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-f-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-f-003-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-f-003-black.png"
+      ]
+    },
+    "townfolk-child-m-001-alt-brown": {
+      "id": "townfolk-child-m-001-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-001-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-alt-brown.png"
+      ]
+    },
+    "townfolk-child-m-001-alt-light": {
+      "id": "townfolk-child-m-001-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-001-alt-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-alt-light.png"
+      ]
+    },
+    "townfolk-child-m-001-black": {
+      "id": "townfolk-child-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-001-black",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-black.png"
+      ]
+    },
+    "townfolk-child-m-001-light": {
+      "id": "townfolk-child-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-001-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-001-light.png"
+      ]
+    },
+    "townfolk-child-m-002-alt-brown": {
+      "id": "townfolk-child-m-002-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-002-alt-brown",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-alt-brown.png"
+      ]
+    },
+    "townfolk-child-m-002-alt-light": {
+      "id": "townfolk-child-m-002-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-002-alt-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-alt-light.png"
+      ]
+    },
+    "townfolk-child-m-002-light-recolor": {
+      "id": "townfolk-child-m-002-light-recolor",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-002-light-recolor",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "recolor"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-light-recolor.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-light-recolor.png"
+      },
+      "facesets": []
+    },
+    "townfolk-child-m-002-light": {
+      "id": "townfolk-child-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-002-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-child-m-002-light.png"
+      ]
+    },
+    "townfolk-child-m-003-light": {
+      "id": "townfolk-child-m-003-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-child-m-003-light",
+        "type": "townfolk",
+        "ageGroup": "child",
+        "gender": "male",
+        "variant": "003",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-child-m-003-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-child-m-003-light.png"
+      },
+      "facesets": []
+    },
+    "townfolk-elder-f-001-alt-brown": {
+      "id": "townfolk-elder-f-001-alt-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-f-001-alt-brown",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": [
+          "elder",
+          "f",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-alt-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-alt-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-alt-brown.png"
+      ]
+    },
+    "townfolk-elder-f-001-alt-light": {
+      "id": "townfolk-elder-f-001-alt-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-f-001-alt-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": [
+          "elder",
+          "f",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-alt-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-alt-light.png"
+      ]
+    },
+    "townfolk-elder-f-001-black": {
+      "id": "townfolk-elder-f-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-f-001-black",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "f",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-black.png"
+      ]
+    },
+    "townfolk-elder-f-001-light": {
+      "id": "townfolk-elder-f-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-f-001-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "f",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-f-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-f-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-f-001-light.png"
+      ]
+    },
+    "townfolk-elder-m-001-brown": {
+      "id": "townfolk-elder-m-001-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-m-001-brown",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "m",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-001-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-001-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-001-brown.png"
+      ]
+    },
+    "townfolk-elder-m-001-light": {
+      "id": "townfolk-elder-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-m-001-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "m",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-001-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-001-light.png"
+      ]
+    },
+    "townfolk-elder-m-002-brown": {
+      "id": "townfolk-elder-m-002-brown",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-m-002-brown",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "m",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-002-brown.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-002-brown.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-002-brown.png"
+      ]
+    },
+    "townfolk-elder-m-002-light": {
+      "id": "townfolk-elder-m-002-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-m-002-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "m",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-002-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-002-light.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-002-light.png"
+      ]
+    },
+    "townfolk-elder-m-003-black": {
+      "id": "townfolk-elder-m-003-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-elder-m-003-black",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "elder",
+          "m",
+          "003"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-elder-m-003-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-elder-m-003-black.png"
+      },
+      "facesets": [
+        "faceset/people/PNG/original/townfolk-elder-m-003-black.png"
+      ]
+    },
+    "townfolk-mayor-m-001-black": {
+      "id": "townfolk-mayor-m-001-black",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-mayor-m-001-black",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mayor",
+          "m",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-mayor-m-001-black.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-mayor-m-001-black.png"
+      },
+      "facesets": []
+    },
+    "townfolk-mayor-m-001-light": {
+      "id": "townfolk-mayor-m-001-light",
+      "category": "people",
+      "attributes": {
+        "fullName": "townfolk-mayor-m-001-light",
+        "type": "townfolk",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mayor",
+          "m",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/people/PNG/24x32/townfolk-mayor-m-001-light.png",
+        "48x64_scale2x": "sprite/people/PNG/48x64_scale2x/townfolk-mayor-m-001-light.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-brown": {
+      "id": "Amanda-001-brown",
+      "category": "character",
+      "attributes": {
+        "fullName": "Amanda-001-brown",
+        "type": "Amanda",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "brown",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-brown.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-brown.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-brown.png"
+      ]
+    },
+    "Amanda-001-light-v1": {
+      "id": "Amanda-001-light-v1",
+      "category": "character",
+      "attributes": {
+        "fullName": "Amanda-001-light-v1",
+        "type": "Amanda",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "v1"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-light-v1.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-light": {
+      "id": "Amanda-001-light",
+      "category": "character",
+      "attributes": {
+        "fullName": "Amanda-001-light",
+        "type": "Amanda",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Amanda-001-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-light.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-light.png"
+      ]
+    },
+    "Angela-mage-001": {
+      "id": "Angela-mage-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Angela-mage-001",
+        "type": "Angela",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mage",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Angela-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Angela-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Angela-mage-001-angry.png",
+        "faceset/character/PNG/original/Angela-mage-001-blush.png",
+        "faceset/character/PNG/original/Angela-mage-001-dislike.png",
+        "faceset/character/PNG/original/Angela-mage-001-happy.png",
+        "faceset/character/PNG/original/Angela-mage-001-like.png",
+        "faceset/character/PNG/original/Angela-mage-001-neutral.png",
+        "faceset/character/PNG/original/Angela-mage-001-smirk.png",
+        "faceset/character/PNG/original/Angela-mage-001-surprised.png"
+      ]
+    },
+    "Claris-cleric-001": {
+      "id": "Claris-cleric-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Claris-cleric-001",
+        "type": "Claris",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "cleric",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Claris-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Claris-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Evan-cleric-001": {
+      "id": "Evan-cleric-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Evan-cleric-001",
+        "type": "Evan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "cleric",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Evan-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Evan-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Helena-fighter-001": {
+      "id": "Helena-fighter-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Helena-fighter-001",
+        "type": "Helena",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "fighter",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Helena-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Helena-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Helena-fighter-001-angry.png",
+        "faceset/character/PNG/original/Helena-fighter-001-blush.png",
+        "faceset/character/PNG/original/Helena-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Helena-fighter-001-happy.png",
+        "faceset/character/PNG/original/Helena-fighter-001-like.png",
+        "faceset/character/PNG/original/Helena-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Helena-fighter-001-surprised.png"
+      ]
+    },
+    "Linda-witch-001": {
+      "id": "Linda-witch-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Linda-witch-001",
+        "type": "Linda",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "witch",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Linda-witch-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Linda-witch-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Linda-witch-001.png"
+      ]
+    },
+    "Lyuba-000": {
+      "id": "Lyuba-000",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-000",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "000",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-000.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-000.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-000.png"
+      ]
+    },
+    "Lyuba-001": {
+      "id": "Lyuba-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-001",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-001-like.png",
+        "faceset/character/PNG/original/Lyuba-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-001-surprised.png"
+      ]
+    },
+    "Lyuba-all": {
+      "id": "Lyuba-all",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-all",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "all"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-all.png"
+      },
+      "facesets": []
+    },
+    "Lyuba-cleric-001": {
+      "id": "Lyuba-cleric-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-cleric-001",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "cleric",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-cleric-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-cleric-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-like.png",
+        "faceset/character/PNG/original/Lyuba-cleric-001-neutral.png"
+      ]
+    },
+    "Lyuba-fighter-001": {
+      "id": "Lyuba-fighter-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-fighter-001",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "fighter",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-fighter-001.png"
+      },
+      "facesets": []
+    },
+    "Lyuba-mage-001": {
+      "id": "Lyuba-mage-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-mage-001",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mage",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-mage-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-like.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-mage-001-surprised.png"
+      ]
+    },
+    "Lyuba-ranger-001": {
+      "id": "Lyuba-ranger-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Lyuba-ranger-001",
+        "type": "Lyuba",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "ranger",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Lyuba-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Lyuba-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Lyuba-ranger-001-angry.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-blush.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-happy.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-like.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Lyuba-ranger-001-surprised.png"
+      ]
+    },
+    "Molly-soldier-001": {
+      "id": "Molly-soldier-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Molly-soldier-001",
+        "type": "Molly",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "soldier",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Molly-soldier-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Molly-soldier-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Molly-soldier-001-angry.png",
+        "faceset/character/PNG/original/Molly-soldier-001-blush.png",
+        "faceset/character/PNG/original/Molly-soldier-001-dislike.png",
+        "faceset/character/PNG/original/Molly-soldier-001-happy.png",
+        "faceset/character/PNG/original/Molly-soldier-001-like.png",
+        "faceset/character/PNG/original/Molly-soldier-001-neutral.png",
+        "faceset/character/PNG/original/Molly-soldier-001-smirk.png",
+        "faceset/character/PNG/original/Molly-soldier-001-surprised.png"
+      ]
+    },
+    "Molly-soldier-002": {
+      "id": "Molly-soldier-002",
+      "category": "character",
+      "attributes": {
+        "fullName": "Molly-soldier-002",
+        "type": "Molly",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "soldier",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Molly-soldier-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Molly-soldier-002.png"
+      },
+      "facesets": []
+    },
+    "Nathan-mage-001": {
+      "id": "Nathan-mage-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Nathan-mage-001",
+        "type": "Nathan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mage",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Nathan-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Nathan-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Nathan-mage-001-angry.png",
+        "faceset/character/PNG/original/Nathan-mage-001-blush.png",
+        "faceset/character/PNG/original/Nathan-mage-001-dislike.png",
+        "faceset/character/PNG/original/Nathan-mage-001-happy.png",
+        "faceset/character/PNG/original/Nathan-mage-001-like.png",
+        "faceset/character/PNG/original/Nathan-mage-001-neutral.png",
+        "faceset/character/PNG/original/Nathan-mage-001-smirk.png",
+        "faceset/character/PNG/original/Nathan-mage-001-surprised.png"
+      ]
+    },
+    "Roland-soldier-001": {
+      "id": "Roland-soldier-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Roland-soldier-001",
+        "type": "Roland",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "soldier",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Roland-soldier-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Roland-soldier-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Roland-soldier-001-angry.png",
+        "faceset/character/PNG/original/Roland-soldier-001-blush.png",
+        "faceset/character/PNG/original/Roland-soldier-001-dislike.png",
+        "faceset/character/PNG/original/Roland-soldier-001-happy.png",
+        "faceset/character/PNG/original/Roland-soldier-001-like.png",
+        "faceset/character/PNG/original/Roland-soldier-001-neutral.png",
+        "faceset/character/PNG/original/Roland-soldier-001-smirk.png",
+        "faceset/character/PNG/original/Roland-soldier-001-surprised.png"
+      ]
+    },
+    "Roland-soldier-002": {
+      "id": "Roland-soldier-002",
+      "category": "character",
+      "attributes": {
+        "fullName": "Roland-soldier-002",
+        "type": "Roland",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "soldier",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Roland-soldier-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Roland-soldier-002.png"
+      },
+      "facesets": []
+    },
+    "Ruby-ranger-001": {
+      "id": "Ruby-ranger-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Ruby-ranger-001",
+        "type": "Ruby",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "ranger",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Ruby-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Ruby-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Ruby-ranger-001-angry.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-blush.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-happy.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-like.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-smirk.png",
+        "faceset/character/PNG/original/Ruby-ranger-001-surprised.png"
+      ]
+    },
+    "Santa-001-black": {
+      "id": "Santa-001-black",
+      "category": "character",
+      "attributes": {
+        "fullName": "Santa-001-black",
+        "type": "Santa",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-001-black.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-001-black.png"
+      },
+      "facesets": []
+    },
+    "Santa-001-light": {
+      "id": "Santa-001-light",
+      "category": "character",
+      "attributes": {
+        "fullName": "Santa-001-light",
+        "type": "Santa",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-001-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-001-light.png"
+      },
+      "facesets": []
+    },
+    "Santa-002-black": {
+      "id": "Santa-002-black",
+      "category": "character",
+      "attributes": {
+        "fullName": "Santa-002-black",
+        "type": "Santa",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "black",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-002-black.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-002-black.png"
+      },
+      "facesets": []
+    },
+    "Santa-002-light": {
+      "id": "Santa-002-light",
+      "category": "character",
+      "attributes": {
+        "fullName": "Santa-002-light",
+        "type": "Santa",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "002",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Santa-002-light.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Santa-002-light.png"
+      },
+      "facesets": []
+    },
+    "Vasily-fighter-001": {
+      "id": "Vasily-fighter-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Vasily-fighter-001",
+        "type": "Vasily",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "fighter",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Vasily-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Vasily-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Vasily-fighter-001-angry.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-blush.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-happy.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-like.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-smirk.png",
+        "faceset/character/PNG/original/Vasily-fighter-001-surprised.png"
+      ]
+    },
+    "Yan-001": {
+      "id": "Yan-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-001",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-001-angry.png",
+        "faceset/character/PNG/original/Yan-001-blush.png",
+        "faceset/character/PNG/original/Yan-001-dislike.png",
+        "faceset/character/PNG/original/Yan-001-happy.png",
+        "faceset/character/PNG/original/Yan-001-like.png",
+        "faceset/character/PNG/original/Yan-001-neutral.png",
+        "faceset/character/PNG/original/Yan-001-smirk.png",
+        "faceset/character/PNG/original/Yan-001-surprised.png"
+      ]
+    },
+    "Yan-all": {
+      "id": "Yan-all",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-all",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "all"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-all.png"
+      },
+      "facesets": []
+    },
+    "Yan-cleric-001": {
+      "id": "Yan-cleric-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-cleric-001",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "cleric",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-cleric-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-cleric-001.png"
+      },
+      "facesets": []
+    },
+    "Yan-fighter-001": {
+      "id": "Yan-fighter-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-fighter-001",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "fighter",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-fighter-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-fighter-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-fighter-001-angry.png",
+        "faceset/character/PNG/original/Yan-fighter-001-blush.png",
+        "faceset/character/PNG/original/Yan-fighter-001-dislike.png",
+        "faceset/character/PNG/original/Yan-fighter-001-happy.png",
+        "faceset/character/PNG/original/Yan-fighter-001-like.png",
+        "faceset/character/PNG/original/Yan-fighter-001-neutral.png",
+        "faceset/character/PNG/original/Yan-fighter-001-smirk.png",
+        "faceset/character/PNG/original/Yan-fighter-001-surprised.png"
+      ]
+    },
+    "Yan-mage-001": {
+      "id": "Yan-mage-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-mage-001",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "mage",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-mage-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-mage-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-mage-001-angry.png",
+        "faceset/character/PNG/original/Yan-mage-001-blush.png",
+        "faceset/character/PNG/original/Yan-mage-001-dislike.png",
+        "faceset/character/PNG/original/Yan-mage-001-happy.png",
+        "faceset/character/PNG/original/Yan-mage-001-like.png",
+        "faceset/character/PNG/original/Yan-mage-001-neutral.png",
+        "faceset/character/PNG/original/Yan-mage-001-smirk.png",
+        "faceset/character/PNG/original/Yan-mage-001-surprised.png"
+      ]
+    },
+    "Yan-ranger-001": {
+      "id": "Yan-ranger-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Yan-ranger-001",
+        "type": "Yan",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "ranger",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Yan-ranger-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Yan-ranger-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Yan-ranger-001-angry.png",
+        "faceset/character/PNG/original/Yan-ranger-001-blush.png",
+        "faceset/character/PNG/original/Yan-ranger-001-dislike.png",
+        "faceset/character/PNG/original/Yan-ranger-001-happy.png",
+        "faceset/character/PNG/original/Yan-ranger-001-like.png",
+        "faceset/character/PNG/original/Yan-ranger-001-neutral.png",
+        "faceset/character/PNG/original/Yan-ranger-001-smirk.png",
+        "faceset/character/PNG/original/Yan-ranger-001-surprised.png"
+      ]
+    },
+    "Zmiter-alchemist-001": {
+      "id": "Zmiter-alchemist-001",
+      "category": "character",
+      "attributes": {
+        "fullName": "Zmiter-alchemist-001",
+        "type": "Zmiter",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "alchemist",
+          "001"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Zmiter-alchemist-001.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Zmiter-alchemist-001.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Zmiter-alchemist-001-angry.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-blush.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-dislike.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-happy.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-like.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-neutral.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-smirk.png",
+        "faceset/character/PNG/original/Zmiter-alchemist-001-surprised.png"
+      ]
+    },
+    "Zmiter-alchemist-002": {
+      "id": "Zmiter-alchemist-002",
+      "category": "character",
+      "attributes": {
+        "fullName": "Zmiter-alchemist-002",
+        "type": "Zmiter",
+        "ageGroup": null,
+        "gender": null,
+        "variant": null,
+        "skinTone": null,
+        "hairColor": null,
+        "style": null,
+        "color": null,
+        "extra": [
+          "alchemist",
+          "002"
+        ]
+      },
+      "sprites": {
+        "24x32": "sprite/character/PNG/24x32/Zmiter-alchemist-002.png",
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Zmiter-alchemist-002.png"
+      },
+      "facesets": []
+    },
+    "Amanda-001-alt-light": {
+      "id": "Amanda-001-alt-light",
+      "category": "character",
+      "attributes": {
+        "fullName": "Amanda-001-alt-light",
+        "type": "Amanda",
+        "ageGroup": null,
+        "gender": null,
+        "variant": "001",
+        "skinTone": "light",
+        "hairColor": null,
+        "style": "alternative",
+        "color": null,
+        "extra": []
+      },
+      "sprites": {
+        "48x64_scale2x": "sprite/character/PNG/48x64_scale2x/Amanda-001-alt-light.png"
+      },
+      "facesets": [
+        "faceset/character/PNG/original/Amanda-001-alt-light.png"
+      ]
+    }
+  },
+  "index": {
+    "allCharacterIds": [
+      "Amanda-001-alt-light",
+      "Amanda-001-brown",
+      "Amanda-001-light",
+      "Amanda-001-light-v1",
+      "Angela-mage-001",
+      "Claris-cleric-001",
+      "Evan-cleric-001",
+      "Helena-fighter-001",
+      "Linda-witch-001",
+      "Lyuba-000",
+      "Lyuba-001",
+      "Lyuba-all",
+      "Lyuba-cleric-001",
+      "Lyuba-fighter-001",
+      "Lyuba-mage-001",
+      "Lyuba-ranger-001",
+      "Molly-soldier-001",
+      "Molly-soldier-002",
+      "Nathan-mage-001",
+      "Roland-soldier-001",
+      "Roland-soldier-002",
+      "Ruby-ranger-001",
+      "Santa-001-black",
+      "Santa-001-light",
+      "Santa-002-black",
+      "Santa-002-light",
+      "Vasily-fighter-001",
+      "Yan-001",
+      "Yan-all",
+      "Yan-cleric-001",
+      "Yan-fighter-001",
+      "Yan-mage-001",
+      "Yan-ranger-001",
+      "Zmiter-alchemist-001",
+      "Zmiter-alchemist-002",
+      "aristocrate-f-001-brown-blonde",
+      "aristocrate-f-001-brown-brunette",
+      "aristocrate-f-001-light",
+      "aristocrate-f-001-light-old",
+      "aristocrate-f-002-brown",
+      "aristocrate-f-002-light",
+      "aristocrate-f-003-black",
+      "aristocrate-f-003-brown",
+      "aristocrate-f-003-light",
+      "aristocrate-m-001-brown",
+      "aristocrate-m-001-light",
+      "aristocrate-m-002-black",
+      "aristocrate-m-002-brown",
+      "aristocrate-m-002-light",
+      "bard-001-brown",
+      "bard-001-light",
+      "cleric-f-001-black",
+      "cleric-f-001-brown",
+      "cleric-f-001-light",
+      "cleric-m-001-black",
+      "cleric-m-001-brown",
+      "cleric-m-001-light",
+      "clown-m-001-brown",
+      "clown-m-001-light",
+      "cultist-001-blue",
+      "cultist-001-red",
+      "cultist-002-blue",
+      "dancer-f-001-brown",
+      "dancer-f-001-light",
+      "fighter-f-001-black",
+      "fighter-f-001-brown",
+      "fighter-f-001-light",
+      "fighter-f-002-black",
+      "fighter-f-002-brown",
+      "fighter-f-002-light",
+      "fighter-m-001-black",
+      "fighter-m-001-brown",
+      "fighter-m-001-light",
+      "fighter-m-002-black",
+      "fighter-m-002-brown",
+      "fighter-m-002-light",
+      "ghost_maiden-001",
+      "ghost_maiden-002",
+      "king-001-light",
+      "king-002-brown",
+      "king-002-light",
+      "mage-f-001-black",
+      "mage-f-001-brown",
+      "mage-f-001-light",
+      "mage-m-001-black",
+      "mage-m-001-brown",
+      "mage-m-001-light",
+      "masked-m-001-light",
+      "masked-m-002-brown",
+      "masked-m-002-light",
+      "pirate-f-001-brown",
+      "pirate-f-001-light",
+      "prince-001-light",
+      "prince-002-brown",
+      "prince-002-light",
+      "princess-001-light",
+      "princess-002-brown",
+      "princess-002-light",
+      "queen-001-light",
+      "queen-002-brown",
+      "queen-002-light",
+      "ranger-f-001-black",
+      "ranger-f-001-brown",
+      "ranger-f-001-light",
+      "ranger-m-001-black",
+      "ranger-m-001-brown",
+      "ranger-m-001-light",
+      "snow-m-001-brown",
+      "snow-m-001-light",
+      "townfolk-adult-f-001-alt-brown",
+      "townfolk-adult-f-001-alt-light",
+      "townfolk-adult-f-001-light",
+      "townfolk-adult-f-002-alt-brown",
+      "townfolk-adult-f-002-alt-light",
+      "townfolk-adult-f-002-light",
+      "townfolk-adult-f-003-alt-brown",
+      "townfolk-adult-f-003-alt-light",
+      "townfolk-adult-f-003-light",
+      "townfolk-adult-f-004-alt-brown",
+      "townfolk-adult-f-004-alt-light",
+      "townfolk-adult-f-004-light",
+      "townfolk-adult-f-005-alt-brown",
+      "townfolk-adult-f-005-alt-light",
+      "townfolk-adult-f-005-light",
+      "townfolk-adult-f-006-alt-brown",
+      "townfolk-adult-f-006-alt-light",
+      "townfolk-adult-f-006-black",
+      "townfolk-adult-f-006-light",
+      "townfolk-adult-m-001-brown",
+      "townfolk-adult-m-001-light",
+      "townfolk-adult-m-002-brown",
+      "townfolk-adult-m-002-light",
+      "townfolk-adult-m-003-alt-brown",
+      "townfolk-adult-m-003-alt-light",
+      "townfolk-adult-m-003-light",
+      "townfolk-adult-m-004-alt-brown",
+      "townfolk-adult-m-004-alt-light",
+      "townfolk-adult-m-004-light",
+      "townfolk-adult-m-005-alt-brown",
+      "townfolk-adult-m-005-brown",
+      "townfolk-adult-m-005-light",
+      "townfolk-adult-m-006-alt-brown",
+      "townfolk-adult-m-006-alt-light",
+      "townfolk-adult-m-006-light",
+      "townfolk-adult-m-007-alt-brown",
+      "townfolk-adult-m-007-alt-light",
+      "townfolk-adult-m-007-black",
+      "townfolk-adult-m-007-light",
+      "townfolk-adult-m-008-alt-brown",
+      "townfolk-adult-m-008-alt-light",
+      "townfolk-adult-m-008-light",
+      "townfolk-adult-m-009-brown",
+      "townfolk-adult-m-009-light",
+      "townfolk-bearded_man-001-black",
+      "townfolk-bearded_man-001-light",
+      "townfolk-bearded_man-002-black",
+      "townfolk-bearded_man-002-light",
+      "townfolk-child-f-001-brown",
+      "townfolk-child-f-001-light",
+      "townfolk-child-f-002-alt-brown",
+      "townfolk-child-f-002-alt-light",
+      "townfolk-child-f-002-light",
+      "townfolk-child-f-003-black",
+      "townfolk-child-m-001-alt-brown",
+      "townfolk-child-m-001-alt-light",
+      "townfolk-child-m-001-black",
+      "townfolk-child-m-001-light",
+      "townfolk-child-m-002-alt-brown",
+      "townfolk-child-m-002-alt-light",
+      "townfolk-child-m-002-light",
+      "townfolk-child-m-002-light-recolor",
+      "townfolk-child-m-003-light",
+      "townfolk-elder-f-001-alt-brown",
+      "townfolk-elder-f-001-alt-light",
+      "townfolk-elder-f-001-black",
+      "townfolk-elder-f-001-light",
+      "townfolk-elder-m-001-brown",
+      "townfolk-elder-m-001-light",
+      "townfolk-elder-m-002-brown",
+      "townfolk-elder-m-002-light",
+      "townfolk-elder-m-003-black",
+      "townfolk-mayor-m-001-black",
+      "townfolk-mayor-m-001-light"
+    ],
+    "byType": {
+      "aristocrate": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light"
+      ],
+      "bard": [
+        "bard-001-brown",
+        "bard-001-light"
+      ],
+      "cleric": [
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light"
+      ],
+      "clown": [
+        "clown-m-001-brown",
+        "clown-m-001-light"
+      ],
+      "cultist": [
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue"
+      ],
+      "dancer": [
+        "dancer-f-001-brown",
+        "dancer-f-001-light"
+      ],
+      "fighter": [
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light"
+      ],
+      "ghost_maiden": [
+        "ghost_maiden-001",
+        "ghost_maiden-002"
+      ],
+      "king": [
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light"
+      ],
+      "mage": [
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light"
+      ],
+      "masked": [
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light"
+      ],
+      "pirate": [
+        "pirate-f-001-brown",
+        "pirate-f-001-light"
+      ],
+      "prince": [
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light"
+      ],
+      "princess": [
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light"
+      ],
+      "queen": [
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light"
+      ],
+      "ranger": [
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light"
+      ],
+      "snow": [
+        "snow-m-001-brown",
+        "snow-m-001-light"
+      ],
+      "townfolk": [
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light"
+      ],
+      "Amanda": [
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Amanda-001-alt-light"
+      ],
+      "Angela": [
+        "Angela-mage-001"
+      ],
+      "Claris": [
+        "Claris-cleric-001"
+      ],
+      "Evan": [
+        "Evan-cleric-001"
+      ],
+      "Helena": [
+        "Helena-fighter-001"
+      ],
+      "Linda": [
+        "Linda-witch-001"
+      ],
+      "Lyuba": [
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001"
+      ],
+      "Molly": [
+        "Molly-soldier-001",
+        "Molly-soldier-002"
+      ],
+      "Nathan": [
+        "Nathan-mage-001"
+      ],
+      "Roland": [
+        "Roland-soldier-001",
+        "Roland-soldier-002"
+      ],
+      "Ruby": [
+        "Ruby-ranger-001"
+      ],
+      "Santa": [
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light"
+      ],
+      "Vasily": [
+        "Vasily-fighter-001"
+      ],
+      "Yan": [
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001"
+      ],
+      "Zmiter": [
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002"
+      ]
+    },
+    "byGender": {
+      "female": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black"
+      ],
+      "male": [
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light"
+      ],
+      "unknown": [
+        "bard-001-brown",
+        "bard-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002",
+        "Amanda-001-alt-light"
+      ]
+    },
+    "byAgeGroup": {
+      "adult": [
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light"
+      ],
+      "child": [
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light"
+      ],
+      "young": [],
+      "old": [
+        "aristocrate-f-001-light-old"
+      ],
+      "unspecified": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002",
+        "Amanda-001-alt-light"
+      ]
+    },
+    "bySkinTone": {
+      "black": [
+        "aristocrate-f-003-black",
+        "aristocrate-m-002-black",
+        "cleric-f-001-black",
+        "cleric-m-001-black",
+        "fighter-f-001-black",
+        "fighter-f-002-black",
+        "fighter-m-001-black",
+        "fighter-m-002-black",
+        "mage-f-001-black",
+        "mage-m-001-black",
+        "ranger-f-001-black",
+        "ranger-m-001-black",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-m-007-black",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-002-black",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-black",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "Santa-001-black",
+        "Santa-002-black"
+      ],
+      "brown": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-003-brown",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-002-brown",
+        "bard-001-brown",
+        "cleric-f-001-brown",
+        "cleric-m-001-brown",
+        "clown-m-001-brown",
+        "dancer-f-001-brown",
+        "fighter-f-001-brown",
+        "fighter-f-002-brown",
+        "fighter-m-001-brown",
+        "fighter-m-002-brown",
+        "king-002-brown",
+        "mage-f-001-brown",
+        "mage-m-001-brown",
+        "masked-m-002-brown",
+        "pirate-f-001-brown",
+        "prince-002-brown",
+        "princess-002-brown",
+        "queen-002-brown",
+        "ranger-f-001-brown",
+        "ranger-m-001-brown",
+        "snow-m-001-brown",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-009-brown",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-002-brown",
+        "Amanda-001-brown"
+      ],
+      "light": [
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-light",
+        "bard-001-light",
+        "cleric-f-001-light",
+        "cleric-m-001-light",
+        "clown-m-001-light",
+        "dancer-f-001-light",
+        "fighter-f-001-light",
+        "fighter-f-002-light",
+        "fighter-m-001-light",
+        "fighter-m-002-light",
+        "king-001-light",
+        "king-002-light",
+        "mage-f-001-light",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-light",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-light",
+        "ranger-f-001-light",
+        "ranger-m-001-light",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-light",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Santa-001-light",
+        "Santa-002-light",
+        "Amanda-001-alt-light"
+      ],
+      "dark": [],
+      "pale": [],
+      "unspecified": [
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002"
+      ]
+    },
+    "byHairColor": {
+      "blonde": [
+        "aristocrate-f-001-brown-blonde"
+      ],
+      "brunette": [
+        "aristocrate-f-001-brown-brunette"
+      ],
+      "redhead": [],
+      "white": [],
+      "gray": [],
+      "unspecified": [
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002",
+        "Amanda-001-alt-light"
+      ]
+    },
+    "bySize": {
+      "24x32": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light-v1",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-all",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-all",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002"
+      ],
+      "48x64_scale2x": [
+        "aristocrate-f-001-brown-blonde",
+        "aristocrate-f-001-brown-brunette",
+        "aristocrate-f-001-light-old",
+        "aristocrate-f-001-light",
+        "aristocrate-f-002-brown",
+        "aristocrate-f-002-light",
+        "aristocrate-f-003-black",
+        "aristocrate-f-003-brown",
+        "aristocrate-f-003-light",
+        "aristocrate-m-001-brown",
+        "aristocrate-m-001-light",
+        "aristocrate-m-002-black",
+        "aristocrate-m-002-brown",
+        "aristocrate-m-002-light",
+        "bard-001-brown",
+        "bard-001-light",
+        "cleric-f-001-black",
+        "cleric-f-001-brown",
+        "cleric-f-001-light",
+        "cleric-m-001-black",
+        "cleric-m-001-brown",
+        "cleric-m-001-light",
+        "clown-m-001-brown",
+        "clown-m-001-light",
+        "cultist-001-blue",
+        "cultist-001-red",
+        "cultist-002-blue",
+        "dancer-f-001-brown",
+        "dancer-f-001-light",
+        "fighter-f-001-black",
+        "fighter-f-001-brown",
+        "fighter-f-001-light",
+        "fighter-f-002-black",
+        "fighter-f-002-brown",
+        "fighter-f-002-light",
+        "fighter-m-001-black",
+        "fighter-m-001-brown",
+        "fighter-m-001-light",
+        "fighter-m-002-black",
+        "fighter-m-002-brown",
+        "fighter-m-002-light",
+        "ghost_maiden-001",
+        "ghost_maiden-002",
+        "king-001-light",
+        "king-002-brown",
+        "king-002-light",
+        "mage-f-001-black",
+        "mage-f-001-brown",
+        "mage-f-001-light",
+        "mage-m-001-black",
+        "mage-m-001-brown",
+        "mage-m-001-light",
+        "masked-m-001-light",
+        "masked-m-002-brown",
+        "masked-m-002-light",
+        "pirate-f-001-brown",
+        "pirate-f-001-light",
+        "prince-001-light",
+        "prince-002-brown",
+        "prince-002-light",
+        "princess-001-light",
+        "princess-002-brown",
+        "princess-002-light",
+        "queen-001-light",
+        "queen-002-brown",
+        "queen-002-light",
+        "ranger-f-001-black",
+        "ranger-f-001-brown",
+        "ranger-f-001-light",
+        "ranger-m-001-black",
+        "ranger-m-001-brown",
+        "ranger-m-001-light",
+        "snow-m-001-brown",
+        "snow-m-001-light",
+        "townfolk-adult-f-001-alt-brown",
+        "townfolk-adult-f-001-alt-light",
+        "townfolk-adult-f-001-light",
+        "townfolk-adult-f-002-alt-brown",
+        "townfolk-adult-f-002-alt-light",
+        "townfolk-adult-f-002-light",
+        "townfolk-adult-f-003-alt-brown",
+        "townfolk-adult-f-003-alt-light",
+        "townfolk-adult-f-003-light",
+        "townfolk-adult-f-004-alt-brown",
+        "townfolk-adult-f-004-alt-light",
+        "townfolk-adult-f-004-light",
+        "townfolk-adult-f-005-alt-brown",
+        "townfolk-adult-f-005-alt-light",
+        "townfolk-adult-f-005-light",
+        "townfolk-adult-f-006-alt-brown",
+        "townfolk-adult-f-006-alt-light",
+        "townfolk-adult-f-006-black",
+        "townfolk-adult-f-006-light",
+        "townfolk-adult-m-001-brown",
+        "townfolk-adult-m-001-light",
+        "townfolk-adult-m-002-brown",
+        "townfolk-adult-m-002-light",
+        "townfolk-adult-m-003-alt-brown",
+        "townfolk-adult-m-003-alt-light",
+        "townfolk-adult-m-003-light",
+        "townfolk-adult-m-004-alt-brown",
+        "townfolk-adult-m-004-alt-light",
+        "townfolk-adult-m-004-light",
+        "townfolk-adult-m-005-alt-brown",
+        "townfolk-adult-m-005-brown",
+        "townfolk-adult-m-005-light",
+        "townfolk-adult-m-006-alt-brown",
+        "townfolk-adult-m-006-alt-light",
+        "townfolk-adult-m-006-light",
+        "townfolk-adult-m-007-alt-brown",
+        "townfolk-adult-m-007-alt-light",
+        "townfolk-adult-m-007-black",
+        "townfolk-adult-m-007-light",
+        "townfolk-adult-m-008-alt-brown",
+        "townfolk-adult-m-008-alt-light",
+        "townfolk-adult-m-008-light",
+        "townfolk-adult-m-009-brown",
+        "townfolk-adult-m-009-light",
+        "townfolk-bearded_man-001-black",
+        "townfolk-bearded_man-001-light",
+        "townfolk-bearded_man-002-black",
+        "townfolk-bearded_man-002-light",
+        "townfolk-child-f-001-brown",
+        "townfolk-child-f-001-light",
+        "townfolk-child-f-002-alt-brown",
+        "townfolk-child-f-002-alt-light",
+        "townfolk-child-f-002-light",
+        "townfolk-child-f-003-black",
+        "townfolk-child-m-001-alt-brown",
+        "townfolk-child-m-001-alt-light",
+        "townfolk-child-m-001-black",
+        "townfolk-child-m-001-light",
+        "townfolk-child-m-002-alt-brown",
+        "townfolk-child-m-002-alt-light",
+        "townfolk-child-m-002-light-recolor",
+        "townfolk-child-m-002-light",
+        "townfolk-child-m-003-light",
+        "townfolk-elder-f-001-alt-brown",
+        "townfolk-elder-f-001-alt-light",
+        "townfolk-elder-f-001-black",
+        "townfolk-elder-f-001-light",
+        "townfolk-elder-m-001-brown",
+        "townfolk-elder-m-001-light",
+        "townfolk-elder-m-002-brown",
+        "townfolk-elder-m-002-light",
+        "townfolk-elder-m-003-black",
+        "townfolk-mayor-m-001-black",
+        "townfolk-mayor-m-001-light",
+        "Amanda-001-brown",
+        "Amanda-001-light",
+        "Angela-mage-001",
+        "Claris-cleric-001",
+        "Evan-cleric-001",
+        "Helena-fighter-001",
+        "Linda-witch-001",
+        "Lyuba-000",
+        "Lyuba-001",
+        "Lyuba-cleric-001",
+        "Lyuba-fighter-001",
+        "Lyuba-mage-001",
+        "Lyuba-ranger-001",
+        "Molly-soldier-001",
+        "Molly-soldier-002",
+        "Nathan-mage-001",
+        "Roland-soldier-001",
+        "Roland-soldier-002",
+        "Ruby-ranger-001",
+        "Santa-001-black",
+        "Santa-001-light",
+        "Santa-002-black",
+        "Santa-002-light",
+        "Vasily-fighter-001",
+        "Yan-001",
+        "Yan-cleric-001",
+        "Yan-fighter-001",
+        "Yan-mage-001",
+        "Yan-ranger-001",
+        "Zmiter-alchemist-001",
+        "Zmiter-alchemist-002",
+        "Amanda-001-alt-light"
+      ]
+    },
+    "withFacesets": [
+      "aristocrate-f-001-brown-blonde",
+      "aristocrate-f-001-light",
+      "aristocrate-f-002-brown",
+      "aristocrate-f-002-light",
+      "aristocrate-f-003-light",
+      "aristocrate-m-001-brown",
+      "aristocrate-m-001-light",
+      "aristocrate-m-002-black",
+      "aristocrate-m-002-brown",
+      "aristocrate-m-002-light",
+      "cultist-001-blue",
+      "cultist-001-red",
+      "cultist-002-blue",
+      "dancer-f-001-brown",
+      "dancer-f-001-light",
+      "fighter-f-001-black",
+      "fighter-f-001-brown",
+      "fighter-f-001-light",
+      "fighter-f-002-black",
+      "fighter-f-002-brown",
+      "fighter-f-002-light",
+      "fighter-m-001-black",
+      "fighter-m-001-brown",
+      "fighter-m-001-light",
+      "fighter-m-002-black",
+      "fighter-m-002-brown",
+      "fighter-m-002-light",
+      "ghost_maiden-001",
+      "ghost_maiden-002",
+      "king-001-light",
+      "mage-f-001-black",
+      "mage-f-001-brown",
+      "mage-f-001-light",
+      "mage-m-001-black",
+      "mage-m-001-brown",
+      "mage-m-001-light",
+      "masked-m-001-light",
+      "pirate-f-001-brown",
+      "pirate-f-001-light",
+      "prince-001-light",
+      "princess-001-light",
+      "queen-001-light",
+      "ranger-f-001-black",
+      "ranger-f-001-brown",
+      "ranger-f-001-light",
+      "ranger-m-001-black",
+      "ranger-m-001-brown",
+      "ranger-m-001-light",
+      "snow-m-001-brown",
+      "snow-m-001-light",
+      "townfolk-adult-f-001-alt-brown",
+      "townfolk-adult-f-001-alt-light",
+      "townfolk-adult-f-001-light",
+      "townfolk-adult-f-002-alt-brown",
+      "townfolk-adult-f-002-alt-light",
+      "townfolk-adult-f-002-light",
+      "townfolk-adult-f-003-alt-brown",
+      "townfolk-adult-f-003-alt-light",
+      "townfolk-adult-f-003-light",
+      "townfolk-adult-f-004-alt-brown",
+      "townfolk-adult-f-004-alt-light",
+      "townfolk-adult-f-004-light",
+      "townfolk-adult-f-005-alt-brown",
+      "townfolk-adult-f-005-alt-light",
+      "townfolk-adult-f-005-light",
+      "townfolk-adult-f-006-alt-brown",
+      "townfolk-adult-f-006-alt-light",
+      "townfolk-adult-f-006-black",
+      "townfolk-adult-f-006-light",
+      "townfolk-adult-m-001-light",
+      "townfolk-adult-m-002-light",
+      "townfolk-adult-m-003-alt-brown",
+      "townfolk-adult-m-003-alt-light",
+      "townfolk-adult-m-003-light",
+      "townfolk-adult-m-004-alt-brown",
+      "townfolk-adult-m-004-alt-light",
+      "townfolk-adult-m-004-light",
+      "townfolk-adult-m-005-alt-brown",
+      "townfolk-adult-m-005-brown",
+      "townfolk-adult-m-005-light",
+      "townfolk-adult-m-006-alt-brown",
+      "townfolk-adult-m-006-alt-light",
+      "townfolk-adult-m-006-light",
+      "townfolk-adult-m-007-alt-brown",
+      "townfolk-adult-m-007-alt-light",
+      "townfolk-adult-m-007-black",
+      "townfolk-adult-m-007-light",
+      "townfolk-adult-m-008-alt-brown",
+      "townfolk-adult-m-008-alt-light",
+      "townfolk-adult-m-008-light",
+      "townfolk-adult-m-009-brown",
+      "townfolk-adult-m-009-light",
+      "townfolk-child-f-001-brown",
+      "townfolk-child-f-001-light",
+      "townfolk-child-f-002-alt-brown",
+      "townfolk-child-f-002-alt-light",
+      "townfolk-child-f-002-light",
+      "townfolk-child-f-003-black",
+      "townfolk-child-m-001-alt-brown",
+      "townfolk-child-m-001-alt-light",
+      "townfolk-child-m-001-black",
+      "townfolk-child-m-001-light",
+      "townfolk-child-m-002-alt-brown",
+      "townfolk-child-m-002-alt-light",
+      "townfolk-child-m-002-light",
+      "townfolk-elder-f-001-alt-brown",
+      "townfolk-elder-f-001-alt-light",
+      "townfolk-elder-f-001-black",
+      "townfolk-elder-f-001-light",
+      "townfolk-elder-m-001-brown",
+      "townfolk-elder-m-001-light",
+      "townfolk-elder-m-002-brown",
+      "townfolk-elder-m-002-light",
+      "townfolk-elder-m-003-black",
+      "Amanda-001-brown",
+      "Amanda-001-light",
+      "Angela-mage-001",
+      "Helena-fighter-001",
+      "Linda-witch-001",
+      "Lyuba-000",
+      "Lyuba-001",
+      "Lyuba-cleric-001",
+      "Lyuba-mage-001",
+      "Lyuba-ranger-001",
+      "Molly-soldier-001",
+      "Nathan-mage-001",
+      "Roland-soldier-001",
+      "Ruby-ranger-001",
+      "Vasily-fighter-001",
+      "Yan-001",
+      "Yan-fighter-001",
+      "Yan-mage-001",
+      "Yan-ranger-001",
+      "Zmiter-alchemist-001",
+      "Amanda-001-alt-light"
+    ],
+    "withEmotions": [
+      "Angela-mage-001",
+      "Helena-fighter-001",
+      "Lyuba-001",
+      "Lyuba-cleric-001",
+      "Lyuba-mage-001",
+      "Lyuba-ranger-001",
+      "Molly-soldier-001",
+      "Nathan-mage-001",
+      "Roland-soldier-001",
+      "Ruby-ranger-001",
+      "Vasily-fighter-001",
+      "Yan-001",
+      "Yan-fighter-001",
+      "Yan-mage-001",
+      "Yan-ranger-001",
+      "Zmiter-alchemist-001"
+    ]
+  }
+}
