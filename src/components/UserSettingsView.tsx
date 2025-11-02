@@ -3,7 +3,7 @@ import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { Id } from '../../convex/_generated/dataModel';
 import { toast } from 'react-toastify';
-import { characters } from '../../data/characters';
+import { userCharacters } from '../../data/characters';
 import { Descriptions } from '../../data/characters';
 
 interface UserSettingsViewProps {
@@ -219,7 +219,7 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
         bio: userProfile.bio || '',
         experimentConsent: userProfile.experimentConsent || false,
       });
-      setSelectedCharacterForEdit(userProfile.selectedCharacter || characters[0].name);
+      setSelectedCharacterForEdit(userProfile.selectedCharacter || userCharacters[0].name);
     }
   }, [userProfile]);
 
@@ -357,7 +357,7 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
               {/* Character Avatar */}
               <div className="w-24 h-24 bg-brown-700 rounded-full flex items-center justify-center overflow-hidden">
                 {userProfile.selectedCharacter ? (() => {
-                  const character = characters.find((c) => c.name === userProfile.selectedCharacter);
+                  const character = userCharacters.find((c) => c.name === userProfile.selectedCharacter);
                   return character?.textureUrl ? (
                     <CharacterAvatar
                       character={character}
@@ -533,7 +533,7 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
                 </label>
                 <div className="p-4 bg-brown-700 rounded-lg">
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
-                    {characters.map((character) => (
+                    {userCharacters.map((character) => (
                       <CharacterAvatarOption
                         key={character.name}
                         character={character}

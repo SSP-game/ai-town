@@ -159,7 +159,8 @@ export const Descriptions = [
   },
 ];
 
-export const characters = [
+// Agent characters (for AI agents only)
+export const agentCharacters = [
   {
     name: 'f1',
     textureUrl: './assets/32x32folk.png',
@@ -208,6 +209,10 @@ export const characters = [
     spritesheetData: f8SpritesheetData,
     speed: 0.2,
   },
+];
+
+// User characters (for human players only)
+export const userCharacters = [
   {
     name: 'ballerinas_01_char1',
     textureUrl: './assets/karmenis-characters/ballerinas_01_char1.png',
@@ -737,6 +742,9 @@ export const characters = [
     speed: 0.2,
   },
 ];
+
+// Keep legacy export for backward compatibility (all characters)
+export const characters = [...agentCharacters, ...userCharacters];
 
 // Characters move at 0.75 tiles per second.
 export const movementSpeed = 1;

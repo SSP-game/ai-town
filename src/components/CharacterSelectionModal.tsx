@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
-import { characters } from '../../data/characters';
+import { userCharacters } from '../../data/characters';
 import Button from './buttons/Button';
 import { toast } from 'react-toastify';
 import { Id } from '../../convex/_generated/dataModel';
@@ -102,7 +102,7 @@ export default function CharacterSelectionModal({
   currentCharacter,
   onCharacterSelected
 }: CharacterSelectionModalProps) {
-  const [selectedCharacter, setSelectedCharacter] = useState(currentCharacter || characters[0].name);
+  const [selectedCharacter, setSelectedCharacter] = useState(currentCharacter || userCharacters[0].name);
   const [loading, setLoading] = useState(false);
 
   const updateCharacterMutation = useMutation(api.users.updateSelectedCharacter);
@@ -139,7 +139,7 @@ export default function CharacterSelectionModal({
         </h1>
 
         <div className="grid grid-cols-6 sm:grid-cols-9 md:grid-cols-12 gap-2 mb-6 max-h-[500px] overflow-y-auto px-2">
-          {characters.map((character) => (
+          {userCharacters.map((character) => (
             <CharacterAvatar
               key={character.name}
               character={character}
