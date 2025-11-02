@@ -109,13 +109,13 @@ function CharacterAvatarOption({
     img.crossOrigin = 'anonymous';
 
     img.onload = () => {
-      ctx.clearRect(0, 0, 80, 80);
+      ctx.clearRect(0, 0, 48, 48);
       const frameData = character.spritesheetData?.frames?.down;
 
       if (frameData && frameData.frame) {
         const { x, y, w, h } = frameData.frame;
         ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, x, y, w, h, 0, 0, 80, 80);
+        ctx.drawImage(img, x, y, w, h, 0, 0, 48, 48);
       } else {
         const characterPositions: { [key: string]: { x: number; y: number } } = {
           f1: { x: 0, y: 0 },
@@ -130,7 +130,7 @@ function CharacterAvatarOption({
 
         const pos = characterPositions[character.name] || { x: 0, y: 0 };
         ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, pos.x, pos.y, 32, 32, 0, 0, 80, 80);
+        ctx.drawImage(img, pos.x, pos.y, 32, 32, 0, 0, 48, 48);
       }
 
       setImageLoaded(true);
@@ -150,7 +150,7 @@ function CharacterAvatarOption({
 
   return (
     <div
-      className={`cursor-pointer border-2 rounded-lg p-2 transition-all ${
+      className={`cursor-pointer border-2 rounded p-1 transition-all ${
         isSelected
           ? 'border-yellow-400 bg-yellow-200 text-brown-900'
           : 'border-brown-600 bg-brown-900/60 text-brown-200 hover:border-brown-400'
@@ -160,14 +160,11 @@ function CharacterAvatarOption({
     >
       <canvas
         ref={canvasRef}
-        width={64}
-        height={64}
+        width={48}
+        height={48}
         className={`block mx-auto rounded ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity`}
-        style={{ imageRendering: 'pixelated', width: '64px', height: '64px' }}
+        style={{ imageRendering: 'pixelated', width: '48px', height: '48px' }}
       />
-      <div className="text-center mt-1 text-xs font-semibold tracking-wide">
-        {character.name.toUpperCase()}
-      </div>
     </div>
   );
 }
@@ -535,7 +532,7 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
                   Select Your Avatar
                 </label>
                 <div className="p-4 bg-brown-700 rounded-lg">
-                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
                     {characters.map((character) => (
                       <CharacterAvatarOption
                         key={character.name}

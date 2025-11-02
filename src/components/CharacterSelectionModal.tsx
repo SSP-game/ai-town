@@ -35,7 +35,7 @@ function CharacterAvatar({ character, isSelected, onClick }: {
 
     img.onload = () => {
       // Clear canvas
-      ctx.clearRect(0, 0, 64, 64);
+      ctx.clearRect(0, 0, 48, 48);
 
       // Get the sprite frame data
       const frameData = character.spritesheetData?.frames?.down;
@@ -43,7 +43,7 @@ function CharacterAvatar({ character, isSelected, onClick }: {
       if (frameData && frameData.frame) {
         const { x, y, w, h } = frameData.frame;
         ctx.imageSmoothingEnabled = false; // Keep pixels sharp
-        ctx.drawImage(img, x, y, w, h, 0, 0, 64, 64);
+        ctx.drawImage(img, x, y, w, h, 0, 0, 48, 48);
       } else {
         // Fallback: use simple position mapping
         const characterPositions: { [key: string]: { x: number; y: number } } = {
@@ -59,7 +59,7 @@ function CharacterAvatar({ character, isSelected, onClick }: {
 
         const pos = characterPositions[character.name] || { x: 0, y: 0 };
         ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, pos.x, pos.y, 32, 32, 0, 0, 64, 64);
+        ctx.drawImage(img, pos.x, pos.y, 32, 32, 0, 0, 48, 48);
       }
 
       setImageLoaded(true);
@@ -79,7 +79,7 @@ function CharacterAvatar({ character, isSelected, onClick }: {
 
   return (
     <div
-      className={`relative cursor-pointer border-4 rounded-lg p-2 transition-all hover:scale-105 ${
+      className={`relative cursor-pointer border-2 rounded p-1 transition-all hover:scale-105 ${
         isSelected ? 'border-yellow-400 bg-yellow-100' : 'border-gray-500 bg-gray-200 hover:border-gray-300'
       }`}
       onClick={onClick}
@@ -87,13 +87,10 @@ function CharacterAvatar({ character, isSelected, onClick }: {
     >
       <canvas
         ref={canvasRef}
-        width={64}
-        height={64}
+        width={48}
+        height={48}
         className="block"
       />
-      <div className="text-center mt-1 text-sm font-semibold text-gray-800">
-        {character.name.toUpperCase()}
-      </div>
     </div>
   );
 }
@@ -141,7 +138,7 @@ export default function CharacterSelectionModal({
           Select Your Avatar
         </h1>
 
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4 mb-6 max-h-[500px] overflow-y-auto px-2">
+        <div className="grid grid-cols-6 sm:grid-cols-9 md:grid-cols-12 gap-2 mb-6 max-h-[500px] overflow-y-auto px-2">
           {characters.map((character) => (
             <CharacterAvatar
               key={character.name}
