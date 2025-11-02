@@ -318,22 +318,7 @@ export default function Home() {
 
         {/* Footer buttons outside the frame */}
         <div className="flex-shrink-0 w-full flex items-center justify-between gap-2 p-3 bg-gradient-to-t from-black/80 to-transparent [&_.button]:scale-75">
-          {/* Left side - Navigation buttons */}
-          <div className="flex items-center gap-2">
-            <ViewToggleButton
-              currentView={currentView}
-              onToggleView={setCurrentView}
-              onShowCompanionModal={() => setCompanionModalOpen(true)}
-            />
-            <FreezeButton />
-            <MusicButton />
-            <InteractButton />
-            <Button imgUrl={helpImg} onClick={() => setHelpModalOpen(true)}>
-              Help
-            </Button>
-          </div>
-
-          {/* Right side - User management and branding */}
+          {/* Left side - Profile/Login and Navigation tabs */}
           <div className="flex items-center gap-2">
             {isLoggedIn && currentUser ? (
               <UserManagement
@@ -349,6 +334,28 @@ export default function Home() {
                 Login
               </Button>
             )}
+            <ViewToggleButton
+              currentView={currentView}
+              onToggleView={setCurrentView}
+              onShowCompanionModal={() => setCompanionModalOpen(true)}
+            />
+          </div>
+
+          {/* Right side - Action buttons and branding */}
+          <div className="flex items-center gap-2">
+            <InteractButton />
+            <FreezeButton />
+            <MusicButton />
+            <Button
+              imgUrl={starImg}
+              onClick={() => setCurrentView('agents')}
+              className={currentView === 'agents' ? 'ring-4 ring-blue-500 ring-offset-2 ring-offset-black' : ''}
+            >
+              Agents
+            </Button>
+            <Button imgUrl={helpImg} onClick={() => setHelpModalOpen(true)}>
+              Help
+            </Button>
             <a href="https://a16z.com">
               <img className="w-6 h-6 pointer-events-auto" src={a16zImg} alt="a16z" />
             </a>

@@ -54,24 +54,10 @@ export default function ViewToggleButton({ currentView, onToggleView, onShowComp
     <div className="flex gap-2">
       <Button
         imgUrl={gameViewImg}
-        onClick={() => onToggleView('game')}
-        className={currentView === 'game' ? 'ring-4 ring-blue-500 ring-offset-2 ring-offset-black' : ''}
+        onClick={handleSurveyClick}
+        className={currentView === 'survey' ? 'ring-4 ring-green-500 ring-offset-2 ring-offset-black' : ''}
       >
-        Game
-      </Button>
-      <Button
-        imgUrl={agentsListImg}
-        onClick={handleLobbyClick}
-        className={currentView === 'lobby' ? 'ring-4 ring-purple-500 ring-offset-2 ring-offset-black' : ''}
-      >
-        Lobby
-      </Button>
-      <Button
-        imgUrl={agentsListImg}
-        onClick={() => onToggleView('agents')}
-        className={currentView === 'agents' ? 'ring-4 ring-blue-500 ring-offset-2 ring-offset-black' : ''}
-      >
-        Agents
+        Survey
       </Button>
       <Button
         imgUrl={agentsListImg}
@@ -81,11 +67,18 @@ export default function ViewToggleButton({ currentView, onToggleView, onShowComp
         Companion
       </Button>
       <Button
-        imgUrl={gameViewImg}
-        onClick={handleSurveyClick}
-        className={currentView === 'survey' ? 'ring-4 ring-green-500 ring-offset-2 ring-offset-black' : ''}
+        imgUrl={agentsListImg}
+        onClick={handleLobbyClick}
+        className={currentView === 'lobby' ? 'ring-4 ring-purple-500 ring-offset-2 ring-offset-black' : ''}
       >
-        Survey
+        Lobby
+      </Button>
+      <Button
+        imgUrl={gameViewImg}
+        onClick={() => onToggleView('game')}
+        className={currentView === 'game' ? 'ring-4 ring-blue-500 ring-offset-2 ring-offset-black' : ''}
+      >
+        Game
       </Button>
     </div>
   );
