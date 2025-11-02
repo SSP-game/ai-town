@@ -355,20 +355,20 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
           <div className="box bg-brown-800">
             <div className="flex items-center gap-6 p-6">
               {/* Character Avatar */}
-              <div className="w-24 h-24 bg-brown-700 rounded-full flex items-center justify-center overflow-hidden">
+              <div className="w-12 h-12 bg-brown-700 rounded-full flex items-center justify-center overflow-hidden">
                 {userProfile.selectedCharacter ? (() => {
                   const character = userCharacters.find((c) => c.name === userProfile.selectedCharacter);
                   return character?.textureUrl ? (
                     <CharacterAvatar
                       character={character}
                       characterName={userProfile.selectedCharacter}
-                      size={96}
+                      size={48}
                     />
                   ) : (
-                    <div className="text-4xl text-brown-300">👤</div>
+                    <div className="text-2xl text-brown-300">👤</div>
                   );
                 })() : (
-                  <div className="text-4xl text-brown-300">👤</div>
+                  <div className="text-2xl text-brown-300">👤</div>
                 )}
               </div>
 
