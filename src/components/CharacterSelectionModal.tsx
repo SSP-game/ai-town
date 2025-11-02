@@ -79,8 +79,8 @@ function CharacterAvatar({ character, isSelected, onClick }: {
 
   return (
     <div
-      className={`relative cursor-pointer border-2 rounded p-1 transition-all hover:scale-105 ${
-        isSelected ? 'border-yellow-400 bg-yellow-100' : 'border-gray-500 bg-gray-200 hover:border-gray-300'
+      className={`relative cursor-pointer rounded p-1 transition-all hover:scale-105 ${
+        isSelected ? 'bg-yellow-100' : 'bg-gray-200'
       }`}
       onClick={onClick}
       title={character.name.toUpperCase()}

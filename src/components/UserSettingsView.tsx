@@ -150,10 +150,10 @@ function CharacterAvatarOption({
 
   return (
     <div
-      className={`cursor-pointer border-2 rounded p-1 transition-all ${
+      className={`cursor-pointer rounded p-1 transition-all ${
         isSelected
-          ? 'border-yellow-400 bg-yellow-200 text-brown-900'
-          : 'border-brown-600 bg-brown-900/60 text-brown-200 hover:border-brown-400'
+          ? 'bg-yellow-200 text-brown-900'
+          : 'bg-brown-900/60 text-brown-200'
       }`}
       onClick={onClick}
       title={character.name.toUpperCase()}
