@@ -8,21 +8,21 @@ import { ENGINE_ACTION_DURATION } from './constants';
 import * as map from '../data/gentle.js';
 import { insertInput } from './aiTown/insertInput';
 
-// Get online users count (5-minute window for better accuracy)
+// Get online users count (60-minute window for lobby display)
 export const getOnlineUsersCount = query({
   args: {},
   handler: async (ctx) => {
     // Count all active users with a recent lastLoginAt
     // If lastLoginAt is undefined, user hasn't logged in yet
-    const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
+    const oneHourAgo = Date.now() - 60 * 60 * 1000;
     const allActiveUsers = await ctx.db
       .query('users')
       .withIndex('isActive', (q) => q.eq('isActive', true))
       .collect();
 
-    // Filter users who have lastLoginAt and it's recent (within last 5 minutes)
+    // Filter users who have lastLoginAt and it's recent (within last 60 minutes)
     const recentUsers = allActiveUsers.filter(
-      (user) => user.lastLoginAt !== undefined && user.lastLoginAt >= fiveMinutesAgo
+      (user) => user.lastLoginAt !== undefined && user.lastLoginAt >= oneHourAgo
     );
 
     return recentUsers.length;
