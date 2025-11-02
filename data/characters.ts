@@ -6,14 +6,14 @@ import { data as f5SpritesheetData } from './spritesheets/f5';
 import { data as f6SpritesheetData } from './spritesheets/f6';
 import { data as f7SpritesheetData } from './spritesheets/f7';
 import { data as f8SpritesheetData } from './spritesheets/f8';
-import { data as cab1SpritesheetData } from './spritesheets/cab1';
-import { data as cab2SpritesheetData } from './spritesheets/cab2';
-import { data as cab3SpritesheetData } from './spritesheets/cab3';
-import { data as cab4SpritesheetData } from './spritesheets/cab4';
-import { data as cab5SpritesheetData } from './spritesheets/cab5';
-import { data as cab6SpritesheetData } from './spritesheets/cab6';
-import { data as cab7SpritesheetData } from './spritesheets/cab7';
-import { data as cab8SpritesheetData } from './spritesheets/cab8';
+import { data as kar1SpritesheetData } from './spritesheets/kar1';
+import { data as kar2SpritesheetData } from './spritesheets/kar2';
+import { data as kar3SpritesheetData } from './spritesheets/kar3';
+import { data as kar4SpritesheetData } from './spritesheets/kar4';
+import { data as kar5SpritesheetData } from './spritesheets/kar5';
+import { data as kar6SpritesheetData } from './spritesheets/kar6';
+import { data as kar7SpritesheetData } from './spritesheets/kar7';
+import { data as kar8SpritesheetData } from './spritesheets/kar8';
 
 export const Descriptions = [
   {
@@ -124,51 +124,51 @@ export const characters = [
     speed: 0.2,
   },
   {
-    name: 'cab1',
-    textureUrl: './assets/cabbit-characters/cab1.png',
-    spritesheetData: cab1SpritesheetData,
+    name: 'kar1',
+    textureUrl: './assets/cabbit-characters/kar1.png',
+    spritesheetData: kar1SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab2',
-    textureUrl: './assets/cabbit-characters/cab2.png',
-    spritesheetData: cab2SpritesheetData,
+    name: 'kar2',
+    textureUrl: './assets/cabbit-characters/kar2.png',
+    spritesheetData: kar2SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab3',
-    textureUrl: './assets/cabbit-characters/cab3.png',
-    spritesheetData: cab3SpritesheetData,
+    name: 'kar3',
+    textureUrl: './assets/cabbit-characters/kar3.png',
+    spritesheetData: kar3SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab4',
-    textureUrl: './assets/cabbit-characters/cab4.png',
-    spritesheetData: cab4SpritesheetData,
+    name: 'kar4',
+    textureUrl: './assets/cabbit-characters/kar4.png',
+    spritesheetData: kar4SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab5',
-    textureUrl: './assets/cabbit-characters/cab5.png',
-    spritesheetData: cab5SpritesheetData,
+    name: 'kar5',
+    textureUrl: './assets/cabbit-characters/kar5.png',
+    spritesheetData: kar5SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab6',
-    textureUrl: './assets/cabbit-characters/cab6.png',
-    spritesheetData: cab6SpritesheetData,
+    name: 'kar6',
+    textureUrl: './assets/cabbit-characters/kar6.png',
+    spritesheetData: kar6SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab7',
-    textureUrl: './assets/cabbit-characters/cab7.png',
-    spritesheetData: cab7SpritesheetData,
+    name: 'kar7',
+    textureUrl: './assets/cabbit-characters/kar7.png',
+    spritesheetData: kar7SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'cab8',
-    textureUrl: './assets/cabbit-characters/cab8.png',
-    spritesheetData: cab8SpritesheetData,
+    name: 'kar8',
+    textureUrl: './assets/cabbit-characters/kar8.png',
+    spritesheetData: kar8SpritesheetData,
     speed: 0.2,
   },
 ];

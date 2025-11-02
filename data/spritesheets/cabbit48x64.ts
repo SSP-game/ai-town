@@ -1,10 +1,15 @@
 import { SpritesheetData } from './types';
 
-// Cabbit character: fighter-f-001-light (Female Fighter, Light skin)
-// 48x64 sprite format - 4 rows x 3 columns
+// Cabbit 48x64 sprite format
+// Layout: 4 rows x 3 columns (144px x 256px total)
+// Row 1 (y=0):   up/back   - 3 animation frames
+// Row 2 (y=64):  right     - 3 animation frames
+// Row 3 (y=128): down/front- 3 animation frames
+// Row 4 (y=192): left      - 3 animation frames
 
 export const data: SpritesheetData = {
   frames: {
+    // Row 3: Down/Front (y=128)
     down: {
       frame: { x: 0, y: 128, w: 48, h: 64 },
       sourceSize: { w: 48, h: 64 },
@@ -20,6 +25,8 @@ export const data: SpritesheetData = {
       sourceSize: { w: 48, h: 64 },
       spriteSourceSize: { x: 0, y: 0 },
     },
+
+    // Row 4: Left (y=192)
     left: {
       frame: { x: 0, y: 192, w: 48, h: 64 },
       sourceSize: { w: 48, h: 64 },
@@ -35,6 +42,8 @@ export const data: SpritesheetData = {
       sourceSize: { w: 48, h: 64 },
       spriteSourceSize: { x: 0, y: 0 },
     },
+
+    // Row 2: Right (y=64)
     right: {
       frame: { x: 0, y: 64, w: 48, h: 64 },
       sourceSize: { w: 48, h: 64 },
@@ -50,6 +59,8 @@ export const data: SpritesheetData = {
       sourceSize: { w: 48, h: 64 },
       spriteSourceSize: { x: 0, y: 0 },
     },
+
+    // Row 1: Up/Back (y=0)
     up: {
       frame: { x: 0, y: 0, w: 48, h: 64 },
       sourceSize: { w: 48, h: 64 },
