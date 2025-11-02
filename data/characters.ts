@@ -1,3 +1,6 @@
+// Generated character imports and definitions
+// Total characters: 88
+
 import { data as f1SpritesheetData } from './spritesheets/f1';
 import { data as f2SpritesheetData } from './spritesheets/f2';
 import { data as f3SpritesheetData } from './spritesheets/f3';
@@ -6,14 +9,96 @@ import { data as f5SpritesheetData } from './spritesheets/f5';
 import { data as f6SpritesheetData } from './spritesheets/f6';
 import { data as f7SpritesheetData } from './spritesheets/f7';
 import { data as f8SpritesheetData } from './spritesheets/f8';
-import { data as kar1SpritesheetData } from './spritesheets/kar1';
-import { data as kar2SpritesheetData } from './spritesheets/kar2';
-import { data as kar3SpritesheetData } from './spritesheets/kar3';
-import { data as kar4SpritesheetData } from './spritesheets/kar4';
-import { data as kar5SpritesheetData } from './spritesheets/kar5';
-import { data as kar6SpritesheetData } from './spritesheets/kar6';
-import { data as kar7SpritesheetData } from './spritesheets/kar7';
-import { data as kar8SpritesheetData } from './spritesheets/kar8';
+
+// Karmenis character spritesheets
+import { data as ballerinas_01_char1SpritesheetData } from './spritesheets/ballerinas_01_char1';
+import { data as ballerinas_01_char2SpritesheetData } from './spritesheets/ballerinas_01_char2';
+import { data as ballerinas_01_char3SpritesheetData } from './spritesheets/ballerinas_01_char3';
+import { data as ballerinas_01_char4SpritesheetData } from './spritesheets/ballerinas_01_char4';
+import { data as ballerinas_01_char5SpritesheetData } from './spritesheets/ballerinas_01_char5';
+import { data as ballerinas_01_char6SpritesheetData } from './spritesheets/ballerinas_01_char6';
+import { data as ballerinas_01_char7SpritesheetData } from './spritesheets/ballerinas_01_char7';
+import { data as boys_martial_arts_uniform_char1SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char1';
+import { data as boys_martial_arts_uniform_char2SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char2';
+import { data as boys_martial_arts_uniform_char3SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char3';
+import { data as boys_martial_arts_uniform_char4SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char4';
+import { data as boys_martial_arts_uniform_char5SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char5';
+import { data as boys_martial_arts_uniform_char6SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char6';
+import { data as boys_martial_arts_uniform_char7SpritesheetData } from './spritesheets/boys_martial_arts_uniform_char7';
+import { data as boys_soccer_uniform_france_char1SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char1';
+import { data as boys_soccer_uniform_france_char2SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char2';
+import { data as boys_soccer_uniform_france_char3SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char3';
+import { data as boys_soccer_uniform_france_char4SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char4';
+import { data as boys_soccer_uniform_france_char5SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char5';
+import { data as boys_soccer_uniform_france_char6SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char6';
+import { data as boys_soccer_uniform_france_char7SpritesheetData } from './spritesheets/boys_soccer_uniform_france_char7';
+import { data as boys_soccer_uniform_mexico_char1SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char1';
+import { data as boys_soccer_uniform_mexico_char2SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char2';
+import { data as boys_soccer_uniform_mexico_char3SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char3';
+import { data as boys_soccer_uniform_mexico_char4SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char4';
+import { data as boys_soccer_uniform_mexico_char5SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char5';
+import { data as boys_soccer_uniform_mexico_char6SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char6';
+import { data as boys_soccer_uniform_mexico_char7SpritesheetData } from './spritesheets/boys_soccer_uniform_mexico_char7';
+import { data as female_nurses_01_char1SpritesheetData } from './spritesheets/female_nurses_01_char1';
+import { data as female_nurses_01_char2SpritesheetData } from './spritesheets/female_nurses_01_char2';
+import { data as female_nurses_01_char3SpritesheetData } from './spritesheets/female_nurses_01_char3';
+import { data as female_nurses_01_char4SpritesheetData } from './spritesheets/female_nurses_01_char4';
+import { data as female_nurses_01_char5SpritesheetData } from './spritesheets/female_nurses_01_char5';
+import { data as female_nurses_01_char6SpritesheetData } from './spritesheets/female_nurses_01_char6';
+import { data as female_nurses_01_char7SpritesheetData } from './spritesheets/female_nurses_01_char7';
+import { data as girls_casual_clothes_1_char1SpritesheetData } from './spritesheets/girls_casual_clothes_1_char1';
+import { data as girls_casual_clothes_1_char2SpritesheetData } from './spritesheets/girls_casual_clothes_1_char2';
+import { data as girls_casual_clothes_1_char3SpritesheetData } from './spritesheets/girls_casual_clothes_1_char3';
+import { data as girls_casual_clothes_1_char4SpritesheetData } from './spritesheets/girls_casual_clothes_1_char4';
+import { data as girls_casual_clothes_1_char5SpritesheetData } from './spritesheets/girls_casual_clothes_1_char5';
+import { data as girls_casual_clothes_1_char6SpritesheetData } from './spritesheets/girls_casual_clothes_1_char6';
+import { data as girls_casual_clothes_2_char1SpritesheetData } from './spritesheets/girls_casual_clothes_2_char1';
+import { data as girls_casual_clothes_2_char2SpritesheetData } from './spritesheets/girls_casual_clothes_2_char2';
+import { data as girls_casual_clothes_2_char3SpritesheetData } from './spritesheets/girls_casual_clothes_2_char3';
+import { data as girls_casual_clothes_2_char4SpritesheetData } from './spritesheets/girls_casual_clothes_2_char4';
+import { data as girls_casual_clothes_2_char5SpritesheetData } from './spritesheets/girls_casual_clothes_2_char5';
+import { data as girls_casual_clothes_2_char6SpritesheetData } from './spritesheets/girls_casual_clothes_2_char6';
+import { data as girls_chanel_suit_multiuses_char1SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char1';
+import { data as girls_chanel_suit_multiuses_char2SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char2';
+import { data as girls_chanel_suit_multiuses_char3SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char3';
+import { data as girls_chanel_suit_multiuses_char4SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char4';
+import { data as girls_chanel_suit_multiuses_char5SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char5';
+import { data as girls_chanel_suit_multiuses_char6SpritesheetData } from './spritesheets/girls_chanel_suit_multiuses_char6';
+import { data as girls_night_dress_01_char1SpritesheetData } from './spritesheets/girls_night_dress_01_char1';
+import { data as girls_night_dress_01_char2SpritesheetData } from './spritesheets/girls_night_dress_01_char2';
+import { data as girls_night_dress_01_char3SpritesheetData } from './spritesheets/girls_night_dress_01_char3';
+import { data as girls_night_dress_01_char4SpritesheetData } from './spritesheets/girls_night_dress_01_char4';
+import { data as girls_night_dress_01_char5SpritesheetData } from './spritesheets/girls_night_dress_01_char5';
+import { data as girls_night_dress_01_char6SpritesheetData } from './spritesheets/girls_night_dress_01_char6';
+import { data as girls_night_dress_01_char7SpritesheetData } from './spritesheets/girls_night_dress_01_char7';
+import { data as handmaids_01_char1SpritesheetData } from './spritesheets/handmaids_01_char1';
+import { data as handmaids_01_char2SpritesheetData } from './spritesheets/handmaids_01_char2';
+import { data as handmaids_01_char3SpritesheetData } from './spritesheets/handmaids_01_char3';
+import { data as handmaids_01_char4SpritesheetData } from './spritesheets/handmaids_01_char4';
+import { data as handmaids_01_char5SpritesheetData } from './spritesheets/handmaids_01_char5';
+import { data as handmaids_01_char6SpritesheetData } from './spritesheets/handmaids_01_char6';
+import { data as handmaids_01_char7SpritesheetData } from './spritesheets/handmaids_01_char7';
+import { data as hospital_male_patients_char1SpritesheetData } from './spritesheets/hospital_male_patients_char1';
+import { data as hospital_male_patients_char2SpritesheetData } from './spritesheets/hospital_male_patients_char2';
+import { data as hospital_male_patients_char3SpritesheetData } from './spritesheets/hospital_male_patients_char3';
+import { data as hospital_male_patients_char4SpritesheetData } from './spritesheets/hospital_male_patients_char4';
+import { data as hospital_male_patients_char5SpritesheetData } from './spritesheets/hospital_male_patients_char5';
+import { data as hospital_male_patients_char6SpritesheetData } from './spritesheets/hospital_male_patients_char6';
+import { data as hospital_male_patients_char7SpritesheetData } from './spritesheets/hospital_male_patients_char7';
+import { data as male_saiyan_armor_char1SpritesheetData } from './spritesheets/male_saiyan_armor_char1';
+import { data as male_saiyan_armor_char2SpritesheetData } from './spritesheets/male_saiyan_armor_char2';
+import { data as male_saiyan_armor_char3SpritesheetData } from './spritesheets/male_saiyan_armor_char3';
+import { data as male_saiyan_armor_char4SpritesheetData } from './spritesheets/male_saiyan_armor_char4';
+import { data as male_saiyan_armor_char5SpritesheetData } from './spritesheets/male_saiyan_armor_char5';
+import { data as male_saiyan_armor_char6SpritesheetData } from './spritesheets/male_saiyan_armor_char6';
+import { data as male_saiyan_armor_char7SpritesheetData } from './spritesheets/male_saiyan_armor_char7';
+import { data as mean_girls_pink_clothes_char1SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char1';
+import { data as mean_girls_pink_clothes_char2SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char2';
+import { data as mean_girls_pink_clothes_char3SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char3';
+import { data as mean_girls_pink_clothes_char4SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char4';
+import { data as mean_girls_pink_clothes_char5SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char5';
+import { data as mean_girls_pink_clothes_char6SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char6';
+import { data as mean_girls_pink_clothes_char7SpritesheetData } from './spritesheets/mean_girls_pink_clothes_char7';
 
 export const Descriptions = [
   {
@@ -124,51 +209,531 @@ export const characters = [
     speed: 0.2,
   },
   {
-    name: 'kar1',
-    textureUrl: './assets/cabbit-characters/kar1.png',
-    spritesheetData: kar1SpritesheetData,
+    name: 'ballerinas_01_char1',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char1.png',
+    spritesheetData: ballerinas_01_char1SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar2',
-    textureUrl: './assets/cabbit-characters/kar2.png',
-    spritesheetData: kar2SpritesheetData,
+    name: 'ballerinas_01_char2',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char2.png',
+    spritesheetData: ballerinas_01_char2SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar3',
-    textureUrl: './assets/cabbit-characters/kar3.png',
-    spritesheetData: kar3SpritesheetData,
+    name: 'ballerinas_01_char3',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char3.png',
+    spritesheetData: ballerinas_01_char3SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar4',
-    textureUrl: './assets/cabbit-characters/kar4.png',
-    spritesheetData: kar4SpritesheetData,
+    name: 'ballerinas_01_char4',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char4.png',
+    spritesheetData: ballerinas_01_char4SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar5',
-    textureUrl: './assets/cabbit-characters/kar5.png',
-    spritesheetData: kar5SpritesheetData,
+    name: 'ballerinas_01_char5',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char5.png',
+    spritesheetData: ballerinas_01_char5SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar6',
-    textureUrl: './assets/cabbit-characters/kar6.png',
-    spritesheetData: kar6SpritesheetData,
+    name: 'ballerinas_01_char6',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char6.png',
+    spritesheetData: ballerinas_01_char6SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar7',
-    textureUrl: './assets/cabbit-characters/kar7.png',
-    spritesheetData: kar7SpritesheetData,
+    name: 'ballerinas_01_char7',
+    textureUrl: './assets/karmenis-characters/ballerinas_01_char7.png',
+    spritesheetData: ballerinas_01_char7SpritesheetData,
     speed: 0.2,
   },
   {
-    name: 'kar8',
-    textureUrl: './assets/cabbit-characters/kar8.png',
-    spritesheetData: kar8SpritesheetData,
+    name: 'boys_martial_arts_uniform_char1',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char1.png',
+    spritesheetData: boys_martial_arts_uniform_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char2',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char2.png',
+    spritesheetData: boys_martial_arts_uniform_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char3',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char3.png',
+    spritesheetData: boys_martial_arts_uniform_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char4',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char4.png',
+    spritesheetData: boys_martial_arts_uniform_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char5',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char5.png',
+    spritesheetData: boys_martial_arts_uniform_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char6',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char6.png',
+    spritesheetData: boys_martial_arts_uniform_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_martial_arts_uniform_char7',
+    textureUrl: './assets/karmenis-characters/boys_martial_arts_uniform_char7.png',
+    spritesheetData: boys_martial_arts_uniform_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char1',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char1.png',
+    spritesheetData: boys_soccer_uniform_france_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char2',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char2.png',
+    spritesheetData: boys_soccer_uniform_france_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char3',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char3.png',
+    spritesheetData: boys_soccer_uniform_france_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char4',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char4.png',
+    spritesheetData: boys_soccer_uniform_france_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char5',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char5.png',
+    spritesheetData: boys_soccer_uniform_france_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char6',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char6.png',
+    spritesheetData: boys_soccer_uniform_france_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_france_char7',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_france_char7.png',
+    spritesheetData: boys_soccer_uniform_france_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char1',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char1.png',
+    spritesheetData: boys_soccer_uniform_mexico_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char2',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char2.png',
+    spritesheetData: boys_soccer_uniform_mexico_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char3',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char3.png',
+    spritesheetData: boys_soccer_uniform_mexico_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char4',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char4.png',
+    spritesheetData: boys_soccer_uniform_mexico_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char5',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char5.png',
+    spritesheetData: boys_soccer_uniform_mexico_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char6',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char6.png',
+    spritesheetData: boys_soccer_uniform_mexico_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'boys_soccer_uniform_mexico_char7',
+    textureUrl: './assets/karmenis-characters/boys_soccer_uniform_mexico_char7.png',
+    spritesheetData: boys_soccer_uniform_mexico_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char1',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char1.png',
+    spritesheetData: female_nurses_01_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char2',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char2.png',
+    spritesheetData: female_nurses_01_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char3',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char3.png',
+    spritesheetData: female_nurses_01_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char4',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char4.png',
+    spritesheetData: female_nurses_01_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char5',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char5.png',
+    spritesheetData: female_nurses_01_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char6',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char6.png',
+    spritesheetData: female_nurses_01_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'female_nurses_01_char7',
+    textureUrl: './assets/karmenis-characters/female_nurses_01_char7.png',
+    spritesheetData: female_nurses_01_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char1',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char1.png',
+    spritesheetData: girls_casual_clothes_1_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char2',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char2.png',
+    spritesheetData: girls_casual_clothes_1_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char3',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char3.png',
+    spritesheetData: girls_casual_clothes_1_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char4',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char4.png',
+    spritesheetData: girls_casual_clothes_1_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char5',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char5.png',
+    spritesheetData: girls_casual_clothes_1_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_1_char6',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_1_char6.png',
+    spritesheetData: girls_casual_clothes_1_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char1',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char1.png',
+    spritesheetData: girls_casual_clothes_2_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char2',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char2.png',
+    spritesheetData: girls_casual_clothes_2_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char3',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char3.png',
+    spritesheetData: girls_casual_clothes_2_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char4',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char4.png',
+    spritesheetData: girls_casual_clothes_2_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char5',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char5.png',
+    spritesheetData: girls_casual_clothes_2_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_casual_clothes_2_char6',
+    textureUrl: './assets/karmenis-characters/girls_casual_clothes_2_char6.png',
+    spritesheetData: girls_casual_clothes_2_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char1',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char1.png',
+    spritesheetData: girls_chanel_suit_multiuses_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char2',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char2.png',
+    spritesheetData: girls_chanel_suit_multiuses_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char3',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char3.png',
+    spritesheetData: girls_chanel_suit_multiuses_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char4',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char4.png',
+    spritesheetData: girls_chanel_suit_multiuses_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char5',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char5.png',
+    spritesheetData: girls_chanel_suit_multiuses_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_chanel_suit_multiuses_char6',
+    textureUrl: './assets/karmenis-characters/girls_chanel_suit_multiuses_char6.png',
+    spritesheetData: girls_chanel_suit_multiuses_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char1',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char1.png',
+    spritesheetData: girls_night_dress_01_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char2',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char2.png',
+    spritesheetData: girls_night_dress_01_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char3',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char3.png',
+    spritesheetData: girls_night_dress_01_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char4',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char4.png',
+    spritesheetData: girls_night_dress_01_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char5',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char5.png',
+    spritesheetData: girls_night_dress_01_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char6',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char6.png',
+    spritesheetData: girls_night_dress_01_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'girls_night_dress_01_char7',
+    textureUrl: './assets/karmenis-characters/girls_night_dress_01_char7.png',
+    spritesheetData: girls_night_dress_01_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char1',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char1.png',
+    spritesheetData: handmaids_01_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char2',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char2.png',
+    spritesheetData: handmaids_01_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char3',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char3.png',
+    spritesheetData: handmaids_01_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char4',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char4.png',
+    spritesheetData: handmaids_01_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char5',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char5.png',
+    spritesheetData: handmaids_01_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char6',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char6.png',
+    spritesheetData: handmaids_01_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'handmaids_01_char7',
+    textureUrl: './assets/karmenis-characters/handmaids_01_char7.png',
+    spritesheetData: handmaids_01_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char1',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char1.png',
+    spritesheetData: hospital_male_patients_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char2',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char2.png',
+    spritesheetData: hospital_male_patients_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char3',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char3.png',
+    spritesheetData: hospital_male_patients_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char4',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char4.png',
+    spritesheetData: hospital_male_patients_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char5',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char5.png',
+    spritesheetData: hospital_male_patients_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char6',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char6.png',
+    spritesheetData: hospital_male_patients_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'hospital_male_patients_char7',
+    textureUrl: './assets/karmenis-characters/hospital_male_patients_char7.png',
+    spritesheetData: hospital_male_patients_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char1',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char1.png',
+    spritesheetData: male_saiyan_armor_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char2',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char2.png',
+    spritesheetData: male_saiyan_armor_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char3',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char3.png',
+    spritesheetData: male_saiyan_armor_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char4',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char4.png',
+    spritesheetData: male_saiyan_armor_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char5',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char5.png',
+    spritesheetData: male_saiyan_armor_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char6',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char6.png',
+    spritesheetData: male_saiyan_armor_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'male_saiyan_armor_char7',
+    textureUrl: './assets/karmenis-characters/male_saiyan_armor_char7.png',
+    spritesheetData: male_saiyan_armor_char7SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char1',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char1.png',
+    spritesheetData: mean_girls_pink_clothes_char1SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char2',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char2.png',
+    spritesheetData: mean_girls_pink_clothes_char2SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char3',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char3.png',
+    spritesheetData: mean_girls_pink_clothes_char3SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char4',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char4.png',
+    spritesheetData: mean_girls_pink_clothes_char4SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char5',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char5.png',
+    spritesheetData: mean_girls_pink_clothes_char5SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char6',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char6.png',
+    spritesheetData: mean_girls_pink_clothes_char6SpritesheetData,
+    speed: 0.2,
+  },
+  {
+    name: 'mean_girls_pink_clothes_char7',
+    textureUrl: './assets/karmenis-characters/mean_girls_pink_clothes_char7.png',
+    spritesheetData: mean_girls_pink_clothes_char7SpritesheetData,
     speed: 0.2,
   },
 ];

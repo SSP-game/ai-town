@@ -112,7 +112,7 @@ export default function Home() {
   // Check if current user has an active match
   const lobbyStatus = useQuery(
     api.lobby.getUserLobbyStatus,
-    currentUser?.userId ? { userId: currentUser.userId } : 'skip'
+    currentUser?.userId && typeof currentUser.userId === 'string' && !currentUser.userId.startsWith('session') ? { userId: currentUser.userId } : 'skip'
   );
   const matchWorldId = lobbyStatus?.lobby?.status === 'active' ? lobbyStatus.lobby.worldId : undefined;
 
