@@ -114,6 +114,13 @@ run the frontend, backend, and dashboard all via docker compose.
 docker compose up --build -d
 ```
 
+also probally could try,
+```sh
+   docker compose up --build --force-recreate
+```
+
+setup proxy if needed.
+
 The container will keep running in the background if you pass `-d`. After you've done it once, you
 can `stop` and `start` services.
 
