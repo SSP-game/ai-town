@@ -45,3 +45,7 @@ convex_local*
 
 backend.log
 frontend.log
+
+# Test credentials (should not be public)
+ai-town-*-credentials.json
+*-credentials.json
