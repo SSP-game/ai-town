@@ -365,26 +365,59 @@ export const checkWorldExpiration = internalMutation({
     // Check if world has expired
     const now = Date.now();
     if (lobby.expiresAt && now >= lobby.expiresAt) {
+      const worldId = lobby.worldId;
+      const startedAt = lobby.startedAt ?? now;
+
       // Update lobby status to expired
       await ctx.db.patch(args.lobbyId, {
         status: 'expired',
         completedAt: now,
       });
 
-      // Update all players to 'left' status so they can rejoin matchmaking
+      // Get all players in this lobby
       const players = await ctx.db
         .query('lobbyPlayers')
         .withIndex('lobbyId', (q) => q.eq('lobbyId', args.lobbyId))
         .collect();
 
+      // Collect conversation partners from world data (if available)
+      let conversationPartners: string[] = [];
+      if (worldId) {
+        // Get player descriptions from the world to build partner list
+        const playerDescriptions = await ctx.db
+          .query('playerDescriptions')
+          .withIndex('worldId', (q) => q.eq('worldId', worldId))
+          .collect();
+        conversationPartners = playerDescriptions.map((p) => p.name);
+      }
+
+      // Generate match statistics for each human player
       for (const player of players) {
+        if (worldId) {
+          // Create match stats record for end-of-game display
+          await ctx.db.insert('matchStats', {
+            lobbyId: args.lobbyId,
+            worldId: worldId,
+            userId: player.userId,
+            startedAt: startedAt,
+            endedAt: now,
+            durationMs: now - startedAt,
+            totalConversations: player.conversationCount ?? 0,
+            conversationPartners: conversationPartners,
+            messagesSent: player.messagesSent ?? 0,
+            messagesReceived: player.messagesReceived ?? 0,
+            dismissed: false,
+            createdAt: now,
+          });
+        }
+
+        // Update player status to 'left' so they can see end screen
         await ctx.db.patch(player._id, {
           status: 'left',
         });
       }
 
       // Stop the world's engine if it exists
-      const worldId = lobby.worldId;
       if (worldId) {
         const worldStatus = await ctx.db
           .query('worldStatus')

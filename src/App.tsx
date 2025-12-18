@@ -1,13 +1,12 @@
 import Game from './components/Game.tsx';
-import AgentsListView from './components/AgentsListView.tsx';
 import SurveyView from './components/SurveyView.tsx';
-import UserSettingsView from './components/UserSettingsView.tsx';
 import LobbyView from './components/LobbyView.tsx';
+import CompanionSelectionView from './components/CompanionSelectionView.tsx';
+import EndView from './components/EndView.tsx';
 
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import a16zImg from '../assets/a16z.png';
 import convexImg from '../assets/convex.svg';
-import starImg from '../assets/star.svg';
 import helpImg from '../assets/help.svg';
 import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
@@ -16,22 +15,18 @@ import Button from './components/buttons/Button.tsx';
 import InteractButton from './components/buttons/InteractButton.tsx';
 import FreezeButton from './components/FreezeButton.tsx';
 import { MAX_HUMAN_PLAYERS } from '../convex/constants.ts';
-import PoweredByConvex from './components/PoweredByConvex.tsx';
-import ViewToggleButton, { ViewMode } from './components/buttons/ViewToggleButton.tsx';
-import CompanionModal from './components/CompanionModal.tsx';
-import CompanionPageView from './components/CompanionPageView.tsx';
 import AuthPage from './components/AuthPage.tsx';
-import UserManagement from './components/UserManagement.tsx';
 import { useQuery } from 'convex/react';
 import { api } from '../convex/_generated/api';
 import { Id } from '../convex/_generated/dataModel';
+import { useGameFlow } from './hooks/useGameFlow.ts';
+import { GameFlowStep } from './types/gameFlow.ts';
 
 export default function Home() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<ViewMode>('game');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<{
-    userId: Id<"users">;
+    userId: Id<'users'>;
     nickname: string;
     email: string;
     selectedCharacter?: string;
@@ -39,19 +34,10 @@ export default function Home() {
     firstName?: string;
     lastName?: string;
   } | null>(null);
-  const [companionModalOpen, setCompanionModalOpen] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
-  // Check login state and URL hash on app start
+  // Initialize user from localStorage on app start
   useEffect(() => {
     const initializeApp = () => {
-      // Check URL hash for routing
-      const hash = window.location.hash.slice(1); // Remove #
-      if (['agents', 'companion', 'survey', 'lobby', 'settings', 'game'].includes(hash)) {
-        setCurrentView(hash as ViewMode);
-      }
-
-      // Initialize user from storage
       try {
         const userId = localStorage.getItem('userId');
         const nickname = localStorage.getItem('userNickname');
@@ -60,7 +46,7 @@ export default function Home() {
         if (userId && nickname && email) {
           setIsLoggedIn(true);
           setCurrentUser({
-            userId: userId as Id<"users">,
+            userId: userId as Id<'users'>,
             nickname,
             email,
             selectedCharacter: localStorage.getItem('selectedCharacter') || undefined,
@@ -81,40 +67,14 @@ export default function Home() {
     initializeApp();
   }, []);
 
-  // Handle URL hash changes
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-      if (['agents', 'companion', 'survey', 'lobby', 'settings', 'game'].includes(hash)) {
-        setCurrentView(hash as ViewMode);
-      }
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  // Update URL hash when view changes
-  useEffect(() => {
-    if (currentView !== 'game') {
-      window.location.hash = currentView;
-    } else {
-      // Remove hash when going back to game view
-      if (window.location.hash) {
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-    }
-  }, [currentView]);
-
-  const worldStatus = useQuery(api.world.defaultWorldStatus);
-  const worldId = worldStatus?.worldId;
-
-  // Check if current user has an active match
-  const lobbyStatus = useQuery(
-    api.lobby.getUserLobbyStatus,
-    currentUser?.userId && typeof currentUser.userId === 'string' && !currentUser.userId.startsWith('session') ? { userId: currentUser.userId } : 'skip'
+  // Use game flow hook to determine current step
+  const { currentStep, isLoading, lobbyId, worldId, statsId } = useGameFlow(
+    currentUser?.userId ?? null
   );
-  const matchWorldId = lobbyStatus?.lobby?.status === 'active' ? lobbyStatus.lobby.worldId : undefined;
+
+  // Get default world for spectator mode (when not in game flow)
+  const worldStatus = useQuery(api.world.defaultWorldStatus);
+  const defaultWorldId = worldStatus?.worldId;
 
   const handleLoginSuccess = (userData: {
     userId: string;
@@ -138,7 +98,7 @@ export default function Home() {
 
     // Update state
     setCurrentUser({
-      userId: userData.userId as Id<"users">,
+      userId: userData.userId as Id<'users'>,
       nickname: userData.nickname,
       email: userData.email,
       selectedCharacter: userData.selectedCharacter,
@@ -147,7 +107,7 @@ export default function Home() {
       lastName: userData.lastName,
     });
     setIsLoggedIn(true);
-    setLoginModalOpen(false);
+    toast.success('Login successful!');
   };
 
   const handleLogout = () => {
@@ -161,15 +121,112 @@ export default function Home() {
     // Clear state
     setCurrentUser(null);
     setIsLoggedIn(false);
-    setCurrentView('game');
+    toast.info('Logged out successfully');
   };
 
-  // Do not early-return to AuthPage; keep the app visible and provide a Login button instead.
+  // Render the current step component
+  const renderCurrentStep = () => {
+    // Not logged in - show login page
+    if (!isLoggedIn || !currentUser) {
+      return (
+        <div className="flex-1 flex items-center justify-center bg-brown-900">
+          <AuthPage onLoginSuccess={handleLoginSuccess} />
+        </div>
+      );
+    }
+
+    // Loading state
+    if (isLoading || currentStep === 'loading') {
+      return (
+        <div className="flex-1 flex items-center justify-center bg-brown-900">
+          <div className="text-center text-white">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-xl">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
+    // Render based on current step
+    switch (currentStep as GameFlowStep) {
+      case 'login':
+        return (
+          <div className="flex-1 flex items-center justify-center bg-brown-900">
+            <AuthPage onLoginSuccess={handleLoginSuccess} />
+          </div>
+        );
+
+      case 'survey':
+        return (
+          <SurveyView
+            userId={currentUser.userId}
+            onComplete={() => {
+              // Flow will auto-advance via Convex reactive query
+              toast.success('Survey completed!');
+            }}
+          />
+        );
+
+      case 'companion':
+        return (
+          <CompanionSelectionView
+            userId={currentUser.userId}
+            worldId={defaultWorldId}
+            onCompanionSelected={() => {
+              // Flow will auto-advance via Convex reactive query
+              toast.success('Companion selected!');
+            }}
+          />
+        );
+
+      case 'lobby':
+        return <LobbyView userId={currentUser.userId} />;
+
+      case 'game':
+        return <Game matchWorldId={worldId} />;
+
+      case 'end':
+        return (
+          <EndView
+            userId={currentUser.userId}
+            statsId={statsId!}
+            onPlayAgain={() => {
+              // Will clear companion and return to companion selection step
+              toast.info('Starting new game...');
+            }}
+          />
+        );
+
+      default:
+        return (
+          <div className="flex-1 flex items-center justify-center bg-brown-900">
+            <p className="text-white text-xl">Unknown step: {currentStep}</p>
+          </div>
+        );
+    }
+  };
+
+  // Get step display name for header
+  const getStepDisplayName = (step: GameFlowStep | 'loading'): string => {
+    const names: Record<string, string> = {
+      login: 'Login',
+      survey: 'Survey',
+      companion: 'Select Companion',
+      lobby: 'Lobby',
+      game: 'Game',
+      end: 'Game Over',
+      loading: 'Loading...',
+    };
+    return names[step] || step;
+  };
+
+  // Check if we should show footer controls
+  const showGameControls = currentStep === 'game';
+  const showMinimalFooter = ['survey', 'companion', 'lobby', 'end'].includes(currentStep as string);
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-background">
-      {/* <PoweredByConvex /> */}
-
+      {/* Help Modal */}
       <ReactModal
         isOpen={helpModalOpen}
         onRequestClose={() => setHelpModalOpen(false)}
@@ -191,25 +248,22 @@ export default function Home() {
             Welcome to AI town. AI town supports both anonymous <i>spectators</i> and logged in{' '}
             <i>interactivity</i>.
           </p>
-          <h2 className="text-4xl mt-4">Spectating</h2>
+          <h2 className="text-4xl mt-4">Game Flow</h2>
           <p>
-            Click and drag to move around the town, and scroll in and out to zoom. You can click on
-            an individual character to view its chat history.
+            After logging in, you'll complete a brief survey, select your AI companion, and then
+            enter the matchmaking lobby. Once matched with other players, you'll enter a timed game
+            session.
           </p>
           <h2 className="text-4xl mt-4">Interactivity</h2>
           <p>
-            If you log in, you can join the simulation and directly talk to different agents! After
-            logging in, click the "Interact" button, and your character will appear somewhere on the
-            map with a highlighted circle underneath you.
+            During the game, click the "Interact" button to join the simulation. Your character will
+            appear on the map with a highlighted circle underneath you.
           </p>
           <p className="text-2xl mt-2">Controls:</p>
           <p className="mt-4">Click to navigate around.</p>
           <p className="mt-4">
             To talk to an agent, click on them and then click "Start conversation," which will ask
-            them to start walking towards you. Once they're nearby, the conversation will start, and
-            you can speak to each other. You can leave at any time by closing the conversation pane
-            or moving away. They may propose a conversation to you - you'll see a button to accept
-            in the messages panel.
+            them to start walking towards you. Once they're nearby, the conversation will start.
           </p>
           <p className="mt-4">
             AI town only supports {MAX_HUMAN_PLAYERS} humans at a time. If you're idle for five
@@ -218,141 +272,56 @@ export default function Home() {
         </div>
       </ReactModal>
 
-      <CompanionModal
-        isOpen={companionModalOpen}
-        onClose={() => setCompanionModalOpen(false)}
-        onShowAgentsList={() => {
-          setCompanionModalOpen(false);
-          setCurrentView('companion');
-        }}
-      />
-
-      {/*<div className="p-3 absolute top-0 right-0 z-10 text-2xl">
-        <Authenticated>
-          <UserButton afterSignOutUrl="/ai-town" />
-        </Authenticated>
-
-        <Unauthenticated>
-          <LoginButton />
-        </Unauthenticated>
-      </div> */}
-
       <div className="w-full h-screen relative isolate shadow-2xl flex flex-col justify-start overflow-hidden">
-        {/* Game/Agents content with frame */}
+        {/* Step indicator header */}
+        {isLoggedIn && currentStep !== 'game' && currentStep !== 'loading' && (
+          <div className="flex-shrink-0 bg-gradient-to-b from-black/80 to-transparent p-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="text-white/70 text-sm">Current Step:</span>
+                <span className="text-white font-bold text-lg">
+                  {getStepDisplayName(currentStep)}
+                </span>
+              </div>
+              {currentUser && (
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <span>Logged in as:</span>
+                  <span className="text-white font-semibold">{currentUser.nickname}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Main content area */}
         <div className="flex-1 flex flex-col relative min-h-0 overflow-auto">
-          {currentView === 'game' ? (
-            <Game matchWorldId={matchWorldId} />
-          ) : currentView === 'lobby' ? (
-            currentUser ? (
-              <LobbyView
-                userId={currentUser.userId}
-                // Note: No longer need onMatchFound callback since players stay in Lobby
-              />
-            ) : (
-              // Fallback for lobby view
-              (() => {
-                const userId = localStorage.getItem('userId') as Id<"users">;
-                return userId ? (
-                  <LobbyView userId={userId} />
-                ) : (
-                  <div className="min-h-screen bg-brown-900 text-brown-100 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-xl mb-4">Please login to access the lobby.</p>
-                      <button
-                        onClick={() => setLoginModalOpen(true)}
-                        className="button text-white shadow-solid text-lg cursor-pointer"
-                      >
-                        <div className="h-full bg-clay-700 text-center py-3 px-6">
-                          <span>Login</span>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                );
-              })()
-            )
-          ) : currentView === 'agents' ? (
-            worldId && <AgentsListView worldId={worldId} />
-          ) : currentView === 'companion' ? (
-            worldId && <CompanionPageView worldId={worldId} />
-          ) : currentView === 'survey' ? (
-            currentUser && (
-              <SurveyView userId={currentUser.userId} onComplete={() => setCurrentView('game')} />
-            )
-          ) : currentView === 'settings' ? (
-            currentUser ? (
-              <UserSettingsView
-                userId={currentUser.userId}
-                onLogout={handleLogout}
-                onBack={() => setCurrentView('game')}
-              />
-            ) : (
-              // Fallback: Try to get userId from localStorage if currentUser is temporarily null
-              (() => {
-                const userId = localStorage.getItem('userId') as Id<"users">;
-                return userId ? (
-                  <UserSettingsView
-                    userId={userId}
-                    onLogout={handleLogout}
-                    onBack={() => setCurrentView('game')}
-                  />
-                ) : (
-                  <div className="min-h-screen bg-brown-900 text-brown-100 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-xl mb-4">User session lost. Please login again.</p>
-                      <button
-                        onClick={() => setLoginModalOpen(true)}
-                        className="button text-white shadow-solid text-lg cursor-pointer"
-                      >
-                        <div className="h-full bg-clay-700 text-center py-3 px-6">
-                          <span>Login</span>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                );
-              })()
-            )
-          ) : null}
+          {renderCurrentStep()}
         </div>
 
-        {/* Footer buttons outside the frame */}
+        {/* Footer - varies based on step */}
         <div className="flex-shrink-0 w-full flex items-center justify-between gap-2 p-3 bg-gradient-to-t from-black/80 to-transparent [&_.button]:scale-75">
-          {/* Left side - Profile/Login and Navigation tabs */}
+          {/* Left side */}
           <div className="flex items-center gap-2">
             {isLoggedIn && currentUser ? (
-              <UserManagement
-                userId={currentUser.userId}
-                onOpenSettings={() => setCurrentView('settings')}
-              />
-            ) : (
               <Button
                 imgUrl={helpImg}
-                onClick={() => setLoginModalOpen(true)}
-                className="bg-blue-600 hover:bg-blue-700 scale-100 font-bold"
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 scale-100"
               >
-                Login
+                Logout
               </Button>
-            )}
-            <ViewToggleButton
-              currentView={currentView}
-              onToggleView={setCurrentView}
-              onShowCompanionModal={() => setCompanionModalOpen(true)}
-            />
+            ) : null}
           </div>
 
-          {/* Right side - Action buttons and branding */}
+          {/* Right side - Action buttons */}
           <div className="flex items-center gap-2">
-            <InteractButton />
-            <FreezeButton />
-            <MusicButton />
-            <Button
-              imgUrl={starImg}
-              onClick={() => setCurrentView('agents')}
-              className={currentView === 'agents' ? 'ring-4 ring-blue-500 ring-offset-2 ring-offset-black' : ''}
-            >
-              Agents
-            </Button>
+            {showGameControls && (
+              <>
+                <InteractButton />
+                <FreezeButton />
+                <MusicButton />
+              </>
+            )}
             <Button imgUrl={helpImg} onClick={() => setHelpModalOpen(true)}>
               Help
             </Button>
@@ -364,18 +333,9 @@ export default function Home() {
             </a>
           </div>
         </div>
+
         <ToastContainer position="bottom-right" autoClose={2000} closeOnClick theme="dark" />
       </div>
-      {/* Login modal (appears when not logged in) */}
-      <ReactModal
-        isOpen={loginModalOpen}
-        onRequestClose={() => setLoginModalOpen(false)}
-        style={modalStyles}
-        contentLabel="Login modal"
-        ariaHideApp={false}
-      >
-        <AuthPage onLoginSuccess={handleLoginSuccess} onClose={() => setLoginModalOpen(false)} />
-      </ReactModal>
     </main>
   );
 }

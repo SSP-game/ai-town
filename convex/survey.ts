@@ -31,11 +31,18 @@ export const submitSurvey = mutation({
   handler: async (ctx, args) => {
     const now = Date.now();
 
+    // Insert survey record
     const surveyId = await ctx.db.insert('surveys', {
       userId: args.userId,
       answers: args.answers,
       completedAt: now,
       createdAt: now,
+    });
+
+    // Mark survey as completed on user record (for game flow tracking)
+    await ctx.db.patch(args.userId, {
+      surveyCompleted: true,
+      updatedAt: now,
     });
 
     return surveyId;

@@ -36,6 +36,9 @@ export default defineSchema({
     createdAt: v.number(),
     lastLoginAt: v.optional(v.number()),
     updatedAt: v.number(),
+
+    // Game flow tracking
+    surveyCompleted: v.optional(v.boolean()), // Track if user has completed initial survey
   })
     .index('email', ['email'])
     .index('nickname', ['nickname'])
@@ -156,10 +159,37 @@ export default defineSchema({
     status: v.union(v.literal('waiting'), v.literal('matched'), v.literal('playing'), v.literal('left')),
     joinedAt: v.number(),
     readyAt: v.optional(v.number()),
+    // In-match statistics tracking
+    conversationCount: v.optional(v.number()),
+    messagesSent: v.optional(v.number()),
+    messagesReceived: v.optional(v.number()),
   })
     .index('lobbyId', ['lobbyId'])
     .index('userId', ['userId'])
     .index('userStatus', ['userId', 'status']),
+
+  // Match statistics for end-of-game display
+  matchStats: defineTable({
+    lobbyId: v.id('lobbies'),
+    worldId: v.id('worlds'),
+    userId: v.id('users'),
+    // Timing
+    startedAt: v.number(),
+    endedAt: v.number(),
+    durationMs: v.number(),
+    // Conversation stats
+    totalConversations: v.number(),
+    conversationPartners: v.array(v.string()), // Player/agent names
+    // Message stats
+    messagesSent: v.number(),
+    messagesReceived: v.number(),
+    // UI state
+    dismissed: v.boolean(), // Whether user has dismissed the end screen
+    createdAt: v.number(),
+  })
+    .index('userId', ['userId'])
+    .index('lobbyId', ['lobbyId'])
+    .index('worldId', ['worldId']),
 
   ...agentTables,
   ...aiTownTables,

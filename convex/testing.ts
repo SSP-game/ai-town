@@ -340,6 +340,19 @@ export const debugMatchmaking = query({
   },
 });
 
+export const debugUsers = query({
+  handler: async (ctx) => {
+    const users = await ctx.db.query('users').collect();
+    return users.map((u) => ({
+      id: u._id,
+      email: u.email,
+      nickname: u.nickname,
+      surveyCompleted: u.surveyCompleted,
+      selectedCompanion: u.selectedCompanion,
+    }));
+  },
+});
+
 export const debugFenceArea = query({
   handler: async (ctx) => {
     const { worldStatus } = await getDefaultWorld(ctx.db);

@@ -3,7 +3,7 @@ import { api } from '../../convex/_generated/api';
 import { Id } from '../../convex/_generated/dataModel';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import Game from './Game.tsx';
+// Note: Game rendering is handled by App.tsx in step-based flow
 
 interface LobbyViewProps {
   userId: Id<'users'>;
@@ -160,33 +160,10 @@ export default function LobbyView({ userId }: LobbyViewProps) {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  // Debug: Log exact values right before conditional render
-  console.log('[LobbyView RENDER] Checking conditional:', {
-    hasLobbyStatus: !!lobbyStatus,
-    lobbyStatusValue: lobbyStatus?.lobby.status,
-    isActive: lobbyStatus?.lobby.status === 'active',
-    worldId: lobbyStatus?.lobby.worldId,
-    hasWorldId: !!lobbyStatus?.lobby.worldId,
-    fullCondition: lobbyStatus?.lobby.status === 'active' && !!lobbyStatus.lobby.worldId,
-  });
+  // Note: When lobby becomes 'active', App.tsx will render Game component instead of LobbyView
+  // This is handled by the step-based flow in useGameFlow hook
 
-  // If match is found and active, show full game world instead of lobby
-  if (lobbyStatus?.lobby.status === 'active' && lobbyStatus.lobby.worldId) {
-    console.log('[LobbyView RENDER] ✅ Rendering game world!');
-    return (
-      <div className="flex flex-col h-full game-background overflow-y-auto">
-        {/* Full Game World */}
-        <Game
-          matchWorldId={lobbyStatus.lobby.worldId}
-          timeRemaining={timeRemaining}
-          formatTimeRemaining={formatTimeRemaining}
-          showExpiredMessage={showExpiredMessage}
-        />
-      </div>
-    );
-  }
-
-  // Show lobby interface when not in active match
+  // Show lobby interface
   return (
     <div className="h-full game-background overflow-y-auto">
       <div className="max-w-6xl mx-auto p-6">
