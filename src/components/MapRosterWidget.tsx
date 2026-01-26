@@ -237,7 +237,7 @@ export default function MapRosterWidget({
                   {showExpiredMessage ? 'EXPIRED' : 'TIME REMAINING'}
                 </div>
                 <div className={`text-xs font-mono break-all ${
-                  timeRemaining !== null && timeRemaining <= 10000 && !showExpiredMessage
+                  timeRemaining != null && timeRemaining <= 10000 && !showExpiredMessage
                     ? 'text-red-400 animate-pulse'
                     : showExpiredMessage
                     ? 'text-red-500'

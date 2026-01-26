@@ -14,6 +14,18 @@ interface CompanionSelectionViewProps {
   onCompanionSelected: () => void;
 }
 
+interface CompanionInfo {
+  id: string;
+  name: string;
+  character: string;
+  characterData: { textureUrl: string; spritesheetData?: any; name: string; speed: number } | undefined;
+  identity: string;
+  plan: string | undefined;
+  activity: any;
+  isThinking: any;
+  isBusy: boolean;
+}
+
 /**
  * Character Avatar Component
  * Renders a character sprite from the spritesheet
@@ -118,7 +130,7 @@ export default function CompanionSelectionView({
   const agents = game?.world?.agents ? [...game.world.agents.values()] : [];
 
   // Build companion data with full details
-  const availableCompanions = agents.length > 0
+  const availableCompanions: CompanionInfo[] = agents.length > 0
     ? agents.map((agent) => {
         const player = game?.world.players.get(agent.playerId);
         const playerDescription = game?.playerDescriptions.get(agent.playerId);

@@ -6,6 +6,7 @@ import { Stage } from '@pixi/react';
 import { ConvexProvider, useConvex, useQuery } from 'convex/react';
 import PlayerDetails from './PlayerDetails.tsx';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 import { useWorldHeartbeat } from '../hooks/useWorldHeartbeat.ts';
 import { useHistoricalTime } from '../hooks/useHistoricalTime.ts';
 import { DebugTimeManager } from './DebugTimeManager.tsx';
@@ -38,7 +39,7 @@ export default function Game({
   const defaultEngineId = worldStatus?.engineId;
 
   // Use match world if provided, otherwise use default world
-  const worldId = matchWorldId || defaultWorldId;
+  const worldId = (matchWorldId || defaultWorldId) as Id<'worlds'> | undefined;
 
   // Get engine ID for the current world (works for both default and match worlds)
   const worldStateStatus = useQuery(api.world.worldState, worldId ? { worldId } : 'skip');
@@ -54,7 +55,7 @@ export default function Game({
 
   const scrollViewRef = useRef<HTMLDivElement>(null);
 
-  if (!worldId || !game) {
+  if (!worldId || !game || !engineId) {
     return (
       <div className="flex items-center justify-center h-full bg-brown-900 text-brown-100">
         <div className="text-center p-8">

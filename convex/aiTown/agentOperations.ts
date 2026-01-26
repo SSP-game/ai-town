@@ -11,9 +11,14 @@ import {
 import { buildGroupConversationPrompt } from '../agent/promptBuilder';
 import { assertNever } from '../util/assertNever';
 import { serializedAgent } from './agent';
-import { ACTIVITIES, ACTIVITY_COOLDOWN, CONVERSATION_COOLDOWN, AGENT_FENCE_BOUNDS } from '../constants';
+import {
+  ACTIVITIES,
+  ACTIVITY_COOLDOWN,
+  CONVERSATION_COOLDOWN,
+  AGENT_FENCE_BOUNDS,
+} from '../constants';
 import { api, internal } from '../_generated/api';
-import { sleep } from '../util/sleep';
+import { retry } from '../util/retry';
 import { serializedPlayer } from './player';
 
 export const agentRememberConversation = internalAction({
@@ -32,15 +37,16 @@ export const agentRememberConversation = internalAction({
       args.playerId as GameId<'players'>,
       args.conversationId as GameId<'conversations'>,
     );
-    await sleep(Math.random() * 1000);
-    await ctx.runMutation(api.aiTown.main.sendInput, {
-      worldId: args.worldId,
-      name: 'finishRememberConversation',
-      args: {
-        agentId: args.agentId,
-        operationId: args.operationId,
-      },
-    });
+    await retry(() =>
+      ctx.runMutation(api.aiTown.main.sendInput, {
+        worldId: args.worldId,
+        name: 'finishRememberConversation',
+        args: {
+          agentId: args.agentId,
+          operationId: args.operationId,
+        },
+      }),
+    );
   },
 });
 
@@ -177,34 +183,36 @@ export const agentDoSomething = internalAction({
     // Decide whether to do an activity or wander somewhere.
     if (!player.pathfinding) {
       if (recentActivity || justLeftConversation) {
-        await sleep(Math.random() * 1000);
-        await ctx.runMutation(api.aiTown.main.sendInput, {
-          worldId: args.worldId,
-          name: 'finishDoSomething',
-          args: {
-            operationId: args.operationId,
-            agentId: agent.id,
-            destination: wanderDestination(map),
-          },
-        });
+        await retry(() =>
+          ctx.runMutation(api.aiTown.main.sendInput, {
+            worldId: args.worldId,
+            name: 'finishDoSomething',
+            args: {
+              operationId: args.operationId,
+              agentId: agent.id,
+              destination: wanderDestination(map),
+            },
+          }),
+        );
         return;
       } else {
         // TODO: have LLM choose the activity & emoji
         const activity = ACTIVITIES[Math.floor(Math.random() * ACTIVITIES.length)];
-        await sleep(Math.random() * 1000);
-        await ctx.runMutation(api.aiTown.main.sendInput, {
-          worldId: args.worldId,
-          name: 'finishDoSomething',
-          args: {
-            operationId: args.operationId,
-            agentId: agent.id,
-            activity: {
-              description: activity.description,
-              emoji: activity.emoji,
-              until: Date.now() + activity.duration,
+        await retry(() =>
+          ctx.runMutation(api.aiTown.main.sendInput, {
+            worldId: args.worldId,
+            name: 'finishDoSomething',
+            args: {
+              operationId: args.operationId,
+              agentId: agent.id,
+              activity: {
+                description: activity.description,
+                emoji: activity.emoji,
+                until: Date.now() + activity.duration,
+              },
             },
-          },
-        });
+          }),
+        );
         return;
       }
     }
@@ -218,18 +226,18 @@ export const agentDoSomething = internalAction({
             otherFreePlayers: args.otherFreePlayers,
           });
 
-    // TODO: We hit a lot of OCC errors on sending inputs in this file. It's
-    // easy for them to get scheduled at the same time and line up in time.
-    await sleep(Math.random() * 1000);
-    await ctx.runMutation(api.aiTown.main.sendInput, {
-      worldId: args.worldId,
-      name: 'finishDoSomething',
-      args: {
-        operationId: args.operationId,
-        agentId: args.agent.id,
-        invitee,
-      },
-    });
+    // Using retry instead of random sleep to handle OCC conflicts gracefully
+    await retry(() =>
+      ctx.runMutation(api.aiTown.main.sendInput, {
+        worldId: args.worldId,
+        name: 'finishDoSomething',
+        args: {
+          operationId: args.operationId,
+          agentId: agent.id,
+          invitee,
+        },
+      }),
+    );
   },
 });
 
@@ -238,8 +246,12 @@ function wanderDestination(worldMap: WorldMap) {
   // Try multiple times to find a non-blocked position
   for (let attempt = 0; attempt < 20; attempt++) {
     const candidate = {
-      x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
-      y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
+      x:
+        Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) +
+        AGENT_FENCE_BOUNDS.minX,
+      y:
+        Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) +
+        AGENT_FENCE_BOUNDS.minY,
     };
 
     // Check if this position is blocked by object tiles
@@ -258,7 +270,11 @@ function wanderDestination(worldMap: WorldMap) {
 
   // Fallback: return a position even if blocked (pathfinding will handle it)
   return {
-    x: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) + AGENT_FENCE_BOUNDS.minX,
-    y: Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) + AGENT_FENCE_BOUNDS.minY,
+    x:
+      Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxX - AGENT_FENCE_BOUNDS.minX + 1)) +
+      AGENT_FENCE_BOUNDS.minX,
+    y:
+      Math.floor(Math.random() * (AGENT_FENCE_BOUNDS.maxY - AGENT_FENCE_BOUNDS.minY + 1)) +
+      AGENT_FENCE_BOUNDS.minY,
   };
 }

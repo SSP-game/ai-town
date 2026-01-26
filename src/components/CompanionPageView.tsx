@@ -15,6 +15,7 @@ import { useElementSize } from 'usehooks-ts';
 import PixiGame from './PixiGame';
 import { useHistoricalTime } from '../hooks/useHistoricalTime';
 import { COMPANION_SEPARATE_WORLD } from '../../convex/constants';
+import { GameId } from '../../convex/aiTown/ids';
 
 interface CompanionPageViewProps {
   worldId: Id<'worlds'>;
@@ -153,7 +154,7 @@ export default function CompanionPageView({ worldId }: CompanionPageViewProps) {
     const ids = [];
 
     // Get companion's player ID
-    const companionAgent = game.world.agents.get(selectedCompanion);
+    const companionAgent = game.world.agents.get(selectedCompanion as GameId<'agents'>);
     if (companionAgent?.playerId) {
       ids.push(companionAgent.playerId);
     }
