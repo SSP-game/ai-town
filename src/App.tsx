@@ -3,11 +3,13 @@ import SurveyView from './components/SurveyView.tsx';
 import LobbyView from './components/LobbyView.tsx';
 import CompanionSelectionView from './components/CompanionSelectionView.tsx';
 import EndView from './components/EndView.tsx';
+import UserSettingsView from './components/UserSettingsView.tsx';
 
 import { ToastContainer, toast } from 'react-toastify';
 import a16zImg from '../assets/a16z.png';
 import convexImg from '../assets/convex.svg';
 import helpImg from '../assets/help.svg';
+import starImg from '../assets/star.svg';
 import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import MusicButton from './components/buttons/MusicButton.tsx';
@@ -24,6 +26,7 @@ import { GameFlowStep } from './types/gameFlow.ts';
 
 export default function Home() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<{
     userId: Id<'users'>;
@@ -132,6 +135,17 @@ export default function Home() {
         <div className="flex-1 flex items-center justify-center bg-brown-900">
           <AuthPage onLoginSuccess={handleLoginSuccess} />
         </div>
+      );
+    }
+
+    // Show settings page if requested
+    if (showSettings) {
+      return (
+        <UserSettingsView
+          userId={currentUser.userId}
+          onLogout={handleLogout}
+          onBack={() => setShowSettings(false)}
+        />
       );
     }
 
@@ -302,14 +316,22 @@ export default function Home() {
         <div className="flex-shrink-0 w-full flex items-center justify-between gap-2 p-3 bg-gradient-to-t from-black/80 to-transparent [&_.button]:scale-75">
           {/* Left side */}
           <div className="flex items-center gap-2">
-            {isLoggedIn && currentUser ? (
-              <Button
-                imgUrl={helpImg}
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 scale-100"
-              >
-                Logout
-              </Button>
+            {isLoggedIn && currentUser && !showSettings ? (
+              <>
+                <Button
+                  imgUrl={starImg}
+                  onClick={() => setShowSettings(true)}
+                >
+                  Profile
+                </Button>
+                <Button
+                  imgUrl={helpImg}
+                  onClick={handleLogout}
+                  className="bg-red-600 hover:bg-red-700 scale-100"
+                >
+                  Logout
+                </Button>
+              </>
             ) : null}
           </div>
 
