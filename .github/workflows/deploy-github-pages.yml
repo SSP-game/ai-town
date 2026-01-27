@@ -4,8 +4,7 @@ on:
   workflow_dispatch:  # Manual trigger from any branch
   push:
     branches:
-      - main
-      - feature/glm-api-integration-and-layout-improvements  # Also auto-deploy from this branch
+      - deploy  # Deploy from deploy branch instead of main
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
