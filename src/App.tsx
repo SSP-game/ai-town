@@ -132,7 +132,7 @@ export default function Home() {
     // Not logged in - show login page
     if (!isLoggedIn || !currentUser) {
       return (
-        <div className="flex-1 flex items-center justify-center bg-brown-900">
+        <div className="flex-1 flex items-center justify-center">
           <AuthPage onLoginSuccess={handleLoginSuccess} />
         </div>
       );
@@ -152,7 +152,7 @@ export default function Home() {
     // Loading state
     if (isLoading || currentStep === 'loading') {
       return (
-        <div className="flex-1 flex items-center justify-center bg-brown-900">
+        <div className="flex-1 flex items-center justify-center">
           <div className="text-center text-white">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 mx-auto mb-4"></div>
             <p className="text-xl">Loading...</p>
@@ -165,7 +165,7 @@ export default function Home() {
     switch (currentStep as GameFlowStep) {
       case 'login':
         return (
-          <div className="flex-1 flex items-center justify-center bg-brown-900">
+          <div className="flex-1 flex items-center justify-center">
             <AuthPage onLoginSuccess={handleLoginSuccess} />
           </div>
         );
@@ -213,7 +213,7 @@ export default function Home() {
 
       default:
         return (
-          <div className="flex-1 flex items-center justify-center bg-brown-900">
+          <div className="flex-1 flex items-center justify-center">
             <p className="text-white text-xl">Unknown step: {currentStep}</p>
           </div>
         );

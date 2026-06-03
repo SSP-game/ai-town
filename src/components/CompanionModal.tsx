@@ -144,44 +144,45 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
     <ReactModal
       isOpen={isOpen && modalState === 'auth'}
       onRequestClose={handleClose}
-      style={modalStyles}
+      className="fixed inset-0 flex items-center justify-center p-4"
+      overlayClassName="fixed inset-0 bg-black/75 z-50"
       contentLabel="Companion Login Modal"
       ariaHideApp={false}
     >
-      <div className="font-body">
+      <div className="bg-brown-800 border-[10px] border-brown-900 rounded-none max-w-[400px] w-[90%] mx-auto font-display text-white p-6">
         <h1 className="text-center text-4xl font-bold font-display game-title mb-6">
           {mode === 'login' ? 'Login' : 'Register'}
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-lg mb-2">Email:</label>
+            <label className="block text-lg mb-2 text-brown-100">Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full p-2 border-2 border-gray-600 rounded bg-gray-800 text-white"
+              className="w-full p-2 border-2 border-brown-600 rounded bg-brown-800 text-white placeholder:text-brown-400 focus:border-brown-500 focus:outline-none"
               placeholder="Enter your email"
             />
           </div>
 
           <div>
-            <label className="block text-lg mb-2">Password:</label>
+            <label className="block text-lg mb-2 text-brown-100">Password:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full p-2 border-2 border-gray-600 rounded bg-gray-800 text-white"
+              className="w-full p-2 border-2 border-brown-600 rounded bg-brown-800 text-white placeholder:text-brown-400 focus:border-brown-500 focus:outline-none"
               placeholder="Enter your password"
             />
           </div>
 
           {mode === 'register' && (
             <div>
-              <label className="block text-lg mb-2">Nickname:</label>
+              <label className="block text-lg mb-2 text-brown-100">Nickname:</label>
               <input
                 type="text"
                 value={nickname}
@@ -189,7 +190,7 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
                 required
                 minLength={2}
                 maxLength={20}
-                className="w-full p-2 border-2 border-gray-600 rounded bg-gray-800 text-white"
+                className="w-full p-2 border-2 border-brown-600 rounded bg-brown-800 text-white placeholder:text-brown-400 focus:border-brown-500 focus:outline-none"
                 placeholder="Choose a nickname"
               />
             </div>
@@ -198,7 +199,7 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
           <div className="flex gap-4 mt-6">
             <button
               type="submit"
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded font-bold disabled:opacity-50"
+              className="flex-1 bg-clay-700 hover:bg-clay-600 text-white py-2 px-4 rounded font-bold disabled:opacity-50 transition-colors"
               disabled={loading}
             >
               {loading ? 'Processing...' : mode === 'login' ? 'Login' : 'Register'}
@@ -207,7 +208,7 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
             <button
               type="button"
               onClick={switchMode}
-              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded font-bold disabled:opacity-50"
+              className="flex-1 bg-brown-700 hover:bg-brown-600 text-white py-2 px-4 rounded font-bold disabled:opacity-50 transition-colors"
               disabled={loading}
             >
               {mode === 'login' ? 'Need account?' : 'Have account?'}
@@ -219,7 +220,7 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
           <button
             type="button"
             onClick={handleClose}
-            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded font-bold"
+            className="bg-red-700 hover:bg-red-600 text-white py-2 px-4 rounded font-bold transition-colors"
           >
             Cancel
           </button>
@@ -228,25 +229,3 @@ export default function CompanionModal({ isOpen, onClose, onShowAgentsList }: Co
     </ReactModal>
   );
 }
-
-const modalStyles = {
-  overlay: {
-    backgroundColor: 'rgb(0, 0, 0, 75%)',
-    zIndex: 12,
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: '400px',
-    width: '90%',
-    border: '10px solid rgb(23, 20, 33)',
-    borderRadius: '0',
-    background: 'rgb(35, 38, 58)',
-    color: 'white',
-    fontFamily: '"Upheaval Pro", "sans-serif"',
-  },
-};

@@ -170,37 +170,37 @@ export default function LobbyView({ userId }: LobbyViewProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-white mb-4 game-title">🏟️ AI Town Lobby</h1>
-          <p className="text-xl text-gray-300">Find other players and start a new game session</p>
+          <p className="text-xl text-brown-200">Find other players and start a new game session</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Online Players Count */}
-          <div className="bg-gray-800/80 backdrop-blur rounded-xl p-6 border-2 border-gray-700 shadow-xl">
+          <div className="bg-brown-800/80 backdrop-blur rounded-xl p-6 border-2 border-brown-700 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-gray-400 mb-1">Online Players</div>
+                <div className="text-sm text-brown-400 mb-1">Online Players</div>
                 <div className="text-4xl font-bold text-green-400">
                   {onlineCount !== undefined ? onlineCount : '...'}
                 </div>
               </div>
               <div className="text-6xl">👥</div>
             </div>
-            <p className="text-sm text-gray-400 mt-3">Active in the last 5 minutes</p>
+            <p className="text-sm text-brown-400 mt-3">Active in the last 5 minutes</p>
           </div>
 
           {/* Match Status */}
-          <div className="bg-gray-800/80 backdrop-blur rounded-xl p-6 border-2 border-gray-700 shadow-xl">
+          <div className="bg-brown-800/80 backdrop-blur rounded-xl p-6 border-2 border-brown-700 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-gray-400 mb-1">Match Status</div>
+                <div className="text-sm text-brown-400 mb-1">Match Status</div>
                 <div className="text-2xl font-bold text-blue-400">
                   {lobbyStatus ? 'In Queue' : 'Ready'}
                 </div>
               </div>
               <div className="text-6xl">🎮</div>
             </div>
-            <p className="text-sm text-gray-400 mt-3">
+            <p className="text-sm text-brown-400 mt-3">
               {lobbyStatus ? `Position #${lobbyStatus.queuePosition}` : 'Join to start matching'}
             </p>
           </div>
@@ -212,13 +212,13 @@ export default function LobbyView({ userId }: LobbyViewProps) {
           <div className="lg:col-span-2">
             {!lobbyStatus ? (
               // Not in queue - Join Matchmaking Panel
-              <div className="bg-gray-800/80 backdrop-blur rounded-xl p-8 border-2 border-gray-700 shadow-xl">
+              <div className="bg-brown-800/80 backdrop-blur rounded-xl p-8 border-2 border-brown-700 shadow-xl">
                 <h2 className="text-3xl font-bold text-white mb-6 text-center">🎯 Join Matchmaking</h2>
 
                 {/* User Profile Display */}
                 <div className="mb-6">
-                  <label className="text-lg font-semibold text-gray-300 mb-3 block">Your Profile</label>
-                  <div className="bg-gray-700/60 rounded-lg p-4 flex items-center gap-4">
+                  <label className="text-lg font-semibold text-brown-200 mb-3 block">Your Profile</label>
+                  <div className="bg-brown-700/60 rounded-lg p-4 flex items-center gap-4">
                     <div className="text-4xl">
                       👤
                     </div>
@@ -226,7 +226,7 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                       <div className="text-lg font-semibold text-white">
                         {userProfile?.nickname || 'Unknown Player'}
                       </div>
-                      <div className="text-sm text-gray-400">
+                      <div className="text-sm text-brown-400">
                         Character: {userProfile?.selectedCharacter || 'f1'}
                       </div>
                     </div>
@@ -238,7 +238,7 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                   disabled={isJoining || !userProfile}
                   className={`w-full py-4 rounded-xl text-2xl font-bold text-white transition-all shadow-lg ${
                     isJoining || !userProfile
-                      ? 'bg-gray-600 cursor-not-allowed'
+                      ? 'bg-brown-600 cursor-not-allowed'
                       : 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 transform hover:scale-105'
                   }`}
                 >
@@ -247,7 +247,7 @@ export default function LobbyView({ userId }: LobbyViewProps) {
               </div>
             ) : (
               // In queue or matched - Queue Status Panel
-              <div className="bg-gray-800/80 backdrop-blur rounded-xl p-8 border-2 border-gray-700 shadow-xl">
+              <div className="bg-brown-800/80 backdrop-blur rounded-xl p-8 border-2 border-brown-700 shadow-xl">
                 <h2 className="text-3xl font-bold text-white mb-6 text-center">
                   {lobbyStatus.currentPlayer.status === 'waiting' && '⏳ Waiting for Players...'}
                   {lobbyStatus.currentPlayer.status === 'matched' && '🎮 Match Found! Loading Game World...'}
@@ -277,13 +277,13 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                     {lobbyStatus.allPlayers.map((player, index) => (
                       <div
                         key={player._id}
-                        className="bg-gray-700/60 rounded-lg p-4 flex items-center justify-between border border-gray-600"
+                        className="bg-brown-700/60 rounded-lg p-4 flex items-center justify-between border border-brown-600"
                       >
                         <div className="flex items-center gap-4">
-                          <div className="text-3xl font-bold text-gray-400">#{index + 1}</div>
+                          <div className="text-3xl font-bold text-brown-400">#{index + 1}</div>
                           <div>
                             <div className="text-lg font-semibold text-white">{player.nickname}</div>
-                            <div className="text-sm text-gray-400">Character: {player.character}</div>
+                            <div className="text-sm text-brown-400">Character: {player.character}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -340,9 +340,9 @@ export default function LobbyView({ userId }: LobbyViewProps) {
 
           {/* How It Works - Info Panel */}
           <div className="lg:col-span-1">
-              <div className="bg-gray-800/80 backdrop-blur rounded-xl p-6 border-2 border-gray-700 shadow-xl">
+              <div className="bg-brown-800/80 backdrop-blur rounded-xl p-6 border-2 border-brown-700 shadow-xl">
                 <h3 className="text-xl font-bold text-white mb-4">📖 How It Works</h3>
-                <ul className="text-sm text-gray-300 space-y-3">
+                <ul className="text-sm text-brown-200 space-y-3">
                   <li className="flex items-start gap-2">
                     <span className="text-green-400 mt-1">▸</span>
                     <span>Join the matchmaking queue and wait for other players</span>
@@ -362,9 +362,9 @@ export default function LobbyView({ userId }: LobbyViewProps) {
                 </ul>
 
                 {/* Match Configuration */}
-                <div className="mt-6 pt-6 border-t border-gray-700">
+                <div className="mt-6 pt-6 border-t border-brown-700">
                   <h4 className="text-lg font-semibold text-white mb-3">⚙️ Match Configuration</h4>
-                  <div className="space-y-2 text-sm text-gray-300">
+                  <div className="space-y-2 text-sm text-brown-200">
                     <div className="flex justify-between">
                       <span>Players Required:</span>
                       <span className="text-blue-400 font-semibold">2</span>

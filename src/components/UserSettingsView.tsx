@@ -685,7 +685,7 @@ export default function UserSettingsView({ userId, onLogout, onBack }: UserSetti
                     disabled={loading}
                     className="w-full button text-white shadow-solid text-lg cursor-pointer"
                   >
-                    <div className={`h-full text-center py-3 ${loading ? 'bg-gray-600' : 'bg-red-700'}`}>
+                    <div className={`h-full text-center py-3 ${loading ? 'bg-brown-600' : 'bg-red-700'}`}>
                       <span>{loading ? 'Deactivating...' : 'Deactivate Account'}</span>
                     </div>
                   </button>

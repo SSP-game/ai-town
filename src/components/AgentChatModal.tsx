@@ -92,26 +92,27 @@ export default function AgentChatModal({
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onClose}
-      style={modalStyles}
+      className="fixed inset-0 flex items-center justify-center p-4"
+      overlayClassName="fixed inset-0 bg-black/75 z-50"
       contentLabel={`Chat with ${agentName}`}
       ariaHideApp={false}
     >
-      <div className="font-body h-full flex flex-col">
+      <div className="bg-brown-800 border-[10px] border-brown-900 rounded-none w-[600px] h-[500px] max-w-[90%] max-h-[90%] mx-auto font-display text-white p-6 flex flex-col">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold font-display game-title">
+          <h1 className="text-2xl font-bold game-title">
             Chat with {agentName}
           </h1>
           <button
             onClick={onClose}
-            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-bold"
+            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-bold transition-colors"
           >
             ✕
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto mb-4 p-3 bg-gray-900 rounded border-2 border-gray-600 min-h-[300px]">
+        <div className="flex-1 overflow-y-auto mb-4 p-3 bg-brown-900 rounded border-2 border-brown-600 min-h-[300px]">
           {!chatHistory || chatHistory.length === 0 ? (
-            <div className="text-gray-400 text-center py-8">
+            <div className="text-brown-400 text-center py-8">
               <p>Start a conversation with {agentName}!</p>
               <p className="text-sm mt-2">Your chat history will be saved.</p>
             </div>
@@ -126,7 +127,7 @@ export default function AgentChatModal({
                     className={`max-w-[70%] p-3 rounded-lg ${
                       msg.sender === 'user'
                         ? 'bg-blue-600 text-white'
-                        : 'bg-gray-700 text-gray-100'
+                        : 'bg-brown-700 text-brown-100'
                     }`}
                   >
                     <p className="mb-1">{msg.content}</p>
@@ -138,7 +139,7 @@ export default function AgentChatModal({
               ))}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-700 text-gray-100 p-3 rounded-lg">
+                  <div className="bg-brown-700 text-brown-100 p-3 rounded-lg">
                     <p className="text-sm">{agentName} is typing...</p>
                   </div>
                 </div>
@@ -154,12 +155,12 @@ export default function AgentChatModal({
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder={`Message ${agentName}...`}
-            className="flex-1 p-2 border-2 border-gray-600 rounded bg-gray-800 text-white"
+            className="flex-1 p-2 border-2 border-brown-600 rounded bg-brown-700 text-white placeholder:text-brown-400 focus:border-brown-500 focus:outline-none"
             disabled={loading || !chatId}
           />
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-bold disabled:opacity-50"
+            className="bg-clay-700 hover:bg-clay-600 text-white px-4 py-2 rounded font-bold disabled:opacity-50 transition-colors"
             disabled={!message.trim() || loading || !chatId}
           >
             Send
@@ -169,25 +170,3 @@ export default function AgentChatModal({
     </ReactModal>
   );
 }
-
-const modalStyles = {
-  overlay: {
-    backgroundColor: 'rgb(0, 0, 0, 75%)',
-    zIndex: 12,
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '600px',
-    height: '500px',
-    border: '10px solid rgb(23, 20, 33)',
-    borderRadius: '0',
-    background: 'rgb(35, 38, 58)',
-    color: 'white',
-    fontFamily: '"Upheaval Pro", "sans-serif"',
-  },
-};

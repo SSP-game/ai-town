@@ -80,7 +80,7 @@ function CharacterAvatar({ character, isSelected, onClick }: {
   return (
     <div
       className={`relative cursor-pointer rounded p-1 transition-all hover:scale-105 ${
-        isSelected ? 'bg-yellow-100' : 'bg-gray-200'
+        isSelected ? 'bg-clay-300' : 'bg-brown-700'
       }`}
       onClick={onClick}
       title={character.name.toUpperCase()}
@@ -129,12 +129,13 @@ export default function CharacterSelectionModal({
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onClose}
-      style={modalStyles}
+      className="fixed inset-0 flex items-center justify-center p-4"
+      overlayClassName="fixed inset-0 bg-black/75 z-50"
       contentLabel="Character Selection Modal"
       ariaHideApp={false}
     >
-      <div className="font-body">
-        <h1 className="text-center text-4xl font-bold font-display game-title mb-6">
+      <div className="bg-brown-800 border-[10px] border-brown-900 rounded-none max-w-[600px] w-[90%] mx-auto font-display text-white p-6">
+        <h1 className="text-center text-4xl font-bold game-title mb-6">
           Select Your Avatar
         </h1>
 
@@ -150,13 +151,13 @@ export default function CharacterSelectionModal({
         </div>
 
         <div className="text-center mb-4">
-          <p className="text-lg">
-            Selected: <span className="font-bold text-yellow-400">{selectedCharacter.toUpperCase()}</span>
+          <p className="text-lg text-brown-100">
+            Selected: <span className="font-bold text-clay-300">{selectedCharacter.toUpperCase()}</span>
           </p>
-          <p className="text-sm text-gray-400 mt-2">
+          <p className="text-sm text-brown-300 mt-2">
             This avatar will appear when you join the game
           </p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-brown-400 mt-1">
             Welcome back, {localStorage.getItem('nickname')}!
           </p>
         </div>
@@ -164,7 +165,7 @@ export default function CharacterSelectionModal({
         <div className="flex gap-2">
           <button
             onClick={handleSave}
-            className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded font-bold disabled:opacity-50"
+            className="flex-1 bg-clay-700 hover:bg-clay-600 text-white py-2 px-4 rounded font-bold disabled:opacity-50 transition-colors"
             disabled={loading}
           >
             {loading ? 'Saving...' : 'Save Character'}
@@ -172,7 +173,7 @@ export default function CharacterSelectionModal({
 
           <button
             onClick={onClose}
-            className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded font-bold disabled:opacity-50"
+            className="bg-brown-700 hover:bg-brown-600 text-white py-2 px-4 rounded font-bold disabled:opacity-50 transition-colors"
             disabled={loading}
           >
             Cancel
@@ -199,25 +200,3 @@ export default function CharacterSelectionModal({
     </ReactModal>
   );
 }
-
-const modalStyles = {
-  overlay: {
-    backgroundColor: 'rgb(0, 0, 0, 75%)',
-    zIndex: 12,
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: '600px',
-    width: '90%',
-    border: '10px solid rgb(23, 20, 33)',
-    borderRadius: '0',
-    background: 'rgb(35, 38, 58)',
-    color: 'white',
-    fontFamily: '"Upheaval Pro", "sans-serif"',
-  },
-};

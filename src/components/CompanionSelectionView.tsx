@@ -239,7 +239,7 @@ export default function CompanionSelectionView({
                     ${
                       !isSubmitting
                         ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white hover:scale-105 shadow-lg hover:shadow-green-500/25'
-                        : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                        : 'bg-brown-600 text-brown-400 cursor-not-allowed'
                     }
                   `}
                 >

@@ -67,19 +67,19 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
             return (
               <div
                 key={agent.id}
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-gray-500 transition-colors cursor-pointer"
+                className="bg-brown-800 rounded-lg p-6 border border-brown-700 hover:border-brown-500 transition-colors cursor-pointer"
                 onClick={() => onSelectAgent?.(agent.id)}
               >
                 {/* Character Avatar */}
                 <div className="flex justify-center mb-4">
-                  <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
+                  <div className="w-20 h-20 bg-brown-700 rounded-full flex items-center justify-center overflow-hidden">
                     {character?.textureUrl ? (
                       <CharacterAvatar
                         character={character}
                         characterName={characterName || 'f1'}
                       />
                     ) : (
-                      <div className="text-2xl text-gray-400">🤖</div>
+                      <div className="text-2xl text-brown-400">🤖</div>
                     )}
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                 </div>
 
                 {/* Character Description */}
-                <div className="text-gray-300 text-sm leading-relaxed mb-4">
+                <div className="text-brown-200 text-sm leading-relaxed mb-4">
                   {staticDescription?.identity ? (
                     <p className="line-clamp-4">
                       {staticDescription.identity.length > 200
@@ -109,7 +109,7 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                         : agentDescription.identity}
                     </p>
                   ) : (
-                    <p className="text-gray-500">No description available</p>
+                    <p className="text-brown-500">No description available</p>
                   )}
                 </div>
 
@@ -128,7 +128,7 @@ export default function AgentsListView({ worldId, onSelectAgent }: AgentsListVie
                 )}
 
                 {/* Character Info */}
-                <div className="text-xs text-gray-500 mb-4">
+                <div className="text-xs text-brown-500 mb-4">
                   <div>Agent ID: {agent.id}</div>
                   <div>Character: {characterName || 'Unknown'}</div>
                 </div>
